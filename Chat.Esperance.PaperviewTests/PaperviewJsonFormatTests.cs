@@ -24,10 +24,51 @@ namespace Chat.Esperance.PaperviewTests
                 { "url", "Fake_WWW" }          /*  The Url of the Publisher */
             };
 
+            var mfname_en = new Dictionary<string, object>
+            {
+                { "en", "Photo Collection" }
+            };
+
+            var mfname_de = new Dictionary<string, object>
+            {
+                { "de", "Fotosammlung" }
+            };
+
+            var mfname = new List<Dictionary<string, object>>
+            {
+                mfname_en, mfname_de
+            };
+
+            var mfdescription_en = new Dictionary<string, object>
+            {
+                { "en", "A Collection of Photographs" }
+            };
+
+            var mfdescription_de = new Dictionary<string, object>
+            {
+                { "de", "To Be Translated" }
+            };
+
+            var mfdescription = new List<Dictionary<string, object>>
+            {
+                mfdescription_en, mfdescription_de
+            };
+
+            var mflanguagelist = new List<string>
+            {
+                "en", "de"
+            };
+
             var microformat = new Dictionary<string, object>
             {
-                { "mfid", "B9889DB4-9D9A-4857-841B-CD5EB8E72FF0" },
-                { "mfname", "Photo Collection" }
+                { "mf-id", "B9889DB4-9D9A-4857-841B-CD5EB8E72FF0" },
+                { "mf-name", mfname },
+                { "mf-description", mfdescription },
+                { "mf-language-availability", mflanguagelist },
+                { "mf-language-default", "en" },
+                { "mf-author", "Anthony Harrison" },
+                { "mf-author-emailaddress", "anthony.harrison@xamtastic.com" },
+                { "mf-derivation", null }
             };
 
 
