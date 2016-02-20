@@ -1,0 +1,24 @@
+﻿<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>Paperview 'Photo Collection' Microformat</title>
+    <script id="esperance">
+        __paperview-template__
+    </script>
+    <script>
+        function Initialise() {
+            var esperancejson = JSON.parse(esperance);
+            document.getElementById("title").innerHTML = esperancejson.document.id;
+            document.getElementById("img").src = esperancejson.artifacts.images[0].base64;
+        }
+    </script>
+</head>
+<body onload="Initialise()">
+    <div id="title">1</div>
+    <div id="description">2</div>
+    <img id="img" src="" />
+    <div id="imagename">3</div>
+    <div id="imagedescription">4</div>
+</body>
+</html>
