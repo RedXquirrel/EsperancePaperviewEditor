@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using Newtonsoft.Json;
 using Paperview.Models.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
 using Chat.Esperance.Paperview.Core.Services;
@@ -12,6 +13,24 @@ namespace Chat.Esperance.PaperviewTests
     [TestClass]
     public class PaperviewJsonFormatTests
     {
+        private readonly string _generatedPaperviewFilesDirectoryPath;
+
+        public PaperviewJsonFormatTests()
+        {
+            _generatedPaperviewFilesDirectoryPath = $"{Directory.GetParent(Directory.GetCurrentDirectory()).Parent.FullName}\\Html5\\Generated\\";
+
+            System.IO.DirectoryInfo di = new DirectoryInfo(_generatedPaperviewFilesDirectoryPath);
+
+            foreach (FileInfo file in di.GetFiles())
+            {
+                file.Delete();
+            }
+            foreach (DirectoryInfo dir in di.GetDirectories())
+            {
+                dir.Delete(true);
+            }
+        }
+
         private string SampleJson_Photo_Collection_Microformat()
         {
             var legal = new Dictionary<string, object>
@@ -162,11 +181,24 @@ namespace Chat.Esperance.PaperviewTests
             var documents = service.GetDocuments();
             service.Close();
 
+            
+
             foreach (var item in documents.Keys)
             {
                 Debug.WriteLine($"Document Id: {item}");
                 Debug.WriteLine($"Document Content: {documents[item]}");
+                
+                if (!string.IsNullOrEmpty(_generatedPaperviewFilesDirectoryPath))
+                {
+                    System.IO.File.WriteAllText($"{_generatedPaperviewFilesDirectoryPath}{item}.html", item);
+                }
             }
+
+            
+
+
+
+            
 
             Assert.IsTrue(true);
         }
