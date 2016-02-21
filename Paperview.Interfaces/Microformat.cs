@@ -9,31 +9,37 @@ namespace Paperview.Interfaces
 {
     public class Microformat : IMicroformat
     {
-        [JsonProperty(PropertyName = "mf-id")]
-        public string Id { get; set; }
+        private string _mfid;
 
-        [JsonProperty(PropertyName = "mf-name")]
+        [JsonProperty(PropertyName = "mfid")]
+        public string Id
+        {
+            get { return _mfid; }
+            set { _mfid = value.ToLowerInvariant(); }
+        }
+
+        [JsonProperty(PropertyName = "mfname")]
         public Dictionary<string, string> Name { get; set; }
 
-        [JsonProperty(PropertyName = "mf-description")]
+        [JsonProperty(PropertyName = "mfdescription")]
         public Dictionary<string, string> Description { get; set; }
 
-        [JsonProperty(PropertyName = "mf-language-availability")]
+        [JsonProperty(PropertyName = "mflanguageavailability")]
         public List<string> LanguageAvailability { get; set; }
 
-        [JsonProperty(PropertyName = "mf-language-default")]
+        [JsonProperty(PropertyName = "mflanguagedefault")]
         public string LanguageDefault { get; set; }
 
-        [JsonProperty(PropertyName = "mf-author")]
+        [JsonProperty(PropertyName = "mfauthor")]
         public string Author { get; set; }
 
-        [JsonProperty(PropertyName = "mf-author-emailaddress")]
+        [JsonProperty(PropertyName = "mfauthoremailaddress")]
         public string AuthorEmailAddress { get; set; }
 
-        [JsonProperty(PropertyName = "mf-author-webaddress")]
+        [JsonProperty(PropertyName = "mfauthorwebaddress")]
         public string AuthorWebAddress { get; set; }
 
-        [JsonProperty(PropertyName = "mf-derivation")]
+        [JsonProperty(PropertyName = "mfderivation")]
         public string Derivation { get; set; }
 
 

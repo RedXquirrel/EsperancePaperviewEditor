@@ -95,8 +95,10 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Html5\Generated\Working.html" />
     <EmbeddedResource Include="Html5\Templates\B9889DB4-9D9A-4857-841B-CD5EB8E72FF0.html" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Html5\Generated\" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">

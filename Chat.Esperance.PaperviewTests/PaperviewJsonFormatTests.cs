@@ -48,13 +48,13 @@ namespace Chat.Esperance.PaperviewTests
 
             var mfname = new Dictionary<string, object>
             {
-                { "en", "Photo Collection" },
+                { "en", "Image Album" },
                 { "de", "Fotosammlung" }
             };
 
             var mfdescription = new Dictionary<string, object>
             {
-                { "en", "A Collection of Photographs" },
+                { "en", "A Collection of images where each image has an associated name and description; the collection itself also has a name and description; all names and descriptions can be localised to any locale, with a default locale specified." },
                 { "de", "To Be Translated" }
             };
 
@@ -65,15 +65,15 @@ namespace Chat.Esperance.PaperviewTests
 
             var microformat = new Dictionary<string, object>
             {
-                { "mf-id", "B9889DB4-9D9A-4857-841B-CD5EB8E72FF0" },
-                { "mf-name", mfname },
-                { "mf-description", mfdescription },
-                { "mf-language-availability", mflanguagelist },
-                { "mf-language-default", "en" },
-                { "mf-author", "Anthony Harrison" },
-                { "mf-author-emailaddress", "anthony.harrison@xamtastic.com" },
-                { "mf-author-webaddress", "http://www.xamtastic.com" },
-                { "mf-derivation", null }
+                { "mfid", "b9889db4-9d9a-4857-841b-cd5eb8e72ff0" },
+                { "mfname", mfname },
+                { "mfdescription", mfdescription },
+                { "mflanguageavailability", mflanguagelist },
+                { "mflanguagedefault", "en" },
+                { "mfauthor", "Anthony Harrison" },
+                { "mfauthoremailaddress", "anthony.harrison@xamtastic.com" },
+                { "mfauthorwebaddress", "http://www.xamtastic.com" },
+                { "mfderivation", "B9889DB4-9D9A-4857-841B-CD5EB8E72FF0" }
             };
 
             var image0names = new Dictionary<string, object>
@@ -121,7 +121,7 @@ namespace Chat.Esperance.PaperviewTests
 
             var document = new Dictionary<string, object>()
             {
-                { "id", Guid.NewGuid().ToString() },
+                { "id", Guid.NewGuid().ToString().ToLowerInvariant() },
                 { "microformat", microformat }
             };
 
@@ -190,7 +190,7 @@ namespace Chat.Esperance.PaperviewTests
                 
                 if (!string.IsNullOrEmpty(_generatedPaperviewFilesDirectoryPath))
                 {
-                    System.IO.File.WriteAllText($"{_generatedPaperviewFilesDirectoryPath}{item}.html", item);
+                    System.IO.File.WriteAllText($"{_generatedPaperviewFilesDirectoryPath}{item}.html", documents[item]);
                 }
             }
 

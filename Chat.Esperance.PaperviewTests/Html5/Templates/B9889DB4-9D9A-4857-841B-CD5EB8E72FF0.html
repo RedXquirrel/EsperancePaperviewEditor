@@ -9,16 +9,340 @@
     <script>
         function Initialise() {
             var esperancejson = JSON.parse(esperance);
-            document.getElementById("title").innerHTML = esperancejson.document.id;
+
+            var documentId = esperancejson.document.id;
+            var microformatId = esperancejson.document.microformat.mfid;
+
+
+
+
+            document.getElementById("title").innerHTML = documentId;
+            document.getElementById("headingMicroformatId").innerHTML = microformatId;
+
+            document.getElementById("mfid").innerHTML = microformatId;
+
+            document.getElementById("mflanguagedefault").innerHTML = esperancejson.document.microformat.mflanguagedefault;
+            document.getElementById("mfname").innerHTML = esperancejson.document.microformat.mfname[esperancejson.document.microformat.mflanguagedefault];
+
+            document.getElementById("headingMicroformatDefaultName").innerHTML = esperancejson.document.microformat.mfname[esperancejson.document.microformat.mflanguagedefault];
+
+
+            document.getElementById("mfdescription").innerHTML = esperancejson.document.microformat.mfdescription[esperancejson.document.microformat.mflanguagedefault];
+
+            document.getElementById("mfauthor").innerHTML = esperancejson.document.microformat.mfauthor;
+            document.getElementById("mfauthoremailaddress").innerHTML = esperancejson.document.microformat.mfauthoremailaddress;
+            document.getElementById("mfauthorwebaddress").innerHTML = esperancejson.document.microformat.mfauthorwebaddress;
+            document.getElementById("mfderivation").innerHTML = esperancejson.document.microformat.mfderivation;
+
             document.getElementById("img").src = esperancejson.artifacts.images[0].base64;
+
+
+            //
+            document.getElementById("heroNameMicroformatDefaultLocale").innerHTML = esperancejson.document.microformat.mflanguagedefault;
+            document.getElementById("heroDescriptionMicroformatDefaultLocale").innerHTML = esperancejson.document.microformat.mflanguagedefault;
+            document.getElementById("heroMicroformatId").innerHTML = microformatId;
+            document.getElementById("heroMicroformatName").innerHTML = esperancejson.document.microformat.mfname[esperancejson.document.microformat.mflanguagedefault];
+            document.getElementById("heroMicroformatDescription").innerHTML = esperancejson.document.microformat.mfdescription[esperancejson.document.microformat.mflanguagedefault];
+
         }
     </script>
+    <style>
+        body {
+            background-color: linen;
+        }
+
+        h1 {
+            color: maroon;
+            margin-left: 40px;
+        }
+
+        table {
+            width: 2500px;
+            background-color: maroon;
+        }
+
+        td {
+            padding: 10px;
+        }
+
+        #heroTable {
+            text-align: left;
+            background-color: lightgray;
+            width: 100%;
+        }
+
+        .heroTableHeading {
+            font-size: 20px;
+            text-transform: uppercase;
+        }
+
+        .heroRowHeadings {
+            font-weight: bold;
+            width: auto;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        .heroRowValue {
+            font-weight: normal;
+            width: auto;
+            font-size: 14px;
+            vertical-align: top;
+        }
+
+        .heroTitleColumn {
+            width: 120px;
+        }
+
+        .heroDescriptionColumn {
+            width: 500px;
+        }
+
+        .tableHeadingRow {
+            background-color: darkgray;
+            text-align: left;
+            font-size: 20px;
+            font-weight: bold;
+        }
+
+        .rowStyle {
+            background-color: lightgray;
+        }
+
+         .renderedDynamicValueColumn {
+            width: 400px;
+             background-color: white;
+        }
+
+        .columnTitle {
+            text-align: center;
+            vertical-align: top;
+            font-size: 16px;
+            font-style: normal;
+            font-weight: bold;
+            color: red;
+            background-color: lightblue;
+        }
+
+        .boldText {
+            font-weight: bold;
+        }
+
+        .categoryText {
+            vertical-align: top;
+            font-size: 12px;
+            font-weight: bold;
+            color: blue;
+        }
+
+        .propertyText {
+            vertical-align: top;
+            font-size: 12px;
+            
+        }
+
+        .readOnlyText {
+            vertical-align: top;
+            font-size: 12px;            
+        }
+
+        .jsonPathText {
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .valueText {
+            vertical-align: top;
+            font-size: 12px;
+        }
+
+        .dataPointerText {
+            vertical-align: top;
+            font-size: 12px;            
+        }
+
+        .dataPointerExample {
+            vertical-align: top;
+            font-size: 12px;            
+        }
+
+        .dataPointerRendering {
+            vertical-align: top;
+            font-size: 12px;            
+        }
+
+        .remarksText {
+            vertical-align: top;
+            font-size: 12px;            
+        }
+    </style>
 </head>
 <body onload="Initialise()">
-    <div id="title">1</div>
-    <div id="description">2</div>
-    <img id="img" src="" />
-    <div id="imagename">3</div>
-    <div id="imagedescription">4</div>
+    <div style="width: 100%; overflow: scroll;">
+        <table cellspacing="1">
+            <tr class="tableHeadingRow">
+                <td colspan="9">
+                    <span class="heroTableHeading"><br />Paperview &trade; Microformat:<br /> <span id="headingMicroformatId"></span> <br />(<span id="headingMicroformatDefaultName"></span>)</span><br /><br />
+                    <table id="heroTable">
+                        <tr><td class="heroRowHeadings heroTitleColumn"><span>Id</span>:</td><td id="heroMicroformatId" class="heroRowValue heroDescriptionColumn"></td><td></td></tr>
+                        <tr><td class="heroRowHeadings heroTitleColumn"><span>Name</span>&nbsp;(<span id="heroNameMicroformatDefaultLocale"></span>):</td><td id="heroMicroformatName" class="heroRowValue heroDescriptionColumn"></td><td></td></tr>
+                        <tr><td class="heroRowHeadings heroTitleColumn"><span>Description</span>&nbsp;(<span id="heroDescriptionMicroformatDefaultLocale"></span>):</td><td id="heroMicroformatDescription" class="heroRowValue heroDescriptionColumn"></td><td></td></tr>
+                    </table>
+
+                </td>
+            </tr>
+            <tr class="rowStyle">
+                <td class="columnTitle">Category</td>
+                <td class="columnTitle">Property Name</td>
+                <td class="columnTitle">Immutable MF Data</td>
+                <td class="columnTitle renderedDynamicValueColumn">Rendered Dynamic Value</td>
+                <td class="columnTitle">JSON Path</td>
+                <td class="columnTitle">Javascript Path <br />(Data Pointer)</td>
+                <td class="columnTitle">Example Javascript Declaration</td>
+                <td class="columnTitle">Example Html5 Rendering<br />(of Example Javascript Declaration)</td>
+
+                <td class="columnTitle">Remarks</td>
+            </tr>
+            <tr class="rowStyle">
+                <td class="categoryText">Document</td>
+                <td class="propertyText"> Document Id</td>
+                <td class="readOnlyText">No</td>
+                <td id="title" class="valueText renderedDynamicValueColumn">[error]</td>
+                <td class="jsonPathText">document.id</td>
+                <td class="dataPointerText">esperancejson.document.id</td>
+                <td class="dataPointerExample">var documentId = esperancejson.document.id;</td>
+                <td class="dataPointerRendering">document.getElementById("mfid").innerHTML = microformatId;<br />where &lt;div id="mfid" /&gt;</td>
+                <td class="remarksText">none</td>
+            </tr>
+
+            <tr class="rowStyle">
+                <td class="categoryText">Microformat</td>
+                <td class="propertyText">Microformat Id</td>
+                <td class="readOnlyText boldText">Yes</td>
+                <td id="mfid" class="valueText renderedDynamicValueColumn">[error]</td>
+                <td class="jsonPathText">document.microformat.mfid</td>
+                <td class="dataPointerText">esperancejson.document.microformat.mfid</td>
+                <td class="dataPointerExample">var microformatId = esperancejson.document.microformat.mfid;</td>
+                <td class="dataPointerRendering">document.getElementById("mfid").innerHTML = microformatId;<br />where &lt;div id="mfid" /&gt;</td>
+                <td class="remarksText">Must be a Guid <br />eg. 6e3042ae-fa32-4607-83a7-87d5535c6322</td>
+            </tr>
+            <tr>
+                <td colspan="9"></td>
+            </tr>
+        </table>
+    </div>
+    <h3>Example JSON</h3>
+    The following JSON is formatted, for the unformatted original, view the source of this page and view the JSON in the &lt;script id="esperance"&gt;...&lt;script&gt; tag.<br /><br />
+    <div style="width: 100%; height: 400px; background-color: white; overflow: scroll;">
+        <div style="padding: 20px;">
+            <pre>
+{
+"document":{
+"id":"9bebf37f-de2c-42eb-90c6-cbd52b2d1350",
+"microformat":{
+"mfid":"b9889db4-9d9a-4857-841b-cd5eb8e72ff0",
+"mfname":{
+"en":"Image Album",
+"de":"Fotosammlung"
+},
+"mfdescription":{
+"en":"A Collection of images where each image has an associated name and description; the collection itself also has a name and description; all names and descriptions can be localised to any locale, with a default locale specified.",
+"de":"To Be Translated"
+},
+"mflanguageavailability":[
+"en",
+"de"
+],
+"mflanguagedefault":"en",
+"mfauthor":"Anthony Harrison",
+"mfauthoremailaddress":"anthony.harrison@xamtastic.com",
+"mfauthorwebaddress":"http://www.xamtastic.com",
+"mfderivation":"B9889DB4-9D9A-4857-841B-CD5EB8E72FF0"
+}
+},
+"legal":{
+},
+"publisher":{
+"Id":"Fake_Publisher_Id",
+"Name":"Fake_Publisher",
+"email":"Fake_Email",
+"Url":"Fake_WWW"
+},
+"artifacts":{
+"title":{
+"en":"Collection Title",
+"de":"To Be Translated"
+},
+"description":{
+"en":"Collection Description",
+"de":"To Be Translated"
+},
+"images":[
+{
+"base64":"data:image/javascript;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAB+AHUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5Pooor/RA+DCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==",
+"name":{
+"en":"Blue Square",
+"de":"To Be Translated"
+},
+"description":{
+"en":"A Blue Square",
+"de":"To Be Translated"
+}
+}
+]
+}
+}
+</pre>
+        </div>
+    </div>
+<h3>To Create a Presentation Template from this existing Microformat:</h3>
+The Paperview editor creates a separation of concerns between the Microformat Data Layer (the JSON that it creates for each new document), and the Presntation Layer - that is, how the generic Microformat JSON is rendered.<br/><br />
+This means that for any Paperview Document Type - which we call a Paperview Microformat - different Presentation Templates can be created to render the same data: we call the data 'artifacts' as each piece of data could be text, and image, and so forth.<br/><br />
+The following process shows you how to create a different presentation rendering of this Paperview Document Type - you will be creating a Microformat Presentation Template for this Microformat (b9889db4-9d9a-4857-841b-cd5eb8e72ff0 (Image Album)).<br /><br />
+Any users who obtain this Paperview Presentation Template will be able to view, and interact with, this 'b9889db4-9d9a-4857-841b-cd5eb8e72ff0 (Image Album)' Microformat, in the manner that you code how the JSON is manipulated in it's HTML5 page.<br /><br />
+
+<div style="width: 100%; height: 400px; background-color: white; overflow: scroll;">
+        <div style="padding: 20px;">
+            <ol>
+                <li>Create an Html5 page with the following Script tag after the html page's Title tag:
+                    <pre>
+    &lt;script id="esperance"&gt;
+        var esperance = '{"document":{"id":"a5c24278-2c0d-47a2-bddf-ea3d2fd34768","microformat":{"mfid":"b9889db4-9d9a-4857-841b-cd5eb8e72ff0","mfname":{"en":"Image Album","de":"Fotosammlung"},"mfdescription":{"en":"A Collection of images where each image has an associated name and description; the collection itself also has a name and description; all names and descriptions can be localised to any locale, with a default locale specified.","de":"To Be Translated"},"mflanguageavailability":["en","de"],"mflanguagedefault":"en","mfauthor":"Anthony Harrison","mfauthoremailaddress":"anthony.harrison@xamtastic.com","mfauthorwebaddress":"http://www.xamtastic.com","mfderivation":"B9889DB4-9D9A-4857-841B-CD5EB8E72FF0"}},"legal":{},"publisher":{"Id":"Fake_Publisher_Id","Name":"Fake_Publisher","email":"Fake_Email","Url":"Fake_WWW"},"artifacts":{"title":{"en":"Collection Title","de":"To Be Translated"},"description":{"en":"Collection Description","de":"To Be Translated"},"images":[{"base64":"data:image/javascript;base64,/9j/4AAQSkZJRgABAQEAYABgAAD/4QAiRXhpZgAATU0AKgAAAAgAAQESAAMAAAABAAEAAAAAAAD/2wBDAAIBAQIBAQICAgICAgICAwUDAwMDAwYEBAMFBwYHBwcGBwcICQsJCAgKCAcHCg0KCgsMDAwMBwkODw0MDgsMDAz/2wBDAQICAgMDAwYDAwYMCAcIDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAwMDAz/wAARCAB+AHUDASIAAhEBAxEB/8QAHwAAAQUBAQEBAQEAAAAAAAAAAAECAwQFBgcICQoL/8QAtRAAAgEDAwIEAwUFBAQAAAF9AQIDAAQRBRIhMUEGE1FhByJxFDKBkaEII0KxwRVS0fAkM2JyggkKFhcYGRolJicoKSo0NTY3ODk6Q0RFRkdISUpTVFVWV1hZWmNkZWZnaGlqc3R1dnd4eXqDhIWGh4iJipKTlJWWl5iZmqKjpKWmp6ipqrKztLW2t7i5usLDxMXGx8jJytLT1NXW19jZ2uHi4+Tl5ufo6erx8vP09fb3+Pn6/8QAHwEAAwEBAQEBAQEBAQAAAAAAAAECAwQFBgcICQoL/8QAtREAAgECBAQDBAcFBAQAAQJ3AAECAxEEBSExBhJBUQdhcRMiMoEIFEKRobHBCSMzUvAVYnLRChYkNOEl8RcYGRomJygpKjU2Nzg5OkNERUZHSElKU1RVVldYWVpjZGVmZ2hpanN0dXZ3eHl6goOEhYaHiImKkpOUlZaXmJmaoqOkpaanqKmqsrO0tba3uLm6wsPExcbHyMnK0tPU1dbX2Nna4uPk5ebn6Onq8vP09fb3+Pn6/9oADAMBAAIRAxEAPwD5Pooor/RA+DCiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKACiiigAooooAKKKKAP/2Q==","name":{"en":"Blue Square","de":"To Be Translated"},"description":{"en":"A Blue Square","de":"To Be Translated"}}]}}';
+    &lt;/script&gt;
+                 </pre></li>
+                <li>Change the Guid of the Microformat Id ("mfid":"b9889db4-9d9a-4857-841b-cd5eb8e72ff0") to a new, original Guid - eg. "mfid":"71d5155b-75f4-4636-822c-05c7709f7ef5". This is the Guid that identifies YOUR Presentation template of this Microformat; the microformat itself is identified by the Microformat Derivation property. So by way of example, although the Microformat Id of this exact document that you are looking at is b9889db4-9d9a-4857-841b-cd5eb8e72ff0, this is merely a Presentation Format Id - the Microformat itself is specified in the Microformat Derivation property.</li>
+                <li>Change the Guid of the Document Id ({"document":{"id":"a5c24278-2c0d-47a2-bddf-ea3d2fd34768", ...) to a new, original Guid - eg. {"document":{"id":"9594756b-ad0b-4767-b61d-5fc1e7a942c4", ... }. As you are creating this as a template, this is merely arbitrary becaue when a user uses the Paperview Editor to create a new Paperview document using your Paperview Presentation Template, the editor will insert a new, unique Guid, in each new document that is created using your new Paperview Presentation Template.</li>
+                <li>Ensure that the Microformat Derivation ("mfderivation":"b9889db4-9d9a-4857-841b-cd5eb8e72ff0") is the one that you are deriving from (in this case, the Microformat Id specified above - b9889db4-9d9a-4857-841b-cd5eb8e72ff0).</li>
+                <li>In the page's Javascript initialisation function, add the following line:<br/>var esperancejson = JSON.parse(esperance);</li>
+                <li>Change the html filename to reflect your new Microformat Id, in this example, to 71d5155b-75f4-4636-822c-05c7709f7ef5.html</li>
+                <li>Using the above Microformat Property Definition table, utilise the following columns to determine your preferred Javascript coding style: JSON Path, Javascript Path, Example Javascript Declaration, and Example Html5 Rendering.</li>
+                <li>Once you have the full presesentation functionality working according to how you want to present the artifacts of the Microformat, ammend the script tag above to:
+                    <pre>
+    &lt;script id="esperance"&gt;
+        &#x005f;&#x005f;paperview-template&#x005f;&#x005f;
+    &lt;/script&gt;
+                    </pre></li>
+                <li>Import the new Paperview Presentation Template into your Paperview Editor and it will become an option when creating new Paperview pages using this Microformat (as defined in the JSON "mfderivation":"b9889db4-9d9a-4857-841b-cd5eb8e72ff0").<br/>Note: The editor groups all Presentation Templates together that have the same Microformat Derivation property, but uses the Microformat Id property to determine which of the html template files to select when the user chooses one of them!</li>
+                <li>Keep in mind:
+                    <ul><li>Please note that we plan releasing Paperview Viewers that will also allow the 'specialist viewer' of a document that has been created using your Presentation Microformat, to switch between bespoke Presentation Templates that they might have installed. Of course, if we have inserted Microformatted JSON into your Microformat Presentation Template, we can just as easily strip it out and re-render it in another bespoke Presentation Template. (Don't be alarmed by this as the long term revenue model for premium content is hoped to include the publisher of documents that were created using the original Presentation Template that the document was originally 'published' under.) </li><li>So remember, where "Content is King", how it is presented is Queen!</li><li>So we encourage you to make Microformat Presentation Templates that are truely queen to the generic Microformat artifacts that your templates will be rendering!</li><li>If your Presentation Template is so good, viewers will have no need to select another!</li>
+                        <li>We do think, however, that the majority of viewers will look at documents using regulkar browsers (etc), so you can (in the first instance) consider your Presentation Template to be the default viewing template for Paperview documents that are viewed using the ilk of regular browsers!</li>
+                    </ul>
+                </li>
+            </ol>
+        </div>
+    </div>
+
+            <!--<div>Document Id: <span id="title">[error]</span></div>-->
+            <div>Microformat Id: <span id="mfid">[error]</span></div>
+            <div>Microformat Language Default: <span id="mflanguagedefault">[error]</span></div>
+            <div>Microformat Default Language Name: <span id="mfname">[error]</span></div>
+            <div>Microformat Default Language Description: <span id="mfdescription">[error]</span></div>
+            <div>Microformat Author: <span id="mfauthor">[error]</span></div>
+            <div>Microformat Author's Email Address: <span id="mfauthoremailaddress">[error]</span></div>
+            <div>Microformat Author's Web Address: <span id="mfauthorwebaddress">[error]</span></div>
+            <div>Microformat Derivation: <span id="mfderivation">[error]</span></div>
+            <img id="img" src="" />
+            <div id="imagename">3</div>
+            <div id="imagedescription">4</div>
 </body>
 </html>
