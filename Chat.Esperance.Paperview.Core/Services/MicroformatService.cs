@@ -99,7 +99,7 @@ namespace Chat.Esperance.Paperview.Core.Services
                     _itemCache = value;
 
 
-                    IRoot documentMetadata = (IRoot)value;
+                    IPaperviewMicroformatRoot documentMetadata = (IPaperviewMicroformatRoot)value;
                     var docId = documentMetadata.Document.DocumentId;
 
                     var microformatFactoryType = value.GetType().GetTypeInfo().Assembly.GetType(

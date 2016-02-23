@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Paperview.Interfaces
 {
-    public interface IRoot
+    public interface IPaperviewMicroformatRoot
     {
         Document Document { get; set; }
     }

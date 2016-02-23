@@ -13,7 +13,5 @@ namespace Paperview.Interfaces
         string MicroformatId { get; set; }
 
         string PresentationId { get; set; }
-
-        // IMicroformat Microformat { get; set; }
     }
 }
