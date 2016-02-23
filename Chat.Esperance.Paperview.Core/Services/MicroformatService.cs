@@ -101,7 +101,7 @@ namespace Chat.Esperance.Paperview.Core.Services
 
 
                     IRoot documentMetadata = (IRoot)value;
-                    var docId = documentMetadata.Document.Id;
+                    var docId = documentMetadata.Document.DocumentId;
 
                     var microformatFactoryType = value.GetType().GetTypeInfo().Assembly.GetType(
                         $"{value.GetType().Namespace}.MicroformatFactory");
@@ -112,11 +112,11 @@ namespace Chat.Esperance.Paperview.Core.Services
 
                     if (_documents.ContainsKey(docId))
                     {
-                        _documents[documentMetadata.Document.Id] = _templateService.Get(Guid.Parse(documentMetadata.Document.Microformat.Id)).EmbedPaperviewScriptElement(embed);
+                        _documents[documentMetadata.Document.DocumentId] = _templateService.Get(Guid.Parse(documentMetadata.Document.PresentationId)).EmbedPaperviewScriptElement(embed);
                     }
                     else
                     {
-                        AddDocument(documentMetadata.Document.Id, _templateService.Get(Guid.Parse(documentMetadata.Document.Microformat.Id)).EmbedPaperviewScriptElement(embed));
+                        AddDocument(documentMetadata.Document.DocumentId, _templateService.Get(Guid.Parse(documentMetadata.Document.PresentationId)).EmbedPaperviewScriptElement(embed));
                     }
 
                     Debug.WriteLine("---- Microformat-----------");

@@ -9,11 +9,23 @@ namespace Paperview.Interfaces
 {
     public class Document : IDocument
     {
-        [JsonProperty(PropertyName = "id")]
-        public string Id { get; set; }
+        private string _mfid;
+
+        [JsonProperty(PropertyName = "documentId")]
+        public string DocumentId { get; set; }
+
+        [JsonProperty(PropertyName = "microformatId")]
+        public string MicroformatId
+        {
+            get { return _mfid; }
+            set { _mfid = value.ToLowerInvariant(); }
+        }
+
+        [JsonProperty(PropertyName = "presentationId")]
+        public string PresentationId { get; set; }
+
 
         [JsonProperty(PropertyName = "microformat")]
         public Microformat Microformat { get; set; }
-
     }
 }

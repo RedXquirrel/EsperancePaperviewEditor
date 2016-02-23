@@ -8,7 +8,11 @@ namespace Paperview.Interfaces
 {
     public interface IDocument
     {
-        string Id { get; set; }
+        string DocumentId { get; set; }
+
+        string MicroformatId { get; set; }
+
+        string PresentationId { get; set; }
 
         // IMicroformat Microformat { get; set; }
     }

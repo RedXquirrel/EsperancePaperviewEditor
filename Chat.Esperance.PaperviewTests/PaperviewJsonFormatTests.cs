@@ -31,7 +31,7 @@ namespace Chat.Esperance.PaperviewTests
             }
         }
 
-        private string SampleJson_Photo_Collection_Microformat()
+        private string SampleJson_Photo_Collection_Microformat(string presentationId)
         {
             var legal = new Dictionary<string, object>
             {
@@ -121,7 +121,9 @@ namespace Chat.Esperance.PaperviewTests
 
             var document = new Dictionary<string, object>()
             {
-                { "id", Guid.NewGuid().ToString().ToLowerInvariant() },
+                { "documentId", Guid.NewGuid().ToString().ToLowerInvariant() },
+                { "microformatId", "b9889db4-9d9a-4857-841b-cd5eb8e72ff0" },
+                { "presentationId", presentationId.ToLowerInvariant() },
                 { "microformat", microformat }
             };
 
@@ -141,7 +143,7 @@ namespace Chat.Esperance.PaperviewTests
         [TestMethod]
         public void TestMethod1()
         {
-            var photocollectionjson = SampleJson_Photo_Collection_Microformat();
+            var photocollectionjson = SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8");
 
             var embed = @"<script id='esperance'>var json = '" + photocollectionjson + "';</ script>";
 
@@ -151,7 +153,7 @@ namespace Chat.Esperance.PaperviewTests
         [TestMethod]
         public void DeserialiseJsonTest()
         {
-            var json = SampleJson_Photo_Collection_Microformat();
+            var json = SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8");
 
             var obj = JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(json);
 
@@ -162,11 +164,11 @@ namespace Chat.Esperance.PaperviewTests
         public void CreateTest()
         {
             var objList = new List<object>();
-            var doc1 = SampleJson_Photo_Collection_Microformat();
+            //var doc1 = SampleJson_Photo_Collection_Microformat();
 
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat()));
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat()));
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat()));
+            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
+            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
+            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
 
             
             IMicroformatService service = new MicroformatService(new MockMicroformatTemplateService());

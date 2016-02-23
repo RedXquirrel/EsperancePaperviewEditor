@@ -95,7 +95,7 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Html5\Templates\B9889DB4-9D9A-4857-841B-CD5EB8E72FF0.html" />
+    <EmbeddedResource Include="Html5\Templates\3F36D2CA-8A54-4826-8F6A-5D83004C7ED8.html" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Html5\Generated\" />
