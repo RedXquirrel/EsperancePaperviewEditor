@@ -80,9 +80,9 @@
       <Project>{a51bbdd3-05b0-4b7e-bedd-359ccaff968d}</Project>
       <Name>Paperview.Interfaces</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Paperview.Models.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0\Paperview.Models.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0.csproj">
+    <ProjectReference Include="..\Paperview.Models.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0\Paperview.Microformats.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0.csproj">
       <Project>{54451a55-31ed-491b-a5cc-bbc6a15d2f7e}</Project>
-      <Name>Paperview.Models.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0</Name>
+      <Name>Paperview.Microformats.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />

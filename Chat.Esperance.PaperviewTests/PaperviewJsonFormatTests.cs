@@ -4,9 +4,9 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using Newtonsoft.Json;
-using Paperview.Models.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
 using Chat.Esperance.Paperview.Core.Services;
 using Paperview.Interfaces;
+using Paperview.Microformats.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
 
 namespace Chat.Esperance.PaperviewTests
 {
@@ -164,8 +164,8 @@ namespace Chat.Esperance.PaperviewTests
         public void CreateTest()
         {
             var objList = new List<object>();
-            //var doc1 = SampleJson_Photo_Collection_Microformat();
 
+            // Note: 
             objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
             objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
             objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
