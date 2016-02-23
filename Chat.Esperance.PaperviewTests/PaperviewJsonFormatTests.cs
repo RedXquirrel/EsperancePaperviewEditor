@@ -155,7 +155,7 @@ namespace Chat.Esperance.PaperviewTests
         {
             var json = SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8");
 
-            var obj = JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(json);
+            var obj = JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(json);
 
             Assert.IsTrue(true);
         }
@@ -166,9 +166,10 @@ namespace Chat.Esperance.PaperviewTests
             var objList = new List<object>();
 
             // Note: 
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
-            objList.Add(JsonConvert.DeserializeObject<Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
+
+            objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
+            objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
+            objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
 
             
             IMicroformatService service = new MicroformatService(new MockMicroformatTemplateService());

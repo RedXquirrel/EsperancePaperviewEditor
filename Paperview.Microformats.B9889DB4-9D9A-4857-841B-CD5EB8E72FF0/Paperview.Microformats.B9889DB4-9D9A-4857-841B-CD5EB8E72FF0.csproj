@@ -40,7 +40,7 @@
     <Compile Include="Legal.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Publisher.cs" />
-    <Compile Include="Root_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0.cs" />
+    <Compile Include="Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0.cs" />
     <Compile Include="MicroformatFactory.cs" />
   </ItemGroup>
   <ItemGroup>
