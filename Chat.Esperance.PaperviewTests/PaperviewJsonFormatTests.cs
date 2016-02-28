@@ -7,6 +7,8 @@ using Newtonsoft.Json;
 using Chat.Esperance.Paperview.Core.Services;
 using Paperview.Interfaces;
 using Paperview.Microformats.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
+using Newtonsoft.Json.Schema.Generation;
+using Newtonsoft.Json.Schema;
 
 namespace Chat.Esperance.PaperviewTests
 {
@@ -165,8 +167,8 @@ namespace Chat.Esperance.PaperviewTests
         {
             var objList = new List<object>();
 
-            // Note: 
-
+            // Note: the objects that are passed into the IMicroformatService's Create method
+            // (see service.Create(item); below), must implement IPaperviewMicroformatRoot
             objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
             objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
             objList.Add(JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8")));
@@ -197,10 +199,44 @@ namespace Chat.Esperance.PaperviewTests
                 }
             }
 
+
+
+
+            //Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0
+
+
+
+
+            var scema = @"{
+             'name': 'Question',
+             'plural': 'Questions',
+             'base': 'PersistedModel',
+             'idInjection': true,
+             'properties': {
+               'id': {
+                 'type': 'string',
+                 'id': 1
+               },
+               'heroImageFull': {
+                 'type': 'string'
+               },
+               'options': {
+                 'type': 'array'
+               }
+             },
+             'validations': [],
+             'relations': { 
+             },
+             'acls': [      ],
+             'methods': []
+            }";
+
+
+            JSchemaGenerator generator = new JSchemaGenerator();
             
+            JSchema schema = generator.Generate(typeof(Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0));
 
-
-
+            // JsonConvert.DeserializeObject<Microformat_B9889DB4_9D9A_4857_841B_CD5EB8E72FF0>(SampleJson_Photo_Collection_Microformat("3F36D2CA-8A54-4826-8F6A-5D83004C7ED8"))
             
 
             Assert.IsTrue(true);
