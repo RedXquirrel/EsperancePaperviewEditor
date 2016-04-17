@@ -23,7 +23,7 @@ namespace Chat.Esperance.PaperviewApi.ViewModels
         /// </summary>
         private void ChooseTargetPage()
         {
-            Navigator.Show(typeof(ManageTemplatesViewModel));
+            Navigator.Show(typeof(ManagePublishersViewModel));
         }
     }
 }

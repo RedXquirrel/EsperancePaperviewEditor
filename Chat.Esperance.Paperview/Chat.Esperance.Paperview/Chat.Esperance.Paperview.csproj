@@ -47,6 +47,9 @@
     <Compile Include="Pages\BootTabletPage.xaml.cs">
       <DependentUpon>BootTabletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\ManagePublishersPhonePage.xaml.cs">
+      <DependentUpon>ManagePublishersPhonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManageTemplatesDesktopPage.xaml.cs">
       <DependentUpon>ManageTemplatesDesktopPage.xaml</DependentUpon>
     </Compile>
@@ -139,6 +142,12 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\ManageTemplatesTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ManagePublishersPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
