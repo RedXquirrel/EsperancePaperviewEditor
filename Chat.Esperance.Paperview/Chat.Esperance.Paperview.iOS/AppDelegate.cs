@@ -6,6 +6,7 @@ using Chat.Esperance.PaperviewApi;
 using Chat.Esperance.PaperviewApi.ViewModels;
 using Foundation;
 using UIKit;
+using Xamarin.Forms;
 
 namespace Chat.Esperance.Paperview.iOS
 {

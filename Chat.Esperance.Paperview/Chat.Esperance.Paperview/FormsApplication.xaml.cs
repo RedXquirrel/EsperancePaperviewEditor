@@ -41,17 +41,17 @@ namespace Chat.Esperance.Paperview
 
         protected override void OnStart()
         {
-            OnStartAction.Invoke();
+            OnStartAction?.Invoke();
         }
 
         protected override void OnSleep()
         {
-            OnSleepAction.Invoke();
+            OnSleepAction?.Invoke();
         }
 
         protected override void OnResume()
         {
-            OnResumeAction.Invoke();
+            OnResumeAction?.Invoke();
         }
 
     }

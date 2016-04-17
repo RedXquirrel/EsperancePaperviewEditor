@@ -11,7 +11,7 @@ namespace Chat.Esperance.PaperviewApi
         {
             return () =>
             {
-                CurrentViewModel.OnStart();
+                CurrentViewModel?.OnStart();
             };
         }
 
@@ -19,7 +19,7 @@ namespace Chat.Esperance.PaperviewApi
         {
             return () =>
             {
-                CurrentViewModel.OnSleep();
+                CurrentViewModel?.OnSleep();
             };
         }
 
@@ -27,7 +27,7 @@ namespace Chat.Esperance.PaperviewApi
         {
             return () =>
             {
-                CurrentViewModel.OnResume();
+                CurrentViewModel?.OnResume();
             };
         }
     }
