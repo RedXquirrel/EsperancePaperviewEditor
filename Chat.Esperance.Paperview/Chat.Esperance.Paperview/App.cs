@@ -2,17 +2,17 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-
+using Chat.Esperance.Paperview.ViewModels;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.Paperview
 {
     public class App : Application
     {
+        
         public App()
         {
-            // The root page of your application
-            MainPage = new ContentPage
+            var navigationPage = new NavigationPage(new ContentPage
             {
                 Content = new StackLayout
                 {
@@ -24,7 +24,13 @@ namespace Chat.Esperance.Paperview
                         }
                     }
                 }
-            };
+            });
+
+            // The root page of your application
+            MainPage = navigationPage;
+
+            var nav = new Navigator(MainPage.Navigation);
+            Navigator.Show(typeof(BootViewModel));
         }
 
         protected override void OnStart()

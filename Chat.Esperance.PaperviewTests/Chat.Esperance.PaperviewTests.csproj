@@ -36,7 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.8.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\packages\Newtonsoft.Json.8.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="Newtonsoft.Json.Schema, Version=2.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -101,8 +101,11 @@
   <ItemGroup>
     <EmbeddedResource Include="Html5\Templates\3F36D2CA-8A54-4826-8F6A-5D83004C7ED8.html" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Folder Include="Html5\Generated\" />
+    <Content Include="Html5\Generated\5cc8a1f1-eb84-4aff-8554-3012b438afb3.html" />
+    <Content Include="Html5\Generated\a5377083-79c1-4ce7-bf2f-f0b63a71e0e9.html" />
+    <Content Include="Html5\Generated\ecbfcfdb-f445-4e9c-86e2-c5c026b65e47.html" />
   </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
