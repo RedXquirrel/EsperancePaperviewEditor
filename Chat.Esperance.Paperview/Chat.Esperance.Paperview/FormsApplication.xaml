@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Application xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chat.Esperance.Paperview.FormsApplication">
+  <Application.Resources>
+  <ResourceDictionary>
+    <x:Double x:Key="StandardTitleFontSizeDoublePhone">18</x:Double>
+    <x:Double x:Key="StandardTitleFontSizeDoubleTablet">40</x:Double>
+    <x:Double x:Key="StandardTitleFontSizeDoubleDesktop">60</x:Double>
+    
+    <x:Int32 x:Key="StandardTitleFontSizeIntPhone">18</x:Int32>
+    <x:Int32 x:Key="StandardTitleFontSizeIntTablet">18</x:Int32>
+    <x:Int32 x:Key="StandardTitleFontSizeIntDesktop">18</x:Int32>
+
+    <Color x:Key="StandardBackgroundColorPhone">Aqua</Color>
+    <Color x:Key="StandardBackgroundColorTablet">Green</Color>
+    <Color x:Key="StandardBackgroundColorDesktop">Blue</Color>
+    
+  </ResourceDictionary>    
+  </Application.Resources>
+</Application>

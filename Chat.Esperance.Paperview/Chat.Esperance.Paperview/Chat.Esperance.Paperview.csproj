@@ -35,7 +35,27 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="App.cs" />
+    <Compile Include="FormsApplication.xaml.cs">
+      <DependentUpon>FormsApplication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BootDesktopPage.xaml.cs">
+      <DependentUpon>BootDesktopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BootPhonePage.xaml.cs">
+      <DependentUpon>BootPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\BootTabletPage.xaml.cs">
+      <DependentUpon>BootTabletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageTemplatesDesktopPage.xaml.cs">
+      <DependentUpon>ManageTemplatesDesktopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageTemplatesPhonePage.xaml.cs">
+      <DependentUpon>ManageTemplatesPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ManageTemplatesTabletPage.xaml.cs">
+      <DependentUpon>ManageTemplatesTabletPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -74,6 +94,54 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\BootDesktopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\BootPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\BootTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chat.Esperance.Paperview.Interfaces\Chat.Esperance.Paperview.Interfaces.csproj">
+      <Project>{9b5436d3-05c2-4b7f-9792-8b1e0a97fee4}</Project>
+      <Name>Chat.Esperance.Paperview.Interfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="FormsApplication.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ManageTemplatesDesktopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ManageTemplatesPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\ManageTemplatesTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.1.3.3.6323\build\portable-win+net45+wp80+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
