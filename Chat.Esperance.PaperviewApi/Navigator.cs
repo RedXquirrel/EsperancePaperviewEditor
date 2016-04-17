@@ -65,7 +65,8 @@ namespace Chat.Esperance.PaperviewApi
             if (viewModel != null && viewModel.IsGhosted) return;
 
             var page = Activator.CreateInstance(pageType) as ContentPage;
-            
+
+            NavigationPage.SetHasNavigationBar(page, false); // The default is to not have a navigation bar!
 
             if (page == null || viewModel == null)
             {

@@ -13,6 +13,6 @@ namespace Chat.Esperance.Paperview.Pages
 		public ManagePublishersDesktopPage ()
 		{
 			InitializeComponent ();
-		}
+        }
 	}
 }
