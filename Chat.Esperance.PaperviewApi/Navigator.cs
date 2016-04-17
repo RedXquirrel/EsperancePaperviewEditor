@@ -6,67 +6,83 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Chat.Esperance.Paperview.Pages;
+using Chat.Esperance.PaperviewApi.ViewModels;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi
 {
     public static class Navigator
     {
-        public const string _viewModelKey = "ViewModel";
+        private const string ViewModelKey = "ViewModel";
+        private const string PageKey = "Page";
+        private const string DesktopIdiomKey = "Desktop";
+        private const string PhoneIdiomKey = "Phone";
+        private const string TabletIdiomKey = "Tablet";
 
         public static INavigation Navigation;
-         
-        public static void Show(Type viewModelType)
+        public static Assembly UiAssembly;
+
+        public static Page CurrentPage { get; set; }
+
+        public static async void Show(Type viewModelType)
         {
             var name = viewModelType.Name;
 
-            if (!name.Substring(name.Length - _viewModelKey.Length, _viewModelKey.Length).Equals(_viewModelKey))
+            if (!name.Substring(name.Length - ViewModelKey.Length, ViewModelKey.Length).Equals(ViewModelKey))
             {
-                throw new Exception($"ViewModel classname does not end in {_viewModelKey}, in {typeof(Navigator).Name} [{typeof(Navigator).AssemblyQualifiedName}]");
+                throw new Exception($"ViewModel classname does not end in {ViewModelKey}, in {typeof(Navigator).Name} [{typeof(Navigator).AssemblyQualifiedName}]");
             }
 
-            var abstractName = name.Substring(0, name.Length - _viewModelKey.Length);
+            var abstractName = name.Substring(0, name.Length - ViewModelKey.Length);
 
 
-            string pageName = string.Empty;
+            var pageName = string.Empty;
 
             switch (Device.Idiom)
             {
                  case TargetIdiom.Desktop:
-                    pageName = abstractName + "Desktop" + "Page";
+                    pageName = abstractName + DesktopIdiomKey + PageKey;
                     break;
 
                 case TargetIdiom.Phone:
-                    pageName = abstractName + "Phone" + "Page";
+                    pageName = abstractName + PhoneIdiomKey + PageKey;
                     break;
 
                 case TargetIdiom.Tablet:
-                    pageName = abstractName + "Tablet" + "Page";
+                    pageName = abstractName + TabletIdiomKey + PageKey;
                     break;
+                case TargetIdiom.Unsupported:
+                    throw new Exception("This Device Idiom is unsupported.");
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
 
-            // ToDo: this ties the API directly to the Forms UI assembly so create a DI service to obviate this.
-            var pageType = typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly.ExportedTypes
-                                          .FirstOrDefault(t => t.Name == pageName);
+            var pageType = UiAssembly.ExportedTypes.FirstOrDefault(t => t.Name == pageName);
 
-            if (pageType == null)
-            {
-                Debug.WriteLine($"WARNING: Page Not Found is {pageType.Name}");
-            }
-            else
-            {
-                Debug.WriteLine($"INFORMATION: Page to be activated is {pageType.Name}");
-            }
+            Debug.WriteLine(pageType == null ? $"WARNING: Page Not Found is {pageName}" : $"INFORMATION: Page to be activated is {pageType.Name}");
+
+            var viewModel = Activator.CreateInstance(viewModelType) as ViewModelBase;
+            if (viewModel != null && viewModel.IsGhosted) return;
 
             var page = Activator.CreateInstance(pageType) as ContentPage;
-
-            if (page == null)
-            {
             
+
+            if (page == null || viewModel == null)
+            {
+                if(page == null && viewModel == null) throw new Exception($"Both Page and ViewModel not found ({pageName} and {viewModelType.Name})");
+                if(page == null) throw new Exception($"Page Not Found is {pageName}");
+                if(viewModel == null) throw new Exception($"ViewModel Not Found is {viewModelType.Name}");
             }
             else
             {
-                Navigation.PushAsync(page);
+                // So that application lifecycle methods can be called (OnStart, OnSleep, OnResume):
+                PaperviewApplication.CurrentViewModel = viewModel;
+                // Store the current page 
+                Navigator.CurrentPage = page;
+                // Bind the ViewModel to the Page:
+                page.BindingContext = viewModel;
+                // Navigate to the Page:
+                await Navigation.PushAsync(page);
             }
         }
 

@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-
+using System.Reflection;
+using Chat.Esperance.PaperviewApi;
+using Chat.Esperance.PaperviewApi.ViewModels;
 using Foundation;
 using UIKit;
 
@@ -13,18 +15,35 @@ namespace Chat.Esperance.Paperview.iOS
     [Register("AppDelegate")]
     public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate
     {
-        //
-        // This method is invoked when the application has loaded and is ready to run. In this 
-        // method you should instantiate the window, load the UI into it and then make the window
-        // visible.
-        //
-        // You have 17 seconds to return from this method, or iOS will terminate your application.
-        //
+        /// <summary>
+        /// The Paperviewe API
+        /// </summary>
+        protected PaperviewApplication PaperviewApplication = new PaperviewApplication();
+        /// <summary>
+        /// The Forms UI that is bound to ViewModels in the Paperview API
+        /// </summary>
+        protected FormsApplication FormsApplication;
+
         public override bool FinishedLaunching(UIApplication app, NSDictionary options)
         {
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            FormsApplication = new FormsApplication();
+            LoadApplication(FormsApplication); // This is just the standard App() recreated with a Xaml ResourceDictionary
 
+            // When the Xamarin.Forms lifecyle overrides fire, they need to invoke the PaperviewApplication lifecycle Actions.
+            FormsApplication.OnStartAction = PaperviewApplication.OnStart();
+            FormsApplication.OnSleepAction = PaperviewApplication.OnSleep();
+            FormsApplication.OnResumeAction = PaperviewApplication.OnResume();
+
+            // Identify to the Navigator, which assembly the UI is in (a reference to any class will do):
+            Chat.Esperance.PaperviewApi.Navigator.UiAssembly =
+                typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
+            // Pass the Forms Navigation utility to the PaperviewApplication's ViewModel Navigator
+            Chat.Esperance.PaperviewApi.Navigator.Navigation = FormsApplication.Navigation;
+            // Navigate to the initial ViewModel:
+            Chat.Esperance.PaperviewApi.Navigator.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
+                                                                                // because on iOS a Navigation.Push(...) must occur before
+                                                                                // the following base.FinishedLaunching(...) is returned.
             return base.FinishedLaunching(app, options);
         }
     }

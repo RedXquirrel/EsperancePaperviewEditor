@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
 using System.Threading.Tasks;
 
-namespace Chat.Esperance.Paperview.ViewModels
+namespace Chat.Esperance.PaperviewApi.ViewModels
 {
     public abstract class ViewModelBase<TNavigationParameter> : ViewModelBase
     {
@@ -13,6 +10,17 @@ namespace Chat.Esperance.Paperview.ViewModels
 
     public class ViewModelBase : PropertyChangedBase, IDisposable
     {
+        /// <summary>
+        /// When IsGhosted is set to true, the navigator will not create a page but instead
+        /// expect the ViewModel to call Show(ViewModel) after some logic operations are carried out.
+        /// This is promarily designed for the bootup process so that the BootViewModel can determine which page
+        /// to navigate to.
+        /// </summary>
+        public bool IsGhosted { get; set; }
+
+        public virtual void OnStart() { }
+        public virtual void OnSleep() { }
+        public virtual void OnResume() { }
 
         #region IDisposable members
         public void Dispose()

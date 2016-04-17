@@ -98,6 +98,10 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Chat.Esperance.PaperviewApi\Chat.Esperance.PaperviewApi.csproj">
+      <Project>{bdd854ea-727d-4332-834d-7ac4c004914e}</Project>
+      <Name>Chat.Esperance.PaperviewApi</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chat.Esperance.Paperview\Chat.Esperance.Paperview.csproj">
       <Name>Chat.Esperance.Paperview</Name>
     </ProjectReference>
