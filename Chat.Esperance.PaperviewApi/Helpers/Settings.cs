@@ -68,5 +68,19 @@ namespace Chat.Esperance.PaperviewApi.Helpers
             }
         }
 
+        private const string DefaultPublishersIdKey = "defaultpublishersid_key";
+        private static readonly string DefaultPublishersIdDefault = string.Empty;
+
+        public static string DefaultPublishersId
+        {
+            get
+            {
+                return AppSettings.GetValueOrDefault<string>(DefaultPublishersIdKey, DefaultPublishersIdDefault);
+            }
+            set
+            {
+                AppSettings.AddOrUpdateValue<string>(DefaultPublishersIdKey, value);
+            }
+        }
     }
 }

@@ -1,17 +1,13 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using Chat.Esperance.Paperview.Pages;
 using Chat.Esperance.PaperviewApi.ViewModels;
 using Xamarin.Forms;
 
-namespace Chat.Esperance.PaperviewApi
+namespace Chat.Esperance.PaperviewApi.Services
 {
-    public static class Navigator
+    public static class NavigationService
     {
         private const string ViewModelKey = "ViewModel";
         private const string PageKey = "Page";
@@ -30,7 +26,7 @@ namespace Chat.Esperance.PaperviewApi
 
             if (!name.Substring(name.Length - ViewModelKey.Length, ViewModelKey.Length).Equals(ViewModelKey))
             {
-                throw new Exception($"ViewModel classname does not end in {ViewModelKey}, in {typeof(Navigator).Name} [{typeof(Navigator).AssemblyQualifiedName}]");
+                throw new Exception($"ViewModel classname does not end in {ViewModelKey}, in {typeof(NavigationService).Name} [{typeof(NavigationService).AssemblyQualifiedName}]");
             }
 
             var abstractName = name.Substring(0, name.Length - ViewModelKey.Length);
@@ -62,11 +58,9 @@ namespace Chat.Esperance.PaperviewApi
             Debug.WriteLine(pageType == null ? $"WARNING: Page Not Found is {pageName}" : $"INFORMATION: Page to be activated is {pageType.Name}");
 
             var viewModel = Activator.CreateInstance(viewModelType) as ViewModelBase;
-            if (viewModel != null && viewModel.IsGhosted) return;
+            if (viewModel != null && viewModel.IsGhosted) return; // 'Ghosted' ViewModels are not intended to be bound to a page! (They typically determine which other ViewModel to Show (such as in the BootViewModel)!)
 
-            var page = Activator.CreateInstance(pageType) as ContentPage;
-
-            NavigationPage.SetHasNavigationBar(page, false); // The default is to not have a navigation bar!
+            var page = Activator.CreateInstance(pageType) as Page;
 
             if (page == null || viewModel == null)
             {
@@ -76,10 +70,12 @@ namespace Chat.Esperance.PaperviewApi
             }
             else
             {
+                // The default is to not have a navigation bar!
+                NavigationPage.SetHasNavigationBar(page, false); 
                 // So that application lifecycle methods can be called (OnStart, OnSleep, OnResume):
                 PaperviewApplication.CurrentViewModel = viewModel;
                 // Store the current page 
-                Navigator.CurrentPage = page;
+                NavigationService.CurrentPage = page;
                 // Bind the ViewModel to the Page:
                 page.BindingContext = viewModel;
                 // Navigate to the Page:

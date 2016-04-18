@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 using Chat.Esperance.PaperviewApi;
+using Chat.Esperance.PaperviewApi.Services;
 using Chat.Esperance.PaperviewApi.ViewModels;
 using Foundation;
 using UIKit;
@@ -37,12 +38,12 @@ namespace Chat.Esperance.Paperview.iOS
             FormsApplication.OnResumeAction = PaperviewApplication.OnResume();
 
             // Identify to the Navigator, which assembly the UI is in (a reference to any class will do):
-            Chat.Esperance.PaperviewApi.Navigator.UiAssembly =
+            NavigationService.UiAssembly =
                 typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
             // Pass the Forms Navigation utility to the PaperviewApplication's ViewModel Navigator
-            Chat.Esperance.PaperviewApi.Navigator.Navigation = FormsApplication.Navigation;
+            NavigationService.Navigation = FormsApplication.Navigation;
             // Navigate to the initial ViewModel:
-            Chat.Esperance.PaperviewApi.Navigator.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
+            NavigationService.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
                                                                                 // because on iOS a Navigation.Push(...) must occur before
                                                                                 // the following base.FinishedLaunching(...) is returned.
             return base.FinishedLaunching(app, options);

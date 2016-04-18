@@ -1,4 +1,5 @@
 ﻿using System;
+using Chat.Esperance.PaperviewApi.Services;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.ViewModels
@@ -27,11 +28,11 @@ namespace Chat.Esperance.PaperviewApi.ViewModels
 
             if (PublishersService.GetPublishers().Count == 0)
             {
-                Navigator.Show(typeof (ManagePublishersViewModel));
+                NavigationService.Show(typeof (ManagePublishersViewModel));
             }
             else
             {
-                Navigator.Show(typeof(ManageTemplatesViewModel));
+                NavigationService.Show(typeof(ManageTemplatesViewModel));
             }
         }
 

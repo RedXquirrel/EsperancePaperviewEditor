@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Chat.Esperance.Paperview.ViewModels;
 using Chat.Esperance.PaperviewApi;
+using Chat.Esperance.PaperviewApi.Services;
 using Chat.Esperance.PaperviewApi.ViewModels;
 
 namespace Chat.Esperance.Paperview.Droid
@@ -38,12 +39,12 @@ namespace Chat.Esperance.Paperview.Droid
             FormsApplication.OnResumeAction = PaperviewApplication.OnResume();
 
             // Identify to the Navigator, which assembly the UI is in (a reference to any class will do):
-            Chat.Esperance.PaperviewApi.Navigator.UiAssembly =
+            NavigationService.UiAssembly =
                 typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
             // Pass the Forms Navigation utility to the PaperviewApplication's Navigator
-            Chat.Esperance.PaperviewApi.Navigator.Navigation = FormsApplication.Navigation;
+            NavigationService.Navigation = FormsApplication.Navigation;
             // Navigate to the initial ViewModel:
-            Chat.Esperance.PaperviewApi.Navigator.Show(typeof(BootViewModel));  // n.b Don't do this in the PaperviewAPI OnStart action as
+            NavigationService.Show(typeof(BootViewModel));  // n.b Don't do this in the PaperviewAPI OnStart action as
                                                                                 // on iOS it must be called earlier (hence it is done here).
         }
     }
