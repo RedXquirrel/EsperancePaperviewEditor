@@ -39,7 +39,7 @@ namespace Chat.Esperance.PaperviewApi.Services
         {
             var response = PublishingServiceResponse.Ok;
             var list = GetPublishers();
-            if (list.Count(pub => pub.Id.ToLower() == publisher.Id.ToLower()) == 0)
+            if (list.Count(pub => string.Equals(pub.Id, publisher.Id, StringComparison.CurrentCultureIgnoreCase)) == 0)
             {
                 publisher.Id = publisher.Id.ToLower();
                 list.Add(publisher);
