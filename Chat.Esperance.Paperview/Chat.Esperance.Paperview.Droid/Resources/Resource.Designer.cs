@@ -26,6 +26,7 @@ namespace Chat.Esperance.Paperview.Droid
 		
 		public static void UpdateIdValues()
 		{
+			global::Xamarin.Forms.Platform.Android.Resource.Attribute.actionBarSize = global::Chat.Esperance.Paperview.Droid.Resource.Attribute.actionBarSize;
 		}
 		
 		public partial class Attribute

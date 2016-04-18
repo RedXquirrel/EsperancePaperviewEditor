@@ -1,7 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <Application xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="Chat.Esperance.Paperview.FormsApplication">
+             x:Class="Chat.Esperance.Paperview.FormsApplication"
+             xmlns:pages="clr-namespace:Chat.Esperance.Paperview.Pages;assembly=Chat.Esperance.Paperview"
+              >
   <Application.Resources>
   <ResourceDictionary>
     <x:Double x:Key="StandardTitleFontSizeDoublePhone">18</x:Double>
@@ -15,7 +17,22 @@
     <Color x:Key="StandardBackgroundColorPhone">Aqua</Color>
     <Color x:Key="StandardBackgroundColorTablet">Green</Color>
     <Color x:Key="StandardBackgroundColorDesktop">Blue</Color>
+
+    <ControlTemplate x:Key="BorderTemplate">
+      <StackLayout VerticalOptions="Fill" BackgroundColor="Gray">
+        <BoxView HeightRequest="30" Color="Red" HorizontalOptions="Fill" />
+        <BoxView HeightRequest="30" Color="Green" HorizontalOptions="Fill" />
+        <BoxView HeightRequest="30" Color="Blue" HorizontalOptions="Fill" />
+        <ContentPresenter />
+        <BoxView HeightRequest="30" Color="Yellow" HorizontalOptions="Fill" />
+      </StackLayout>
+    </ControlTemplate>
     
+    <Style TargetType="pages:ManagePublishersDesktopPage" x:Key="HelloWorldStyle">
+      <Style.Setters>
+        <Setter Property="ControlTemplate" Value="{StaticResource BorderTemplate}" />
+      </Style.Setters>
+    </Style>
   </ResourceDictionary>    
   </Application.Resources>
 </Application>
