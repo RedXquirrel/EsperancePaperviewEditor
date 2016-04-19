@@ -3,6 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Esperance.Paperview.FormsApplication"
              xmlns:pages="clr-namespace:Chat.Esperance.Paperview.Pages;assembly=Chat.Esperance.Paperview"
+             xmlns:converters="clr-namespace:Chat.Esperance.Paperview.Converters;assembly=Chat.Esperance.Paperview"
               >
   <Application.Resources>
   <ResourceDictionary>
@@ -17,6 +18,9 @@
     <Color x:Key="StandardBackgroundColorPhone">Aqua</Color>
     <Color x:Key="StandardBackgroundColorTablet">Green</Color>
     <Color x:Key="StandardBackgroundColorDesktop">Blue</Color>
+    
+    
+      
 
     <ControlTemplate x:Key="BorderTemplate">
       <StackLayout VerticalOptions="Fill" BackgroundColor="Gray">
@@ -33,6 +37,177 @@
         <Setter Property="ControlTemplate" Value="{StaticResource BorderTemplate}" />
       </Style.Setters>
     </Style>
+  
+    <!-- Fading Hero -->  
+      <x:Double x:Key="HeroHeightKey">275</x:Double>
+      <Color x:Key="OpenedHeroTitleTextColorKey">White</Color>
+      <Color x:Key="ClosedHeroTitleTextColorKey">White</Color>
+      <Color x:Key="HeroBackgroundColorKey">#0085c3</Color>
+
+      <Color x:Key="LowerBodyBackgroundColorKey">White</Color>
+      <Color x:Key="ButtonBackgroundColorKey">Silver</Color>
+
+      <converters:MaskConverter x:Key="MaskConverter" />
+      <converters:ScrollViewingFadingOpacityConverter x:Key="ScrollViewingFadingOpacityConverter" />
+      <converters:ScrollViewingUnfadingOpacityConverter x:Key="ScrollViewingUnfadingOpacityConverter" />
+    
+      <ControlTemplate x:Key="FadingHeroTemplate">
+        <Grid Grid.RowSpacing="0" BackgroundColor="{StaticResource HeroBackgroundColorKey}">
+          <Grid.RowDefinitions>
+            <RowDefinition Height="50" />
+            <RowDefinition Height="30" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+          </Grid.RowDefinitions>
+          <Image
+                        Grid.Row="0" Grid.RowSpan="4" Source="oak.png" Aspect="AspectFill"
+                        BindingContext="{x:Reference Name=MaskScrollView}"
+                        Opacity="{Binding ScrollY, 
+                          Converter={StaticResource ScrollViewingFadingOpacityConverter},
+                          ConverterParameter={StaticResource HeroHeightKey}
+                          }"
+                          />
+          <StackLayout Grid.Row="0" BackgroundColor="Transparent"
+            BindingContext="{x:Reference Name=MaskScrollView}"
+            Opacity="{Binding ScrollY, 
+                    Converter={StaticResource ScrollViewingUnfadingOpacityConverter},
+                    ConverterParameter={StaticResource HeroHeightKey}
+                    }"
+            >
+            <BoxView HeightRequest="10" Color="Transparent" />
+            <Label Text="Fading Hero" FontAttributes="Bold" TextColor="{StaticResource ClosedHeroTitleTextColorKey}" HorizontalOptions="Center" />
+            <Label IsVisible="False" Text="Proof of Concept" FontAttributes="Bold" TextColor="Black" HorizontalOptions="Center"
+            />
+          </StackLayout>
+          <StackLayout Grid.Row="0" BackgroundColor="Transparent"
+            BindingContext="{x:Reference Name=MaskScrollView}"
+            Opacity="{Binding ScrollY, 
+                    Converter={StaticResource ScrollViewingFadingOpacityConverter},
+                    ConverterParameter={StaticResource HeroHeightKey}
+                    }"
+            >
+            <BoxView HeightRequest="10" Color="Transparent" />
+            <Label Text="FADING HERO" FontAttributes="Bold" TextColor="{StaticResource OpenedHeroTitleTextColorKey}" HorizontalOptions="Center" />
+            <Label Text="Proof of Concept" FontAttributes="Bold" TextColor="{StaticResource OpenedHeroTitleTextColorKey}" HorizontalOptions="Center"
+          />
+          </StackLayout>
+          <ScrollView x:Name="MaskScrollView" Grid.Row="1" Grid.RowSpan="4">
+            <StackLayout StackLayout.Spacing="0">
+              <BoxView HeightRequest="{StaticResource HeroHeightKey}" Color="Transparent" />
+              <Image Source="transparentscrollviewlip.png" Aspect="Fill" HorizontalOptions="StartAndExpand" HeightRequest="30" />
+              <StackLayout BackgroundColor="{StaticResource LowerBodyBackgroundColorKey}" StackLayout.Spacing="15" Padding="10">
+                <ContentPresenter />
+                <Label>
+                  <Label.FormattedText>
+                    <FormattedString>
+                      <Span Text="Lorem ipsum " ForegroundColor="Red" FontAttributes="Bold" />
+                      <Span Text="Dolor " />
+                      <Span Text="(sit amet) " FontAttributes="Italic" FontSize="Small" />
+                    </FormattedString>
+                  </Label.FormattedText>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+                <Label>
+                  <Label.Text>
+                    Lorem ipsum dolor sit amet, ignota blandit argumentum eam ex, alii illud possit ea eam. At alia cetero accusamus eam, nec odio meis aliquip id. Possit sententiae mei et, soluta scaevola ex ius. Cum virtute convenire adolescens in.
+                  </Label.Text>
+                </Label>
+
+              </StackLayout>
+            </StackLayout>
+          </ScrollView>
+          <BoxView
+             BindingContext="{x:Reference Name=MaskScrollView}"
+             Grid.Row="1" HeightRequest="30" Color="{StaticResource HeroBackgroundColorKey}"
+             IsVisible="{Binding ScrollY, 
+                Converter={StaticResource MaskConverter},
+                ConverterParameter={StaticResource HeroHeightKey}}" Opacity="1"
+               />
+          <Image
+            BindingContext="{x:Reference Name=MaskScrollView}"
+            Grid.Row="1"
+            Source="transparentscrollviewlip.png" Aspect="Fill" HorizontalOptions="StartAndExpand" HeightRequest="30"
+            IsVisible="{Binding ScrollY, 
+                       Converter={StaticResource MaskConverter},
+                       ConverterParameter={StaticResource HeroHeightKey}}" Opacity="1"
+                   />
+          <Grid Grid.Row="5" BackgroundColor="{StaticResource LowerBodyBackgroundColorKey}" Padding="0" Grid.ColumnSpacing="0">
+            <Grid.ColumnDefinitions>
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="5" />
+              <ColumnDefinition Width="*" />
+              <ColumnDefinition Width="5" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+              <RowDefinition Height="2" />
+              <RowDefinition Height="Auto" />
+              <RowDefinition Height="2" />
+            </Grid.RowDefinitions>
+            <Button Grid.Row="1" Grid.Column="1" Text="Lorem" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource ButtonBackgroundColorKey}" BorderRadius="0" />
+            <Button Grid.Row="1" Grid.Column="3" Text="Ipsum" HorizontalOptions="FillAndExpand" BackgroundColor="{StaticResource ButtonBackgroundColorKey}" BorderRadius="0" />
+          </Grid>
+        </Grid>        
+      </ControlTemplate>
+    
+    <Style TargetType="pages:AddPublisherPhonePage" x:Key="AddPublisherPhonePageFadingHeroStyle">
+      <Style.Setters>
+        <Setter Property="ControlTemplate" Value="{StaticResource FadingHeroTemplate}" />
+      </Style.Setters>
+    </Style>
+
   </ResourceDictionary>    
   </Application.Resources>
 </Application>

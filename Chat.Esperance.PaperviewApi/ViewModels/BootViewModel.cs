@@ -24,16 +24,18 @@ namespace Chat.Esperance.PaperviewApi.ViewModels
         /// </summary>
         private void ChooseTargetPage()
         {
-            var publishers = PublishersService.GetPublishers();
+            NavigationService.Show(typeof(AddPublisherViewModel));
 
-            if (PublishersService.GetPublishers().Count == 0)
-            {
-                NavigationService.Show(typeof (ManagePublishersViewModel));
-            }
-            else
-            {
-                NavigationService.Show(typeof(ManageTemplatesViewModel));
-            }
+            //var publishers = PublishersService.GetPublishers();
+
+            //if (PublishersService.GetPublishers().Count == 0)
+            //{
+            //    NavigationService.Show(typeof (ManagePublishersViewModel));
+            //}
+            //else
+            //{
+            //    NavigationService.Show(typeof(ManageTemplatesViewModel));
+            //}
         }
 
     }

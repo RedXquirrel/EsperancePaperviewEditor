@@ -35,8 +35,20 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Converters\MaskConverter.cs" />
+    <Compile Include="Converters\ScrollViewingFadingOpacityConverter.cs" />
+    <Compile Include="Converters\ScrollViewingUnfadingOpacityConverter.cs" />
     <Compile Include="FormsApplication.xaml.cs">
       <DependentUpon>FormsApplication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddPublisherDesktopPage.xaml.cs">
+      <DependentUpon>AddPublisherDesktopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddPublisherPhonePage.xaml.cs">
+      <DependentUpon>AddPublisherPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\AddPublisherTabletPage.xaml.cs">
+      <DependentUpon>AddPublisherTabletPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\BootDesktopPage.xaml.cs">
       <DependentUpon>BootDesktopPage.xaml</DependentUpon>
@@ -64,6 +76,9 @@
     </Compile>
     <Compile Include="Pages\ManageTemplatesTabletPage.xaml.cs">
       <DependentUpon>ManageTemplatesTabletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Page1.xaml.cs">
+      <DependentUpon>Page1.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -177,9 +192,32 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Converters\" />
     <Folder Include="Localisation\" />
     <Folder Include="Views\" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AddPublisherDesktopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AddPublisherPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Page1.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AddPublisherTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
