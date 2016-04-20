@@ -42,6 +42,7 @@
     <Compile Include="Services\PublishersService.cs" />
     <Compile Include="ViewModels\AddPublisherViewModel.cs" />
     <Compile Include="ViewModels\BootViewModel.cs" />
+    <Compile Include="ViewModels\MainViewModel.cs" />
     <Compile Include="ViewModels\ManagePublishersViewModel.cs" />
     <Compile Include="ViewModels\ManageTemplatesViewModel.cs" />
     <Compile Include="ViewModels\PropertyChangedBase.cs" />

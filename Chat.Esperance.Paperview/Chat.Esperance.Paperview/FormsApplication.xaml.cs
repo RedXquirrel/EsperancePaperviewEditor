@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
+using Chat.Esperance.Paperview.Pages;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.Paperview
@@ -32,7 +32,7 @@ namespace Chat.Esperance.Paperview
         {
             InitializeComponent();
 
-            var navigationPage = new NavigationPage();
+            var navigationPage = new NavigationPage(new MainPhonePage());
 
             Navigation = navigationPage.Navigation;
 

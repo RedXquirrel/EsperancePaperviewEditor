@@ -38,8 +38,19 @@
     <Compile Include="Converters\MaskConverter.cs" />
     <Compile Include="Converters\ScrollViewingFadingOpacityConverter.cs" />
     <Compile Include="Converters\ScrollViewingUnfadingOpacityConverter.cs" />
+    <Compile Include="DataTemplates\CustomCells\FunctionCell.xaml.cs">
+      <DependentUpon>FunctionCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataTemplates\CustomCells\PageCell.xaml.cs">
+      <DependentUpon>PageCell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="DataTemplates\MasterDetailDataTemplateSelector.cs" />
     <Compile Include="FormsApplication.xaml.cs">
       <DependentUpon>FormsApplication.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MasterPageItem.cs" />
+    <Compile Include="Pages\AboutPhonePage.xaml.cs">
+      <DependentUpon>AboutPhonePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\AddPublisherDesktopPage.xaml.cs">
       <DependentUpon>AddPublisherDesktopPage.xaml</DependentUpon>
@@ -59,6 +70,15 @@
     <Compile Include="Pages\BootTabletPage.xaml.cs">
       <DependentUpon>BootTabletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\DevelopersPhonePage.xaml.cs">
+      <DependentUpon>DevelopersPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Developers\HowToCreateTemplatesPhonePage.xaml.cs">
+      <DependentUpon>HowToCreateTemplatesPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainPhonePage.xaml.cs">
+      <DependentUpon>MainPhonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\ManagePublishersDesktopPage.xaml.cs">
       <DependentUpon>ManagePublishersDesktopPage.xaml</DependentUpon>
     </Compile>
@@ -77,8 +97,14 @@
     <Compile Include="Pages\ManageTemplatesTabletPage.xaml.cs">
       <DependentUpon>ManageTemplatesTabletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MasterPhonePage.xaml.cs">
+      <DependentUpon>MasterPhonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\Page1.xaml.cs">
       <DependentUpon>Page1.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PublishersPhonePage.xaml.cs">
+      <DependentUpon>PublishersPhonePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -215,6 +241,54 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\AddPublisherTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\MainPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\MasterPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\AboutPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\DevelopersPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\PublishersPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Developers\HowToCreateTemplatesPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataTemplates\CustomCells\PageCell.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="DataTemplates\CustomCells\FunctionCell.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

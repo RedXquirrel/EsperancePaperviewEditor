@@ -48,6 +48,7 @@
       <Color x:Key="ButtonBackgroundColorKey">Silver</Color>
 
       <converters:MaskConverter x:Key="MaskConverter" />
+      <converters:UnMaskConverter x:Key="UnMaskConverter" />
       <converters:ScrollViewingFadingOpacityConverter x:Key="ScrollViewingFadingOpacityConverter" />
       <converters:ScrollViewingUnfadingOpacityConverter x:Key="ScrollViewingUnfadingOpacityConverter" />
     
@@ -61,20 +62,27 @@
             <RowDefinition Height="*" />
             <RowDefinition Height="Auto" />
           </Grid.RowDefinitions>
+          <Grid BackgroundColor="White" Grid.Row="2" Grid.RowSpan="4" />
           <Image
+                        Grid.Row="0" Grid.RowSpan="4" Source="oak.png" Aspect="AspectFill"
+                        BindingContext="{x:Reference Name=MaskScrollView}"
+            IsVisible="{Binding ScrollY, 
+                       Converter={StaticResource UnMaskConverter},
+                       ConverterParameter={StaticResource HeroHeightKey}}" Opacity="1"
+                          />                    
+          <!--<Image
                         Grid.Row="0" Grid.RowSpan="4" Source="oak.png" Aspect="AspectFill"
                         BindingContext="{x:Reference Name=MaskScrollView}"
                         Opacity="{Binding ScrollY, 
                           Converter={StaticResource ScrollViewingFadingOpacityConverter},
                           ConverterParameter={StaticResource HeroHeightKey}
                           }"
-                          />
+                          />-->          
           <StackLayout Grid.Row="0" BackgroundColor="Transparent"
             BindingContext="{x:Reference Name=MaskScrollView}"
-            Opacity="{Binding ScrollY, 
-                    Converter={StaticResource ScrollViewingUnfadingOpacityConverter},
-                    ConverterParameter={StaticResource HeroHeightKey}
-                    }"
+            IsVisible="{Binding ScrollY, 
+                       Converter={StaticResource MaskConverter},
+                       ConverterParameter={StaticResource HeroHeightKey}}" Opacity="1"
             >
             <BoxView HeightRequest="10" Color="Transparent" />
             <Label Text="Fading Hero" FontAttributes="Bold" TextColor="{StaticResource ClosedHeroTitleTextColorKey}" HorizontalOptions="Center" />
@@ -83,10 +91,9 @@
           </StackLayout>
           <StackLayout Grid.Row="0" BackgroundColor="Transparent"
             BindingContext="{x:Reference Name=MaskScrollView}"
-            Opacity="{Binding ScrollY, 
-                    Converter={StaticResource ScrollViewingFadingOpacityConverter},
-                    ConverterParameter={StaticResource HeroHeightKey}
-                    }"
+            IsVisible="{Binding ScrollY, 
+                       Converter={StaticResource UnMaskConverter},
+                       ConverterParameter={StaticResource HeroHeightKey}}" Opacity="1"
             >
             <BoxView HeightRequest="10" Color="Transparent" />
             <Label Text="FADING HERO" FontAttributes="Bold" TextColor="{StaticResource OpenedHeroTitleTextColorKey}" HorizontalOptions="Center" />
@@ -94,11 +101,12 @@
           />
           </StackLayout>
           <ScrollView x:Name="MaskScrollView" Grid.Row="1" Grid.RowSpan="4">
-            <StackLayout StackLayout.Spacing="0">
+            <StackLayout StackLayout.Spacing="0" VerticalOptions="Fill">
               <BoxView HeightRequest="{StaticResource HeroHeightKey}" Color="Transparent" />
               <Image Source="transparentscrollviewlip.png" Aspect="Fill" HorizontalOptions="StartAndExpand" HeightRequest="30" />
-              <StackLayout BackgroundColor="{StaticResource LowerBodyBackgroundColorKey}" StackLayout.Spacing="15" Padding="10">
-                <ContentPresenter />
+              <Grid VerticalOptions="FillAndExpand">
+              <StackLayout BackgroundColor="{StaticResource LowerBodyBackgroundColorKey}" Padding="10" VerticalOptions="FillAndExpand">
+                <ContentPresenter  />
                 <Label>
                   <Label.FormattedText>
                     <FormattedString>
@@ -166,6 +174,7 @@
                 </Label>
 
               </StackLayout>
+                </Grid>
             </StackLayout>
           </ScrollView>
           <BoxView

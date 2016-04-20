@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ViewCell xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Chat.Esperance.Paperview.DataTemplates.CustomCells.FunctionCell">
+  <Grid>
+    <Grid.ColumnDefinitions>
+      <ColumnDefinition Width="40" />
+      <ColumnDefinition Width="*" />
+      <ColumnDefinition Width="40" />
+    </Grid.ColumnDefinitions>
+    <Grid.RowDefinitions>
+      <RowDefinition Height="40" />
+    </Grid.RowDefinitions>
+    <BoxView Grid.Column="0" Grid.Row="0" Color="Aqua" Opacity="0.3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+    <StackLayout  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
+      <Label Text="{Binding Title}" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="Start" />
+      <Label Text="function" TextColor="#f35e20" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
+      <BoxView WidthRequest="5" />
+    </StackLayout>
+  </Grid>
+</ViewCell>

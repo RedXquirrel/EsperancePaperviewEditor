@@ -59,14 +59,14 @@ namespace Chat.Esperance.PaperviewApi.Services
 
             var viewModel = Activator.CreateInstance(viewModelType) as ViewModelBase;
             if (viewModel != null && viewModel.IsGhosted) return; // 'Ghosted' ViewModels are not intended to be bound to a page! (They typically determine which other ViewModel to Show (such as in the BootViewModel)!)
-
+            
             var page = Activator.CreateInstance(pageType) as Page;
 
             if (page == null || viewModel == null)
             {
                 if(page == null && viewModel == null) throw new Exception($"Both Page and ViewModel not found ({pageName} and {viewModelType.Name})");
                 if(page == null) throw new Exception($"Page Not Found is {pageName}");
-                if(viewModel == null) throw new Exception($"ViewModel Not Found is {viewModelType.Name}");
+                //if(viewModel == null) throw new Exception($"ViewModel Not Found is {viewModelType.Name}");
             }
             else
             {
@@ -76,8 +76,12 @@ namespace Chat.Esperance.PaperviewApi.Services
                 PaperviewApplication.CurrentViewModel = viewModel;
                 // Store the current page 
                 NavigationService.CurrentPage = page;
-                // Bind the ViewModel to the Page:
-                page.BindingContext = viewModel;
+
+                if (viewModel.GetType() != typeof (MainViewModel)) // Binding is in code-behind as this is the app's MasterDetailPage
+                {
+                    // Bind the ViewModel to the Page:
+                    page.BindingContext = viewModel;
+                }
                 // Navigate to the Page:
                 await Navigation.PushAsync(page);
             }

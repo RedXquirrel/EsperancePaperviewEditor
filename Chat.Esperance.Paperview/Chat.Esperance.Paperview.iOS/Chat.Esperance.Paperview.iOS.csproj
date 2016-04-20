@@ -184,13 +184,13 @@
     <BundleResource Include="Resources\oak%403x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\transparentscrollviewlip%401x.png" />
+    <BundleResource Include="Resources\TransparentScrollViewLip%401x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\transparentscrollviewlip%402x.png" />
+    <BundleResource Include="Resources\TransparentScrollViewLip%402x.png" />
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="Resources\transparentscrollviewlip%403x.png" />
+    <BundleResource Include="Resources\TransparentScrollViewLip%403x.png" />
   </ItemGroup>
   <Import Project="..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems" Label="Shared" Condition="Exists('..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
