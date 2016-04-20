@@ -11,9 +11,10 @@
     <Grid.RowDefinitions>
       <RowDefinition Height="40" />
     </Grid.RowDefinitions>
-    <BoxView Grid.Column="0" Grid.Row="0" Color="Aqua" Opacity="0.3" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+    <BoxView Grid.Column="0" Grid.Row="0" Color="Transparent" Opacity="0.8" HorizontalOptions="CenterAndExpand" VerticalOptions="CenterAndExpand" />
+    <Label Text="{Binding IconKey}" FontSize="Large" TextColor="Black" Grid.Column="0" Grid.Row="0" x:Name="IconLabel" VerticalTextAlignment="Center" HorizontalTextAlignment="Center" />
     <StackLayout  Grid.Column="1" Grid.Row="0" Grid.ColumnSpan="2" Orientation="Horizontal" VerticalOptions="Center" HorizontalOptions="Fill">
-      <Label Text="{Binding Title}" TextColor="Gray" VerticalOptions="Center" HorizontalOptions="Start" />
+      <Label Text="{Binding Title}" TextColor="Black" VerticalOptions="Center" HorizontalOptions="Start" />
       <Label Text="function" TextColor="#f35e20" FontSize="Micro" VerticalOptions="Center" HorizontalOptions="EndAndExpand" />
       <BoxView WidthRequest="5" />
     </StackLayout>

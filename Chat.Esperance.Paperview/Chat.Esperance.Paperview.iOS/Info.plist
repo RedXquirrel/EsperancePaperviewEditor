@@ -47,5 +47,9 @@
 	<string>LaunchScreen</string>
 	<key>CFBundleShortVersionString</key>
 	<string></string>
+  <key>UIAppFonts</key>
+  <array>
+    <string>FontAwesome.ttf</string>
+  </array>
 </dict>
 </plist>

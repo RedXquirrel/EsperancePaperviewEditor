@@ -88,57 +88,57 @@ namespace Chat.Esperance.Paperview.Pages
         {
             List<PageTypeGroup> Groups = new List<PageTypeGroup>
             {
-                new PageTypeGroup("Gallery", "1", "A Flood of the Imagination!")
+                new PageTypeGroup("Gallery", "1", "A Flood of the Imagination")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Directory (default)", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Share", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf0c5", Title = "Exhibits", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf14d", Title = "Share", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf29c", Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
                 new PageTypeGroup("Documents", "2", "Flood your imagination!")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "New", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Open", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Save", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Close", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf0c5", Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf016", Title = "New", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf15b", Title = "Open", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf0c7", Title = "Save", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf0c8", Title = "Close", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf29c", Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
-                new PageTypeGroup("Templates", "3", "A Flood of different Layouts!")
+                new PageTypeGroup("Templates", "3", "A Flood of different Layouts")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Import", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Export", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Delete", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf0c5", Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf061", Title = "Import", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf060", Title = "Export", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf014", Title = "Delete", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf29c", Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
-                new PageTypeGroup("Publishers", "4", "Manage who floods the market!")
+                new PageTypeGroup("Publishers", "4", "Manage who floods the market")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "New", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Open", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Save", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Save As", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Close", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = false, Title = "Delete", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf0c5", Title = "Directory", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf016", Title = "New", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf15b", Title = "Open", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf0c7", Title = "Save", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf0ea", Title = "Save As", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf0c8", Title = "Close", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = false, IconKey = "\uf014", Title = "Delete", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf29c", Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
-                new PageTypeGroup("About", "5", "How to flood your market!")
+                new PageTypeGroup("About", "5", "How to flood your market")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Paperview", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Document Types", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Layout Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Custom Document Types", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Custom Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Paperview", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Document Types", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Layout Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Custom Document Types", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Custom Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf29c", Title = "Help", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
-                new PageTypeGroup("Developers", "6", "Customise how the flood looks!")
+                new PageTypeGroup("Developers", "6", "Customise how the flood looks")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Creating Layout Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "Creating Layout Templates", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
-                new PageTypeGroup("Corporate", "7", "Say hello to Captain Xamtastic!")
+                new PageTypeGroup("Corporate", "7", "Say hello to Captain Xamtastic")
                 {
-                    new MasterPageItem { IsStandard = true, Title = "Contact Us", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
-                    new MasterPageItem { IsStandard = true, Title = "About Captain Xamtastic", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf095", Title = "Contact Us", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
+                    new MasterPageItem { IsStandard = true, IconKey = "\uf005", Title = "About Captain Xamtastic", IconSource = "icon.png", TargetType = typeof(DevelopersPhonePage) },
                 },
             };
             All = Groups;

@@ -13,6 +13,12 @@ namespace Chat.Esperance.Paperview.DataTemplates.CustomCells
         public FunctionCell()
         {
             InitializeComponent();
+
+            IconLabel.FontFamily = Device.OnPlatform(
+                "fontawesome",
+                null,
+                null
+                );
         }
     }
 }
