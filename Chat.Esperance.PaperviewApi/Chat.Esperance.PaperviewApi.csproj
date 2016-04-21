@@ -49,6 +49,10 @@
     <Compile Include="ViewModels\ViewModelBase.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Chat.Esperance.PaperviewApi.Interfaces\Chat.Esperance.PaperviewApi.Interfaces.csproj">
+      <Project>{bad8133f-88ab-400f-9f67-12b5c43a04aa}</Project>
+      <Name>Chat.Esperance.PaperviewApi.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Chat.Esperance.Paperview\Chat.Esperance.Paperview\Chat.Esperance.Paperview.csproj">
       <Project>{46ff2634-96b2-44a2-a66b-5267f7667d18}</Project>
       <Name>Chat.Esperance.Paperview</Name>

@@ -15,11 +15,12 @@
   </ContentPage.Resources>
   <ContentPage.Content>
     <StackLayout Orientation="Vertical">
-      <ListView  x:Name="listView" SeparatorVisibility="None"
+      <ListView  x:Name="listView" SeparatorVisibility="Default"
         GroupDisplayBinding="{Binding Title}"
         GroupShortNameBinding="{Binding ShortName}"
         IsGroupingEnabled="true"   
         ItemTemplate="{StaticResource MasterDetailDataTemplateSelector}"
+        SeparatorColor="#f35e20"
         >
         <ListView.Header>
           <StackLayout Orientation="Vertical">
@@ -38,11 +39,6 @@
             DetailColor="#503026" />
           </DataTemplate>
         </ListView.GroupHeaderTemplate>        
-        <!--<ListView.ItemTemplate>
-          <DataTemplate>
-            <ImageCell Text="{Binding Title}" ImageSource="{Binding IconSource}" />
-          </DataTemplate>
-        </ListView.ItemTemplate>-->
       </ListView>      
     </StackLayout>
   </ContentPage.Content>

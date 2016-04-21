@@ -135,6 +135,10 @@
     <Content Include="Properties\AndroidManifest.xml" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Chat.Esperance.PaperviewApi.Interfaces\Chat.Esperance.PaperviewApi.Interfaces.csproj">
+      <Project>{bad8133f-88ab-400f-9f67-12b5c43a04aa}</Project>
+      <Name>Chat.Esperance.PaperviewApi.Interfaces</Name>
+    </ProjectReference>
     <ProjectReference Include="..\..\Chat.Esperance.PaperviewApi\Chat.Esperance.PaperviewApi.csproj">
       <Project>{bdd854ea-727d-4332-834d-7ac4c004914e}</Project>
       <Name>Chat.Esperance.PaperviewApi</Name>

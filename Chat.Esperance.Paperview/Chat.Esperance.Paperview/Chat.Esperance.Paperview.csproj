@@ -48,7 +48,8 @@
     <Compile Include="FormsApplication.xaml.cs">
       <DependentUpon>FormsApplication.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MasterPageItem.cs" />
+    <Compile Include="Models\PageTypeGroup.cs" />
+    <Compile Include="ViewModels\MasterPageItemViewModel.cs" />
     <Compile Include="Pages\AboutPhonePage.xaml.cs">
       <DependentUpon>AboutPhonePage.xaml</DependentUpon>
     </Compile>
@@ -106,7 +107,11 @@
     <Compile Include="Pages\PublishersPhonePage.xaml.cs">
       <DependentUpon>PublishersPhonePage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\Publishers\NewPublishersPhonePage.xaml.cs">
+      <DependentUpon>NewPublishersPhonePage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Services\MasterPageIndexService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=8.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
@@ -292,6 +297,18 @@
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Publishers\NewPublishersPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\..\Chat.Esperance.PaperviewApi.Interfaces\Chat.Esperance.PaperviewApi.Interfaces.csproj">
+      <Project>{bad8133f-88ab-400f-9f67-12b5c43a04aa}</Project>
+      <Name>Chat.Esperance.PaperviewApi.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
