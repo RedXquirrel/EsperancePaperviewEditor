@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Chat.Esperance.Paperview.Pages
+namespace Chat.Esperance.Paperview.Pages.Errors
 {
-    public partial class Page1 : ContentPage
+    public partial class Error404DesktopPage : ContentPage
     {
-        public Page1()
+        public Error404DesktopPage()
         {
             InitializeComponent();
         }

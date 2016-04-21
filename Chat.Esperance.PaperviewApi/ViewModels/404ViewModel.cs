@@ -7,9 +7,9 @@ using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.ViewModels
 {
-    public class ManageTemplatesViewModel : ViewModelBase
+    public class Error404ViewModel : ViewModelBase
     {
-        private string _title = $"Manage Templates View Model Text on idiom {Device.Idiom.ToString()}";
+        private string _title = $"Error 404 View Model Text on idiom {Device.Idiom.ToString()}";
         public string Title
         {
             get { return _title; }

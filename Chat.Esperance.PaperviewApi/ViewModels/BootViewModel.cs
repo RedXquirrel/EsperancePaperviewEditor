@@ -1,4 +1,6 @@
 ﻿using System;
+using Autofac;
+using Chat.Esperance.PaperviewApi.Interfaces;
 using Chat.Esperance.PaperviewApi.Services;
 using Xamarin.Forms;
 
@@ -24,18 +26,23 @@ namespace Chat.Esperance.PaperviewApi.ViewModels
         /// </summary>
         private void ChooseTargetPage()
         {
-            NavigationService.Show(typeof(MainViewModel));
 
-            //var publishers = PublishersService.GetPublishers();
+            using (var scope = DI.Container.BeginLifetimeScope())
+            {
+                var navigationService = scope.Resolve<INavigationService>();
 
-            //if (PublishersService.GetPublishers().Count == 0)
-            //{
-            //    NavigationService.Show(typeof (ManagePublishersViewModel));
-            //}
-            //else
-            //{
-            //    NavigationService.Show(typeof(ManageTemplatesViewModel));
-            //}
+                // ToDo: Create boot-sequence such as to divert to login if not logged in
+                // var userService = scope.Resolve<IUserService>();
+
+                //if (userService.IsLoggedIn)
+                //{
+                    navigationService.Show(typeof(MainViewModel));
+                //}
+                //else
+                //{
+                //    service.Show(typeof(LoggedOutViewModel));
+                //}
+            }
         }
 
     }

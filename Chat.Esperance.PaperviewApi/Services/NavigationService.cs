@@ -8,7 +8,7 @@ using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.Services
 {
-    public static class NavigationService
+    public class NavigationService : INavigationService
     {
         private const string ViewModelKey = "ViewModel";
         private const string PageKey = "Page";
@@ -16,45 +16,14 @@ namespace Chat.Esperance.PaperviewApi.Services
         private const string PhoneIdiomKey = "Phone";
         private const string TabletIdiomKey = "Tablet";
 
-        public static INavigation Navigation;
-        public static Assembly UiAssembly;
+        public INavigation Navigation { get; set; }
+        public Assembly UiAssembly { get; set; }
+        public Page CurrentPage { get; set; }
 
-        public static Page CurrentPage { get; set; }
-
-        public static async void Show(Type viewModelType)
+        public async void Show(Type viewModelType)
         {
-            var name = viewModelType.Name;
-
-            if (!name.Substring(name.Length - ViewModelKey.Length, ViewModelKey.Length).Equals(ViewModelKey))
-            {
-                throw new Exception($"ViewModel classname does not end in {ViewModelKey}, in {typeof(NavigationService).Name} [{typeof(NavigationService).AssemblyQualifiedName}]");
-            }
-
-            var abstractName = name.Substring(0, name.Length - ViewModelKey.Length);
-
-
-            var pageName = string.Empty;
-
-            switch (Device.Idiom)
-            {
-                 case TargetIdiom.Desktop:
-                    pageName = abstractName + DesktopIdiomKey + PageKey;
-                    break;
-
-                case TargetIdiom.Phone:
-                    pageName = abstractName + PhoneIdiomKey + PageKey;
-                    break;
-
-                case TargetIdiom.Tablet:
-                    pageName = abstractName + TabletIdiomKey + PageKey;
-                    break;
-                case TargetIdiom.Unsupported:
-                    throw new Exception("This Device Idiom is unsupported.");
-                default:
-                    throw new ArgumentOutOfRangeException();
-            }
-
-            var pageType = UiAssembly.ExportedTypes.FirstOrDefault(t => t.Name == pageName);
+            Type pageType;
+            var pageName = PageName(viewModelType, out pageType);
 
             Debug.WriteLine(pageType == null ? $"WARNING: Page Not Found is {pageName}" : $"INFORMATION: Page to be activated is {pageType.Name}");
 
@@ -76,7 +45,7 @@ namespace Chat.Esperance.PaperviewApi.Services
                 // So that application lifecycle methods can be called (OnStart, OnSleep, OnResume):
                 PaperviewApplication.CurrentViewModel = viewModel;
                 // Store the current page 
-                NavigationService.CurrentPage = page;
+                CurrentPage = page;
 
                 if (viewModel.GetType() != typeof (MainViewModel)) // Binding is in code-behind as this is the app's MasterDetailPage
                 {
@@ -86,6 +55,81 @@ namespace Chat.Esperance.PaperviewApi.Services
                 // Navigate to the Page:
                 await Navigation.PushAsync(page);
             }
+        }
+
+        private string PageName(Type viewModelType, out Type pageType)
+        {
+            var name = viewModelType.Name;
+
+            if (!name.Substring(name.Length - ViewModelKey.Length, ViewModelKey.Length).Equals(ViewModelKey))
+            {
+                throw new Exception(
+                    $"ViewModel classname does not end in {ViewModelKey}, in {typeof (NavigationService).Name} [{typeof (NavigationService).AssemblyQualifiedName}]");
+            }
+
+            var abstractName = name.Substring(0, name.Length - ViewModelKey.Length);
+
+
+            var pageName = string.Empty;
+
+            switch (Device.Idiom)
+            {
+                case TargetIdiom.Desktop:
+                    pageName = abstractName + DesktopIdiomKey + PageKey;
+                    break;
+
+                case TargetIdiom.Phone:
+                    pageName = abstractName + PhoneIdiomKey + PageKey;
+                    break;
+
+                case TargetIdiom.Tablet:
+                    pageName = abstractName + TabletIdiomKey + PageKey;
+                    break;
+                case TargetIdiom.Unsupported:
+                    throw new Exception("This Device Idiom is unsupported.");
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+
+            pageType = UiAssembly.ExportedTypes.FirstOrDefault(t => t.Name == pageName);
+            return pageName;
+        }
+
+        public void Show(string viewModelName)
+        {
+            var viewModelType =
+                this.GetType().GetTypeInfo().Assembly.ExportedTypes.FirstOrDefault(t => t.Name == viewModelName);
+            Show(viewModelType);
+        }
+
+        public Page GetBoundPage(Type viewModelType)
+        {
+            Type pageType;
+            var pageName = PageName(viewModelType, out pageType);
+
+            Debug.WriteLine(pageType == null ? $"WARNING: Page Not Found is {pageName}" : $"INFORMATION: Page to be activated is {pageType.Name}");
+
+            var viewModel = Activator.CreateInstance(viewModelType) as ViewModelBase;
+
+            var page = Activator.CreateInstance(pageType) as Page;
+
+            if (page == null) throw new Exception($"Page Not Found is {pageName}");
+
+            page.BindingContext = viewModel;
+
+            return page;
+        }
+
+        public Page GetBoundPage(string viewModelName)
+        {
+            return GetBoundPage(this.GetType().GetTypeInfo().Assembly.ExportedTypes.FirstOrDefault(t => t.Name == viewModelName));
+        }
+
+        public object GetViewModel(string viewModelName)
+        {
+            var viewModelType = this.GetType().GetTypeInfo().Assembly.ExportedTypes.FirstOrDefault(t => t.Name == viewModelName);
+
+            return Activator.CreateInstance(viewModelType) as ViewModelBase;
         }
     }
 }

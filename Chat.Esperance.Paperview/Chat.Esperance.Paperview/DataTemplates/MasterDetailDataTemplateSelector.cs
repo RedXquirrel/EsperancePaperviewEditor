@@ -13,19 +13,19 @@ namespace Chat.Esperance.Paperview.DataTemplates
     {
         public MasterDetailDataTemplateSelector()
         {
-            this.pageDataTemplate = new DataTemplate(typeof(PageCell));
-            this.functionDataTemplate = new DataTemplate(typeof(FunctionCell));
+            this._pageDataTemplate = new DataTemplate(typeof(PageCell));
+            this._functionDataTemplate = new DataTemplate(typeof(FunctionCell));
         }
 
         protected override DataTemplate OnSelectTemplate(object item, BindableObject container)
         {
-            var messageVm = item as MasterPageItemViewModel;
-            if (messageVm == null)
-                return null;
-            return messageVm.IsStandard ? this.pageDataTemplate : this.functionDataTemplate;
+            var viewModel = item as MasterPageIndexItemViewModel;
+            if (viewModel == null) return null;
+
+            return viewModel.IsPage ? this._pageDataTemplate : this._functionDataTemplate;
         }
 
-        private readonly DataTemplate pageDataTemplate;
-        private readonly DataTemplate functionDataTemplate;
+        private readonly DataTemplate _pageDataTemplate;
+        private readonly DataTemplate _functionDataTemplate;
     }
 }

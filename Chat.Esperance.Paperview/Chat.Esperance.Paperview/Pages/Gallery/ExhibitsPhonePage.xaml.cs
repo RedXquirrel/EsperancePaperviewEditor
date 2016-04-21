@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 using Xamarin.Forms;
 
-namespace Chat.Esperance.Paperview.Pages
+namespace Chat.Esperance.Paperview.Pages.Gallery
 {
-    public partial class DevelopersPhonePage : ContentPage
+    public partial class ExhibitsPhonePage : ContentPage
     {
-        public DevelopersPhonePage()
+        public ExhibitsPhonePage()
         {
             InitializeComponent();
         }

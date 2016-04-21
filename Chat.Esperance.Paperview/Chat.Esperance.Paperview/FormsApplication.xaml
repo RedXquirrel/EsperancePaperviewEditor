@@ -32,11 +32,11 @@
       </StackLayout>
     </ControlTemplate>
     
-    <Style TargetType="pages:ManagePublishersDesktopPage" x:Key="HelloWorldStyle">
+    <!--<Style TargetType="pages:ManagePublishersDesktopPage" x:Key="HelloWorldStyle">
       <Style.Setters>
         <Setter Property="ControlTemplate" Value="{StaticResource BorderTemplate}" />
       </Style.Setters>
-    </Style>
+    </Style>-->
   
     <!-- Fading Hero -->  
       <x:Double x:Key="HeroHeightKey">275</x:Double>

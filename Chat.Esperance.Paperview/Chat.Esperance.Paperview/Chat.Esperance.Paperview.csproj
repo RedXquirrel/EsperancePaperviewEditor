@@ -48,67 +48,52 @@
     <Compile Include="FormsApplication.xaml.cs">
       <DependentUpon>FormsApplication.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Models\PageTypeGroup.cs" />
-    <Compile Include="ViewModels\MasterPageItemViewModel.cs" />
-    <Compile Include="Pages\AboutPhonePage.xaml.cs">
-      <DependentUpon>AboutPhonePage.xaml</DependentUpon>
+    <Compile Include="DataSources\MasterDetailItemGroupDataSource.cs" />
+    <Compile Include="Pages\Errors\Error404DesktopPage.xaml.cs">
+      <DependentUpon>Error404DesktopPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddPublisherDesktopPage.xaml.cs">
+    <Compile Include="Pages\Errors\Error404PhonePage.xaml.cs">
+      <DependentUpon>Error404PhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Errors\Error404TabletPage.xaml.cs">
+      <DependentUpon>Error404TabletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gallery\ExhibitsDesktopPage.xaml.cs">
+      <DependentUpon>ExhibitsDesktopPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gallery\ExhibitsPhonePage.xaml.cs">
+      <DependentUpon>ExhibitsPhonePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\Gallery\ExhibitsTabletPage.xaml.cs">
+      <DependentUpon>ExhibitsTabletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ViewModels\MasterPageIndexItemViewModel.cs" />
+    <Compile Include="Pages\Publishers\AddPublisherDesktopPage.xaml.cs">
       <DependentUpon>AddPublisherDesktopPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddPublisherPhonePage.xaml.cs">
+    <Compile Include="Pages\Publishers\AddPublisherPhonePage.xaml.cs">
       <DependentUpon>AddPublisherPhonePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\AddPublisherTabletPage.xaml.cs">
+    <Compile Include="Pages\Publishers\AddPublisherTabletPage.xaml.cs">
       <DependentUpon>AddPublisherTabletPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BootDesktopPage.xaml.cs">
+    <Compile Include="Pages\Boot\BootDesktopPage.xaml.cs">
       <DependentUpon>BootDesktopPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BootPhonePage.xaml.cs">
+    <Compile Include="Pages\Boot\BootPhonePage.xaml.cs">
       <DependentUpon>BootPhonePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\BootTabletPage.xaml.cs">
+    <Compile Include="Pages\Boot\BootTabletPage.xaml.cs">
       <DependentUpon>BootTabletPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\DevelopersPhonePage.xaml.cs">
-      <DependentUpon>DevelopersPhonePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\Developers\HowToCreateTemplatesPhonePage.xaml.cs">
       <DependentUpon>HowToCreateTemplatesPhonePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MainPhonePage.xaml.cs">
+    <Compile Include="Pages\MainMasterDetail\MainPhonePage.xaml.cs">
       <DependentUpon>MainPhonePage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ManagePublishersDesktopPage.xaml.cs">
-      <DependentUpon>ManagePublishersDesktopPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManagePublishersPhonePage.xaml.cs">
-      <DependentUpon>ManagePublishersPhonePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManagePublishersTabletPage.xaml.cs">
-      <DependentUpon>ManagePublishersTabletPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManageTemplatesDesktopPage.xaml.cs">
-      <DependentUpon>ManageTemplatesDesktopPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManageTemplatesPhonePage.xaml.cs">
-      <DependentUpon>ManageTemplatesPhonePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\ManageTemplatesTabletPage.xaml.cs">
-      <DependentUpon>ManageTemplatesTabletPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\MasterPhonePage.xaml.cs">
+    <Compile Include="Pages\MainMasterDetail\MasterPhonePage.xaml.cs">
       <DependentUpon>MasterPhonePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Page1.xaml.cs">
-      <DependentUpon>Page1.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\PublishersPhonePage.xaml.cs">
-      <DependentUpon>PublishersPhonePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Publishers\NewPublishersPhonePage.xaml.cs">
-      <DependentUpon>NewPublishersPhonePage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\MasterPageIndexService.cs" />
@@ -167,19 +152,19 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\BootDesktopPage.xaml">
+    <EmbeddedResource Include="Pages\Boot\BootDesktopPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\BootPhonePage.xaml">
+    <EmbeddedResource Include="Pages\Boot\BootPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\BootTabletPage.xaml">
+    <EmbeddedResource Include="Pages\Boot\BootTabletPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -191,95 +176,36 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\ManageTemplatesDesktopPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ManageTemplatesPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ManageTemplatesTabletPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ManagePublishersPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ManagePublishersTabletPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\ManagePublishersDesktopPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <Folder Include="Localisation\" />
+    <Folder Include="Models\" />
     <Folder Include="Views\" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\AddPublisherDesktopPage.xaml">
+    <EmbeddedResource Include="Pages\Publishers\AddPublisherDesktopPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\AddPublisherPhonePage.xaml">
+    <EmbeddedResource Include="Pages\Publishers\AddPublisherPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Page1.xaml">
+    <EmbeddedResource Include="Pages\Publishers\AddPublisherTabletPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\AddPublisherTabletPage.xaml">
+    <EmbeddedResource Include="Pages\MainMasterDetail\MainPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\MainPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\MasterPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\AboutPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\DevelopersPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\PublishersPhonePage.xaml">
+    <EmbeddedResource Include="Pages\MainMasterDetail\MasterPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -303,7 +229,37 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Publishers\NewPublishersPhonePage.xaml">
+    <EmbeddedResource Include="Pages\Errors\Error404PhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Errors\Error404TabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Errors\Error404DesktopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Gallery\ExhibitsPhonePage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Gallery\ExhibitsDesktopPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\Gallery\ExhibitsTabletPage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>

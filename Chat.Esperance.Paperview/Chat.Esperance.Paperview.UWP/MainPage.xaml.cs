@@ -47,12 +47,12 @@ namespace Chat.Esperance.Paperview.UWP
             FormsApplication.OnResumeAction = _paperviewApplication.OnResume();
 
             // Identify to the Navigator, which assembly the UI is in (a reference to any class will do):
-            NavigationService.UiAssembly =
-                typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
+            //NavigationService.UiAssembly =
+            //    typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
             // Pass the Forms Navigation utility to the PaperviewApplication's ViewModel Navigator
-            NavigationService.Navigation = FormsApplication.Navigation;
+            //NavigationService.Navigation = FormsApplication.Navigation;
             // Navigate to the initial ViewModel:
-            NavigationService.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
+            //NavigationService.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
                                                             // because on iOS a Navigation.Push(...) must occur before
                                                             // the following line after this - base.FinishedLaunching(...) - is returned.
         }

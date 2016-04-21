@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Autofac;
 using Chat.Esperance.PaperviewApi;
+using Chat.Esperance.PaperviewApi.Interfaces;
 using Chat.Esperance.PaperviewApi.Services;
 using Chat.Esperance.PaperviewApi.ViewModels;
 using Foundation;
@@ -37,15 +39,23 @@ namespace Chat.Esperance.Paperview.iOS
             FormsApplication.OnSleepAction = PaperviewApplication.OnSleep();
             FormsApplication.OnResumeAction = PaperviewApplication.OnResume();
 
-            // Identify to the Navigator, which assembly the UI is in (a reference to any class will do):
-            NavigationService.UiAssembly =
-                typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
-            // Pass the Forms Navigation utility to the PaperviewApplication's ViewModel Navigator
-            NavigationService.Navigation = FormsApplication.Navigation;
-            // Navigate to the initial ViewModel:
-            NavigationService.Show(typeof(BootViewModel));  // This cannot be done in the PaperviewAPI OnStart action
-                                                                                // because on iOS a Navigation.Push(...) must occur before
-                                                                                // the following base.FinishedLaunching(...) is returned.
+            var builder = new ContainerBuilder();
+
+            builder.RegisterInstance(new NavigationService()).As<INavigationService>();
+
+            DI.Container = builder.Build();
+
+            // This cannot be done in the PaperviewAPI OnStart action
+            // because on iOS a Navigation.Push(...) must occur before
+            // the following base.FinishedLaunching(...) is returned.
+            using (var scope = DI.Container.BeginLifetimeScope())
+            {
+                var service = scope.Resolve<INavigationService>();
+                service.UiAssembly = typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
+                service.Navigation = FormsApplication.Navigation;
+                service.Show(typeof(BootViewModel));
+            }
+
             return base.FinishedLaunching(app, options);
         }
     }
