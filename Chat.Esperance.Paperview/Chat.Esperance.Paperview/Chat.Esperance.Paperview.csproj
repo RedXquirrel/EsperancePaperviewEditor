@@ -67,6 +67,8 @@
     <Compile Include="Pages\Gallery\ExhibitsTabletPage.xaml.cs">
       <DependentUpon>ExhibitsTabletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Scaffolding\PropertyChangedBase.cs" />
+    <Compile Include="Scaffolding\ViewModelBase.cs" />
     <Compile Include="ViewModels\MasterPageIndexItemViewModel.cs" />
     <Compile Include="Pages\Publishers\AddPublisherDesktopPage.xaml.cs">
       <DependentUpon>AddPublisherDesktopPage.xaml</DependentUpon>

@@ -18,6 +18,8 @@ namespace Chat.Esperance.Paperview.Pages
             try
             {
                 InitializeComponent();
+
+                NavigationPage.SetHasNavigationBar(this,false);
             }
             catch (Exception ex)
             {
