@@ -1,7 +1,7 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 
-namespace Chat.Esperance.PaperviewApi.ViewModels
+namespace Chat.Esperance.PaperviewApi.Scaffolding
 {
     public class PropertyChangedBase : INotifyPropertyChanged
     {

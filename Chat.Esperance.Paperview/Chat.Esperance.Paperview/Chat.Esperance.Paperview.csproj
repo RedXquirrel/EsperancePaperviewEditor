@@ -77,18 +77,6 @@
     <Compile Include="Pages\Publishers\AddPublisherTabletPage.xaml.cs">
       <DependentUpon>AddPublisherTabletPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\Boot\BootDesktopPage.xaml.cs">
-      <DependentUpon>BootDesktopPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Boot\BootPhonePage.xaml.cs">
-      <DependentUpon>BootPhonePage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Boot\BootTabletPage.xaml.cs">
-      <DependentUpon>BootTabletPage.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="Pages\Developers\HowToCreateTemplatesPhonePage.xaml.cs">
-      <DependentUpon>HowToCreateTemplatesPhonePage.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Pages\MainMasterDetail\MainPhonePage.xaml.cs">
       <DependentUpon>MainPhonePage.xaml</DependentUpon>
     </Compile>
@@ -152,24 +140,6 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Pages\Boot\BootDesktopPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Boot\BootPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Boot\BootTabletPage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
     <EmbeddedResource Include="FormsApplication.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
@@ -206,12 +176,6 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Pages\MainMasterDetail\MasterPhonePage.xaml">
-      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Pages\Developers\HowToCreateTemplatesPhonePage.xaml">
       <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
       <SubType>Designer</SubType>
     </EmbeddedResource>
@@ -269,6 +233,9 @@
       <Project>{bad8133f-88ab-400f-9f67-12b5c43a04aa}</Project>
       <Name>Chat.Esperance.PaperviewApi.Interfaces</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Pages\Boot\ReadMe.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

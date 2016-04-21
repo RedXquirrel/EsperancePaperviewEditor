@@ -1,4 +1,5 @@
 ﻿using System;
+using Chat.Esperance.PaperviewApi.Scaffolding;
 using Chat.Esperance.PaperviewApi.ViewModels;
 
 namespace Chat.Esperance.PaperviewApi

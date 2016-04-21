@@ -10,6 +10,7 @@ using Chat.Esperance.Paperview.ViewModels;
 using Chat.Esperance.PaperviewApi;
 using Chat.Esperance.PaperviewApi.Services;
 using Chat.Esperance.PaperviewApi.ViewModels;
+using Chat.Esperance.PaperviewApi.ViewModels.Boot;
 
 namespace Chat.Esperance.Paperview.Droid
 {

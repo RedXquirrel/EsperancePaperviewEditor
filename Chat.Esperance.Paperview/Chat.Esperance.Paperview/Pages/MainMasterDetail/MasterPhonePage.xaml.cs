@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Chat.Esperance.Paperview.Pages.Developers;
 using Chat.Esperance.Paperview.ViewModels;
 using Xamarin.Forms;
 using Chat.Esperance.Paperview.Services;

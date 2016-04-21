@@ -7,6 +7,7 @@ using Chat.Esperance.PaperviewApi;
 using Chat.Esperance.PaperviewApi.Interfaces;
 using Chat.Esperance.PaperviewApi.Services;
 using Chat.Esperance.PaperviewApi.ViewModels;
+using Chat.Esperance.PaperviewApi.ViewModels.Boot;
 using Foundation;
 using UIKit;
 using Xamarin.Forms;
@@ -51,7 +52,7 @@ namespace Chat.Esperance.Paperview.iOS
             using (var scope = DI.Container.BeginLifetimeScope())
             {
                 var service = scope.Resolve<INavigationService>();
-                service.UiAssembly = typeof(Chat.Esperance.Paperview.Pages.BootPhonePage).GetTypeInfo().Assembly;
+                service.UiAssembly = typeof(Chat.Esperance.Paperview.Pages.MasterPhonePage).GetTypeInfo().Assembly;
                 service.Navigation = FormsApplication.Navigation;
                 service.Show(typeof(BootViewModel));
             }

@@ -1,17 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Chat.Esperance.PaperviewApi.Helpers;
+﻿using Chat.Esperance.PaperviewApi.Scaffolding;
 using Chat.Esperance.PaperviewApi.Services;
-using Newtonsoft.Json;
 using Paperview.Microformats.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
 using Xamarin.Forms;
-using Plugin.Settings;
-using Plugin.Settings.Abstractions;
 
-namespace Chat.Esperance.PaperviewApi.ViewModels
+namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
 {
     public class ManagePublishersViewModel : ViewModelBase
     {

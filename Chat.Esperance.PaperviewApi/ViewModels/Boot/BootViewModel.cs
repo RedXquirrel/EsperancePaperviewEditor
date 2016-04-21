@@ -1,10 +1,10 @@
-﻿using System;
-using Autofac;
+﻿using Autofac;
 using Chat.Esperance.PaperviewApi.Interfaces;
-using Chat.Esperance.PaperviewApi.Services;
+using Chat.Esperance.PaperviewApi.Scaffolding;
+using Chat.Esperance.PaperviewApi.ViewModels.MainMasterDetail;
 using Xamarin.Forms;
 
-namespace Chat.Esperance.PaperviewApi.ViewModels
+namespace Chat.Esperance.PaperviewApi.ViewModels.Boot
 {
     public class BootViewModel : ViewModelBase
     {

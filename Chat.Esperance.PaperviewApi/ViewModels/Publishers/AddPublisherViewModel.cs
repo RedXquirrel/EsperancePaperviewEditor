@@ -1,11 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using Chat.Esperance.PaperviewApi.Scaffolding;
 using Xamarin.Forms;
 
-namespace Chat.Esperance.PaperviewApi.ViewModels
+namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
 {
     public class AddPublisherViewModel : ViewModelBase
     {

@@ -3,7 +3,9 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using Chat.Esperance.PaperviewApi.Interfaces;
+using Chat.Esperance.PaperviewApi.Scaffolding;
 using Chat.Esperance.PaperviewApi.ViewModels;
+using Chat.Esperance.PaperviewApi.ViewModels.MainMasterDetail;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.Services
