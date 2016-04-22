@@ -11,5 +11,34 @@
       <dataTemplates:MasterDetailDataTemplateSelector x:Key="MasterDetailDataTemplateSelector"/>
     </ResourceDictionary>
   </ContentPage.Resources>
-  <Label Text="Master Tablet Page" VerticalOptions="Center" HorizontalOptions="Center" />
+  <ContentPage.Content>
+    <StackLayout Orientation="Vertical">
+      <Label Text="Master Tablet Page" VerticalOptions="Center" HorizontalOptions="Center" />
+      <ListView  x:Name="listView" SeparatorVisibility="Default"
+        GroupDisplayBinding="{Binding Title}"
+        GroupShortNameBinding="{Binding ShortName}"
+        IsGroupingEnabled="true"
+        ItemTemplate="{StaticResource MasterDetailDataTemplateSelector}"
+        SeparatorColor="#f35e20"
+        >
+        <ListView.Header>
+          <StackLayout Orientation="Vertical">
+            <StackLayout Orientation="Horizontal" Spacing="5">
+              <BoxView Color="Red" />
+              <Label Text="Paperview Editor" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" />
+            </StackLayout>
+            <BoxView HeightRequest="10" />
+          </StackLayout>
+        </ListView.Header>
+        <ListView.GroupHeaderTemplate>
+          <DataTemplate>
+            <TextCell Text="{Binding Title}"
+            Detail="{Binding Subtitle}"
+            TextColor="#f35e20"
+            DetailColor="#503026" />
+          </DataTemplate>
+        </ListView.GroupHeaderTemplate>
+      </ListView>
+    </StackLayout>
+  </ContentPage.Content>  
 </ContentPage>
