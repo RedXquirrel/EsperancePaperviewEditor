@@ -67,6 +67,12 @@
     <Compile Include="Pages\Gallery\ExhibitsTabletPage.xaml.cs">
       <DependentUpon>ExhibitsTabletPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\MainMasterDetail\MainTabletPage.xaml.cs">
+      <DependentUpon>MainTabletPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MainMasterDetail\MasterTabletPage.xaml.cs">
+      <DependentUpon>MasterTabletPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Scaffolding\PropertyChangedBase.cs" />
     <Compile Include="Scaffolding\ViewModelBase.cs" />
     <Compile Include="ViewModels\MasterPageIndexItemViewModel.cs" />
@@ -231,13 +237,25 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Pages\Boot\ReadMe.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Pages\MainMasterDetail\MainTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
     <ProjectReference Include="..\..\Chat.Esperance.PaperviewApi.Interfaces\Chat.Esperance.PaperviewApi.Interfaces.csproj">
       <Project>{bad8133f-88ab-400f-9f67-12b5c43a04aa}</Project>
       <Name>Chat.Esperance.PaperviewApi.Interfaces</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Pages\Boot\ReadMe.txt" />
+    <EmbeddedResource Include="Pages\MainMasterDetail\MasterTabletPage.xaml">
+      <Generator>MSBuild:UpdateDesignTimeXaml</Generator>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />
