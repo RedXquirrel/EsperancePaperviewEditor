@@ -12,7 +12,6 @@ namespace Paperview.Microformats.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0
         [JsonProperty(PropertyName = "base64")]
         public string Base64 { get; set; }
 
-
         [JsonProperty(PropertyName = "name")]
         public Dictionary<string, string> Name { get; set; }
 

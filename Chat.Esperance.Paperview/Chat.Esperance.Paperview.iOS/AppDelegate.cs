@@ -43,6 +43,7 @@ namespace Chat.Esperance.Paperview.iOS
             var builder = new ContainerBuilder();
 
             builder.RegisterInstance(new NavigationService()).As<INavigationService>();
+            builder.RegisterInstance(new DocumentTypeService()).As<IDocumentTypeService>();
 
             DI.Container = builder.Build();
 

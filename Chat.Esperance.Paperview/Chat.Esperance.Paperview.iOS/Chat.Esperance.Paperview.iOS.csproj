@@ -98,6 +98,8 @@
   <ItemGroup>
     <Compile Include="Main.cs" />
     <Compile Include="AppDelegate.cs" />
+    <Compile Include="Renderers\BaseUrlWebViewRenderer.cs" />
+    <Compile Include="Renderers\BaseUrl_iOS.cs" />
     <None Include="Entitlements.plist" />
     <None Include="Info.plist">
       <SubType>Designer</SubType>
@@ -210,6 +212,51 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\transparentscrollviewlip%403x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\album.css">
+      <Link>Resources\album.css</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\index.html">
+      <Link>Resources\index.html</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\uicomponents.css">
+      <Link>Resources\uicomponents.css</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\mscorlib.js">
+      <Link>Resources\Scripts\mscorlib.js</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\Paperview.Common.js">
+      <Link>Resources\Scripts\Paperview.Common.js</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\Paperview.Common.Ui.js">
+      <Link>Resources\Scripts\Paperview.Common.Ui.js</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\Paperview.DocumentTypes.Album.js">
+      <Link>Resources\Scripts\Paperview.DocumentTypes.Album.js</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\Paperview.Interfaces.js">
+      <Link>Resources\Scripts\Paperview.Interfaces.js</Link>
+    </BundleResource>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\scripts\Paperview.Microformats.Album.js">
+      <Link>Resources\Scripts\Paperview.Microformats.Album.js</Link>
+    </BundleResource>
   </ItemGroup>
   <Import Project="..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems" Label="Shared" Condition="Exists('..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />

@@ -36,6 +36,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="DI.cs" />
+    <Compile Include="IDocumentTypeService.cs" />
     <Compile Include="INavigationService.cs" />
     <Compile Include="ITest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

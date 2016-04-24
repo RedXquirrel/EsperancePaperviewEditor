@@ -8,6 +8,7 @@ namespace Chat.Esperance.Paperview.DataSources
         private const string ExhibitsViewModelKey = "ExhibitsViewModel";
         private const string Error404ViewModelKey = "Error404ViewModel";
         private const string AddPublishersViewModelKey = "AddPublisherViewModel";
+        private const string EditDocumentViewModelKey = "EditDocumentViewModel";
 
         public string Title { get; set; }
         public string ShortName { get; set; } // used for jump lists, must be 1 character
@@ -35,7 +36,7 @@ namespace Chat.Esperance.Paperview.DataSources
                 new MasterDetailItemGroupDataSource("Documents", "2", "Flood your imagination!")
                 {
                     new MasterPageIndexItemViewModel { IsPage = true, IconKey = "\uf0c5", Title = "Directory", ViewModelName = Error404ViewModelKey },
-                    new MasterPageIndexItemViewModel { IsPage = false, IconKey = "\uf016", Title = "New", ViewModelName = Error404ViewModelKey },
+                    new MasterPageIndexItemViewModel { IsPage = false, IconKey = "\uf016", Title = "New", ViewModelName = EditDocumentViewModelKey },
                     new MasterPageIndexItemViewModel { IsPage = false, IconKey = "\uf15b", Title = "Open", ViewModelName = Error404ViewModelKey },
                     new MasterPageIndexItemViewModel { IsPage = false, IconKey = "\uf0c7", Title = "Save", ViewModelName = Error404ViewModelKey },
                     new MasterPageIndexItemViewModel { IsPage = false, IconKey = "\uf0ea", Title = "Save As", ViewModelName = Error404ViewModelKey },
