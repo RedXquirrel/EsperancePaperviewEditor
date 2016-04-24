@@ -212,4 +212,4 @@ _Pvt_Extensions/
 ModelManifest.xml
 /Chat.Esperance.PaperviewTests/Html5/Generated
 *.dll
-*.config
+*.dll.config
