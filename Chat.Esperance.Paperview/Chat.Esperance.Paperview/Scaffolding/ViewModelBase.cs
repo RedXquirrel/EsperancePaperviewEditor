@@ -1,7 +1,8 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Chat.Esperance.Paperview.Scaffolding;
 
-namespace Chat.Esperance.Paperview.Scaffolding
+namespace Chat.Esperance.PaperviewApi.Scaffolding
 {
     public abstract class ViewModelBase<TNavigationParameter> : ViewModelBase
     {

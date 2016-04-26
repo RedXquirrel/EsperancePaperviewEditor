@@ -33,12 +33,14 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Helpers\UiExtensionMethods.cs" />
+    <Compile Include="Interfaces\IHTMLElement.cs" />
     <Compile Include="Localisation\UiResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UiResources.resx</DependentUpon>
     </Compile>
     <Compile Include="DocumentTypePane.cs" />
+    <Compile Include="Panel.cs" />
     <Compile Include="PublisherPane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

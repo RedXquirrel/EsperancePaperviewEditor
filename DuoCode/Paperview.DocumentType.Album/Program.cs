@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DuoCode.Dom;
 using Paperview.Common;
 using Paperview.Common.Ui;
+using Paperview.Common.Ui.Helpers;
 using Paperview.Interfaces;
 using Paperview.Microformats.Album;
 
@@ -12,6 +13,9 @@ namespace Paperview.DocumentTypes.Album
 {
     public class AlbumApplication
     {
+        // tags
+        private const string DivTagKey = "div";
+
         public AlbumApplication(HTMLElement rootElement)
         {
             var microformat = new Microformat();
@@ -57,7 +61,15 @@ namespace Paperview.DocumentTypes.Album
             };
 
             //new PublisherPane(rootElement, publisher, Idiom.Phone);
-            new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
+
+            //new Panel(rootElement, new PublisherPane(publisher, Idiom.Desktop).GetContainer(), "Publisher");
+
+
+            //new Panel(rootElement, new Panel(new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher").GetContainer(), "Outer Name");
+
+            //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
+
+            new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Phone, "en").GetContainer(), "Document Type");
         }
     }
 

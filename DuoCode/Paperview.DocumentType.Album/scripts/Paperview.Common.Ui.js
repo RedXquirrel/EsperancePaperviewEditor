@@ -25,6 +25,7 @@ var Paperview = $g.Paperview = $g.Paperview || {};
 Paperview.Common = Paperview.Common || {};
 Paperview.Common.Ui = Paperview.Common.Ui || {};
 Paperview.Common.Ui.Helpers = Paperview.Common.Ui.Helpers || {};
+Paperview.Common.Ui.Interfaces = Paperview.Common.Ui.Interfaces || {};
 Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
@@ -33,21 +34,18 @@ Paperview.Common.Ui.Helpers.UiExtensionMethods = $d.declare("Paperview.Common.Ui
 Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.Localisation.UiResources", 
     0, $asm);
 Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
+Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
 $d.define(Paperview.Common.Ui.Helpers.UiExtensionMethods, null, function($t, $p) {
-    $t.AssertLocale = function UiExtensionMethods_AssertLocale(dic, locale, defaultLocale) {
-        var response = String.Empty;
-
-        if (dic.ContainsKey(locale)) {
-            response = dic.get_Item(locale);
-        }
-        else {
-            response = dic.get_Item(defaultLocale);
-        }
-
-        return response;
+    $t.AssertLocale = function UiExtensionMethods_AssertLocale(localeDictionary, locale, defaultLocale) {
+        // Cascade keys from specified locale, to default locale, then at worst return string.empty.
+        return localeDictionary.ContainsKey(locale) ? localeDictionary.get_Item(locale) : (localeDictionary.ContainsKey(defaultLocale) ? localeDictionary.get_Item(defaultLocale) : String.Empty);
+    };
+    $t.GetContainer = function UiExtensionMethods_GetContainer(control) {
+        return control.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container();
     };
 });
+Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
 $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     $t.cctor = function() {
         $t.resourceMan = null;
@@ -95,23 +93,40 @@ $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     };
 });
 $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.cctor = function() {
+        $t.DivTagKey = "div";
+        $t.TableTagKey = "table";
+        $t.TableRowKey = "tr";
+        $t.TableCellKey = "td";
+        $t.ClassAttributeKey = "class";
+        $t.TableClassKey = "standardNameValuePairTable";
+        $t.NameCellClassKey = "standardNamePairCell";
+        $t.ValueCellClassKey = "standardValuePairCell";
+    };
     $t.$ator = function() {
-        this._root = null;
         this._document = null;
         this._locale = null;
-        this._divTagKey = "div";
-        this._tableTagKey = "table";
-        this._tableRowKey = "tr";
-        this._tableCellKey = "td";
-        this._classAttributeKey = "class";
-        this._tableKey = "standardNameValuePairTable";
-        this._nameCellClassKey = "standardNamePairCell";
-        this._valueCellClassKey = "standardValuePairCell";
+        this._parent = null;
+        this._container = null;
     };
-    $t.ctor = function DocumentTypePane(root, document, idiom, locale) {
+    $p.get_Container = function DocumentTypePane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function DocumentTypePane(document, idiom, locale) {
         $t.$baseType.ctor.call(this);
-        this._root = root;
-        this._document = document;
+        this.Initialise(document, idiom, locale);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function DocumentTypePane(parent, document, idiom, locale) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this.Initialise(document, idiom, locale);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function DocumentTypePane_Initialise(mfDocument, idiom, locale) {
+        this._document = mfDocument;
+        this._container = document.createElement($t.DivTagKey);
         this._locale = locale;
 
         switch (idiom) {
@@ -132,61 +147,174 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
                     idiom), null);
         }
     };
-    $t.ctor.prototype = $p;
-    $p.CreateTable = function DocumentTypePane_CreateTable() {
-        throw new System.NotImplementedException.ctor();
-    };
     $p.CreateStack = function DocumentTypePane_CreateStack() {
-        var idLabelElement = document.createElement(this._divTagKey);
+        var idLabelElement = document.createElement($t.DivTagKey);
         idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel();
-        idLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(idLabelElement);
+        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(idLabelElement);
 
-        var idValueElement = document.createElement(this._divTagKey);
+        var idValueElement = document.createElement($t.DivTagKey);
         idValueElement.innerHTML = this._document.get_MicroformatId();
-        idValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(idValueElement);
+        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(idValueElement);
 
-        var nameLabelElement = document.createElement(this._divTagKey);
+        var nameLabelElement = document.createElement($t.DivTagKey);
         nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel();
-        nameLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(nameLabelElement);
+        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(nameLabelElement);
 
-        var nameValueElement = document.createElement(this._divTagKey);
+        var nameValueElement = document.createElement($t.DivTagKey);
         nameValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiExtensionMethods.AssertLocale(this._document.get_MicroformatName(), 
             this._locale, this._document.get_LanguageDefault());
-        nameValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(nameValueElement);
+        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(nameValueElement);
 
-        var descriptionLabelElement = document.createElement(this._divTagKey);
+        var descriptionLabelElement = document.createElement($t.DivTagKey);
         descriptionLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel();
-        descriptionLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(descriptionLabelElement);
+        descriptionLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(descriptionLabelElement);
 
-        var descriptionValueElement = document.createElement(this._divTagKey);
+        var descriptionValueElement = document.createElement($t.DivTagKey);
         descriptionValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiExtensionMethods.AssertLocale(this._document.get_MicroformatDescription(), 
             this._locale, this._document.get_LanguageDefault());
-        descriptionValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(descriptionValueElement);
+        descriptionValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(descriptionValueElement);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
     };
+    $p.CreateTable = function DocumentTypePane_CreateTable() {
+        var tableElement = document.createElement($t.TableTagKey);
+        tableElement.setAttribute($t.ClassAttributeKey, $t.TableClassKey);
+
+        var row1Element = document.createElement($t.TableRowKey);
+
+        var idLabelElement = document.createElement($t.DivTagKey);
+        idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel();
+        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        row1Element.appendChild(idLabelElement);
+
+        var idValueElement = document.createElement($t.DivTagKey);
+        idValueElement.innerHTML = this._document.get_MicroformatId();
+        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        row1Element.appendChild(idValueElement);
+
+        var row2Element = document.createElement($t.TableRowKey);
+
+        var nameLabelElement = document.createElement($t.DivTagKey);
+        nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel();
+        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        row2Element.appendChild(nameLabelElement);
+
+        var nameValueElement = document.createElement($t.DivTagKey);
+        nameValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiExtensionMethods.AssertLocale(this._document.get_MicroformatName(), 
+            this._locale, this._document.get_LanguageDefault());
+        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        row2Element.appendChild(nameValueElement);
+
+        var row3Element = document.createElement($t.TableRowKey);
+
+        var descriptionLabelElement = document.createElement($t.DivTagKey);
+        descriptionLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel();
+        descriptionLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        row3Element.appendChild(descriptionLabelElement);
+
+        var descriptionValueElement = document.createElement($t.DivTagKey);
+        descriptionValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiExtensionMethods.AssertLocale(this._document.get_MicroformatDescription(), 
+            this._locale, this._document.get_LanguageDefault());
+        descriptionValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        row3Element.appendChild(descriptionValueElement);
+
+        tableElement.appendChild(row1Element);
+        tableElement.appendChild(row2Element);
+        tableElement.appendChild(row3Element);
+
+        this._container.appendChild(tableElement);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
+$d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.cctor = function() {
+        $t.DivTagKey = "div";
+        $t.ClassAttributeKey = "class";
+        $t.ContainerCellClassKey = "standardPanelContainerCell";
+        $t.TitleCellClassKey = "standardPanelTitleCell";
+        $t.ContentCellClassKey = "standardPanelContentCell";
+    };
+    $t.$ator = function() {
+        this._parent = null;
+        this._container = null;
+    };
+    $p.get_Container = function Panel_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function Panel(content, panelTitle) {
+        $t.$baseType.ctor.call(this);
+        this.Initialise(content, panelTitle);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function Panel(parent, content, panelTitle) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+
+        this.Initialise(content, panelTitle);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function Panel_Initialise(content, panelTitle) {
+        this._container = document.createElement($t.DivTagKey);
+        this._container.setAttribute($t.ClassAttributeKey, $t.ContainerCellClassKey);
+
+
+        var titleElement = document.createElement($t.DivTagKey);
+        titleElement.innerHTML = panelTitle;
+        titleElement.setAttribute($t.ClassAttributeKey, $t.TitleCellClassKey);
+        this._container.appendChild(titleElement);
+
+        var contentElement = document.createElement($t.DivTagKey);
+        contentElement.appendChild(content);
+        contentElement.setAttribute($t.ClassAttributeKey, $t.ContentCellClassKey);
+        this._container.appendChild(contentElement);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
 });
 $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
-    $t.$ator = function() {
-        this._root = null;
-        this._publisher = null;
-        this._divTagKey = "div";
-        this._tableTagKey = "table";
-        this._tableRowKey = "tr";
-        this._tableCellKey = "td";
-        this._classAttributeKey = "class";
-        this._tableKey = "standardNameValuePairTable";
-        this._nameCellClassKey = "standardNamePairCell";
-        this._valueCellClassKey = "standardValuePairCell";
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.cctor = function() {
+        $t.DivTagKey = "div";
+        $t.TableTagKey = "table";
+        $t.TableRowKey = "tr";
+        $t.TableCellKey = "td";
+        $t.ClassAttributeKey = "class";
+        $t.TableClassKey = "standardNameValuePairTable";
+        $t.NameCellClassKey = "standardNamePairCell";
+        $t.ValueCellClassKey = "standardValuePairCell";
     };
-    $t.ctor = function PublisherPane(root, publisher, idiom) {
+    $t.$ator = function() {
+        this._publisher = null;
+        this._parent = null;
+        this._container = null;
+    };
+    $p.get_Container = function PublisherPane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function PublisherPane(publisher, idiom) {
         $t.$baseType.ctor.call(this);
-        this._root = root;
+        this.Initialise(publisher, idiom);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function PublisherPane(parent, publisher, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this.Initialise(publisher, idiom);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function PublisherPane_Initialise(publisher, idiom) {
         this._publisher = publisher;
+        this._container = document.createElement($t.DivTagKey);
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:
@@ -206,99 +334,100 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
                     idiom), null);
         }
     };
-    $t.ctor.prototype = $p;
     $p.CreateStack = function PublisherPane_CreateStack() {
 
-        var idLabelElement = document.createElement(this._divTagKey);
+        var idLabelElement = document.createElement($t.DivTagKey);
         idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherIdLabel();
-        idLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(idLabelElement);
+        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(idLabelElement);
 
-        var idValueElement = document.createElement(this._divTagKey);
+        var idValueElement = document.createElement($t.DivTagKey);
         idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(idValueElement);
+        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(idValueElement);
 
-        var nameLabelElement = document.createElement(this._divTagKey);
+        var nameLabelElement = document.createElement($t.DivTagKey);
         nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherNameLabel();
-        nameLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(nameLabelElement);
+        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(nameLabelElement);
 
-        var nameValueElement = document.createElement(this._divTagKey);
+        var nameValueElement = document.createElement($t.DivTagKey);
         nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(nameValueElement);
+        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(nameValueElement);
 
-        var emailAddressLabelElement = document.createElement(this._divTagKey);
+        var emailAddressLabelElement = document.createElement($t.DivTagKey);
         emailAddressLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherEmailAddressLabel();
-        emailAddressLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(emailAddressLabelElement);
+        emailAddressLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(emailAddressLabelElement);
 
-        var emailAddressValueElement = document.createElement(this._divTagKey);
+        var emailAddressValueElement = document.createElement($t.DivTagKey);
         emailAddressValueElement.innerHTML = this._publisher.get_Email();
-        emailAddressValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(emailAddressValueElement);
+        emailAddressValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(emailAddressValueElement);
 
-        var urlLabelElement = document.createElement(this._divTagKey);
+        var urlLabelElement = document.createElement($t.DivTagKey);
         urlLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherWebAddressLabel();
-        urlLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
-        this._root.appendChild(urlLabelElement);
+        urlLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        this._container.appendChild(urlLabelElement);
 
-        var urlValueElement = document.createElement(this._divTagKey);
+        var urlValueElement = document.createElement($t.DivTagKey);
         urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
-        this._root.appendChild(urlValueElement);
+        urlValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        this._container.appendChild(urlValueElement);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
     };
     $p.CreateTable = function PublisherPane_CreateTable() {
-        var tableElement = document.createElement(this._tableTagKey);
-        tableElement.setAttribute(this._classAttributeKey, this._tableKey);
+        var tableElement = document.createElement($t.TableTagKey);
+        tableElement.setAttribute($t.ClassAttributeKey, $t.TableClassKey);
 
-        var row1Element = document.createElement(this._tableRowKey);
+        var row1Element = document.createElement($t.TableRowKey);
 
-        var idLabelElement = document.createElement(this._tableCellKey);
+        var idLabelElement = document.createElement($t.TableCellKey);
         idLabelElement.innerHTML = "Id";
-        idLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
+        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
         row1Element.appendChild(idLabelElement);
 
-        var idValueElement = document.createElement(this._tableCellKey);
+        var idValueElement = document.createElement($t.TableCellKey);
         idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
+        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
         row1Element.appendChild(idValueElement);
 
-        var row2Element = document.createElement(this._tableRowKey);
+        var row2Element = document.createElement($t.TableRowKey);
 
-        var nameLabelElement = document.createElement(this._tableCellKey);
+        var nameLabelElement = document.createElement($t.TableCellKey);
         nameLabelElement.innerHTML = "Name";
-        nameLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
+        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
         row2Element.appendChild((nameLabelElement));
 
-        var nameValueElement = document.createElement(this._tableCellKey);
+        var nameValueElement = document.createElement($t.TableCellKey);
         nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
+        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
         row2Element.appendChild(nameValueElement);
 
-        var row3Element = document.createElement(this._tableRowKey);
+        var row3Element = document.createElement($t.TableRowKey);
 
-        var emailLabelElement = document.createElement(this._tableCellKey);
+        var emailLabelElement = document.createElement($t.TableCellKey);
         emailLabelElement.innerHTML = "Email";
-        emailLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
+        emailLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
         row3Element.appendChild(emailLabelElement);
 
-        var emailValueElement = document.createElement(this._tableCellKey);
+        var emailValueElement = document.createElement($t.TableCellKey);
         emailValueElement.innerHTML = this._publisher.get_Email();
-        emailValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
+        emailValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
         row3Element.appendChild(emailValueElement);
 
-        var row4Element = document.createElement(this._tableRowKey);
+        var row4Element = document.createElement($t.TableRowKey);
 
-        var urlLabelElement = document.createElement(this._tableCellKey);
+        var urlLabelElement = document.createElement($t.TableCellKey);
         urlLabelElement.innerHTML = "Web Address";
-        urlLabelElement.setAttribute(this._classAttributeKey, this._nameCellClassKey);
+        urlLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
         row4Element.appendChild((urlLabelElement));
 
-        var urlValueElement = document.createElement(this._tableCellKey);
+        var urlValueElement = document.createElement($t.TableCellKey);
         urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute(this._classAttributeKey, this._valueCellClassKey);
+        urlValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
         row4Element.appendChild(urlValueElement);
 
         tableElement.appendChild(row1Element);
@@ -306,8 +435,11 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         tableElement.appendChild(row3Element);
         tableElement.appendChild(row4Element);
 
-        this._root.appendChild(tableElement);
+        this._container.appendChild(tableElement);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
     };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
 });
 return $asm;
 })();

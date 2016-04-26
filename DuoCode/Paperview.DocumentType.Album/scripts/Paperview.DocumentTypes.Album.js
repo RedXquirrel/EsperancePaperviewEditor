@@ -21,6 +21,9 @@ Paperview.DocumentTypes.Album.AlbumApplication = $d.declare("Paperview.DocumentT
     0, $asm);
 Paperview.DocumentTypes.Album.Program = $d.declare("Paperview.DocumentTypes.Album.Program", 0, $asm);
 $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p) {
+    $t.cctor = function() {
+        $t.DivTagKey = "div";
+    };
     $t.ctor = function AlbumApplication(rootElement) {
         $t.$baseType.ctor.call(this);
         var microformat = new Paperview.Common.Microformat.ctor();
@@ -69,8 +72,16 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         }).call(this);
 
         //new PublisherPane(rootElement, publisher, Idiom.Phone);
-        new Paperview.Common.Ui.DocumentTypePane.ctor(rootElement, albumMicroformat.get_Document(), 0 /* Idiom.Phone */, 
-            "en");
+
+        //new Panel(rootElement, new PublisherPane(publisher, Idiom.Desktop).GetContainer(), "Publisher");
+
+
+        //new Panel(rootElement, new Panel(new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher").GetContainer(), "Outer Name");
+
+        //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
+
+        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiExtensionMethods.GetContainer(new Paperview.Common.Ui.DocumentTypePane.ctor(albumMicroformat.get_Document(), 
+            0 /* Idiom.Phone */, "en")), "Document Type");
     };
     $t.ctor.prototype = $p;
 });
