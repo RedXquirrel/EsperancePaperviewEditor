@@ -7,6 +7,8 @@ namespace Paperview.Common.Ui.Helpers
     /// </summary>
     public static class Hx
     {
+
+        #region Tag Keys
         // tags
         // https://www.w3.org/TR/html-markup/elements.html
 
@@ -15,7 +17,7 @@ namespace Paperview.Common.Ui.Helpers
         public static string AddressTagKey = "address";
         public static string AreaTagKey = "area";
         public static string ArticleTagKey = "article";
-        public static string AsideKey = "aside";
+        public static string AsideTagKey = "aside";
         public static string AudioTagKey = "audio";
         public static string BTagKey = "b";
         public static string BaseTagKey = "base";
@@ -92,6 +94,7 @@ namespace Paperview.Common.Ui.Helpers
         public static string STagKey = "s";
         public static string SampTagKey = "samp";
         public static string ScriptTagKey = "script";
+        public static string SectionTagKey = "section";
         public static string SelectionTagKey = "selection";
         public static string SelectTagKey = "select";
         public static string SmallTagKey = "small";
@@ -118,8 +121,9 @@ namespace Paperview.Common.Ui.Helpers
         public static string VarTagKey = "var";
         public static string VideoTagKey = "video";
         public static string WbrTagKey = "wbr";
+        #endregion
 
-
+        #region Attribute Keys
         // attribute names
         // https://www.w3.org/TR/html-markup/global-attributes.html#common.attrs.contenteditable
 
@@ -199,10 +203,556 @@ namespace Paperview.Common.Ui.Helpers
         public static string Xml_langAttKey = "xml:lang";
         public static string Xml_spaceAttKey = "xml:space";
         public static string Xml_baseAttKey = "xml:base";
+        #endregion
 
+        #region Create Html5 Element methods
+        // Every Html tag that is declared by WC3 is here, 
+        // vis-a-vis https://www.w3.org/TR/html-markup/elements.html
+        // Each function's name is in the format Create{TagName}Element, 
+        // where Tagname starts in uppercase but follows in lowercase.
 
+        public static HTMLElement CreateAElement()
+        {
+            return GetTag(ATagKey);
+        }
 
+        public static HTMLElement CreateAbbrElement()
+        {
+            return GetTag(AbbrTagKey);
+        }
 
+        public static HTMLElement CreateAddressElement()
+        {
+            return GetTag(AddressTagKey);
+        }
+
+        public static HTMLElement CreateAreaElement()
+        {
+            return GetTag(AreaTagKey);
+        }
+
+        public static HTMLElement CreateArticleElement()
+        {
+            return GetTag(ArticleTagKey);
+        }
+
+        public static HTMLElement CreateAsideElement()
+        {
+            return GetTag(AsideTagKey);
+        }
+
+        public static HTMLElement CreateAudioElement()
+        {
+            return GetTag(AudioTagKey);
+        }
+
+        public static HTMLElement CreateBElement()
+        {
+            return GetTag(BTagKey);
+        }
+
+        public static HTMLElement CreateBaseElement()
+        {
+            return GetTag(BaseTagKey);
+        }
+
+        public static HTMLElement CreateBdiElement()
+        {
+            return GetTag(BdiTagKey);
+        }
+
+        public static HTMLElement CreateBdoElement()
+        {
+            return GetTag(BdoTagKey);
+        }
+
+        public static HTMLElement CreateBlockquoteElement()
+        {
+            return GetTag(BlockquoteTagKey);
+        }
+
+        public static HTMLElement CreateBodyElement()
+        {
+            return GetTag(BodyTagKey);
+        }
+
+        public static HTMLElement CreateBrElement()
+        {
+            return GetTag(BrTagKey);
+        }
+
+        public static HTMLElement CreateButtonElement()
+        {
+            return GetTag(ButtonTagKey);
+        }
+
+        public static HTMLElement CreateCanvasElement()
+        {
+            return GetTag(CanvasTagKey);
+        }
+
+        public static HTMLElement CreateCaptionElement()
+        {
+            return GetTag(CaptionTagKey);
+        }
+
+        public static HTMLElement CreateCiteElement()
+        {
+            return GetTag(CiteTagKey);
+        }
+
+        public static HTMLElement CreateCodeElement()
+        {
+            return GetTag(CodeTagKey);
+        }
+
+        public static HTMLElement CreateColElement()
+        {
+            return GetTag(ColTagKey);
+        }
+
+        public static HTMLElement CreateColgroupElement()
+        {
+            return GetTag(ColgroupTagKey);
+        }
+
+        public static HTMLElement CreateCommandElement()
+        {
+            return GetTag(CommandTagKey);
+        }
+
+        public static HTMLElement CreateDatalistElement()
+        {
+            return GetTag(DatalistTagKey);
+        }
+
+        public static HTMLElement CreateDdElement()
+        {
+            return GetTag(DdTagKey);
+        }
+
+        public static HTMLElement CreateDelElement()
+        {
+            return GetTag(DelTagKey);
+        }
+
+        public static HTMLElement CreateDetailsElement()
+        {
+            return GetTag(DetailsTagKey);
+        }
+
+        public static HTMLElement CreateDfnElement()
+        {
+            return GetTag(DfnTagKey);
+        }
+
+        public static HTMLElement CreateDivElement()
+        {
+            return GetTag(DivTagKey);
+        }
+
+        public static HTMLElement CreateDlElement()
+        {
+            return GetTag(DlTagKey);
+        }
+
+        public static HTMLElement CreateDtElement()
+        {
+            return GetTag(DtTagList);
+        }
+
+        public static HTMLElement CreateEmElement()
+        {
+            return GetTag(EmTagKey);
+        }
+
+        public static HTMLElement CreateEmbedElement()
+        {
+            return GetTag(EmbedTagKey);
+        }
+
+        public static HTMLElement CreateFieldsetElement()
+        {
+            return GetTag(FieldsetTagKey);
+        }
+
+        public static HTMLElement CreateFigcaptionElement()
+        {
+            return GetTag(FigcaptionTagKey);
+        }
+
+        public static HTMLElement CreateFigureElement()
+        {
+            return GetTag(FigureTagKey);
+        }
+
+        public static HTMLElement CreateFooterElement()
+        {
+            return GetTag(FooterTagKey);
+        }
+
+        public static HTMLElement CreateFormElement()
+        {
+            return GetTag(FormTagKey);
+        }
+
+        public static HTMLElement CreateH1Element()
+        {
+            return GetTag(H1TagKey);
+        }
+
+        public static HTMLElement CreateH2Element()
+        {
+            return GetTag(H2TagKey);
+        }
+
+        public static HTMLElement CreateH3Element()
+        {
+            return GetTag(H3TagKey);
+        }
+
+        public static HTMLElement CreateH4Element()
+        {
+            return GetTag(H4TagKey);
+        }
+
+        public static HTMLElement CreateH5Element()
+        {
+            return GetTag(H5TagKey);
+        }
+
+        public static HTMLElement CreateH6Element()
+        {
+            return GetTag(H6TagKey);
+        }
+
+        public static HTMLElement CreateHeadElement()
+        {
+            return GetTag(HeadTagKey);
+        }
+
+        public static HTMLElement CreateHeaderElement()
+        {
+            return GetTag(HeaderTagKey);
+        }
+
+        public static HTMLElement CreateHgroupElement()
+        {
+            return GetTag(HgroupTagKey);
+        }
+
+        public static HTMLElement CreateHrElement()
+        {
+            return GetTag(HrTagKey);
+        }
+
+        public static HTMLElement CreateHtmlElement()
+        {
+            return GetTag(HtmlTagKey);
+        }
+
+        public static HTMLElement CreateIElement()
+        {
+            return GetTag(ITagKey);
+        }
+
+        public static HTMLElement CreateIframeElement()
+        {
+            return GetTag(IframeTagKey);
+        }
+
+        public static HTMLElement CreateImgElement()
+        {
+            return GetTag(ImgTagKey);
+        }
+
+        public static HTMLElement CreateInputElement()
+        {
+            return GetTag(InputTagKey);
+        }
+
+        public static HTMLElement CreateInsElement()
+        {
+            return GetTag(InsTagKey);
+        }
+
+        public static HTMLElement CreateKbdElement()
+        {
+            return GetTag(KbdTagKey);
+        }
+
+        public static HTMLElement CreateKeygenElement()
+        {
+            return GetTag(KeygenTagKey);
+        }
+
+        public static HTMLElement CreateLabelElement()
+        {
+            return GetTag(LabelTagKey);
+        }
+
+        public static HTMLElement CreateLegendElement()
+        {
+            return GetTag(LegendTagKey);
+        }
+
+        public static HTMLElement CreateLiElement()
+        {
+            return GetTag(LiTagKey);
+        }
+
+        public static HTMLElement CreateLinkElement()
+        {
+            return GetTag(LinkTagKey);
+        }
+
+        public static HTMLElement CreateMapElement()
+        {
+            return GetTag(MapTagKey);
+        }
+
+        public static HTMLElement CreateMarkElement()
+        {
+            return GetTag(MarkTagKey);
+        }
+
+        public static HTMLElement CreateMenuElement()
+        {
+            return GetTag(MenuTagKey);
+        }
+
+        public static HTMLElement CreateMetaElement()
+        {
+            return GetTag(MetaTagKey);
+        }
+
+        public static HTMLElement CreateMeterElement()
+        {
+            return GetTag(MeterTagKey);
+        }
+
+        public static HTMLElement CreateNavElement()
+        {
+            return GetTag(NavTagKey);
+        }
+
+        public static HTMLElement CreateNoscriptElement()
+        {
+            return GetTag(NoscriptTagKey);
+        }
+
+        public static HTMLElement CreateObjectElement()
+        {
+            return GetTag(ObjectTagKey);
+        }
+
+        public static HTMLElement CreateOlElement()
+        {
+            return GetTag(OlTagKey);
+        }
+
+        public static HTMLElement CreateOptgroupElement()
+        {
+            return GetTag(OptgroupTagKey);
+        }
+
+        public static HTMLElement CreateOptionElement()
+        {
+            return GetTag(OptionTagKey);
+        }
+
+        public static HTMLElement CreateOutputElement()
+        {
+            return GetTag(OutputTagKey);
+        }
+
+        public static HTMLElement CreatePElement()
+        {
+            return GetTag(PTagKey);
+        }
+
+        public static HTMLElement CreateParamElement()
+        {
+            return GetTag(ParamTagKey);
+        }
+
+        public static HTMLElement CreatePreElement()
+        {
+            return GetTag(PreTagKey);
+        }
+
+        public static HTMLElement CreateProgressElement()
+        {
+            return GetTag(ProgressTagKey);
+        }
+
+        public static HTMLElement CreateQElement()
+        {
+            return GetTag(QTagKey);
+        }
+
+        public static HTMLElement CreateRpElement()
+        {
+            return GetTag(RpTagKey);
+        }
+
+        public static HTMLElement CreateRtElement()
+        {
+            return GetTag(RtTagKey);
+        }
+
+        public static HTMLElement CreateRubyElement()
+        {
+            return GetTag(RubyTagKey);
+        }
+
+        public static HTMLElement CreateSElement()
+        {
+            return GetTag(STagKey);
+        }
+
+        public static HTMLElement CreateSampElement()
+        {
+            return GetTag(SampTagKey);
+        }
+
+        public static HTMLElement CreateScriptElement()
+        {
+            return GetTag(ScriptTagKey);
+        }
+
+        public static HTMLElement CreateSectionElement()
+        {
+            return GetTag(SectionTagKey);
+        }
+
+        public static HTMLElement CreateSelectElement()
+        {
+            return GetTag(SelectTagKey);
+        }
+
+        public static HTMLElement CreateSmallElement()
+        {
+            return GetTag(SmallTagKey);
+        }
+
+        public static HTMLElement CreateSourceElement()
+        {
+            return GetTag(SourceTagKey);
+        }
+
+        public static HTMLElement CreateSpanElement()
+        {
+            return GetTag(SpanTagKey);
+        }
+
+        public static HTMLElement CreateStrongElement()
+        {
+            return GetTag(StrongTagKey);
+        }
+
+        public static HTMLElement CreateStyleElement()
+        {
+            return GetTag(StyleTagKey);
+        }
+
+        public static HTMLElement CreateSubElement()
+        {
+            return GetTag(SubTagKey);
+        }
+
+        public static HTMLElement CreateSummaryElement()
+        {
+            return GetTag(SummaryTagKey);
+        }
+
+        public static HTMLElement CreateSupElement()
+        {
+            return GetTag(SupTagKey);
+        }
+
+        public static HTMLElement CreateTableElement()
+        {
+            return GetTag(TableTagKey);
+        }
+
+        public static HTMLElement CreateTbodyElement()
+        {
+            return GetTag(TbodyTagKey);
+        }
+
+        public static HTMLElement CreateTdElement()
+        {
+            return GetTag(TdTagKey);
+        }
+
+        public static HTMLElement CreateTextareaElement()
+        {
+            return GetTag(TextareaTagKey);
+        }
+
+        public static HTMLElement CreateTfootElement()
+        {
+            return GetTag(TfootTagKey);
+        }
+
+        public static HTMLElement CreateThElement()
+        {
+            return GetTag(ThTagKey);
+        }
+
+        public static HTMLElement CreateTheadElement()
+        {
+            return GetTag(TheadTagKey);
+        }
+
+        public static HTMLElement CreateTimeElement()
+        {
+            return GetTag(TimeTagKey);
+        }
+
+        public static HTMLElement CreateTitleElement()
+        {
+            return GetTag(TitleTagKey);
+        }
+
+        public static HTMLElement CreateTrElement()
+        {
+            return GetTag(TrTagKey);
+        }
+
+        public static HTMLElement CreateTrackElement()
+        {
+            return GetTag(TrackTagkey);
+        }
+
+        public static HTMLElement CreateUElement()
+        {
+            return GetTag(UTagKey);
+        }
+
+        public static HTMLElement CreateUlElement()
+        {
+            return GetTag(UlTagKey);
+        }
+
+        public static HTMLElement CreateVarElement()
+        {
+            return GetTag(VarTagKey);
+        }
+
+        public static HTMLElement CreateVideoElement()
+        {
+            return GetTag(VideoTagKey);
+        }
+
+        public static HTMLElement CreateWbrElement()
+        {
+            return GetTag(WbrTagKey);
+        }
+        #endregion
+
+        #region Extension methods
         public static HTMLElement AppendChild(this HTMLElement parent, HTMLElement child)
         {
             parent.appendChild(child);
@@ -219,26 +769,6 @@ namespace Paperview.Common.Ui.Helpers
             return parent;
         }
 
-        public static HTMLElement CreateDivElement()
-        {
-            return Global.document.createElement(DivTagKey);
-        }
-
-        public static HTMLElement CreateTableElement()
-        {
-            return Global.document.createElement(TableTagKey);
-        }
-
-        public static HTMLElement CreateTrElement()
-        {
-            return Global.document.createElement(TrTagKey);
-        }
-
-        public static HTMLElement CreateTdElement()
-        {
-            return Global.document.createElement(TdTagKey);
-        }
-
         public static HTMLElement SetAttribute(this HTMLElement element, string name, string value)
         {
             element.setAttribute(name,value);
@@ -251,5 +781,13 @@ namespace Paperview.Common.Ui.Helpers
 
             return element;
         }
+        #endregion
+
+        #region Private helper functions
+        private static HTMLElement GetTag(string key)
+        {
+            return Global.document.createElement(key);
+        }
+        #endregion
     }
 }
