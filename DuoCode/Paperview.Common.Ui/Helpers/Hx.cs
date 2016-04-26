@@ -1,14 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DuoCode.Dom;
-using Paperview.Common.Ui.Interfaces;
+﻿using DuoCode.Dom;
 
 namespace Paperview.Common.Ui.Helpers
 {
-    public static class UiX
+    /// <summary>
+    /// Hx is short for Html Extensibility
+    /// </summary>
+    public static class Hx
     {
         // tags
         public static string DivTagKey = "div";
@@ -18,17 +15,6 @@ namespace Paperview.Common.Ui.Helpers
 
         // attribute names
         public static string ClassAttributeKey = "class";
-
-        public static string AssertLocale(this Dictionary<string, string> localeDictionary, string locale, string defaultLocale)
-        {
-            // Cascade keys from specified locale, to default locale, then at worst return string.empty.
-            return localeDictionary.ContainsKey(locale) ? localeDictionary[locale] : (localeDictionary.ContainsKey(defaultLocale) ? localeDictionary[defaultLocale] : string.Empty); 
-        }
-
-        public static HTMLElement GetContainer(this IHtmlElement control)
-        {
-            return control.Container;
-        }
 
         public static HTMLElement AppendChild(this HTMLElement parent, HTMLElement child)
         {
@@ -44,6 +30,11 @@ namespace Paperview.Common.Ui.Helpers
             parent.appendChild(child);
 
             return parent;
+        }
+
+        public static HTMLElement CreateDivElement()
+        {
+            return Global.document.createElement(DivTagKey);
         }
 
         public static HTMLElement CreateTableElement()
@@ -67,6 +58,11 @@ namespace Paperview.Common.Ui.Helpers
             return element;
         }
 
+        public static HTMLElement InnerHtml(this HTMLElement element, string innerHtml)
+        {
+            element.innerHTML = innerHtml;
 
+            return element;
+        }
     }
 }

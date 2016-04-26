@@ -32,7 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="Helpers\UiExtensionMethods.cs" />
+    <Compile Include="Helpers\Hx.cs" />
+    <Compile Include="Helpers\UiExtensions.cs" />
     <Compile Include="Interfaces\IHTMLElement.cs" />
     <Compile Include="Localisation\UiResources.Designer.cs">
       <AutoGen>True</AutoGen>

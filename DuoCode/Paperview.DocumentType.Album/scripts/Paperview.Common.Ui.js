@@ -62,6 +62,9 @@ $d.define(Paperview.Common.Ui.Helpers.UiX, null, function($t, $p) {
 
         return parent;
     };
+    $t.CreateDivElement = function UiX_CreateDivElement() {
+        return document.createElement($t().DivTagKey);
+    };
     $t.CreateTableElement = function UiX_CreateTableElement() {
         return document.createElement($t().TableTagKey);
     };
@@ -73,6 +76,11 @@ $d.define(Paperview.Common.Ui.Helpers.UiX, null, function($t, $p) {
     };
     $t.SetAttribute = function UiX_SetAttribute(element, name, value) {
         element.setAttribute(name, value);
+        return element;
+    };
+    $t.InnerHtml = function UiX_InnerHtml(element, innerHtml) {
+        element.innerHTML = innerHtml;
+
         return element;
     };
 });
@@ -179,37 +187,20 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
         }
     };
     $p.CreateStack = function DocumentTypePane_CreateStack() {
-        var idLabelElement = document.createElement($t.DivTagKey);
-        idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel();
-        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
-        this._container.appendChild(idLabelElement);
-
-        var idValueElement = document.createElement($t.DivTagKey);
-        idValueElement.innerHTML = this._document.get_MicroformatId();
-        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
-        this._container.appendChild(idValueElement);
-
-        var nameLabelElement = document.createElement($t.DivTagKey);
-        nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel();
-        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
-        this._container.appendChild(nameLabelElement);
-
-        var nameValueElement = document.createElement($t.DivTagKey);
-        nameValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatName(), 
-            this._locale, this._document.get_LanguageDefault());
-        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
-        this._container.appendChild(nameValueElement);
-
-        var descriptionLabelElement = document.createElement($t.DivTagKey);
-        descriptionLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel();
-        descriptionLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
-        this._container.appendChild(descriptionLabelElement);
-
-        var descriptionValueElement = document.createElement($t.DivTagKey);
-        descriptionValueElement.innerHTML = Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatDescription(), 
-            this._locale, this._document.get_LanguageDefault());
-        descriptionValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
-        this._container.appendChild(descriptionValueElement);
+        Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(this._container, 
+            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
+            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), this._document.get_MicroformatId())), 
+            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
+            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatName(), 
+                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
+            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatDescription(), 
+                this._locale, this._document.get_LanguageDefault())));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
@@ -225,7 +216,6 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
             Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
             $t.NameCellClassKey), Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatDescription(), 
             this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)));
-
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };

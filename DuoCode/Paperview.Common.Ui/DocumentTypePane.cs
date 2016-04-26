@@ -79,52 +79,42 @@ namespace Paperview.Common.Ui
 
         private void CreateStack()
         {
-            var idLabelElement = Global.document.createElement(DivTagKey);
-            idLabelElement.innerHTML = UiResources.DocumentTypeIdLabel;
-            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            _container.appendChild(idLabelElement);
-
-            var idValueElement = Global.document.createElement(DivTagKey);
-            idValueElement.innerHTML = _document.MicroformatId;
-            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            _container.appendChild(idValueElement);
-
-            var nameLabelElement = Global.document.createElement(DivTagKey);
-            nameLabelElement.innerHTML = UiResources.DocumentTypeNameLabel;
-            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            _container.appendChild(nameLabelElement);
-
-            var nameValueElement = Global.document.createElement(DivTagKey);
-            nameValueElement.innerHTML = _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault);
-            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            _container.appendChild(nameValueElement);
-
-            var descriptionLabelElement = Global.document.createElement(DivTagKey);
-            descriptionLabelElement.innerHTML = UiResources.DocumentTypeDescriptionLabel;
-            descriptionLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            _container.appendChild(descriptionLabelElement);
-
-            var descriptionValueElement = Global.document.createElement(DivTagKey);
-            descriptionValueElement.innerHTML = _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault);
-            descriptionValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            _container.appendChild(descriptionValueElement);
+            _container
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .InnerHtml(UiResources.DocumentTypeIdLabel))
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .InnerHtml(_document.MicroformatId))
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .InnerHtml(UiResources.DocumentTypeNameLabel))
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .InnerHtml(_document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault)))
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .InnerHtml(UiResources.DocumentTypeDescriptionLabel))
+            .AppendChild(Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .InnerHtml(_document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault)));
 
             _parent?.appendChild(_container);
         }
 
         private void CreateTable()
         {
-            _container.AppendChild(UiX.CreateTableElement()
-                                        .SetAttribute(UiX.ClassAttributeKey, TableClassKey)
-                                        .AppendChild(UiX.CreateTrElement()
-                                                        .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey)
-                                                        .AppendChild(UiX.CreateTdElement(), _document.MicroformatId, ValueCellClassKey))
-                                        .AppendChild(UiX.CreateTrElement()
-                                                        .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey)
-                                                        .AppendChild(UiX.CreateTdElement(), _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
-                                        .AppendChild(UiX.CreateTrElement()
-                                                .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey)
-                                                .AppendChild(UiX.CreateTdElement(), _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+            _container.AppendChild(Hx.CreateTableElement()
+                                        .SetAttribute(Hx.ClassAttributeKey, TableClassKey)
+                                        .AppendChild(Hx.CreateTrElement()
+                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey)
+                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatId, ValueCellClassKey))
+                                        .AppendChild(Hx.CreateTrElement()
+                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey)
+                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+                                        .AppendChild(Hx.CreateTrElement()
+                                                .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey)
+                                                .AppendChild(Hx.CreateTdElement(), _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
             );
             
             _parent?.appendChild(_container);
