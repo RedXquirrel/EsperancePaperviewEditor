@@ -1,5 +1,6 @@
 ﻿using System;
 using DuoCode.Dom;
+using Paperview.Common.Ui.Helpers;
 using Paperview.Common.Ui.Interfaces;
 using Paperview.Common.Ui.Localisation;
 
@@ -57,19 +58,14 @@ namespace Paperview.Common.Ui
 
         private void Initialise(HTMLElement content, string panelTitle)
         {
-            _container = Global.document.createElement(DivTagKey);
-            _container.setAttribute(ClassAttributeKey, ContainerCellClassKey);
-
-
-            var titleElement = Global.document.createElement(DivTagKey);
-            titleElement.innerHTML = panelTitle;
-            titleElement.setAttribute(ClassAttributeKey, TitleCellClassKey);
-            _container.appendChild(titleElement);
-
-            var contentElement = Global.document.createElement(DivTagKey);
-            contentElement.appendChild(content);
-            contentElement.setAttribute(ClassAttributeKey, ContentCellClassKey);
-            _container.appendChild(contentElement);
+            _container =  Hx.CreateDivElement()
+                            .SetAttribute(Hx.ClassAttKey, ContainerCellClassKey)
+                            .AppendChild(Hx.CreateDivElement()
+                                           .SetAttribute(Hx.ClassAttKey, TitleCellClassKey)
+                                           .InnerHtml(panelTitle))
+                            .AppendChild(Hx.CreateDivElement()
+                                           .SetAttribute(Hx.ClassAttKey, ContentCellClassKey)
+                                           .AppendChild(content));
 
             _parent?.appendChild(_container);
         }

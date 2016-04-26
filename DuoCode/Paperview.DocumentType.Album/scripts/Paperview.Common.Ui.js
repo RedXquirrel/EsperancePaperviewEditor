@@ -29,13 +29,15 @@ Paperview.Common.Ui.Interfaces = Paperview.Common.Ui.Interfaces || {};
 Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
-Paperview.Common.Ui.Helpers.UiX = $d.declare("Paperview.Common.Ui.Helpers.UiX", 0, $asm);
+Paperview.Common.Ui.Helpers.Hx = $d.declare("Paperview.Common.Ui.Helpers.Hx", 0, $asm);
+Paperview.Common.Ui.Helpers.UiExtensions = $d.declare("Paperview.Common.Ui.Helpers.UiExtensions", 0, 
+    $asm);
 Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.Localisation.UiResources", 
     0, $asm);
 Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
 Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
-$d.define(Paperview.Common.Ui.Helpers.UiX, null, function($t, $p) {
+$d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
     $t.cctor = function() {
         $t.DivTagKey = "div";
         $t.TableTagKey = "table";
@@ -43,45 +45,47 @@ $d.define(Paperview.Common.Ui.Helpers.UiX, null, function($t, $p) {
         $t.TableCellKey = "td";
         $t.ClassAttributeKey = "class";
     };
-    $t.AssertLocale = function UiX_AssertLocale(localeDictionary, locale, defaultLocale) {
-        // Cascade keys from specified locale, to default locale, then at worst return string.empty.
-        return localeDictionary.ContainsKey(locale) ? localeDictionary.get_Item(locale) : (localeDictionary.ContainsKey(defaultLocale) ? localeDictionary.get_Item(defaultLocale) : String.Empty);
-    };
-    $t.GetContainer = function UiX_GetContainer(control) {
-        return control.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container();
-    };
-    $t.AppendChild = function UiX_AppendChild(parent, child) {
+    $t.AppendChild = function Hx_AppendChild(parent, child) {
         parent.appendChild(child);
 
         return parent;
     };
-    $t.AppendChild$1 = function UiX_AppendChild(parent, child, innerHTML, styleKey) {
+    $t.AppendChild$1 = function Hx_AppendChild(parent, child, innerHTML, styleKey) {
         child.innerHTML = innerHTML;
         child.setAttribute("class", styleKey);
         parent.appendChild(child);
 
         return parent;
     };
-    $t.CreateDivElement = function UiX_CreateDivElement() {
+    $t.CreateDivElement = function Hx_CreateDivElement() {
         return document.createElement($t().DivTagKey);
     };
-    $t.CreateTableElement = function UiX_CreateTableElement() {
+    $t.CreateTableElement = function Hx_CreateTableElement() {
         return document.createElement($t().TableTagKey);
     };
-    $t.CreateTrElement = function UiX_CreateTrElement() {
+    $t.CreateTrElement = function Hx_CreateTrElement() {
         return document.createElement($t().TableRowKey);
     };
-    $t.CreateTdElement = function UiX_CreateTdElement() {
+    $t.CreateTdElement = function Hx_CreateTdElement() {
         return document.createElement($t().TableCellKey);
     };
-    $t.SetAttribute = function UiX_SetAttribute(element, name, value) {
+    $t.SetAttribute = function Hx_SetAttribute(element, name, value) {
         element.setAttribute(name, value);
         return element;
     };
-    $t.InnerHtml = function UiX_InnerHtml(element, innerHtml) {
+    $t.InnerHtml = function Hx_InnerHtml(element, innerHtml) {
         element.innerHTML = innerHtml;
 
         return element;
+    };
+});
+$d.define(Paperview.Common.Ui.Helpers.UiExtensions, null, function($t, $p) {
+    $t.AssertLocale = function UiExtensions_AssertLocale(localeDictionary, locale, defaultLocale) {
+        // Cascade keys from specified locale, to default locale, then at worst return string.empty.
+        return localeDictionary.ContainsKey(locale) ? localeDictionary.get_Item(locale) : (localeDictionary.ContainsKey(defaultLocale) ? localeDictionary.get_Item(defaultLocale) : String.Empty);
+    };
+    $t.GetContainer = function UiExtensions_GetContainer(control) {
+        return control.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container();
     };
 });
 Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
@@ -187,34 +191,34 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
         }
     };
     $p.CreateStack = function DocumentTypePane_CreateStack() {
-        Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(this._container, 
-            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
-            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), this._document.get_MicroformatId())), 
-            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
-            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatName(), 
-                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
-            Paperview.Common.Ui.Helpers.UiX.InnerHtml(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatDescription(), 
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), this._document.get_MicroformatId())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
                 this._locale, this._document.get_LanguageDefault())));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
     $p.CreateTable = function DocumentTypePane_CreateTable() {
-        Paperview.Common.Ui.Helpers.UiX.AppendChild(this._container, Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.AppendChild(Paperview.Common.Ui.Helpers.UiX.SetAttribute(Paperview.Common.Ui.Helpers.UiX.CreateTableElement(), 
-            Paperview.Common.Ui.Helpers.UiX().ClassAttributeKey, $t.TableClassKey), Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), this._document.get_MicroformatId(), 
-            $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatName(), 
-            this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.AppendChild$1(Paperview.Common.Ui.Helpers.UiX.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.UiX.CreateTdElement(), Paperview.Common.Ui.Helpers.UiX.AssertLocale(this._document.get_MicroformatDescription(), 
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateTableElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.TableClassKey), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
+            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), this._document.get_MicroformatId(), 
+            $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
+            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+            this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
+            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
             this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
@@ -250,19 +254,11 @@ $d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
     };
     $t.ctor$1.prototype = $p;
     $p.Initialise = function Panel_Initialise(content, panelTitle) {
-        this._container = document.createElement($t.DivTagKey);
-        this._container.setAttribute($t.ClassAttributeKey, $t.ContainerCellClassKey);
-
-
-        var titleElement = document.createElement($t.DivTagKey);
-        titleElement.innerHTML = panelTitle;
-        titleElement.setAttribute($t.ClassAttributeKey, $t.TitleCellClassKey);
-        this._container.appendChild(titleElement);
-
-        var contentElement = document.createElement($t.DivTagKey);
-        contentElement.appendChild(content);
-        contentElement.setAttribute($t.ClassAttributeKey, $t.ContentCellClassKey);
-        this._container.appendChild(contentElement);
+        this._container = Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ContainerCellClassKey), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.TitleCellClassKey), panelTitle)), 
+            Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ContentCellClassKey), content));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };

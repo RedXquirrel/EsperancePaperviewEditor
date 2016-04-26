@@ -81,22 +81,22 @@ namespace Paperview.Common.Ui
         {
             _container
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
                             .InnerHtml(UiResources.DocumentTypeIdLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
                             .InnerHtml(_document.MicroformatId))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
                             .InnerHtml(UiResources.DocumentTypeNameLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
                             .InnerHtml(_document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault)))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
                             .InnerHtml(UiResources.DocumentTypeDescriptionLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttributeKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
                             .InnerHtml(_document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault)));
 
             _parent?.appendChild(_container);
@@ -105,7 +105,7 @@ namespace Paperview.Common.Ui
         private void CreateTable()
         {
             _container.AppendChild(Hx.CreateTableElement()
-                                        .SetAttribute(Hx.ClassAttributeKey, TableClassKey)
+                                        .SetAttribute(Hx.ClassAttKey, TableClassKey)
                                         .AppendChild(Hx.CreateTrElement()
                                                         .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey)
                                                         .AppendChild(Hx.CreateTdElement(), _document.MicroformatId, ValueCellClassKey))
