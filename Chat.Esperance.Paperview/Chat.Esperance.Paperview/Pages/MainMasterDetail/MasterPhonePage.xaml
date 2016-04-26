@@ -5,8 +5,7 @@
              Padding="0,40,0,0"
              xmlns:pages="clr-namespace:Chat.Esperance.Paperview.Pages;assembly=Chat.Esperance.Paperview"
              xmlns:datatemplates="clr-namespace:Chat.Esperance.Paperview.DataTemplates;assembly=Chat.Esperance.Paperview"
-             Title="Paperview"
-             Icon="Icon.png"
+             Title="Editor"
              >
   <ContentPage.Resources>
     <ResourceDictionary>
@@ -24,10 +23,24 @@
         >
         <ListView.Header>
           <StackLayout Orientation="Vertical">
-            <StackLayout Orientation="Horizontal" Spacing="5">
-              <BoxView Color="Red" />
-              <Label Text="Paperview Editor" VerticalOptions="Center" FontAttributes="Bold" FontSize="Medium" />
-            </StackLayout>
+            <Grid HorizontalOptions="Fill">
+              <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="3" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="0" />
+                <ColumnDefinition Width="Auto" />
+                <ColumnDefinition Width="10" />
+              </Grid.ColumnDefinitions>
+              <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+              </Grid.RowDefinitions>
+              <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Color="Black" HeightRequest="50" WidthRequest="50" />
+              <Label Grid.Row="0" Grid.Column="2" Text="Paperview" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" FontSize="Large" />
+              <Label Grid.Row="1" Grid.Column="2" Text="by Captain Xamtastic" VerticalOptions="Center" HorizontalOptions="End" FontAttributes="Bold" FontSize="Micro" TextColor="Red" />
+              <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Source="logo-captainxamtastic.png" />
+            </Grid>
             <BoxView HeightRequest="10" />
           </StackLayout>
         </ListView.Header>

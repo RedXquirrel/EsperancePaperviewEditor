@@ -11,6 +11,8 @@ namespace Chat.Esperance.Paperview.Pages
 {
     public partial class MasterPhonePage : ContentPage
     {
+        public static NavigationPage MainNavigationPage { get; set; }
+
         public ListView ListView { get { return listView;  } }
 
         public MasterPhonePage()

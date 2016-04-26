@@ -258,6 +258,15 @@
       <Link>Resources\Scripts\Paperview.Microformats.Album.js</Link>
     </BundleResource>
   </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo-captainxamtastic%402x.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo-captainxamtastic.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\logo-captainxamtastic%403x.png" />
+  </ItemGroup>
   <Import Project="..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems" Label="Shared" Condition="Exists('..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <Import Project="..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets" Condition="Exists('..\..\packages\Xamarin.Forms.2.1.0.6529\build\portable-win+net45+wp80+win81+wpa81+MonoAndroid10+MonoTouch10+Xamarin.iOS10\Xamarin.Forms.targets')" />

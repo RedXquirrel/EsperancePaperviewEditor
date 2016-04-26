@@ -13,6 +13,8 @@ namespace Chat.Esperance.Paperview.Pages.Gallery
         public ExhibitsPhonePage()
         {
             InitializeComponent();
+
+            NavigationPage.SetHasNavigationBar(this,false);
         }
     }
 }

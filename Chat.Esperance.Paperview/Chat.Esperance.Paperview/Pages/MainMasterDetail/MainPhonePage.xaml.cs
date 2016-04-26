@@ -33,6 +33,8 @@ namespace Chat.Esperance.Paperview.Pages
             }
 
             masterPhonePage.ListView.ItemSelected += ItemSelected;
+
+            MasterPhonePage.MainNavigationPage = this.MainNavigationPage;
         }
 
         private void ItemSelected(object sender, SelectedItemChangedEventArgs e)
@@ -40,11 +42,16 @@ namespace Chat.Esperance.Paperview.Pages
             var item = e.SelectedItem as MasterPageIndexItemViewModel;
 
             if(item?.ViewModelName == null) return;
-
+            
             using (var scope = DI.Container.BeginLifetimeScope())
             {
                 var service = scope.Resolve<INavigationService>();
-                Detail = new NavigationPage(service.GetBoundPage(item.ViewModelName));
+
+                if (!MainNavigationPage.CurrentPage.BindingContext.GetType().Name.Equals(item.ViewModelName))
+                {
+                    MainNavigationPage.Navigation.PushAsync(service.GetBoundPage(item.ViewModelName));
+                    NavigationPage.SetHasNavigationBar(MainNavigationPage.CurrentPage, false);
+                }
                 masterPhonePage.ListView.SelectedItem = null;
                 IsPresented = false;
             }
