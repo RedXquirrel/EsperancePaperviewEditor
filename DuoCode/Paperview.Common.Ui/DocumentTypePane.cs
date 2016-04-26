@@ -114,51 +114,19 @@ namespace Paperview.Common.Ui
 
         private void CreateTable()
         {
-            var tableElement = Global.document.createElement(TableTagKey);
-            tableElement.setAttribute(ClassAttributeKey, TableClassKey);
-
-            var row1Element = Global.document.createElement(TableRowKey);
-
-            var idLabelElement = Global.document.createElement(DivTagKey);
-            idLabelElement.innerHTML = UiResources.DocumentTypeIdLabel;
-            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            row1Element.appendChild(idLabelElement);
-
-            var idValueElement = Global.document.createElement(DivTagKey);
-            idValueElement.innerHTML = _document.MicroformatId;
-            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            row1Element.appendChild(idValueElement);
-
-            var row2Element = Global.document.createElement(TableRowKey);
-
-            var nameLabelElement = Global.document.createElement(DivTagKey);
-            nameLabelElement.innerHTML = UiResources.DocumentTypeNameLabel;
-            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            row2Element.appendChild(nameLabelElement);
-
-            var nameValueElement = Global.document.createElement(DivTagKey);
-            nameValueElement.innerHTML = _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault);
-            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            row2Element.appendChild(nameValueElement);
-
-            var row3Element = Global.document.createElement(TableRowKey);
-
-            var descriptionLabelElement = Global.document.createElement(DivTagKey);
-            descriptionLabelElement.innerHTML = UiResources.DocumentTypeDescriptionLabel;
-            descriptionLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
-            row3Element.appendChild(descriptionLabelElement);
-
-            var descriptionValueElement = Global.document.createElement(DivTagKey);
-            descriptionValueElement.innerHTML = _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault);
-            descriptionValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
-            row3Element.appendChild(descriptionValueElement);
-
-            tableElement.appendChild(row1Element);
-            tableElement.appendChild(row2Element);
-            tableElement.appendChild(row3Element);
-
-            _container.appendChild(tableElement);
-
+            _container.AppendChild(UiX.CreateTableElement()
+                                        .SetAttribute(UiX.ClassAttributeKey, TableClassKey)
+                                        .AppendChild(UiX.CreateTrElement()
+                                                        .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey)
+                                                        .AppendChild(UiX.CreateTdElement(), _document.MicroformatId, ValueCellClassKey))
+                                        .AppendChild(UiX.CreateTrElement()
+                                                        .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey)
+                                                        .AppendChild(UiX.CreateTdElement(), _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+                                        .AppendChild(UiX.CreateTrElement()
+                                                .AppendChild(UiX.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey)
+                                                .AppendChild(UiX.CreateTdElement(), _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+            );
+            
             _parent?.appendChild(_container);
         }
     }

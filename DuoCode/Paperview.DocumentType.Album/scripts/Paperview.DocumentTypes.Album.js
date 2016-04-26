@@ -80,7 +80,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
 
-        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiExtensionMethods.GetContainer(new Paperview.Common.Ui.DocumentTypePane.ctor(albumMicroformat.get_Document(), 
+        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiX.GetContainer(new Paperview.Common.Ui.DocumentTypePane.ctor(albumMicroformat.get_Document(), 
             0 /* Idiom.Phone */, "en")), "Document Type");
     };
     $t.ctor.prototype = $p;
