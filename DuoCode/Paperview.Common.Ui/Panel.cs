@@ -3,6 +3,7 @@ using DuoCode.Dom;
 using Paperview.Common.Ui.Helpers;
 using Paperview.Common.Ui.Interfaces;
 using Paperview.Common.Ui.Localisation;
+using Paperview.Interfaces;
 
 namespace Paperview.Common.Ui
 {
@@ -36,9 +37,9 @@ namespace Paperview.Common.Ui
         /// </summary>
         /// <param name="content">Content of the Panel.</param>
         /// <param name="panelTitle">Title of the Panel.</param>
-        public Panel(HTMLElement content, string panelTitle)
+        public Panel(HTMLElement content, string panelTitle, Idiom idiom)
         {
-            Initialise(content, panelTitle);
+            Initialise(content, panelTitle, idiom);
         }
 
         /// <summary>
@@ -49,22 +50,22 @@ namespace Paperview.Common.Ui
         /// <param name="parent">Element to append this Panel.</param>
         /// <param name="content">Content of the Panel.</param>
         /// <param name="panelTitle">Title of the Panel.</param>
-        public Panel(HTMLElement parent, HTMLElement content, string panelTitle)
+        public Panel(HTMLElement parent, HTMLElement content, string panelTitle, Idiom idiom)
         {
             _parent = parent;
 
-            Initialise(content, panelTitle);
+            Initialise(content, panelTitle, idiom);
         }
 
-        private void Initialise(HTMLElement content, string panelTitle)
+        private void Initialise(HTMLElement content, string panelTitle, Idiom idiom)
         {
             _container =  Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, ContainerCellClassKey)
                             .AppendChild(Hx.CreateDivElement()
-                                           .SetAttribute(Hx.ClassAttKey, TitleCellClassKey)
+                                           .SetAttribute(Hx.ClassAttKey, TitleCellClassKey.AppendIdiomString(idiom))
                                            .InnerHtml(panelTitle))
                             .AppendChild(Hx.CreateDivElement()
-                                           .SetAttribute(Hx.ClassAttKey, ContentCellClassKey)
+                                           .SetAttribute(Hx.ClassAttKey, ContentCellClassKey.AppendIdiomString(idiom))
                                            .AppendChild(content));
 
             _parent?.appendChild(_container);

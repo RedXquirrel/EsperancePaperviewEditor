@@ -13,28 +13,58 @@ namespace Chat.Esperance.Paperview.Pages
     public partial class MainPhonePage : MasterDetailPage
     {
 
+        public Action<bool> MasterDetailToggleAction { get; set; }
+
         public MainPhonePage()
         {
             try
             {
                 InitializeComponent();
-                NavigationPage.SetHasNavigationBar(this,false);
+
+                this.MasterDetailToggleAction = isOpen =>
+                {
+                    this.IsPresented = !isOpen;
+                };
+
+                NavigationPage.SetHasNavigationBar(this, false);
                 using (var scope = DI.Container.BeginLifetimeScope())
                 {
                     var service = scope.Resolve<INavigationService>();
                     ExhibitsPhonePage.BindingContext = service.GetViewModel("ExhibitsViewModel");
                     masterPhonePage.ListView.SelectedItem = null;
+                    service.MasterDetailAction = this.MasterDetailToggleAction;
                     IsPresented = false;
                 }
             }
             catch (Exception ex)
             {
-                
+
             }
 
             masterPhonePage.ListView.ItemSelected += ItemSelected;
 
             MasterPhonePage.MainNavigationPage = this.MainNavigationPage;
+
+            this.PropertyChanged += MainPhonePage_PropertyChanged;
+        }
+
+
+        private void MainPhonePage_PropertyChanged(object sender, System.ComponentModel.PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName.Equals(MainPhonePage.IsPresentedProperty.PropertyName))
+            {
+                using (var scope = DI.Container.BeginLifetimeScope())
+                {
+                    var service = scope.Resolve<INavigationService>();
+
+                    if (service.MasterDetailAction == null)
+                    {
+                        service.MasterDetailAction = this.MasterDetailToggleAction;
+                    }
+
+                    service.MasterDetailIsOpen = IsPresented;
+                }
+            }
         }
 
         private void ItemSelected(object sender, SelectedItemChangedEventArgs e)

@@ -61,60 +61,60 @@ namespace Paperview.Common.Ui
             switch (idiom)
             {
                 case Idiom.Phone:
-                    CreateStack();
+                    CreateStack(idiom);
                     break;
                 case Idiom.Tablet:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 case Idiom.Desktop:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 case Idiom.Unsupported:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(idiom), idiom, null);
             }
         }
 
-        private void CreateStack()
+        private void CreateStack(Idiom idiom)
         {
             _container
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(UiResources.DocumentTypeIdLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(_document.MicroformatId))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(UiResources.DocumentTypeNameLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(_document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault)))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, NameCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(UiResources.DocumentTypeDescriptionLabel))
             .AppendChild(Hx.CreateDivElement()
-                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey)
+                            .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(_document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault)));
 
             _parent?.appendChild(_container);
         }
 
-        private void CreateTable()
+        private void CreateTable(Idiom idiom)
         {
             _container.AppendChild(Hx.CreateTableElement()
-                                        .SetAttribute(Hx.ClassAttKey, TableClassKey)
+                                        .SetAttribute(Hx.ClassAttKey, TableClassKey.AppendIdiomString(idiom))
                                         .AppendChild(Hx.CreateTrElement()
-                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey)
-                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatId, ValueCellClassKey))
+                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey.AppendIdiomString(idiom))
+                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatId, ValueCellClassKey.AppendIdiomString(idiom)))
                                         .AppendChild(Hx.CreateTrElement()
-                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey)
-                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+                                                        .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey.AppendIdiomString(idiom))
+                                                        .AppendChild(Hx.CreateTdElement(), _document.MicroformatName.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
                                         .AppendChild(Hx.CreateTrElement()
-                                                .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey)
-                                                .AppendChild(Hx.CreateTdElement(), _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey))
+                                                .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey.AppendIdiomString(idiom))
+                                                .AppendChild(Hx.CreateTdElement(), _document.MicroformatDescription.AssertLocale(_locale, _document.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
             );
             
             _parent?.appendChild(_container);

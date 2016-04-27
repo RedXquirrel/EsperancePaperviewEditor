@@ -45,7 +45,7 @@ namespace Chat.Esperance.Paperview.Pages.Documents
             else
             {
                 var html = new HtmlWebViewSource();
-                
+
                 html.Html = htmlString;
 
                 BaseUrlWebView.Source = html;

@@ -3,10 +3,15 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Esperance.Paperview.FormsApplication"
              xmlns:pages="clr-namespace:Chat.Esperance.Paperview.Pages;assembly=Chat.Esperance.Paperview"
+             xmlns:galleryPages="clr-namespace:Chat.Esperance.Paperview.Pages.Gallery;assembly=Chat.Esperance.Paperview"
+             xmlns:documentsPages="clr-namespace:Chat.Esperance.Paperview.Pages.Documents;assembly=Chat.Esperance.Paperview"
              xmlns:converters="clr-namespace:Chat.Esperance.Paperview.Converters;assembly=Chat.Esperance.Paperview"
-              >
+             xmlns:views="clr-namespace:Chat.Esperance.Paperview.Views;assembly=Chat.Esperance.Paperview">
   <Application.Resources>
   <ResourceDictionary>
+    
+    <converters:TempConverter x:Key="TempConverter" />
+    
     <x:Double x:Key="StandardTitleFontSizeDoublePhone">18</x:Double>
     <x:Double x:Key="StandardTitleFontSizeDoubleTablet">40</x:Double>
     <x:Double x:Key="StandardTitleFontSizeDoubleDesktop">60</x:Double>
@@ -15,12 +20,43 @@
     <x:Int32 x:Key="StandardTitleFontSizeIntTablet">18</x:Int32>
     <x:Int32 x:Key="StandardTitleFontSizeIntDesktop">18</x:Int32>
 
+    <Color x:Key="CaptainXamtasticBrandRedColor">#c60c30</Color>
+    <Color x:Key="PaperviewBrandBlueColor">#002f5f</Color>
+    
     <Color x:Key="StandardBackgroundColorPhone">Aqua</Color>
     <Color x:Key="StandardBackgroundColorTablet">Green</Color>
     <Color x:Key="StandardBackgroundColorDesktop">Blue</Color>
     
-    
-      
+    <ControlTemplate x:Key="StandardMasterDetailNavigationTemplate">
+      <StackLayout BackgroundColor="{StaticResource PaperviewBrandBlueColor}">
+        <Grid Padding="5">
+          <views:Hamburger HorizontalOptions="Start" IconColor="White" TappedCommand="{TemplateBinding Parent.CurrentPage.BindingContext.MasterDetailCommand, Mode=TwoWay}" /> 
+          <Label Text="{TemplateBinding Parent.CurrentPage.BindingContext.Title}" TextColor="White" HorizontalOptions="Center" VerticalOptions="Center" />
+        </Grid>
+        <ContentPresenter HorizontalOptions="FillAndExpand" VerticalOptions="FillAndExpand" />
+      </StackLayout>      
+    </ControlTemplate>
+
+    <Style TargetType="galleryPages:ExhibitsPhonePage" x:Key="ExhibitsPhonePageStandardMasterDetailNavigationStyle">
+      <Style.Setters>
+        <Setter Property="ControlTemplate" Value="{StaticResource StandardMasterDetailNavigationTemplate}" />
+      </Style.Setters>
+    </Style>
+
+    <Style TargetType="documentsPages:EditDocumentPhonePage" x:Key="EditDocumentPhonePageStandardMasterDetailNavigationStyle">
+      <Style.Setters>
+        <Setter Property="ControlTemplate" Value="{StaticResource StandardMasterDetailNavigationTemplate}" />
+      </Style.Setters>
+    </Style>
+
+
+    EditDocumentPhonePageStandardMasterDetailNavigationStyle
+
+    <Style TargetType="ContentView" x:Key="ContentViewStandardMasterDetailNavigationStyle">
+      <Style.Setters>
+        <Setter Property="ControlTemplate" Value="{StaticResource StandardMasterDetailNavigationTemplate}" />
+      </Style.Setters>
+    </Style>
 
     <ControlTemplate x:Key="BorderTemplate">
       <StackLayout VerticalOptions="Fill" BackgroundColor="Gray">

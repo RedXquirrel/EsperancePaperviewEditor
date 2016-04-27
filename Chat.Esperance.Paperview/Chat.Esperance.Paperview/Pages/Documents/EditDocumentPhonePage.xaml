@@ -3,6 +3,13 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="Chat.Esperance.Paperview.Pages.Documents.EditDocumentPhonePage"
              xmlns:views="clr-namespace:Chat.Esperance.Paperview.Views;assembly=Chat.Esperance.Paperview"
+             BackgroundColor="{StaticResource PaperviewBrandBlueColor}"
+             Style="{StaticResource EditDocumentPhonePageStandardMasterDetailNavigationStyle}"             
              >
-  <views:BaseUrlWebView x:Name="BaseUrlWebView" />
+  <ContentPage.Padding>
+    0,20,0,0
+  </ContentPage.Padding>
+  <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+    <views:BaseUrlWebView x:Name="BaseUrlWebView" HorizontalOptions="Fill" VerticalOptions="Fill" />
+  </Grid>
 </ContentPage>

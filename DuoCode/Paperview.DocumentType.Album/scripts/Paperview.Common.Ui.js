@@ -39,11 +39,513 @@ Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
 $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
     $t.cctor = function() {
+        $t.ATagKey = "a";
+        $t.AbbrTagKey = "abbr";
+        $t.AddressTagKey = "address";
+        $t.AreaTagKey = "area";
+        $t.ArticleTagKey = "article";
+        $t.AsideTagKey = "aside";
+        $t.AudioTagKey = "audio";
+        $t.BTagKey = "b";
+        $t.BaseTagKey = "base";
+        $t.BdiTagKey = "bdi";
+        $t.BdoTagKey = "bdo";
+        $t.BlockquoteTagKey = "blockquote";
+        $t.BodyTagKey = "body";
+        $t.BrTagKey = "br";
+        $t.ButtonTagKey = "button";
+        $t.CanvasTagKey = "canvas";
+        $t.CaptionTagKey = "caption";
+        $t.CiteTagKey = "cite";
+        $t.CodeTagKey = "code";
+        $t.ColTagKey = "col";
+        $t.ColgroupTagKey = "colgroup";
+        $t.CommandTagKey = "command";
+        $t.DatalistTagKey = "datalist";
+        $t.DdTagKey = "dd";
+        $t.DelTagKey = "del";
+        $t.DetailsTagKey = "details";
+        $t.DfnTagKey = "dfn";
         $t.DivTagKey = "div";
+        $t.DlTagKey = "dl";
+        $t.DtTagList = "dt";
+        $t.EmTagKey = "em";
+        $t.EmbedTagKey = "embed";
+        $t.FieldsetTagKey = "fieldset";
+        $t.FigcaptionTagKey = "figcaption";
+        $t.FigureTagKey = "figure";
+        $t.FooterTagKey = "footer";
+        $t.FormTagKey = "form";
+        $t.H1TagKey = "h1";
+        $t.H2TagKey = "h2";
+        $t.H3TagKey = "h3";
+        $t.H4TagKey = "h4";
+        $t.H5TagKey = "h5";
+        $t.H6TagKey = "h6";
+        $t.HeadTagKey = "head";
+        $t.HeaderTagKey = "header";
+        $t.HgroupTagKey = "hgroup";
+        $t.HrTagKey = "hr";
+        $t.HtmlTagKey = "html";
+        $t.ITagKey = "i";
+        $t.IframeTagKey = "iframe";
+        $t.ImgTagKey = "img";
+        $t.InputTagKey = "input";
+        $t.InsTagKey = "ins";
+        $t.KbdTagKey = "kbd";
+        $t.KeygenTagKey = "keygen";
+        $t.LabelTagKey = "label";
+        $t.LegendTagKey = "legend";
+        $t.LiTagKey = "li";
+        $t.LinkTagKey = "link";
+        $t.MapTagKey = "map";
+        $t.MarkTagKey = "mark";
+        $t.MenuTagKey = "menu";
+        $t.MetaTagKey = "meta";
+        $t.MeterTagKey = "meter";
+        $t.NavTagKey = "nav";
+        $t.NoscriptTagKey = "noscript";
+        $t.ObjectTagKey = "object";
+        $t.OlTagKey = "ol";
+        $t.OptgroupTagKey = "optgroup";
+        $t.OptionTagKey = "option";
+        $t.OutputTagKey = "output";
+        $t.PTagKey = "p";
+        $t.ParamTagKey = "param";
+        $t.PreTagKey = "pre";
+        $t.ProgressTagKey = "progress";
+        $t.QTagKey = "q";
+        $t.RpTagKey = "rp";
+        $t.RtTagKey = "rt";
+        $t.RubyTagKey = "ruby";
+        $t.STagKey = "s";
+        $t.SampTagKey = "samp";
+        $t.ScriptTagKey = "script";
+        $t.SectionTagKey = "section";
+        $t.SelectionTagKey = "selection";
+        $t.SelectTagKey = "select";
+        $t.SmallTagKey = "small";
+        $t.SourceTagKey = "source";
+        $t.SpanTagKey = "span";
+        $t.StrongTagKey = "strong";
+        $t.StyleTagKey = "style";
+        $t.SubTagKey = "sub";
+        $t.SummaryTagKey = "summary";
+        $t.SupTagKey = "sup";
         $t.TableTagKey = "table";
-        $t.TableRowKey = "tr";
-        $t.TableCellKey = "td";
-        $t.ClassAttributeKey = "class";
+        $t.TbodyTagKey = "tbody";
+        $t.TdTagKey = "td";
+        $t.TextareaTagKey = "textarea";
+        $t.TfootTagKey = "tfoot";
+        $t.ThTagKey = "th";
+        $t.TheadTagKey = "thead";
+        $t.TimeTagKey = "time";
+        $t.TitleTagKey = "title";
+        $t.TrTagKey = "tr";
+        $t.TrackTagkey = "track";
+        $t.UTagKey = "u";
+        $t.UlTagKey = "ul";
+        $t.VarTagKey = "var";
+        $t.VideoTagKey = "video";
+        $t.WbrTagKey = "wbr";
+        $t.AccesskeyAttKey = "accesskey";
+        $t.ClassAttKey = "class";
+        $t.ContenteditableAttKey = "contenteditable";
+        $t.ContextmenuAttKey = "contextmenu";
+        $t.DirAttKey = "dir";
+        $t.DraggableAttKey = "draggable";
+        $t.DropzoneAttKey = "dropzone";
+        $t.HiddenAttKey = "hidden";
+        $t.IdAttKey = "id";
+        $t.LangAttKey = "lang";
+        $t.SpellcheckAttKey = "spellcheck";
+        $t.StyleAttKey = "style";
+        $t.TabindexAttKey = "tabindex";
+        $t.TitleAttKey = "title";
+        $t.TranslateAttKey = "translate";
+        $t.OnabortAttKey = "onabort";
+        $t.OnblurAttKey = "onblur";
+        $t.OncanplayAttKey = "oncanplay";
+        $t.OncanplaythroughAttKey = "oncanplaythrough";
+        $t.OnchangeAttKey = "onchange";
+        $t.OnclickAttKey = "onclick";
+        $t.OncontextmenuAttKey = "oncontextmenu";
+        $t.OndblclickAttKey = "ondblclick";
+        $t.OndragAttKey = "ondrag";
+        $t.OndragendAttKey = "ondragend";
+        $t.OndragenterAttKey = "ondragenter";
+        $t.OndragleaveAttKey = "ondragleave";
+        $t.OndragoverAttKey = "ondragover";
+        $t.OndragstartAttKey = "ondragstart";
+        $t.OndropAttKey = "ondrop";
+        $t.OndurationchangeAttKey = "ondurationchange";
+        $t.OnemptiedAttKey = "onemptied";
+        $t.OnendedAttKey = "onended";
+        $t.OnerrorAttKey = "onerror";
+        $t.OnfocusAttyKey = "onfocus";
+        $t.OninputAttKey = "oninput";
+        $t.OninvalidAttKey = "oninvalid";
+        $t.OnkeydownAttKey = "onkeydown";
+        $t.OnkeypressAttKey = "onkeypress";
+        $t.OnkeyupAttKey = "onkeyup";
+        $t.OnloadAttKey = "onload";
+        $t.OnloadeddataAttKey = "onloadeddata";
+        $t.OnloadedmetatdataAttKey = "onloadedmetadata";
+        $t.OnloadStartAttKey = "onloadstart";
+        $t.OnmousedownAttKey = "onmousedown";
+        $t.OnmousemoveAttKey = "onmousemove";
+        $t.OnmouseoutAttKey = "onmouseout";
+        $t.OnmouseoverAttKey = "onmouseover";
+        $t.OnmouseupAttKey = "onmouseup";
+        $t.OnmousewheelAttKey = "onmousewheel";
+        $t.OnpauseAttKey = "onpause";
+        $t.OnplayAttKey = "onplay";
+        $t.OnplayingAttKey = "onplaying";
+        $t.OnprogressAttKey = "onprogress";
+        $t.OnratechangeAttKey = "onratechange";
+        $t.OnreadystatechangeAttKey = "onreadystatechange";
+        $t.OnresetAttKey = "onreset";
+        $t.OnscrollAttKey = "onscroll";
+        $t.OnseekedAttKey = "onseeked";
+        $t.OnseekingAttKey = "onseeking";
+        $t.OnselectAttKey = "onselect";
+        $t.OnshowAttKey = "onshow";
+        $t.OnstalledAttKey = "onstalled";
+        $t.OnsubmitAttKey = "onsubmit";
+        $t.OnsuspendAttKey = "onsuspend";
+        $t.OntimeupdateAttKey = "ontimeupdate";
+        $t.OnvolumechangeAttKey = "onvolumechange";
+        $t.OnwaitingAttKey = "onwaiting";
+        $t.Xml_langAttKey = "xml:lang";
+        $t.Xml_spaceAttKey = "xml:space";
+        $t.Xml_baseAttKey = "xml:base";
+    };
+    $t.CreateAElement = function Hx_CreateAElement() {
+        return $t.GetTag($t().ATagKey);
+    };
+    $t.CreateAbbrElement = function Hx_CreateAbbrElement() {
+        return $t.GetTag($t().AbbrTagKey);
+    };
+    $t.CreateAddressElement = function Hx_CreateAddressElement() {
+        return $t.GetTag($t().AddressTagKey);
+    };
+    $t.CreateAreaElement = function Hx_CreateAreaElement() {
+        return $t.GetTag($t().AreaTagKey);
+    };
+    $t.CreateArticleElement = function Hx_CreateArticleElement() {
+        return $t.GetTag($t().ArticleTagKey);
+    };
+    $t.CreateAsideElement = function Hx_CreateAsideElement() {
+        return $t.GetTag($t().AsideTagKey);
+    };
+    $t.CreateAudioElement = function Hx_CreateAudioElement() {
+        return $t.GetTag($t().AudioTagKey);
+    };
+    $t.CreateBElement = function Hx_CreateBElement() {
+        return $t.GetTag($t().BTagKey);
+    };
+    $t.CreateBaseElement = function Hx_CreateBaseElement() {
+        return $t.GetTag($t().BaseTagKey);
+    };
+    $t.CreateBdiElement = function Hx_CreateBdiElement() {
+        return $t.GetTag($t().BdiTagKey);
+    };
+    $t.CreateBdoElement = function Hx_CreateBdoElement() {
+        return $t.GetTag($t().BdoTagKey);
+    };
+    $t.CreateBlockquoteElement = function Hx_CreateBlockquoteElement() {
+        return $t.GetTag($t().BlockquoteTagKey);
+    };
+    $t.CreateBodyElement = function Hx_CreateBodyElement() {
+        return $t.GetTag($t().BodyTagKey);
+    };
+    $t.CreateBrElement = function Hx_CreateBrElement() {
+        return $t.GetTag($t().BrTagKey);
+    };
+    $t.CreateButtonElement = function Hx_CreateButtonElement() {
+        return $t.GetTag($t().ButtonTagKey);
+    };
+    $t.CreateCanvasElement = function Hx_CreateCanvasElement() {
+        return $t.GetTag($t().CanvasTagKey);
+    };
+    $t.CreateCaptionElement = function Hx_CreateCaptionElement() {
+        return $t.GetTag($t().CaptionTagKey);
+    };
+    $t.CreateCiteElement = function Hx_CreateCiteElement() {
+        return $t.GetTag($t().CiteTagKey);
+    };
+    $t.CreateCodeElement = function Hx_CreateCodeElement() {
+        return $t.GetTag($t().CodeTagKey);
+    };
+    $t.CreateColElement = function Hx_CreateColElement() {
+        return $t.GetTag($t().ColTagKey);
+    };
+    $t.CreateColgroupElement = function Hx_CreateColgroupElement() {
+        return $t.GetTag($t().ColgroupTagKey);
+    };
+    $t.CreateCommandElement = function Hx_CreateCommandElement() {
+        return $t.GetTag($t().CommandTagKey);
+    };
+    $t.CreateDatalistElement = function Hx_CreateDatalistElement() {
+        return $t.GetTag($t().DatalistTagKey);
+    };
+    $t.CreateDdElement = function Hx_CreateDdElement() {
+        return $t.GetTag($t().DdTagKey);
+    };
+    $t.CreateDelElement = function Hx_CreateDelElement() {
+        return $t.GetTag($t().DelTagKey);
+    };
+    $t.CreateDetailsElement = function Hx_CreateDetailsElement() {
+        return $t.GetTag($t().DetailsTagKey);
+    };
+    $t.CreateDfnElement = function Hx_CreateDfnElement() {
+        return $t.GetTag($t().DfnTagKey);
+    };
+    $t.CreateDivElement = function Hx_CreateDivElement() {
+        return $t.GetTag($t().DivTagKey);
+    };
+    $t.CreateDlElement = function Hx_CreateDlElement() {
+        return $t.GetTag($t().DlTagKey);
+    };
+    $t.CreateDtElement = function Hx_CreateDtElement() {
+        return $t.GetTag($t().DtTagList);
+    };
+    $t.CreateEmElement = function Hx_CreateEmElement() {
+        return $t.GetTag($t().EmTagKey);
+    };
+    $t.CreateEmbedElement = function Hx_CreateEmbedElement() {
+        return $t.GetTag($t().EmbedTagKey);
+    };
+    $t.CreateFieldsetElement = function Hx_CreateFieldsetElement() {
+        return $t.GetTag($t().FieldsetTagKey);
+    };
+    $t.CreateFigcaptionElement = function Hx_CreateFigcaptionElement() {
+        return $t.GetTag($t().FigcaptionTagKey);
+    };
+    $t.CreateFigureElement = function Hx_CreateFigureElement() {
+        return $t.GetTag($t().FigureTagKey);
+    };
+    $t.CreateFooterElement = function Hx_CreateFooterElement() {
+        return $t.GetTag($t().FooterTagKey);
+    };
+    $t.CreateFormElement = function Hx_CreateFormElement() {
+        return $t.GetTag($t().FormTagKey);
+    };
+    $t.CreateH1Element = function Hx_CreateH1Element() {
+        return $t.GetTag($t().H1TagKey);
+    };
+    $t.CreateH2Element = function Hx_CreateH2Element() {
+        return $t.GetTag($t().H2TagKey);
+    };
+    $t.CreateH3Element = function Hx_CreateH3Element() {
+        return $t.GetTag($t().H3TagKey);
+    };
+    $t.CreateH4Element = function Hx_CreateH4Element() {
+        return $t.GetTag($t().H4TagKey);
+    };
+    $t.CreateH5Element = function Hx_CreateH5Element() {
+        return $t.GetTag($t().H5TagKey);
+    };
+    $t.CreateH6Element = function Hx_CreateH6Element() {
+        return $t.GetTag($t().H6TagKey);
+    };
+    $t.CreateHeadElement = function Hx_CreateHeadElement() {
+        return $t.GetTag($t().HeadTagKey);
+    };
+    $t.CreateHeaderElement = function Hx_CreateHeaderElement() {
+        return $t.GetTag($t().HeaderTagKey);
+    };
+    $t.CreateHgroupElement = function Hx_CreateHgroupElement() {
+        return $t.GetTag($t().HgroupTagKey);
+    };
+    $t.CreateHrElement = function Hx_CreateHrElement() {
+        return $t.GetTag($t().HrTagKey);
+    };
+    $t.CreateHtmlElement = function Hx_CreateHtmlElement() {
+        return $t.GetTag($t().HtmlTagKey);
+    };
+    $t.CreateIElement = function Hx_CreateIElement() {
+        return $t.GetTag($t().ITagKey);
+    };
+    $t.CreateIframeElement = function Hx_CreateIframeElement() {
+        return $t.GetTag($t().IframeTagKey);
+    };
+    $t.CreateImgElement = function Hx_CreateImgElement() {
+        return $t.GetTag($t().ImgTagKey);
+    };
+    $t.CreateInputElement = function Hx_CreateInputElement() {
+        return $t.GetTag($t().InputTagKey);
+    };
+    $t.CreateInsElement = function Hx_CreateInsElement() {
+        return $t.GetTag($t().InsTagKey);
+    };
+    $t.CreateKbdElement = function Hx_CreateKbdElement() {
+        return $t.GetTag($t().KbdTagKey);
+    };
+    $t.CreateKeygenElement = function Hx_CreateKeygenElement() {
+        return $t.GetTag($t().KeygenTagKey);
+    };
+    $t.CreateLabelElement = function Hx_CreateLabelElement() {
+        return $t.GetTag($t().LabelTagKey);
+    };
+    $t.CreateLegendElement = function Hx_CreateLegendElement() {
+        return $t.GetTag($t().LegendTagKey);
+    };
+    $t.CreateLiElement = function Hx_CreateLiElement() {
+        return $t.GetTag($t().LiTagKey);
+    };
+    $t.CreateLinkElement = function Hx_CreateLinkElement() {
+        return $t.GetTag($t().LinkTagKey);
+    };
+    $t.CreateMapElement = function Hx_CreateMapElement() {
+        return $t.GetTag($t().MapTagKey);
+    };
+    $t.CreateMarkElement = function Hx_CreateMarkElement() {
+        return $t.GetTag($t().MarkTagKey);
+    };
+    $t.CreateMenuElement = function Hx_CreateMenuElement() {
+        return $t.GetTag($t().MenuTagKey);
+    };
+    $t.CreateMetaElement = function Hx_CreateMetaElement() {
+        return $t.GetTag($t().MetaTagKey);
+    };
+    $t.CreateMeterElement = function Hx_CreateMeterElement() {
+        return $t.GetTag($t().MeterTagKey);
+    };
+    $t.CreateNavElement = function Hx_CreateNavElement() {
+        return $t.GetTag($t().NavTagKey);
+    };
+    $t.CreateNoscriptElement = function Hx_CreateNoscriptElement() {
+        return $t.GetTag($t().NoscriptTagKey);
+    };
+    $t.CreateObjectElement = function Hx_CreateObjectElement() {
+        return $t.GetTag($t().ObjectTagKey);
+    };
+    $t.CreateOlElement = function Hx_CreateOlElement() {
+        return $t.GetTag($t().OlTagKey);
+    };
+    $t.CreateOptgroupElement = function Hx_CreateOptgroupElement() {
+        return $t.GetTag($t().OptgroupTagKey);
+    };
+    $t.CreateOptionElement = function Hx_CreateOptionElement() {
+        return $t.GetTag($t().OptionTagKey);
+    };
+    $t.CreateOutputElement = function Hx_CreateOutputElement() {
+        return $t.GetTag($t().OutputTagKey);
+    };
+    $t.CreatePElement = function Hx_CreatePElement() {
+        return $t.GetTag($t().PTagKey);
+    };
+    $t.CreateParamElement = function Hx_CreateParamElement() {
+        return $t.GetTag($t().ParamTagKey);
+    };
+    $t.CreatePreElement = function Hx_CreatePreElement() {
+        return $t.GetTag($t().PreTagKey);
+    };
+    $t.CreateProgressElement = function Hx_CreateProgressElement() {
+        return $t.GetTag($t().ProgressTagKey);
+    };
+    $t.CreateQElement = function Hx_CreateQElement() {
+        return $t.GetTag($t().QTagKey);
+    };
+    $t.CreateRpElement = function Hx_CreateRpElement() {
+        return $t.GetTag($t().RpTagKey);
+    };
+    $t.CreateRtElement = function Hx_CreateRtElement() {
+        return $t.GetTag($t().RtTagKey);
+    };
+    $t.CreateRubyElement = function Hx_CreateRubyElement() {
+        return $t.GetTag($t().RubyTagKey);
+    };
+    $t.CreateSElement = function Hx_CreateSElement() {
+        return $t.GetTag($t().STagKey);
+    };
+    $t.CreateSampElement = function Hx_CreateSampElement() {
+        return $t.GetTag($t().SampTagKey);
+    };
+    $t.CreateScriptElement = function Hx_CreateScriptElement() {
+        return $t.GetTag($t().ScriptTagKey);
+    };
+    $t.CreateSectionElement = function Hx_CreateSectionElement() {
+        return $t.GetTag($t().SectionTagKey);
+    };
+    $t.CreateSelectElement = function Hx_CreateSelectElement() {
+        return $t.GetTag($t().SelectTagKey);
+    };
+    $t.CreateSmallElement = function Hx_CreateSmallElement() {
+        return $t.GetTag($t().SmallTagKey);
+    };
+    $t.CreateSourceElement = function Hx_CreateSourceElement() {
+        return $t.GetTag($t().SourceTagKey);
+    };
+    $t.CreateSpanElement = function Hx_CreateSpanElement() {
+        return $t.GetTag($t().SpanTagKey);
+    };
+    $t.CreateStrongElement = function Hx_CreateStrongElement() {
+        return $t.GetTag($t().StrongTagKey);
+    };
+    $t.CreateStyleElement = function Hx_CreateStyleElement() {
+        return $t.GetTag($t().StyleTagKey);
+    };
+    $t.CreateSubElement = function Hx_CreateSubElement() {
+        return $t.GetTag($t().SubTagKey);
+    };
+    $t.CreateSummaryElement = function Hx_CreateSummaryElement() {
+        return $t.GetTag($t().SummaryTagKey);
+    };
+    $t.CreateSupElement = function Hx_CreateSupElement() {
+        return $t.GetTag($t().SupTagKey);
+    };
+    $t.CreateTableElement = function Hx_CreateTableElement() {
+        return $t.GetTag($t().TableTagKey);
+    };
+    $t.CreateTbodyElement = function Hx_CreateTbodyElement() {
+        return $t.GetTag($t().TbodyTagKey);
+    };
+    $t.CreateTdElement = function Hx_CreateTdElement() {
+        return $t.GetTag($t().TdTagKey);
+    };
+    $t.CreateTextareaElement = function Hx_CreateTextareaElement() {
+        return $t.GetTag($t().TextareaTagKey);
+    };
+    $t.CreateTfootElement = function Hx_CreateTfootElement() {
+        return $t.GetTag($t().TfootTagKey);
+    };
+    $t.CreateThElement = function Hx_CreateThElement() {
+        return $t.GetTag($t().ThTagKey);
+    };
+    $t.CreateTheadElement = function Hx_CreateTheadElement() {
+        return $t.GetTag($t().TheadTagKey);
+    };
+    $t.CreateTimeElement = function Hx_CreateTimeElement() {
+        return $t.GetTag($t().TimeTagKey);
+    };
+    $t.CreateTitleElement = function Hx_CreateTitleElement() {
+        return $t.GetTag($t().TitleTagKey);
+    };
+    $t.CreateTrElement = function Hx_CreateTrElement() {
+        return $t.GetTag($t().TrTagKey);
+    };
+    $t.CreateTrackElement = function Hx_CreateTrackElement() {
+        return $t.GetTag($t().TrackTagkey);
+    };
+    $t.CreateUElement = function Hx_CreateUElement() {
+        return $t.GetTag($t().UTagKey);
+    };
+    $t.CreateUlElement = function Hx_CreateUlElement() {
+        return $t.GetTag($t().UlTagKey);
+    };
+    $t.CreateVarElement = function Hx_CreateVarElement() {
+        return $t.GetTag($t().VarTagKey);
+    };
+    $t.CreateVideoElement = function Hx_CreateVideoElement() {
+        return $t.GetTag($t().VideoTagKey);
+    };
+    $t.CreateWbrElement = function Hx_CreateWbrElement() {
+        return $t.GetTag($t().WbrTagKey);
+    };
+    $t.AppendIdiomString = function Hx_AppendIdiomString(classKey, idiom) {
+        return String.Format("{0}{1}", [classKey, $d.boxEnum(Paperview.Interfaces.Idiom, idiom).toString()]);
     };
     $t.AppendChild = function Hx_AppendChild(parent, child) {
         parent.appendChild(child);
@@ -57,18 +559,6 @@ $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
 
         return parent;
     };
-    $t.CreateDivElement = function Hx_CreateDivElement() {
-        return document.createElement($t().DivTagKey);
-    };
-    $t.CreateTableElement = function Hx_CreateTableElement() {
-        return document.createElement($t().TableTagKey);
-    };
-    $t.CreateTrElement = function Hx_CreateTrElement() {
-        return document.createElement($t().TableRowKey);
-    };
-    $t.CreateTdElement = function Hx_CreateTdElement() {
-        return document.createElement($t().TableCellKey);
-    };
     $t.SetAttribute = function Hx_SetAttribute(element, name, value) {
         element.setAttribute(name, value);
         return element;
@@ -77,6 +567,9 @@ $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
         element.innerHTML = innerHtml;
 
         return element;
+    };
+    $t.GetTag = function Hx_GetTag(key) {
+        return document.createElement(key);
     };
 });
 $d.define(Paperview.Common.Ui.Helpers.UiExtensions, null, function($t, $p) {
@@ -174,52 +667,63 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:
-                this.CreateStack();
+                this.CreateStack(idiom);
                 break;
             case 1 /* Idiom.Tablet */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             case 2 /* Idiom.Desktop */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             case 3 /* Idiom.Unsupported */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             default:
                 throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
                     idiom), null);
         }
     };
-    $p.CreateStack = function DocumentTypePane_CreateStack() {
+    $p.CreateStack = function DocumentTypePane_CreateStack(idiom) {
         Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), this._document.get_MicroformatId())), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), this._document.get_MicroformatId())), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
-            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
                 this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.NameCellClassKey), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ValueCellClassKey), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
                 this._locale, this._document.get_LanguageDefault())));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
-    $p.CreateTable = function DocumentTypePane_CreateTable() {
+    $p.CreateTable = function DocumentTypePane_CreateTable(idiom) {
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateTableElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.TableClassKey), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
+                idiom)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), this._document.get_MicroformatId(), 
-            $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._document.get_MicroformatId(), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
-            this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
-            $t.NameCellClassKey), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
-            this._locale, this._document.get_LanguageDefault()), $t.ValueCellClassKey)));
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
+                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
@@ -241,24 +745,25 @@ $d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
     $p.get_Container = function Panel_get_Container() {
         return this._parent == null ? this._container : null;
     };
-    $t.ctor = function Panel(content, panelTitle) {
+    $t.ctor = function Panel(content, panelTitle, idiom) {
         $t.$baseType.ctor.call(this);
-        this.Initialise(content, panelTitle);
+        this.Initialise(content, panelTitle, idiom);
     };
     $t.ctor.prototype = $p;
-    $t.ctor$1 = function Panel(parent, content, panelTitle) {
+    $t.ctor$1 = function Panel(parent, content, panelTitle, idiom) {
         $t.$baseType.ctor.call(this);
         this._parent = parent;
 
-        this.Initialise(content, panelTitle);
+        this.Initialise(content, panelTitle, idiom);
     };
     $t.ctor$1.prototype = $p;
-    $p.Initialise = function Panel_Initialise(content, panelTitle) {
+    $p.Initialise = function Panel_Initialise(content, panelTitle, idiom) {
         this._container = Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ContainerCellClassKey), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.TitleCellClassKey), panelTitle)), 
-            Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttributeKey, $t.ContentCellClassKey), content));
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, $t.ContainerCellClassKey), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TitleCellClassKey, 
+                idiom)), panelTitle)), Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ContentCellClassKey, 
+                idiom)), content));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
@@ -301,116 +806,133 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:
-                this.CreateStack();
+                this.CreateStack(idiom);
                 break;
             case 1 /* Idiom.Tablet */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             case 2 /* Idiom.Desktop */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             case 3 /* Idiom.Unsupported */:
-                this.CreateTable();
+                this.CreateTable(idiom);
                 break;
             default:
                 throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
                     idiom), null);
         }
     };
-    $p.CreateStack = function PublisherPane_CreateStack() {
+    $p.CreateStack = function PublisherPane_CreateStack(idiom) {
 
         var idLabelElement = document.createElement($t.DivTagKey);
         idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherIdLabel();
-        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        idLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         this._container.appendChild(idLabelElement);
 
         var idValueElement = document.createElement($t.DivTagKey);
         idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        idValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         this._container.appendChild(idValueElement);
 
         var nameLabelElement = document.createElement($t.DivTagKey);
         nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherNameLabel();
-        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        nameLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         this._container.appendChild(nameLabelElement);
 
         var nameValueElement = document.createElement($t.DivTagKey);
         nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        nameValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         this._container.appendChild(nameValueElement);
 
         var emailAddressLabelElement = document.createElement($t.DivTagKey);
         emailAddressLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherEmailAddressLabel();
-        emailAddressLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        emailAddressLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         this._container.appendChild(emailAddressLabelElement);
 
         var emailAddressValueElement = document.createElement($t.DivTagKey);
         emailAddressValueElement.innerHTML = this._publisher.get_Email();
-        emailAddressValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        emailAddressValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         this._container.appendChild(emailAddressValueElement);
 
         var urlLabelElement = document.createElement($t.DivTagKey);
         urlLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherWebAddressLabel();
-        urlLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        urlLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         this._container.appendChild(urlLabelElement);
 
         var urlValueElement = document.createElement($t.DivTagKey);
         urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        urlValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         this._container.appendChild(urlValueElement);
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
-    $p.CreateTable = function PublisherPane_CreateTable() {
+    $p.CreateTable = function PublisherPane_CreateTable(idiom) {
         var tableElement = document.createElement($t.TableTagKey);
-        tableElement.setAttribute($t.ClassAttributeKey, $t.TableClassKey);
+        tableElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
+            idiom));
 
         var row1Element = document.createElement($t.TableRowKey);
 
         var idLabelElement = document.createElement($t.TableCellKey);
         idLabelElement.innerHTML = "Id";
-        idLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        idLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         row1Element.appendChild(idLabelElement);
 
         var idValueElement = document.createElement($t.TableCellKey);
         idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        idValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         row1Element.appendChild(idValueElement);
 
         var row2Element = document.createElement($t.TableRowKey);
 
         var nameLabelElement = document.createElement($t.TableCellKey);
         nameLabelElement.innerHTML = "Name";
-        nameLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        nameLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         row2Element.appendChild((nameLabelElement));
 
         var nameValueElement = document.createElement($t.TableCellKey);
         nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        nameValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         row2Element.appendChild(nameValueElement);
 
         var row3Element = document.createElement($t.TableRowKey);
 
         var emailLabelElement = document.createElement($t.TableCellKey);
         emailLabelElement.innerHTML = "Email";
-        emailLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        emailLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         row3Element.appendChild(emailLabelElement);
 
         var emailValueElement = document.createElement($t.TableCellKey);
         emailValueElement.innerHTML = this._publisher.get_Email();
-        emailValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        emailValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         row3Element.appendChild(emailValueElement);
 
         var row4Element = document.createElement($t.TableRowKey);
 
         var urlLabelElement = document.createElement($t.TableCellKey);
         urlLabelElement.innerHTML = "Web Address";
-        urlLabelElement.setAttribute($t.ClassAttributeKey, $t.NameCellClassKey);
+        urlLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+            idiom));
         row4Element.appendChild((urlLabelElement));
 
         var urlValueElement = document.createElement($t.TableCellKey);
         urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute($t.ClassAttributeKey, $t.ValueCellClassKey);
+        urlValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom));
         row4Element.appendChild(urlValueElement);
 
         tableElement.appendChild(row1Element);

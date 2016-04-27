@@ -22,6 +22,9 @@ namespace Chat.Esperance.PaperviewApi.Services
         public Assembly UiAssembly { get; set; }
         public Page CurrentPage { get; set; }
 
+        public Action<bool> MasterDetailAction { get; set; } 
+        public bool MasterDetailIsOpen { get; set; }
+
         public async void Show(Type viewModelType)
         {
             Type pageType;

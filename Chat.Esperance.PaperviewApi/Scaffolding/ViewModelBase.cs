@@ -1,5 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using System.Windows.Input;
+using Autofac;
+using Chat.Esperance.PaperviewApi.Interfaces;
+using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.Scaffolding
 {
@@ -22,6 +26,14 @@ namespace Chat.Esperance.PaperviewApi.Scaffolding
         public virtual void OnSleep() { }
         public virtual void OnResume() { }
 
+        private ICommand _masterDetailCommand;
+
+        public ICommand MasterDetailCommand
+        {
+            get { return _masterDetailCommand; }
+            set { _masterDetailCommand = value; RaisePropertyChanged(); }
+        }
+
         #region IDisposable members
         public void Dispose()
         {
@@ -31,7 +43,15 @@ namespace Chat.Esperance.PaperviewApi.Scaffolding
 
         public ViewModelBase()
         {
+            this.MasterDetailCommand = new Command((p) =>
+            {
+                using (var scope = DI.Container.BeginLifetimeScope())
+                {
+                    var service = scope.Resolve<INavigationService>();
 
+                    service.MasterDetailAction.Invoke(service.MasterDetailIsOpen);
+                }
+            });
         }
 
         public virtual Task Initialize()

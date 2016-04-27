@@ -19,7 +19,7 @@
         GroupShortNameBinding="{Binding ShortName}"
         IsGroupingEnabled="true"   
         ItemTemplate="{StaticResource MasterDetailDataTemplateSelector}"
-        SeparatorColor="#f35e20"
+        SeparatorColor="{StaticResource CaptainXamtasticBrandRedColor}"
         >
         <ListView.Header>
           <StackLayout Orientation="Vertical">
@@ -36,9 +36,9 @@
                 <RowDefinition Height="Auto" />
                 <RowDefinition Height="Auto" />
               </Grid.RowDefinitions>
-              <BoxView Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Color="Black" HeightRequest="50" WidthRequest="50" />
-              <Label Grid.Row="0" Grid.Column="2" Text="Paperview" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" FontSize="Large" />
-              <Label Grid.Row="1" Grid.Column="2" Text="by Captain Xamtastic" VerticalOptions="Center" HorizontalOptions="End" FontAttributes="Bold" FontSize="Micro" TextColor="Red" />
+              <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="1" Source="logo-paperview.png" />
+              <Label Grid.Row="0" Grid.Column="2" Text="Paperview" TextColor="{StaticResource PaperviewBrandBlueColor}" VerticalOptions="Center" HorizontalOptions="Start" FontAttributes="Bold" FontSize="Large" />
+              <Label Grid.Row="1" Grid.Column="2" Text="by Captain Xamtastic" VerticalOptions="Center" HorizontalOptions="End" FontAttributes="Bold" FontSize="Micro" TextColor="{StaticResource CaptainXamtasticBrandRedColor}" />
               <Image Grid.Row="0" Grid.RowSpan="2" Grid.Column="4" Source="logo-captainxamtastic.png" />
             </Grid>
             <BoxView HeightRequest="10" />
@@ -48,8 +48,8 @@
           <DataTemplate>
             <TextCell Text="{Binding Title}"
             Detail="{Binding Subtitle}"
-            TextColor="#f35e20"
-            DetailColor="#503026" />
+            TextColor="{StaticResource CaptainXamtasticBrandRedColor}"
+            DetailColor="{StaticResource PaperviewBrandBlueColor}" />
           </DataTemplate>
         </ListView.GroupHeaderTemplate>        
       </ListView>      

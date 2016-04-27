@@ -1,42 +1,141 @@
 ﻿body {
 }
 
-  .standardNameValuePairTable {
+     .standardNameValuePairTablePhone {
+        border-collapse: collapse; 
+        border-spacing: 0;
+        width: 100%;
+        height: 100%;
+     }
+
+    .standardNameValuePairTableTablet {
         border-collapse: collapse; 
         border-spacing: 0;
         width: 100%;
         height: 100%;
     }
-  .standardNamePairCell {
+
+    .standardNameValuePairTableDesktop {
+        border-collapse: collapse; 
+        border-spacing: 0;
+        width: 100%;
+        height: 100%;
+    }
+
+  .standardNamePairCellPhone {
       font-weight: bold;
-      background-color: skyblue;
+      color: white;
+      background-color: #002f5f;
       padding: 5px;
   }
 
-  .standardValuePairCell {
-      color: blue;
-      background-color: lightgray;
+  .standardNamePairCellTablet {
+      font-weight: bold;
+      color: white;
+      background-color: #002f5f;
       padding: 5px;
   }
 
-  .standardPanelContainerCell {
-      background-color: transparent;
-      border:5px solid transparent;
-  }
-
-  .standardPanelTitleCell {
-      background-color: skyblue;
+  .standardNamePairCellDesktop {
       font-weight: bold;
-      padding: 10px;
-      border:2px solid white;
-      border-radius: 25px;
+      color: white;
+      background-color: #002f5f;
+      padding: 5px;
   }
 
-  .standardPanelContentCell {
-      background-color: transparent;
+  .standardValuePairCellPhone {
+      color: #002f5f;
+      background-color: white;
+      padding: 5px;
+  }
+
+  .standardValuePairCellTablet {
+      color: #002f5f;
+      background-color: white;
+      padding: 5px;
+  }
+
+    .standardValuePairCellDesktop {
+      color: #002f5f;
+      background-color: white;
+      padding: 5px;
+  }
+
+  .standardPanelContainerCellPhone {
+      background-color: white;
+      border:5px solid white;
+  }
+
+  .standardPanelContainerCellTablet {
+      background-color: white;
+      border:5px solid white;
+  }
+
+  .standardPanelContainerCellDesktop {
+      background-color: white;
+      border:5px solid white;
+  }
+
+  .standardPanelContentCellPhone {
+      font-size: 30px;
+      background-color: white;
       border:5px solid white;
       opacity: 0.7;
   }
+
+  .standardPanelContentCellTablet {
+      font-size: 12px;
+      background-color: white;
+      border:5px solid white;
+      opacity: 0.7;
+  }
+
+  .standardPanelContentCellDesktop {
+      font-size: 12px;
+      background-color: white;
+      border:5px solid white;
+      opacity: 0.7;
+  }
+
+
+  .standardPanelTitleCellPhone {
+      font-size: 40px;
+      text-transform: uppercase;
+      color: white;
+      background-color: #002f5f;
+      font-weight: bold;
+      padding: 10px;
+      border:2px solid white;
+      border-radius: 5px;
+  }
+
+  .standardPanelTitleCellTablet {
+      font-size: 16px;
+      text-transform: uppercase;
+      color: white;
+      background-color: #002f5f;
+      font-weight: bold;
+      padding: 10px;
+      border:2px solid white;
+      border-radius: 5px;
+  }
+
+  .standardPanelTitleCellDesktop {
+      font-size: 16px;
+      text-transform: uppercase;
+      color: White;
+      background-color: #002f5f;
+      font-weight: bold;
+      padding: 10px;
+      border:2px solid white;
+      border-radius: 5px;
+  }
+
+
+
+
+
+
 
 
 

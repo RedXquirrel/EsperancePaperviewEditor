@@ -62,14 +62,11 @@ namespace Paperview.DocumentTypes.Album
 
             //new PublisherPane(rootElement, publisher, Idiom.Phone);
 
-            //new Panel(rootElement, new PublisherPane(publisher, Idiom.Desktop).GetContainer(), "Publisher");
+            new Panel(rootElement, new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
 
 
-            //new Panel(rootElement, new Panel(new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher").GetContainer(), "Outer Name");
 
-            //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
-
-            new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Phone, "en").GetContainer(), "Document Type");
+            //new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Desktop, "en").GetContainer(), "Document Type", Idiom.Desktop);
         }
     }
 

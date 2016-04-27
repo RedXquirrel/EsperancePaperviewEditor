@@ -10,7 +10,7 @@
     <pages:MasterPhonePage x:Name="masterPhonePage" />
   </MasterDetailPage.Master>
   <MasterDetailPage.Detail>
-    <NavigationPage x:Name="MainNavigationPage" BarTextColor="Red" BarBackgroundColor="Black" HasNavigationBar="False">
+    <NavigationPage x:Name="MainNavigationPage" HasNavigationBar="False">
       <x:Arguments>
         <gallery:ExhibitsPhonePage x:Name="ExhibitsPhonePage" />
       </x:Arguments>

@@ -27,6 +27,16 @@ namespace Chat.Esperance.Paperview.ViewModels
             set { _title = value; RaisePropertyChanged(); }
         }
 
+        private string _subtitle;
+        /// <summary>
+        /// The Index Item sub-text
+        /// </summary>
+        public string SubTitle
+        {
+            get { return _subtitle; }
+            set { _subtitle = value; RaisePropertyChanged(); }
+        }
+
         private string _viewModelName;
         /// <summary>
         /// The name of the ViewModel to navigate to

@@ -17,5 +17,8 @@ namespace Chat.Esperance.PaperviewApi.Interfaces
         Page GetBoundPage(String viewModelName);
 
         object GetViewModel(string viewModelName);
+
+        Action<bool> MasterDetailAction { get; set; }
+        bool MasterDetailIsOpen { get; set; }
     }
 }

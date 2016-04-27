@@ -1,4 +1,5 @@
 ﻿using DuoCode.Dom;
+using Paperview.Interfaces;
 
 namespace Paperview.Common.Ui.Helpers
 {
@@ -753,6 +754,12 @@ namespace Paperview.Common.Ui.Helpers
         #endregion
 
         #region Extension methods
+
+        public static string AppendIdiomString(this string classKey, Idiom idiom)
+        {
+            return $"{classKey}{idiom.ToString()}";
+        }
+
         public static HTMLElement AppendChild(this HTMLElement parent, HTMLElement child)
         {
             parent.appendChild(child);

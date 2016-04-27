@@ -73,15 +73,8 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         //new PublisherPane(rootElement, publisher, Idiom.Phone);
 
-        //new Panel(rootElement, new PublisherPane(publisher, Idiom.Desktop).GetContainer(), "Publisher");
-
-
-        //new Panel(rootElement, new Panel(new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher").GetContainer(), "Outer Name");
-
-        //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
-
-        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiExtensions.GetContainer(new Paperview.Common.Ui.DocumentTypePane.ctor(albumMicroformat.get_Document(), 
-            0 /* Idiom.Phone */, "en")), "Document Type");
+        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiExtensions.GetContainer(new Paperview.Common.Ui.PublisherPane.ctor(publisher, 
+            0 /* Idiom.Phone */)), "Publisher", 0 /* Idiom.Phone */);
     };
     $t.ctor.prototype = $p;
 });

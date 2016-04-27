@@ -1,5 +1,6 @@
 ﻿using System;
 using DuoCode.Dom;
+using Paperview.Common.Ui.Helpers;
 using Paperview.Common.Ui.Interfaces;
 using Paperview.Common.Ui.Localisation;
 using Paperview.Interfaces;
@@ -54,119 +55,119 @@ namespace Paperview.Common.Ui
             switch (idiom)
             {
                 case Idiom.Phone:
-                    CreateStack();
+                    CreateStack(idiom);
                     break;
                 case Idiom.Tablet:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 case Idiom.Desktop:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 case Idiom.Unsupported:
-                    CreateTable();
+                    CreateTable(idiom);
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(idiom), idiom, null);
             }
         }
 
-        private void CreateStack()
+        private void CreateStack(Idiom idiom)
         {
 
             var idLabelElement = Global.document.createElement(DivTagKey);
             idLabelElement.innerHTML = UiResources.PublisherIdLabel;
-            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(idLabelElement);
 
             var idValueElement = Global.document.createElement(DivTagKey);
             idValueElement.innerHTML = _publisher.Id;
-            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(idValueElement);
 
             var nameLabelElement = Global.document.createElement(DivTagKey);
             nameLabelElement.innerHTML = UiResources.PublisherNameLabel;
-            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(nameLabelElement);
 
             var nameValueElement = Global.document.createElement(DivTagKey);
             nameValueElement.innerHTML = _publisher.Name;
-            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(nameValueElement);
 
             var emailAddressLabelElement = Global.document.createElement(DivTagKey);
             emailAddressLabelElement.innerHTML = UiResources.PublisherEmailAddressLabel;
-            emailAddressLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            emailAddressLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(emailAddressLabelElement);
 
             var emailAddressValueElement = Global.document.createElement(DivTagKey);
             emailAddressValueElement.innerHTML = _publisher.Email;
-            emailAddressValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            emailAddressValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(emailAddressValueElement);
 
             var urlLabelElement = Global.document.createElement(DivTagKey);
             urlLabelElement.innerHTML = UiResources.PublisherWebAddressLabel;
-            urlLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            urlLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(urlLabelElement);
 
             var urlValueElement = Global.document.createElement(DivTagKey);
             urlValueElement.innerHTML = _publisher.Url;
-            urlValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            urlValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             _container.appendChild(urlValueElement);
 
             _parent?.appendChild(_container);
         }
 
-        private void CreateTable()
+        private void CreateTable(Idiom idiom)
         {
             var tableElement = Global.document.createElement(TableTagKey);
-            tableElement.setAttribute(ClassAttributeKey, TableClassKey);
+            tableElement.setAttribute(ClassAttributeKey, TableClassKey.AppendIdiomString(idiom));
 
             var row1Element = Global.document.createElement(TableRowKey);
 
             var idLabelElement = Global.document.createElement(TableCellKey);
             idLabelElement.innerHTML = "Id";
-            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            idLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             row1Element.appendChild(idLabelElement);
 
             var idValueElement = Global.document.createElement(TableCellKey);
             idValueElement.innerHTML = _publisher.Id;
-            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            idValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             row1Element.appendChild(idValueElement);
 
             var row2Element = Global.document.createElement(TableRowKey);
 
             var nameLabelElement = Global.document.createElement(TableCellKey);
             nameLabelElement.innerHTML = "Name";
-            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            nameLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             row2Element.appendChild((nameLabelElement));
 
             var nameValueElement = Global.document.createElement(TableCellKey);
             nameValueElement.innerHTML = _publisher.Name;
-            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            nameValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             row2Element.appendChild(nameValueElement);
 
             var row3Element = Global.document.createElement(TableRowKey);
 
             var emailLabelElement = Global.document.createElement(TableCellKey);
             emailLabelElement.innerHTML = "Email";
-            emailLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            emailLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             row3Element.appendChild(emailLabelElement);
 
             var emailValueElement = Global.document.createElement(TableCellKey);
             emailValueElement.innerHTML = _publisher.Email;
-            emailValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            emailValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             row3Element.appendChild(emailValueElement);
 
             var row4Element = Global.document.createElement(TableRowKey);
 
             var urlLabelElement = Global.document.createElement(TableCellKey);
             urlLabelElement.innerHTML = "Web Address";
-            urlLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey);
+            urlLabelElement.setAttribute(ClassAttributeKey, NameCellClassKey.AppendIdiomString(idiom));
             row4Element.appendChild((urlLabelElement));
 
             var urlValueElement = Global.document.createElement(TableCellKey);
             urlValueElement.innerHTML = _publisher.Url;
-            urlValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey);
+            urlValueElement.setAttribute(ClassAttributeKey, ValueCellClassKey.AppendIdiomString(idiom));
             row4Element.appendChild(urlValueElement);
 
             tableElement.appendChild(row1Element);
