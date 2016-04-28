@@ -29,16 +29,8 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
     };
     $t.ctor = function AlbumApplication(rootElement) {
         $t.$baseType.ctor.call(this);
-        this._selectPublisherAction = $d.delegate(function(publisherId) {
-            System.Console.WriteLine$10(String.Format("xSelected Index: {0}", [publisherId]));
-
-            if (publisherId >= 0) {
-                System.Console.WriteLine$10(String.Format("XXSelected Publisher: {0}", [this._publishers.get_Item(publisherId).get_Name()]));
-                this._publisherPane.set_DataSource(this._publishers.get_Item(publisherId));
-            }
-            else {
-                this._publisherPane.set_DataSource(null);
-            }
+        this._selectPublisherAction = $d.delegate(function(index) {
+            this._publisherPane.set_Publisher(index >= 0 ? this._publishers.get_Item(index) : null);
         }, this);
 
         var microformat = new Paperview.Common.Microformat.ctor();
@@ -115,9 +107,11 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         //new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Desktop, "en").GetContainer(), "Document Type", Idiom.Desktop);
 
         // new DropDownListPane(rootElement, publishers, Idiom.Phone);
-        new Paperview.Common.Ui.Panel.ctor$1(rootElement, Paperview.Common.Ui.Helpers.UiExtensions.GetContainer(new Paperview.Common.Ui.DropDownPublishersListPane.ctor(this._publishers, 
-            this._selectPublisherAction, 0 /* Idiom.Phone */)), "Publisher", 0 /* Idiom.Phone */);
-        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor$1(rootElement, 0 /* Idiom.Phone */);
+        //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+
+        new Paperview.Common.Ui.DropDownPublishersListPane.ctor$1(rootElement, this._publishers, this._selectPublisherAction, 
+            0 /* Idiom.Phone */);
+        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor$1(rootElement, 2 /* Idiom.Desktop */);
     };
     $t.ctor.prototype = $p;
 });

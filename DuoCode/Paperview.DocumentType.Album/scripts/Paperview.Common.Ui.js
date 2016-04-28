@@ -873,7 +873,6 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         $t.TableTagKey = "table";
         $t.TableRowKey = "tr";
         $t.TableCellKey = "td";
-        $t.ClassAttributeKey = "class";
         $t.TableClassKey = "standardNameValuePairTable";
         $t.NameCellClassKey = "standardNamePairCell";
         $t.ValueCellClassKey = "standardValuePairCell";
@@ -884,7 +883,6 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         this._parent = null;
         this._container = null;
         this._nbspaceKey = "&nbsp;";
-        this._dataSource = null;
     };
     $p.get_Container = function PublisherPane_get_Container() {
         return this._parent == null ? this._container : null;
@@ -929,12 +927,12 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         this.Initialise(publisher, idiom);
     };
     $t.ctor$3.prototype = $p;
-    $p.get_DataSource = function PublisherPane_get_DataSource() {
-        return this._dataSource;
+    $p.get_Publisher = function PublisherPane_get_Publisher() {
+        return this._publisher;
     };
-    $p.set_DataSource = function PublisherPane_set_DataSource(value) {
-        this._dataSource = value;
-        this.Initialise(this._dataSource != null ? this.get_DataSource() : (function() {
+    $p.set_Publisher = function PublisherPane_set_Publisher(value) {
+        this._publisher = value;
+        this.Initialise(this._publisher != null ? this.get_Publisher() : (function() {
             var $obj = new Paperview.Common.Publisher.ctor();
             $obj.set_Id(this._nbspaceKey);
             $obj.set_Name(this._nbspaceKey);
@@ -948,12 +946,11 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         this._publisher = publisher;
 
         if (this._container == null) {
-            this._container = document.createElement($t.DivTagKey);
+            this._container = Paperview.Common.Ui.Helpers.Hx.CreateDivElement();
         }
         else {
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(this._container, String.Empty);
         }
-
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:
@@ -974,124 +971,51 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         }
     };
     $p.CreateStack = function PublisherPane_CreateStack(idiom) {
-
-        var idLabelElement = document.createElement($t.DivTagKey);
-        idLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherIdLabel();
-        idLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        this._container.appendChild(idLabelElement);
-
-        var idValueElement = document.createElement($t.DivTagKey);
-        idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        this._container.appendChild(idValueElement);
-
-        var nameLabelElement = document.createElement($t.DivTagKey);
-        nameLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherNameLabel();
-        nameLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        this._container.appendChild(nameLabelElement);
-
-        var nameValueElement = document.createElement($t.DivTagKey);
-        nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        this._container.appendChild(nameValueElement);
-
-        var emailAddressLabelElement = document.createElement($t.DivTagKey);
-        emailAddressLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherEmailAddressLabel();
-        emailAddressLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        this._container.appendChild(emailAddressLabelElement);
-
-        var emailAddressValueElement = document.createElement($t.DivTagKey);
-        emailAddressValueElement.innerHTML = this._publisher.get_Email();
-        emailAddressValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        this._container.appendChild(emailAddressValueElement);
-
-        var urlLabelElement = document.createElement($t.DivTagKey);
-        urlLabelElement.innerHTML = Paperview.Common.Ui.Localisation.UiResources().get_PublisherWebAddressLabel();
-        urlLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        this._container.appendChild(urlLabelElement);
-
-        var urlValueElement = document.createElement($t.DivTagKey);
-        urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        this._container.appendChild(urlValueElement);
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, 
+            Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Localisation.UiResources().get_PublisherIdLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            this._publisher.get_Id()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Localisation.UiResources().get_PublisherNameLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            this._publisher.get_Name()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Localisation.UiResources().get_PublisherEmailAddressLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            this._publisher.get_Email()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Localisation.UiResources().get_PublisherWebAddressLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            this._publisher.get_Url()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom)));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
     $p.CreateTable = function PublisherPane_CreateTable(idiom) {
-        var tableElement = document.createElement($t.TableTagKey);
-        tableElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
-            idiom));
-
-        var row1Element = document.createElement($t.TableRowKey);
-
-        var idLabelElement = document.createElement($t.TableCellKey);
-        idLabelElement.innerHTML = "Id";
-        idLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        row1Element.appendChild(idLabelElement);
-
-        var idValueElement = document.createElement($t.TableCellKey);
-        idValueElement.innerHTML = this._publisher.get_Id();
-        idValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        row1Element.appendChild(idValueElement);
-
-        var row2Element = document.createElement($t.TableRowKey);
-
-        var nameLabelElement = document.createElement($t.TableCellKey);
-        nameLabelElement.innerHTML = "Name";
-        nameLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        row2Element.appendChild((nameLabelElement));
-
-        var nameValueElement = document.createElement($t.TableCellKey);
-        nameValueElement.innerHTML = this._publisher.get_Name();
-        nameValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        row2Element.appendChild(nameValueElement);
-
-        var row3Element = document.createElement($t.TableRowKey);
-
-        var emailLabelElement = document.createElement($t.TableCellKey);
-        emailLabelElement.innerHTML = "Email";
-        emailLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        row3Element.appendChild(emailLabelElement);
-
-        var emailValueElement = document.createElement($t.TableCellKey);
-        emailValueElement.innerHTML = this._publisher.get_Email();
-        emailValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        row3Element.appendChild(emailValueElement);
-
-        var row4Element = document.createElement($t.TableRowKey);
-
-        var urlLabelElement = document.createElement($t.TableCellKey);
-        urlLabelElement.innerHTML = "Web Address";
-        urlLabelElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-            idiom));
-        row4Element.appendChild((urlLabelElement));
-
-        var urlValueElement = document.createElement($t.TableCellKey);
-        urlValueElement.innerHTML = this._publisher.get_Url();
-        urlValueElement.setAttribute($t.ClassAttributeKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-            idiom));
-        row4Element.appendChild(urlValueElement);
-
-        tableElement.appendChild(row1Element);
-        tableElement.appendChild(row2Element);
-        tableElement.appendChild(row3Element);
-        tableElement.appendChild(row4Element);
-
-        this._container.appendChild(tableElement);
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateTableElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
+                idiom)), Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+                Paperview.Common.Ui.Localisation.UiResources().get_PublisherIdLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._publisher.get_Id()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom)))), Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+                Paperview.Common.Ui.Localisation.UiResources().get_PublisherNameLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._publisher.get_Name()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom)))), Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+                Paperview.Common.Ui.Localisation.UiResources().get_PublisherEmailAddressLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._publisher.get_Email()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom)))), Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+                Paperview.Common.Ui.Localisation.UiResources().get_PublisherWebAddressLabel()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom))), Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._publisher.get_Url()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            idiom)))));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };

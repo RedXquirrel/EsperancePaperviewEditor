@@ -6,6 +6,9 @@
         background-color: #002f5f;
         color: white;
         font-size: 16px;
+        font-weight: bold;
+        margin: 0px;
+        padding: 0px;
     }
 
     .standardSelectTablet {
@@ -13,6 +16,9 @@
         background-color: #002f5f;
         color: white;
         font-size: 16px;
+        font-weight: bold;
+        margin: 0px;
+        padding: 0px;
     }
 
     .standardSelectDesktop {
@@ -20,21 +26,27 @@
         background-color: #002f5f;
         color: white;
         font-size: 16px;
+        font-weight: bold;
+        margin: 0px;
+        padding: 0px;
     }
 
     .standardOptionPhone {
         background-color: White;  
         color: #002f5f;
+        font-weight: normal;
     }
 
     .standardOptionTablet {
         background-color: White;  
         color: #002f5f;
+        font-weight: normal;
     }
 
     .standardOptionDesktop {
         background-color: White;  
         color: #002f5f;
+        font-weight: normal;
     }
 
     .standardNameValuePairTablePhone {

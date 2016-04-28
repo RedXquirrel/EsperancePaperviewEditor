@@ -21,19 +21,9 @@ namespace Paperview.DocumentTypes.Album
 
         public AlbumApplication(HTMLElement rootElement)
         {
-            _selectPublisherAction = publisherId =>
+            _selectPublisherAction = index =>
             {
-                System.Console.WriteLine($"xSelected Index: {publisherId}");
-
-                if ((int)publisherId >= 0)
-                {
-                    System.Console.WriteLine($"XXSelected Publisher: {_publishers[publisherId].Name}");
-                    _publisherPane.DataSource = _publishers[publisherId];
-                }
-                else
-                {
-                    _publisherPane.DataSource = null;
-                }
+                _publisherPane.Publisher = (int)index >= 0 ? _publishers[index] : null;
             };
 
             var microformat = new Microformat();
@@ -105,7 +95,9 @@ namespace Paperview.DocumentTypes.Album
             //new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Desktop, "en").GetContainer(), "Document Type", Idiom.Desktop);
 
             // new DropDownListPane(rootElement, publishers, Idiom.Phone);
-            new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+            //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+
+            new DropDownPublishersListPane(rootElement, _publishers, _selectPublisherAction, Idiom.Phone);
             _publisherPane = new PublisherPane(rootElement, Idiom.Phone);
         }
     }
