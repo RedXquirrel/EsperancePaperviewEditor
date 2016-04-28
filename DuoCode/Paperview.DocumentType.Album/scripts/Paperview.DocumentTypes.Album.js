@@ -25,12 +25,22 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         this._publishers = null;
         this._selectedPublisher = null;
         this._selectPublisherAction = null;
+        this._rootElement = null;
         this._publisherPane = null;
+        this._publisherLabel = null;
+        this._dropDownPublishersList = null;
     };
     $t.ctor = function AlbumApplication(rootElement) {
         $t.$baseType.ctor.call(this);
+        this._rootElement = rootElement;
+
         this._selectPublisherAction = $d.delegate(function(index) {
             this._publisherPane.set_Publisher(index >= 0 ? this._publishers.get_Item(index) : null);
+
+            this._publisherLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
+                this._publishers.get_Item(index).get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
+
+            this._publisherLabel.set_TextCase(2 /* TextCase.Lower */);
         }, this);
 
         var microformat = new Paperview.Common.Microformat.ctor();
@@ -109,9 +119,17 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         // new DropDownListPane(rootElement, publishers, Idiom.Phone);
         //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
 
-        new Paperview.Common.Ui.DropDownPublishersListPane.ctor$1(rootElement, this._publishers, this._selectPublisherAction, 
+        this._publisherLabel = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
             0 /* Idiom.Phone */);
-        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor$1(rootElement, 2 /* Idiom.Desktop */);
+        this._publisherLabel.set_TextCase(1 /* TextCase.Upper */);
+
+        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor(0 /* Idiom.Phone */);
+        this._dropDownPublishersList = new Paperview.Common.Ui.DropDownPublishersListPane.ctor(this._publishers, 
+            this._selectPublisherAction, 0 /* Idiom.Phone */);
+
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownPublishersList.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherPane.get_Container());
     };
     $t.ctor.prototype = $p;
 });

@@ -36,12 +36,14 @@
     <Compile Include="Helpers\Hx.cs" />
     <Compile Include="Helpers\UiExtensions.cs" />
     <Compile Include="Interfaces\IHTMLElement.cs" />
+    <Compile Include="LabelPane.cs" />
     <Compile Include="Localisation\UiResources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>UiResources.resx</DependentUpon>
     </Compile>
     <Compile Include="DocumentTypePane.cs" />
+    <Compile Include="Models\TextCase.cs" />
     <Compile Include="Panel.cs" />
     <Compile Include="PublisherPane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -61,7 +63,7 @@
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Localisation\UiResources.resx">
-      <Generator>ResXFileCodeGenerator</Generator>
+      <Generator>PublicResXFileCodeGenerator</Generator>
       <LastGenOutput>UiResources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>

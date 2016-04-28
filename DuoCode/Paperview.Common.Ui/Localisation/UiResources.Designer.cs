@@ -22,7 +22,7 @@ namespace Paperview.Common.Ui.Localisation {
     [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "4.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class UiResources {
+    public class UiResources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace Paperview.Common.Ui.Localisation {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("Paperview.Common.Ui.Localisation.UiResources", typeof(UiResources).Assembly);
@@ -51,7 +51,7 @@ namespace Paperview.Common.Ui.Localisation {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
@@ -63,7 +63,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
-        internal static string DocumentTypeDescriptionLabel {
+        public static string DocumentTypeDescriptionLabel {
             get {
                 return ResourceManager.GetString("DocumentTypeDescriptionLabel", resourceCulture);
             }
@@ -72,7 +72,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
-        internal static string DocumentTypeIdLabel {
+        public static string DocumentTypeIdLabel {
             get {
                 return ResourceManager.GetString("DocumentTypeIdLabel", resourceCulture);
             }
@@ -81,7 +81,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string DocumentTypeNameLabel {
+        public static string DocumentTypeNameLabel {
             get {
                 return ResourceManager.GetString("DocumentTypeNameLabel", resourceCulture);
             }
@@ -90,7 +90,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Email Address.
         /// </summary>
-        internal static string PublisherEmailAddressLabel {
+        public static string PublisherEmailAddressLabel {
             get {
                 return ResourceManager.GetString("PublisherEmailAddressLabel", resourceCulture);
             }
@@ -99,16 +99,25 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Id.
         /// </summary>
-        internal static string PublisherIdLabel {
+        public static string PublisherIdLabel {
             get {
                 return ResourceManager.GetString("PublisherIdLabel", resourceCulture);
             }
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Publisher.
+        /// </summary>
+        public static string PublisherLabelText {
+            get {
+                return ResourceManager.GetString("PublisherLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Name.
         /// </summary>
-        internal static string PublisherNameLabel {
+        public static string PublisherNameLabel {
             get {
                 return ResourceManager.GetString("PublisherNameLabel", resourceCulture);
             }
@@ -117,7 +126,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Please Select.
         /// </summary>
-        internal static string PublisherPleaseSelectText {
+        public static string PublisherPleaseSelectText {
             get {
                 return ResourceManager.GetString("PublisherPleaseSelectText", resourceCulture);
             }
@@ -126,7 +135,7 @@ namespace Paperview.Common.Ui.Localisation {
         /// <summary>
         ///   Looks up a localized string similar to Web Address.
         /// </summary>
-        internal static string PublisherWebAddressLabel {
+        public static string PublisherWebAddressLabel {
             get {
                 return ResourceManager.GetString("PublisherWebAddressLabel", resourceCulture);
             }

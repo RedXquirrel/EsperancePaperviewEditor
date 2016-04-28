@@ -132,6 +132,9 @@
   <data name="PublisherIdLabel" xml:space="preserve">
     <value>Id</value>
   </data>
+  <data name="PublisherLabelText" xml:space="preserve">
+    <value>Publisher</value>
+  </data>
   <data name="PublisherNameLabel" xml:space="preserve">
     <value>Name</value>
   </data>

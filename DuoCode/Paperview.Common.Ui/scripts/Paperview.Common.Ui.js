@@ -16,6 +16,7 @@ var $asm = {
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeNameLabel": "Name",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherEmailAddressLabel": "Email Address",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherIdLabel": "Id",
+        "Paperview.Common.Ui.Localisation.UiResources$PublisherLabelText": "Publisher",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherNameLabel": "Name",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherPleaseSelectText": "Please Select",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherWebAddressLabel": "Web Address"
@@ -28,6 +29,7 @@ Paperview.Common.Ui = Paperview.Common.Ui || {};
 Paperview.Common.Ui.Helpers = Paperview.Common.Ui.Helpers || {};
 Paperview.Common.Ui.Interfaces = Paperview.Common.Ui.Interfaces || {};
 Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
+Paperview.Common.Ui.Models = Paperview.Common.Ui.Models || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
 Paperview.Common.Ui.DropDownPublishersListPane = $d.declare("Paperview.Common.Ui.DropDownPublishersListPane", 
@@ -35,6 +37,7 @@ Paperview.Common.Ui.DropDownPublishersListPane = $d.declare("Paperview.Common.Ui
 Paperview.Common.Ui.Helpers.Hx = $d.declare("Paperview.Common.Ui.Helpers.Hx", 0, $asm);
 Paperview.Common.Ui.Helpers.UiExtensions = $d.declare("Paperview.Common.Ui.Helpers.UiExtensions", 0, 
     $asm);
+Paperview.Common.Ui.LabelPane = $d.declare("Paperview.Common.Ui.LabelPane", 0, $asm);
 Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.Localisation.UiResources", 
     0, $asm);
 Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
@@ -681,6 +684,113 @@ $d.define(Paperview.Common.Ui.Helpers.UiExtensions, null, function($t, $p) {
         return control.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container();
     };
 });
+$d.define(Paperview.Common.Ui.LabelPane, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.cctor = function() {
+        $t.StandardLabelClassKey = "standardLabel";
+    };
+    $t.$ator = function() {
+        this._idiom = 0 /* Idiom */;
+        this._text = null;
+        this._parent = null;
+        this._container = null;
+        this._nbspaceKey = "&nbsp;";
+        this._textCase = 0 /* TextCase */;
+    };
+    $p.get_Container = function LabelPane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $p.get_TextCase = function LabelPane_get_TextCase() {
+        return this._textCase;
+    };
+    $p.set_TextCase = function LabelPane_set_TextCase(value) {
+        this._textCase = value;
+        this.Initialise(!String.IsNullOrEmpty(this._text) ? this._text : this._nbspaceKey, this._idiom);
+        return value;
+    };
+    $p.get_Text = function LabelPane_get_Text() {
+        return this._text;
+    };
+    $p.set_Text = function LabelPane_set_Text(value) {
+        this._text = value;
+        this.Initialise(!String.IsNullOrEmpty(this._text) ? this._text : this._nbspaceKey, this._idiom);
+        return value;
+    };
+    $t.ctor = function LabelPane(idiom) {
+        $t.$baseType.ctor.call(this);
+        this._idiom = idiom;
+        this.Initialise(String.Empty, idiom);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$2 = function LabelPane(text, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._idiom = idiom;
+        this.Initialise(text, idiom);
+    };
+    $t.ctor$2.prototype = $p;
+    $t.ctor$1 = function LabelPane(parent, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this._idiom = idiom;
+        this.Initialise(String.Empty, idiom);
+    };
+    $t.ctor$1.prototype = $p;
+    $t.ctor$3 = function LabelPane(parent, text, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this._idiom = idiom;
+        this.Initialise(text, idiom);
+    };
+    $t.ctor$3.prototype = $p;
+    $p.Initialise = function LabelPane_Initialise(text, idiom) {
+        this._text = text;
+
+        if (this._container == null) {
+            this._container = Paperview.Common.Ui.Helpers.Hx.CreateDivElement();
+        }
+        else {
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(this._container, String.Empty);
+        }
+
+        switch (idiom) {
+            case 0 /* Idiom.Phone */:
+                this.Create(idiom);
+                break;
+            case 1 /* Idiom.Tablet */:
+                this.Create(idiom);
+                break;
+            case 2 /* Idiom.Desktop */:
+                this.Create(idiom);
+                break;
+            case 3 /* Idiom.Unsupported */:
+                this.Create(idiom);
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
+                    idiom), null);
+        }
+    };
+    $p.Create = function LabelPane_Create(idiom) {
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            this.CasedText()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.StandardLabelClassKey, 
+            idiom)));
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.CasedText = function LabelPane_CasedText() {
+        switch (this._textCase) {
+            case 0 /* TextCase.Normal */:
+                return this._text;
+            case 1 /* TextCase.Upper */:
+                return this._text.toUpperCase();
+            case 2 /* TextCase.Lower */:
+                return this._text.toLowerCase();
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor();
+        }
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
 $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     $t.cctor = function() {
         $t.resourceMan = null;
@@ -719,6 +829,9 @@ $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     };
     $t.get_PublisherIdLabel = function UiResources_get_PublisherIdLabel() {
         return $t().get_ResourceManager().GetString("PublisherIdLabel", $t().resourceCulture);
+    };
+    $t.get_PublisherLabelText = function UiResources_get_PublisherLabelText() {
+        return $t().get_ResourceManager().GetString("PublisherLabelText", $t().resourceCulture);
     };
     $t.get_PublisherNameLabel = function UiResources_get_PublisherNameLabel() {
         return $t().get_ResourceManager().GetString("PublisherNameLabel", $t().resourceCulture);
@@ -826,6 +939,7 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
     };
     $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
 });
+Paperview.Common.Ui.Models.TextCase = $d.typeEnum("Paperview.Common.Ui.Models.TextCase", 45, $asm, 257, ["Normal", "Upper", "Lower"], [0, 1, 2]);
 $d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
     $t.cctor = function() {
@@ -869,10 +983,6 @@ $d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
 $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
     $t.cctor = function() {
-        $t.DivTagKey = "div";
-        $t.TableTagKey = "table";
-        $t.TableRowKey = "tr";
-        $t.TableCellKey = "td";
         $t.TableClassKey = "standardNameValuePairTable";
         $t.NameCellClassKey = "standardNamePairCell";
         $t.ValueCellClassKey = "standardValuePairCell";

@@ -4,6 +4,8 @@ using DuoCode.Dom;
 using Paperview.Common;
 using Paperview.Common.Ui;
 using Paperview.Common.Ui.Helpers;
+using Paperview.Common.Ui.Localisation;
+using Paperview.Common.Ui.Models;
 using Paperview.Interfaces;
 using Paperview.Microformats.Album;
 
@@ -17,13 +19,20 @@ namespace Paperview.DocumentTypes.Album
         private Publisher _selectedPublisher;
         private Action<int> _selectPublisherAction;
 
+        private HTMLElement _rootElement;
         private PublisherPane _publisherPane;
+        private LabelPane _publisherLabel;
+        private DropDownPublishersListPane _dropDownPublishersList;
 
         public AlbumApplication(HTMLElement rootElement)
         {
+            _rootElement = rootElement;
+
             _selectPublisherAction = index =>
             {
                 _publisherPane.Publisher = (int)index >= 0 ? _publishers[index] : null;
+
+                _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_publishers[index].Name})" : UiResources.PublisherLabelText;
             };
 
             var microformat = new Microformat();
@@ -97,8 +106,13 @@ namespace Paperview.DocumentTypes.Album
             // new DropDownListPane(rootElement, publishers, Idiom.Phone);
             //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
 
-            new DropDownPublishersListPane(rootElement, _publishers, _selectPublisherAction, Idiom.Phone);
-            _publisherPane = new PublisherPane(rootElement, Idiom.Phone);
+            _publisherLabel = new LabelPane(UiResources.PublisherLabelText, Idiom.Phone) { TextCase = TextCase.Upper };
+            _publisherPane = new PublisherPane(Idiom.Phone);
+            _dropDownPublishersList = new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone);
+
+            _rootElement.AppendChild(_publisherLabel.Container);
+            _rootElement.AppendChild(_dropDownPublishersList.Container);
+            _rootElement.AppendChild(_publisherPane.Container);
         }
     }
 

@@ -17,12 +17,6 @@ namespace Paperview.Common.Ui
         private readonly HTMLElement _parent;
         private HTMLElement _container;
 
-        // tags
-        private const string DivTagKey = "div";
-        private const string TableTagKey = "table";
-        private const string TableRowKey = "tr";
-        private const string TableCellKey = "td";
-
         // attribute values
         private const string TableClassKey = "standardNameValuePairTable";
         private const string NameCellClassKey = "standardNamePairCell";
