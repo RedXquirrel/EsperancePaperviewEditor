@@ -135,6 +135,9 @@
   <data name="PublisherNameLabel" xml:space="preserve">
     <value>Name</value>
   </data>
+  <data name="PublisherPleaseSelectText" xml:space="preserve">
+    <value>Please Select</value>
+  </data>
   <data name="PublisherWebAddressLabel" xml:space="preserve">
     <value>Web Address</value>
   </data>

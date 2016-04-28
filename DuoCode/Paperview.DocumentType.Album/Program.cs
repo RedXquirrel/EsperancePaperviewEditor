@@ -13,11 +13,29 @@ namespace Paperview.DocumentTypes.Album
 {
     public class AlbumApplication
     {
-        // tags
-        private const string DivTagKey = "div";
+        public List<Publisher> _publishers;
+        private Publisher _selectedPublisher;
+        private Action<int> _selectPublisherAction;
+
+        private PublisherPane _publisherPane;
 
         public AlbumApplication(HTMLElement rootElement)
         {
+            _selectPublisherAction = publisherId =>
+            {
+                System.Console.WriteLine($"xSelected Index: {publisherId}");
+
+                if ((int)publisherId >= 0)
+                {
+                    System.Console.WriteLine($"XXSelected Publisher: {_publishers[publisherId].Name}");
+                    _publisherPane.DataSource = _publishers[publisherId];
+                }
+                else
+                {
+                    _publisherPane.DataSource = null;
+                }
+            };
+
             var microformat = new Microformat();
 
             #region 
@@ -46,27 +64,49 @@ namespace Paperview.DocumentTypes.Album
             document.Microformat = microformat;
             #endregion
 
-            var publisher = new Publisher()
+            _publishers = new List<Publisher>();
+
+            _publishers.Add(new Publisher()
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Esperance",
                 Email = "anthony.harrison@xamtastic.com",
-                Url = "http://www.esperance.com"
-            };
+                Url = "http://www.esperance.chat"
+            });
+
+            _publishers.Add(new Publisher()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Xamtastic",
+                Email = "anthony.harrison@xamtastic.com",
+                Url = "http://www.xamtastic.com"
+            });
+
+            _publishers.Add(new Publisher()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Captain Xamtastic",
+                Email = "anthony.harrison@captainxamtastic.com",
+                Url = "http://www.captainxamtastic.com"
+            });
+
+
 
             var albumMicroformat = new AlbumMicroformat()
             {
                 Document = document,
-                Publisher = publisher
+                Publisher = _publishers[0]
             };
 
+            // new PublisherPane(rootElement, Idiom.Phone);
             //new PublisherPane(rootElement, publisher, Idiom.Phone);
-
-            new Panel(rootElement, new PublisherPane(publisher, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
-
-
-
+            //new Panel(rootElement, new PublisherPane(publishers[0], Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+            //new DocumentTypePane(rootElement, albumMicroformat.Document, Idiom.Phone, "en");
             //new Panel(rootElement, new DocumentTypePane(albumMicroformat.Document, Idiom.Desktop, "en").GetContainer(), "Document Type", Idiom.Desktop);
+
+            // new DropDownListPane(rootElement, publishers, Idiom.Phone);
+            new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+            _publisherPane = new PublisherPane(rootElement, Idiom.Phone);
         }
     }
 
@@ -74,6 +114,8 @@ namespace Paperview.DocumentTypes.Album
     {
         static void Run() // HTML body.onload event entry point, see index.html
         {
+            System.Console.WriteLine("Hello DuoCode");
+
             var el = Global.document.getElementById("content");
             el.innerHTML = string.Empty;
             var albumApplication = new AlbumApplication(el);

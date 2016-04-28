@@ -17,6 +17,7 @@ var $asm = {
         "Paperview.Common.Ui.Localisation.UiResources$PublisherEmailAddressLabel": "Email Address",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherIdLabel": "Id",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherNameLabel": "Name",
+        "Paperview.Common.Ui.Localisation.UiResources$PublisherPleaseSelectText": "Please Select",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherWebAddressLabel": "Web Address"
     }
 };
@@ -29,6 +30,8 @@ Paperview.Common.Ui.Interfaces = Paperview.Common.Ui.Interfaces || {};
 Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
+Paperview.Common.Ui.DropDownPublishersListPane = $d.declare("Paperview.Common.Ui.DropDownPublishersListPane", 
+    0, $asm);
 Paperview.Common.Ui.Helpers.Hx = $d.declare("Paperview.Common.Ui.Helpers.Hx", 0, $asm);
 Paperview.Common.Ui.Helpers.UiExtensions = $d.declare("Paperview.Common.Ui.Helpers.UiExtensions", 0, 
     $asm);
@@ -37,6 +40,99 @@ Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.L
 Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
 Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
+Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
+$d.define(Paperview.Common.Ui.DropDownPublishersListPane, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.$ator = function() {
+        this._publishers = null;
+        this._selectedPublisherIndex = 0;
+        this._idiom = 0 /* Idiom */;
+        this._selectedPublisherAction = null;
+        this._parent = null;
+        this._container = null;
+        this._select = null;
+    };
+    $p.get_Container = function DropDownPublishersListPane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function DropDownPublishersListPane(publishers, selectedAction, idiom) {
+        $t.$baseType.ctor.call(this);
+        this.Initialise(publishers, selectedAction, idiom);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function DropDownPublishersListPane(parent, publishers, selectedAction, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this.Initialise(publishers, selectedAction, idiom);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function DropDownPublishersListPane_Initialise(publishers, selectedAction, idiom) {
+        // store data
+        this._publishers = publishers;
+        this._idiom = idiom;
+        // store action
+        this._selectedPublisherAction = selectedAction;
+        // create container
+        this._container = Paperview.Common.Ui.Helpers.Hx.CreateContainerControl();
+
+        // switch on idiom
+        switch (idiom) {
+            case 0 /* Idiom.Phone */:
+                this.CreateSelect(idiom);
+                break;
+            case 1 /* Idiom.Tablet */:
+                this.CreateSelect(idiom);
+                break;
+            case 2 /* Idiom.Desktop */:
+                this.CreateSelect(idiom);
+                break;
+            case 3 /* Idiom.Unsupported */:
+                this.CreateSelect(idiom);
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
+                    idiom), null);
+        }
+    };
+    $p.CreateSelect = function DropDownPublishersListPane_CreateSelect(idiom) {
+        this._select = $d.cast(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateSelectElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardSelectClassKey, 
+                idiom)), HTMLSelectElement);
+
+        this._select.onchange = $d.delegate(function(onchangeevent) {
+            System.Console.WriteLine$10(String.Format("Selected Index: {0}", [this._select.selectedIndex]));
+
+            this._selectedPublisherIndex = this._select.selectedIndex - 1;
+
+            if (this._selectedPublisherIndex >= 0) {
+                System.Console.WriteLine$10(String.Format("Selected Publisher: {0}", [this._publishers.get_Item(this._selectedPublisherIndex).get_Name()]));
+            }
+
+            this._selectedPublisherAction(this._select.selectedIndex - 1);
+
+            return 0;
+        }, this);
+
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ValueAttKey, "-1"), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardOptionClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_PublisherPleaseSelectText()));
+        var $iter = this._publishers;
+        var $enumerator = $iter.System$Collections$IEnumerable$GetEnumerator();
+        while ($enumerator.System$Collections$IEnumerator$MoveNext()) {
+            var publisher = $enumerator.System$Collections$IEnumerator$get_Current();
+            Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ValueAttKey, publisher.get_Id()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardOptionClassKey, 
+                    idiom)), publisher.get_Name()));
+        }
+
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, this._select);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
 $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
     $t.cctor = function() {
         $t.ATagKey = "a";
@@ -163,6 +259,7 @@ $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
         $t.TabindexAttKey = "tabindex";
         $t.TitleAttKey = "title";
         $t.TranslateAttKey = "translate";
+        $t.ValueAttKey = "value";
         $t.OnabortAttKey = "onabort";
         $t.OnblurAttKey = "onblur";
         $t.OncanplayAttKey = "oncanplay";
@@ -544,6 +641,9 @@ $d.define(Paperview.Common.Ui.Helpers.Hx, null, function($t, $p) {
     $t.CreateWbrElement = function Hx_CreateWbrElement() {
         return $t.GetTag($t().WbrTagKey);
     };
+    $t.CreateContainerControl = function Hx_CreateContainerControl() {
+        return document.createElement(Paperview.Common.Ui.Helpers.Hx().DivTagKey);
+    };
     $t.AppendIdiomString = function Hx_AppendIdiomString(classKey, idiom) {
         return String.Format("{0}{1}", [classKey, $d.boxEnum(Paperview.Interfaces.Idiom, idiom).toString()]);
     };
@@ -581,7 +681,6 @@ $d.define(Paperview.Common.Ui.Helpers.UiExtensions, null, function($t, $p) {
         return control.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container();
     };
 });
-Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
 $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     $t.cctor = function() {
         $t.resourceMan = null;
@@ -624,6 +723,9 @@ $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     $t.get_PublisherNameLabel = function UiResources_get_PublisherNameLabel() {
         return $t().get_ResourceManager().GetString("PublisherNameLabel", $t().resourceCulture);
     };
+    $t.get_PublisherPleaseSelectText = function UiResources_get_PublisherPleaseSelectText() {
+        return $t().get_ResourceManager().GetString("PublisherPleaseSelectText", $t().resourceCulture);
+    };
     $t.get_PublisherWebAddressLabel = function UiResources_get_PublisherWebAddressLabel() {
         return $t().get_ResourceManager().GetString("PublisherWebAddressLabel", $t().resourceCulture);
     };
@@ -631,11 +733,6 @@ $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
 $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
     $t.cctor = function() {
-        $t.DivTagKey = "div";
-        $t.TableTagKey = "table";
-        $t.TableRowKey = "tr";
-        $t.TableCellKey = "td";
-        $t.ClassAttributeKey = "class";
         $t.TableClassKey = "standardNameValuePairTable";
         $t.NameCellClassKey = "standardNamePairCell";
         $t.ValueCellClassKey = "standardValuePairCell";
@@ -662,8 +759,8 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
     $t.ctor$1.prototype = $p;
     $p.Initialise = function DocumentTypePane_Initialise(mfDocument, idiom, locale) {
         this._document = mfDocument;
-        this._container = document.createElement($t.DivTagKey);
         this._locale = locale;
+        this._container = document.createElement(Paperview.Common.Ui.Helpers.Hx().DivTagKey);
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:
@@ -782,27 +879,81 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         $t.ValueCellClassKey = "standardValuePairCell";
     };
     $t.$ator = function() {
+        this._idiom = 0 /* Idiom */;
         this._publisher = null;
         this._parent = null;
         this._container = null;
+        this._nbspaceKey = "&nbsp;";
+        this._dataSource = null;
     };
     $p.get_Container = function PublisherPane_get_Container() {
         return this._parent == null ? this._container : null;
     };
-    $t.ctor = function PublisherPane(publisher, idiom) {
+    $t.ctor = function PublisherPane(idiom) {
         $t.$baseType.ctor.call(this);
-        this.Initialise(publisher, idiom);
+        this._idiom = idiom;
+        this.Initialise((function() {
+            var $obj = new Paperview.Common.Publisher.ctor();
+            $obj.set_Id(this._nbspaceKey);
+            $obj.set_Name(this._nbspaceKey);
+            $obj.set_Email(this._nbspaceKey);
+            $obj.set_Url(this._nbspaceKey);
+            return $obj;
+        }).call(this), idiom);
     };
     $t.ctor.prototype = $p;
-    $t.ctor$1 = function PublisherPane(parent, publisher, idiom) {
+    $t.ctor$2 = function PublisherPane(publisher, idiom) {
         $t.$baseType.ctor.call(this);
-        this._parent = parent;
+        this._idiom = idiom;
         this.Initialise(publisher, idiom);
     };
+    $t.ctor$2.prototype = $p;
+    $t.ctor$1 = function PublisherPane(parent, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this._idiom = idiom;
+        this.Initialise((function() {
+            var $obj = new Paperview.Common.Publisher.ctor();
+            $obj.set_Id(this._nbspaceKey);
+            $obj.set_Name(this._nbspaceKey);
+            $obj.set_Email(this._nbspaceKey);
+            $obj.set_Url(this._nbspaceKey);
+            return $obj;
+        }).call(this), idiom);
+    };
     $t.ctor$1.prototype = $p;
+    $t.ctor$3 = function PublisherPane(parent, publisher, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this._idiom = idiom;
+        this.Initialise(publisher, idiom);
+    };
+    $t.ctor$3.prototype = $p;
+    $p.get_DataSource = function PublisherPane_get_DataSource() {
+        return this._dataSource;
+    };
+    $p.set_DataSource = function PublisherPane_set_DataSource(value) {
+        this._dataSource = value;
+        this.Initialise(this._dataSource != null ? this.get_DataSource() : (function() {
+            var $obj = new Paperview.Common.Publisher.ctor();
+            $obj.set_Id(this._nbspaceKey);
+            $obj.set_Name(this._nbspaceKey);
+            $obj.set_Email(this._nbspaceKey);
+            $obj.set_Url(this._nbspaceKey);
+            return $obj;
+        }).call(this), this._idiom);
+        return value;
+    };
     $p.Initialise = function PublisherPane_Initialise(publisher, idiom) {
         this._publisher = publisher;
-        this._container = document.createElement($t.DivTagKey);
+
+        if (this._container == null) {
+            this._container = document.createElement($t.DivTagKey);
+        }
+        else {
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(this._container, String.Empty);
+        }
+
 
         switch (idiom) {
             case 0 /* Idiom.Phone */:

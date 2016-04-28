@@ -71,15 +71,55 @@ namespace Chat.Esperance.Paperview.Views
             this.IconCharacter = "\uf0c9";
             this.IconColor = Color.Black;
 
+            _fontSizeCache = TextLabel.FontSize;
+
             var tapGestureRecogniser = new TapGestureRecognizer();
             tapGestureRecogniser.Tapped += TapGestureRecogniser_Tapped;
 
             TextLabel.GestureRecognizers.Add(tapGestureRecogniser);
         }
 
-        private void TapGestureRecogniser_Tapped(object sender, EventArgs e)
+        private double _fontSizeCache;
+
+        private async void TapGestureRecogniser_Tapped(object sender, EventArgs e)
         {
-            TappedCommand?.Execute(null);
+            TapAnimation();
+        }
+
+        private void TapAnimation()
+        {
+            this.Animate(
+                name: "ButtonTapAnimation",
+                animation: new Xamarin.Forms.Animation((val) =>
+                {
+                    TextLabel.FontSize = _fontSizeCache + 4;
+                }),
+                easing: Easing.CubicOut,
+                length: 250,
+                finished: (val, b) =>
+                {
+                    ResetAnimation();
+                },
+                repeat: () => { return false; }
+                );
+        }
+
+        private void ResetAnimation()
+        {
+            this.Animate(
+                name: "ButtonResetAnimation",
+                animation: new Xamarin.Forms.Animation((val) =>
+                {
+                    TextLabel.FontSize = _fontSizeCache;
+                }),
+                easing: Easing.CubicIn,
+                length: 250,
+                finished: (val, b) =>
+                {
+                    TappedCommand?.Execute(null);
+                },
+                repeat: () => { return false; }
+                );
         }
     }
 }

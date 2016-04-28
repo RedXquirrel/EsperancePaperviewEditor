@@ -10,6 +10,7 @@ namespace Paperview.Common.Ui
     public class PublisherPane : IHtmlElement
     {
         // Data
+        private Idiom _idiom;
         private Publisher _publisher;
 
         // UI
@@ -30,27 +31,66 @@ namespace Paperview.Common.Ui
         private const string NameCellClassKey = "standardNamePairCell";
         private const string ValueCellClassKey = "standardValuePairCell";
 
+        // misc
+        private string _nbspaceKey = "&nbsp;";
+
         /// <summary>
         /// The control is only available if the parent that 
         /// it becomes a child of, wasn't passed in.
         /// </summary>
         public HTMLElement Container => _parent == null ? _container : null;
 
+        public PublisherPane(Idiom idiom)
+        {
+            _idiom = idiom;
+            Initialise(new Publisher() { Id = _nbspaceKey, Name = _nbspaceKey, Email = _nbspaceKey, Url = _nbspaceKey }, idiom);
+        }
+
         public PublisherPane(Publisher publisher, Idiom idiom)
         {
+            _idiom = idiom;
             Initialise(publisher, idiom);
+        }
+
+        public PublisherPane(HTMLElement parent, Idiom idiom)
+        {
+            _parent = parent;
+            _idiom = idiom;
+            Initialise(new Publisher() { Id = _nbspaceKey, Name = _nbspaceKey, Email = _nbspaceKey, Url = _nbspaceKey }, idiom);
         }
 
         public PublisherPane(HTMLElement parent, Publisher publisher, Idiom idiom)
         {
             _parent = parent;
+            _idiom = idiom;
             Initialise(publisher, idiom);
+        }
+
+        private Publisher _dataSource;
+
+        public Publisher DataSource
+        {
+            get { return _dataSource; }
+            set
+            {
+                _dataSource = value;
+                Initialise(_dataSource != null ? DataSource : new Publisher() {Id = _nbspaceKey, Name = _nbspaceKey, Email = _nbspaceKey, Url = _nbspaceKey}, _idiom);
+            }
         }
 
         private void Initialise(Publisher publisher, Idiom idiom)
         {
             _publisher = publisher;
-            _container = Global.document.createElement(DivTagKey);
+
+            if (_container == null)
+            {
+                _container = Global.document.createElement(DivTagKey);
+            }
+            else
+            {
+                _container.InnerHtml(string.Empty);
+            }
+            
 
             switch (idiom)
             {

@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="Document.cs" />
+    <Compile Include="Helpers\AppStyles.cs" />
     <Compile Include="Legal.cs" />
     <Compile Include="Microformat.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

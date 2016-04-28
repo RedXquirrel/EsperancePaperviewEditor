@@ -2,6 +2,6 @@
 "version" : 3,
 "file" : "Paperview.Common.js",
 "sourceRoot" : "../",
-"sources" : ["Document.cs", "Microformat.cs"],
-"mappings" : ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAckB,OAAO,WAAM;;;QACb,cAAS,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKjC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKhC,OAAO,YAAO;;;QACd,eAAU,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QChBlC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;"
+"sources" : ["Document.cs", "Helpers/AppStyles.cs", "Microformat.cs"],
+"mappings" : ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAckB,OAAO,WAAM;;;QACb,cAAS,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKjC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKhC,OAAO,YAAO;;;QACd,eAAU,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;oCCjBE;oCACA;;;;;;;;;;;;;;;;;;;;;;;;;;;;QCApC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;"
 }

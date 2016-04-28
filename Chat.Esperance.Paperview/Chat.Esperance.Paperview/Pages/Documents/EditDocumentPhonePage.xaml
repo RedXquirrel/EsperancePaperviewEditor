@@ -9,7 +9,7 @@
   <ContentPage.Padding>
     0,20,0,0
   </ContentPage.Padding>
-  <Grid HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
+  <ScrollView HorizontalOptions="Fill" VerticalOptions="FillAndExpand">
     <views:BaseUrlWebView x:Name="BaseUrlWebView" HorizontalOptions="Fill" VerticalOptions="Fill" />
-  </Grid>
+  </ScrollView>
 </ContentPage>

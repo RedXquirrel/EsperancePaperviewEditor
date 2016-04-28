@@ -145,6 +145,9 @@ namespace Paperview.Common.Ui.Helpers
         public static string TitleAttKey = "title";
         public static string TranslateAttKey = "translate";
 
+        // Supernumary attributes
+        public static string ValueAttKey = "value";
+
         // Event-handler attributes
         public static string OnabortAttKey = "onabort";
         public static string OnblurAttKey = "onblur";
@@ -752,6 +755,11 @@ namespace Paperview.Common.Ui.Helpers
             return GetTag(WbrTagKey);
         }
         #endregion
+
+        public static HTMLElement CreateContainerControl()
+        {
+            return Global.document.createElement(Hx.DivTagKey);
+        }
 
         #region Extension methods
 

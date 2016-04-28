@@ -115,6 +115,15 @@ namespace Paperview.Common.Ui.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Please Select.
+        /// </summary>
+        internal static string PublisherPleaseSelectText {
+            get {
+                return ResourceManager.GetString("PublisherPleaseSelectText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Web Address.
         /// </summary>
         internal static string PublisherWebAddressLabel {

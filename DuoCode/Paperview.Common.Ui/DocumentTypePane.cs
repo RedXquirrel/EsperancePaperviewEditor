@@ -21,15 +21,6 @@ namespace Paperview.Common.Ui
         private readonly HTMLElement _parent;
         private HTMLElement _container;
 
-        // tags
-        private const string DivTagKey = "div";
-        private const string TableTagKey = "table";
-        private const string TableRowKey = "tr";
-        private const string TableCellKey = "td";
-
-        // attribute names
-        private const string ClassAttributeKey = "class";
-
         // attribute values
         private const string TableClassKey = "standardNameValuePairTable";
         private const string NameCellClassKey = "standardNamePairCell";
@@ -55,8 +46,8 @@ namespace Paperview.Common.Ui
         private void Initialise(Document mfDocument, Idiom idiom, string locale)
         {
             _document = mfDocument;
-            _container = Global.document.createElement(DivTagKey);
             _locale = locale;
+            _container = Global.document.createElement(Hx.DivTagKey);
 
             switch (idiom)
             {

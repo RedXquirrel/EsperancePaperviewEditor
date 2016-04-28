@@ -14,9 +14,11 @@ var $asm = {
 var $g = (typeof(global) !== "undefined" ? global : (typeof(window) !== "undefined" ? window : self));
 var Paperview = $g.Paperview = $g.Paperview || {};
 Paperview.Common = Paperview.Common || {};
+Paperview.Common.Helpers = Paperview.Common.Helpers || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common"] = $asm;
 Paperview.Common.Document = $d.declare("Paperview.Common.Document", 0, $asm);
+Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
 Paperview.Common.Microformat = $d.declare("Paperview.Common.Microformat", 0, $asm);
 Paperview.Common.Publisher = $d.declare("Paperview.Common.Publisher", 0, $asm);
@@ -86,6 +88,12 @@ $d.define(Paperview.Common.Document, null, function($t, $p) {
     $p.Paperview$Interfaces$IDocument$set_MicroformatName = $p.set_MicroformatName;
     $p.Paperview$Interfaces$IDocument$get_MicroformatDescription = $p.get_MicroformatDescription;
     $p.Paperview$Interfaces$IDocument$set_MicroformatDescription = $p.set_MicroformatDescription;
+});
+$d.define(Paperview.Common.Helpers.AppStyles, null, function($t, $p) {
+    $t.cctor = function() {
+        $t.StandardSelectClassKey = "standardSelect";
+        $t.StandardOptionClassKey = "standardOption";
+    };
 });
 $d.define(Paperview.Common.Legal, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.ILegal];

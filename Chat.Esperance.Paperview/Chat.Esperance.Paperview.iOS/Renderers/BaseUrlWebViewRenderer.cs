@@ -30,7 +30,7 @@ namespace Chat.Esperance.Paperview.iOS.Renderers
 
                 // The following prevents the WebView having a black rectangle on the right when dragged left, also on the bottom when dragged up.
                 Frame = new System.Drawing.RectangleF(0, 0, (float)UIScreen.MainScreen.Bounds.Width, (float)UIScreen.MainScreen.Bounds.Height);
-                webView.ScalesPageToFit = true;
+                //webView.ScalesPageToFit = true;
             }
         }
     }
