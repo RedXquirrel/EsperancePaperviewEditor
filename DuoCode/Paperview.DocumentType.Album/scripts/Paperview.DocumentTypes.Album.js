@@ -22,25 +22,43 @@ Paperview.DocumentTypes.Album.AlbumApplication = $d.declare("Paperview.DocumentT
 Paperview.DocumentTypes.Album.Program = $d.declare("Paperview.DocumentTypes.Album.Program", 0, $asm);
 $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p) {
     $t.$ator = function() {
+        this._idiom = 0 /* Idiom */;
+        this._albumMicroformat = null;
         this._publishers = null;
-        this._selectedPublisher = null;
+        this._selectedPublisherIndex = 0;
         this._selectPublisherAction = null;
+        this._authors = null;
+        this._selectedauthorIndex = 0;
+        this._selectAuthorsAction = null;
         this._rootElement = null;
         this._publisherPane = null;
         this._publisherLabel = null;
         this._dropDownPublishersList = null;
+        this._authorLabel = null;
+        this._dropDownAuthorsList = null;
     };
     $t.ctor = function AlbumApplication(rootElement) {
         $t.$baseType.ctor.call(this);
+        this._idiom = 0 /* Idiom.Phone */;
+
         this._rootElement = rootElement;
 
         this._selectPublisherAction = $d.delegate(function(index) {
-            this._publisherPane.set_Publisher(index >= 0 ? this._publishers.get_Item(index) : null);
+            this._selectedPublisherIndex = index;
+            this._albumMicroformat.set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
+            this._publisherPane.set_Publisher(this._albumMicroformat.get_Publisher());
 
             this._publisherLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
-                this._publishers.get_Item(index).get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
+                this._albumMicroformat.get_Publisher().get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
+        }, this);
 
-            this._publisherLabel.set_TextCase(2 /* TextCase.Lower */);
+        this._selectAuthorsAction = $d.delegate(function(index) {
+            this._selectedauthorIndex = index;
+            this._albumMicroformat.set_Author(index >= 0 ? this._authors.get_Item(this._selectedauthorIndex) : null);
+            //_authorPane.Author = _albumMicroformat.Author;
+
+            this._authorLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText(), 
+                this._albumMicroformat.get_Author().get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText());
         }, this);
 
         var microformat = new Paperview.Common.Microformat.ctor();
@@ -70,6 +88,12 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         document.set_MicroformatName(microformatName);
         document.set_MicroformatDescription(microformatDescription);
         document.set_Microformat(microformat);
+
+        this._albumMicroformat = (function() {
+            var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
+            $obj.set_Document(document);
+            return $obj;
+        }).call(this);
         //#endregion
 
         this._publishers = new (System.Collections.Generic.List$1(Paperview.Common.Publisher, 15629).ctor)();
@@ -78,7 +102,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             var $obj = new Paperview.Common.Publisher.ctor();
             $obj.set_Id(System.Guid.NewGuid().toString());
             $obj.set_Name("Esperance");
-            $obj.set_Email("anthony.harrison@xamtastic.com");
+            $obj.set_Email("esperance@xamtastic.com");
             $obj.set_Url("http://www.esperance.chat");
             return $obj;
         }).call(this));
@@ -87,7 +111,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             var $obj = new Paperview.Common.Publisher.ctor();
             $obj.set_Id(System.Guid.NewGuid().toString());
             $obj.set_Name("Xamtastic");
-            $obj.set_Email("anthony.harrison@xamtastic.com");
+            $obj.set_Email("xamtastic@xamtastic.com");
             $obj.set_Url("http://www.xamtastic.com");
             return $obj;
         }).call(this));
@@ -96,20 +120,45 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             var $obj = new Paperview.Common.Publisher.ctor();
             $obj.set_Id(System.Guid.NewGuid().toString());
             $obj.set_Name("Captain Xamtastic");
-            $obj.set_Email("anthony.harrison@captainxamtastic.com");
+            $obj.set_Email("thecaptain@captainxamtastic.com");
+            $obj.set_Url("http://www.captainxamtastic.com");
+            return $obj;
+        }).call(this));
+
+        this._authors = new (System.Collections.Generic.List$1(Paperview.Common.Author, 17736).ctor)();
+
+        this._authors.Add((function() {
+            var $obj = new Paperview.Common.Author.ctor();
+            $obj.set_Id(System.Guid.NewGuid().toString());
+            $obj.set_Name("Anthony Harrison");
+            $obj.set_Email("anthony.harrison@esperance.chat");
+            $obj.set_Url("http://www.esperance.chat");
+            return $obj;
+        }).call(this));
+
+        this._authors.Add((function() {
+            var $obj = new Paperview.Common.Author.ctor();
+            $obj.set_Id(System.Guid.NewGuid().toString());
+            $obj.set_Name("Anthony Harrison");
+            $obj.set_Email("anthony.harrison@xamtastic.com");
+            $obj.set_Url("http://www.xamtastic.com");
+            return $obj;
+        }).call(this));
+
+        this._authors.Add((function() {
+            var $obj = new Paperview.Common.Author.ctor();
+            $obj.set_Id(System.Guid.NewGuid().toString());
+            $obj.set_Name("Captain Xamtastic");
+            $obj.set_Email("thecaptain@captainxamtastic.com");
             $obj.set_Url("http://www.captainxamtastic.com");
             return $obj;
         }).call(this));
 
 
 
-        var albumMicroformat = (function() {
-            var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
-            $obj.set_Document(document);
-            $obj.set_Publisher(this._publishers.get_Item(0));
-            return $obj;
-        }).call(this);
 
+
+        //#region Archive (tested)
         // new PublisherPane(rootElement, Idiom.Phone);
         //new PublisherPane(rootElement, publisher, Idiom.Phone);
         //new Panel(rootElement, new PublisherPane(publishers[0], Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
@@ -118,20 +167,71 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         // new DropDownListPane(rootElement, publishers, Idiom.Phone);
         //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+        //#endregion
 
-        this._publisherLabel = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
-            0 /* Idiom.Phone */);
-        this._publisherLabel.set_TextCase(1 /* TextCase.Upper */);
+        this.DeclareUi();
 
-        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor(0 /* Idiom.Phone */);
+        this.LayoutUi();
+    };
+    $t.ctor.prototype = $p;
+    $p.DeclareUi = function AlbumApplication_DeclareUi() {
+        this._publisherLabel = (function() {
+            var $obj = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
+                this._idiom);
+            $obj.set_TextCase(1 /* TextCase.Upper */);
+            return $obj;
+        }).call(this);
+        this._publisherPane = new Paperview.Common.Ui.PublisherPane.ctor(this._idiom);
         this._dropDownPublishersList = new Paperview.Common.Ui.DropDownPublishersListPane.ctor(this._publishers, 
-            this._selectPublisherAction, 0 /* Idiom.Phone */);
+            this._selectPublisherAction, this._idiom);
 
+        this._authorLabel = (function() {
+            var $obj = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText(), 
+                this._idiom);
+            $obj.set_TextCase(1 /* TextCase.Upper */);
+            return $obj;
+        }).call(this);
+        this._dropDownAuthorsList = new Paperview.Common.Ui.DropDownAuthorsListPane.ctor(this._authors, 
+            this._selectAuthorsAction, this._idiom);
+    };
+    $p.LayoutUi = function AlbumApplication_LayoutUi() {
+        switch (this._idiom) {
+            case 0 /* Idiom.Phone */:
+                this.LayoutPhone();
+                break;
+            case 1 /* Idiom.Tablet */:
+                this.LayoutTablet();
+                break;
+            case 2 /* Idiom.Desktop */:
+                this.LayoutDesktop();
+                break;
+            case 3 /* Idiom.Unsupported */:
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor();
+        }
+    };
+    $p.LayoutDesktop = function AlbumApplication_LayoutDesktop() {
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherLabel.get_Container());
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownPublishersList.get_Container());
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherPane.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._authorLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownAuthorsList.get_Container());
     };
-    $t.ctor.prototype = $p;
+    $p.LayoutTablet = function AlbumApplication_LayoutTablet() {
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownPublishersList.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherPane.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._authorLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownAuthorsList.get_Container());
+    };
+    $p.LayoutPhone = function AlbumApplication_LayoutPhone() {
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownPublishersList.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._publisherPane.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._authorLabel.get_Container());
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._rootElement, this._dropDownAuthorsList.get_Container());
+    };
 });
 $d.define(Paperview.DocumentTypes.Album.Program, null, function($t, $p) {
     $t.Run = function Program_Run() { // HTML body.onload event entry point, see index.html

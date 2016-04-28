@@ -15,24 +15,54 @@ namespace Paperview.DocumentTypes.Album
 {
     public class AlbumApplication
     {
+        private Idiom _idiom;
+
+        private AlbumMicroformat _albumMicroformat;
+
+        // Publisher Data
         public List<Publisher> _publishers;
-        private Publisher _selectedPublisher;
+        private int _selectedPublisherIndex;
         private Action<int> _selectPublisherAction;
 
+        // Author Data
+        public List<Author> _authors;
+        private int _selectedauthorIndex;
+        private Action<int> _selectAuthorsAction;
+
+        // UI Root
         private HTMLElement _rootElement;
+
+        // Publisher HTMLElements
         private PublisherPane _publisherPane;
         private LabelPane _publisherLabel;
         private DropDownPublishersListPane _dropDownPublishersList;
 
+        // Author HTMLElements
+        private LabelPane _authorLabel;
+        private DropDownAuthorsListPane _dropDownAuthorsList;
+
         public AlbumApplication(HTMLElement rootElement)
         {
+            _idiom = Idiom.Phone;
+
             _rootElement = rootElement;
 
             _selectPublisherAction = index =>
             {
-                _publisherPane.Publisher = (int)index >= 0 ? _publishers[index] : null;
+                _selectedPublisherIndex = (int) index;
+                _albumMicroformat.Publisher = (int) index >= 0 ? _publishers[_selectedPublisherIndex] : null;
+                _publisherPane.Publisher = _albumMicroformat.Publisher;
 
-                _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_publishers[index].Name})" : UiResources.PublisherLabelText;
+                _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_albumMicroformat.Publisher.Name})" : UiResources.PublisherLabelText;
+            };
+
+            _selectAuthorsAction = index =>
+            {
+                _selectedauthorIndex = (int)index;
+                _albumMicroformat.Author = (int)index >= 0 ? _authors[_selectedauthorIndex] : null;
+                //_authorPane.Author = _albumMicroformat.Author;
+
+                _authorLabel.Text = (int)index >= 0 ? $"{UiResources.AuthorLabelText} ({_albumMicroformat.Author.Name})" : UiResources.AuthorLabelText;
             };
 
             var microformat = new Microformat();
@@ -61,6 +91,11 @@ namespace Paperview.DocumentTypes.Album
             document.MicroformatName = microformatName;
             document.MicroformatDescription = microformatDescription;
             document.Microformat = microformat;
+
+            _albumMicroformat = new AlbumMicroformat()
+            {
+                Document = document,
+            };
             #endregion
 
             _publishers = new List<Publisher>();
@@ -69,7 +104,7 @@ namespace Paperview.DocumentTypes.Album
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Esperance",
-                Email = "anthony.harrison@xamtastic.com",
+                Email = "esperance@xamtastic.com",
                 Url = "http://www.esperance.chat"
             });
 
@@ -77,7 +112,7 @@ namespace Paperview.DocumentTypes.Album
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Xamtastic",
-                Email = "anthony.harrison@xamtastic.com",
+                Email = "xamtastic@xamtastic.com",
                 Url = "http://www.xamtastic.com"
             });
 
@@ -85,18 +120,41 @@ namespace Paperview.DocumentTypes.Album
             {
                 Id = Guid.NewGuid().ToString(),
                 Name = "Captain Xamtastic",
-                Email = "anthony.harrison@captainxamtastic.com",
+                Email = "thecaptain@captainxamtastic.com",
+                Url = "http://www.captainxamtastic.com"
+            });
+
+            _authors = new List<Author>();
+
+            _authors.Add(new Author()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Anthony Harrison",
+                Email = "anthony.harrison@esperance.chat",
+                Url = "http://www.esperance.chat"
+            });
+
+            _authors.Add(new Author()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Anthony Harrison",
+                Email = "anthony.harrison@xamtastic.com",
+                Url = "http://www.xamtastic.com"
+            });
+
+            _authors.Add(new Author()
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Captain Xamtastic",
+                Email = "thecaptain@captainxamtastic.com",
                 Url = "http://www.captainxamtastic.com"
             });
 
 
 
-            var albumMicroformat = new AlbumMicroformat()
-            {
-                Document = document,
-                Publisher = _publishers[0]
-            };
 
+
+            #region Archive (tested)
             // new PublisherPane(rootElement, Idiom.Phone);
             //new PublisherPane(rootElement, publisher, Idiom.Phone);
             //new Panel(rootElement, new PublisherPane(publishers[0], Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
@@ -105,14 +163,68 @@ namespace Paperview.DocumentTypes.Album
 
             // new DropDownListPane(rootElement, publishers, Idiom.Phone);
             //new Panel(rootElement, new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone).GetContainer(), "Publisher", Idiom.Phone);
+            #endregion
 
-            _publisherLabel = new LabelPane(UiResources.PublisherLabelText, Idiom.Phone) { TextCase = TextCase.Upper };
-            _publisherPane = new PublisherPane(Idiom.Phone);
-            _dropDownPublishersList = new DropDownPublishersListPane(_publishers, _selectPublisherAction, Idiom.Phone);
+            DeclareUi();
 
+            LayoutUi();
+        }
+
+        private void DeclareUi()
+        {
+            _publisherLabel = new LabelPane(UiResources.PublisherLabelText, _idiom) {TextCase = TextCase.Upper};
+            _publisherPane = new PublisherPane(_idiom);
+            _dropDownPublishersList = new DropDownPublishersListPane(_publishers, _selectPublisherAction, _idiom);
+
+            _authorLabel = new LabelPane(UiResources.AuthorLabelText, _idiom) { TextCase = TextCase.Upper };
+            _dropDownAuthorsList = new DropDownAuthorsListPane(_authors, _selectAuthorsAction, _idiom);
+        }
+
+        private void LayoutUi()
+        {
+            switch (_idiom)
+            {
+                case Idiom.Phone:
+                    LayoutPhone();
+                    break;
+                case Idiom.Tablet:
+                    LayoutTablet();
+                    break;
+                case Idiom.Desktop:
+                    LayoutDesktop();
+                    break;
+                case Idiom.Unsupported:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
+        private void LayoutDesktop()
+        {
             _rootElement.AppendChild(_publisherLabel.Container);
             _rootElement.AppendChild(_dropDownPublishersList.Container);
             _rootElement.AppendChild(_publisherPane.Container);
+            _rootElement.AppendChild(_authorLabel.Container);
+            _rootElement.AppendChild(_dropDownAuthorsList.Container);
+        }
+
+        private void LayoutTablet()
+        {
+            _rootElement.AppendChild(_publisherLabel.Container);
+            _rootElement.AppendChild(_dropDownPublishersList.Container);
+            _rootElement.AppendChild(_publisherPane.Container);
+            _rootElement.AppendChild(_authorLabel.Container);
+            _rootElement.AppendChild(_dropDownAuthorsList.Container);
+        }
+
+        private void LayoutPhone()
+        {
+            _rootElement.AppendChild(_publisherLabel.Container);
+            _rootElement.AppendChild(_dropDownPublishersList.Container);
+            _rootElement.AppendChild(_publisherPane.Container);
+            _rootElement.AppendChild(_authorLabel.Container);
+            _rootElement.AppendChild(_dropDownAuthorsList.Container);
         }
     }
 

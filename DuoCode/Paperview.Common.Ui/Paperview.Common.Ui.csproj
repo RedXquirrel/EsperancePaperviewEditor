@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="DropDownAuthorsListPane.cs" />
     <Compile Include="DropDownPublishersListPane.cs" />
     <Compile Include="Helpers\Hx.cs" />
     <Compile Include="Helpers\UiExtensions.cs" />

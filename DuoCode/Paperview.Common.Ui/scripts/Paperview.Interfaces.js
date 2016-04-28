@@ -16,11 +16,17 @@ var Paperview = $g.Paperview = $g.Paperview || {};
 Paperview.Interfaces = Paperview.Interfaces || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Interfaces"] = $asm;
+Paperview.Interfaces.IContact = $d.type("Paperview.Interfaces.IContact", 66, $asm, function($t, $p) {});
+Paperview.Interfaces.IAuthor = $d.type("Paperview.Interfaces.IAuthor", 66, $asm, function($t, $p) {
+    $t.$intfs = [Paperview.Interfaces.IContact];
+});
 Paperview.Interfaces.Idiom = $d.typeEnum("Paperview.Interfaces.Idiom", 45, $asm, 257, ["Phone", "Tablet", "Desktop", "Unsupported"], [0, 1, 2, 3]);
 Paperview.Interfaces.IDocument = $d.type("Paperview.Interfaces.IDocument", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.ILegal = $d.type("Paperview.Interfaces.ILegal", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.IMicroformat = $d.type("Paperview.Interfaces.IMicroformat", 66, $asm, function($t, $p) {});
-Paperview.Interfaces.IPublisher = $d.type("Paperview.Interfaces.IPublisher", 66, $asm, function($t, $p) {});
+Paperview.Interfaces.IPublisher = $d.type("Paperview.Interfaces.IPublisher", 66, $asm, function($t, $p) {
+    $t.$intfs = [Paperview.Interfaces.IContact];
+});
 return $asm;
 })();
 //# sourceMappingURL=Paperview.Interfaces.js.map

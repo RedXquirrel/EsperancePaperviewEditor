@@ -32,6 +32,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="Author.cs" />
     <Compile Include="Document.cs" />
     <Compile Include="Helpers\AppStyles.cs" />
     <Compile Include="Legal.cs" />

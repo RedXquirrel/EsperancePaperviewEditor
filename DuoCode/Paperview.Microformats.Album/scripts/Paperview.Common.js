@@ -17,11 +17,41 @@ Paperview.Common = Paperview.Common || {};
 Paperview.Common.Helpers = Paperview.Common.Helpers || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common"] = $asm;
+Paperview.Common.Author = $d.declare("Paperview.Common.Author", 0, $asm);
 Paperview.Common.Document = $d.declare("Paperview.Common.Document", 0, $asm);
 Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
 Paperview.Common.Microformat = $d.declare("Paperview.Common.Microformat", 0, $asm);
 Paperview.Common.Publisher = $d.declare("Paperview.Common.Publisher", 0, $asm);
+$d.define(Paperview.Common.Author, null, function($t, $p) {
+    $t.$intfs = [Paperview.Interfaces.IAuthor, Paperview.Interfaces.IContact];
+    $t.$ator = function() {
+        this.Id = null;
+        this.Name = null;
+        this.Email = null;
+        this.Url = null;
+    };
+    $t.ctor = function Author() {
+        $t.$baseType.ctor.call(this);
+    };
+    $t.ctor.prototype = $p;
+    $p.get_Id = function Author_get_Id() { return this.Id; };
+    $p.set_Id = function Author_set_Id(value) { this.Id = value;return value; };
+    $p.get_Name = function Author_get_Name() { return this.Name; };
+    $p.set_Name = function Author_set_Name(value) { this.Name = value;return value; };
+    $p.get_Email = function Author_get_Email() { return this.Email; };
+    $p.set_Email = function Author_set_Email(value) { this.Email = value;return value; };
+    $p.get_Url = function Author_get_Url() { return this.Url; };
+    $p.set_Url = function Author_set_Url(value) { this.Url = value;return value; };
+    $p.Paperview$Interfaces$IContact$get_Id = $p.get_Id;
+    $p.Paperview$Interfaces$IContact$set_Id = $p.set_Id;
+    $p.Paperview$Interfaces$IContact$get_Name = $p.get_Name;
+    $p.Paperview$Interfaces$IContact$set_Name = $p.set_Name;
+    $p.Paperview$Interfaces$IContact$get_Email = $p.get_Email;
+    $p.Paperview$Interfaces$IContact$set_Email = $p.set_Email;
+    $p.Paperview$Interfaces$IContact$get_Url = $p.get_Url;
+    $p.Paperview$Interfaces$IContact$set_Url = $p.set_Url;
+});
 $d.define(Paperview.Common.Document, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IDocument];
     $t.$ator = function() {
@@ -110,9 +140,6 @@ $d.define(Paperview.Common.Microformat, null, function($t, $p) {
         this.Description = null;
         this.LanguageAvailability = null;
         this.LanguageDefault = null;
-        this.Author = null;
-        this.AuthorEmailAddress = null;
-        this.AuthorWebAddress = null;
         this.Derivation = null;
     };
     $t.ctor = function Microformat() {
@@ -134,12 +161,6 @@ $d.define(Paperview.Common.Microformat, null, function($t, $p) {
     $p.set_LanguageAvailability = function Microformat_set_LanguageAvailability(value) { this.LanguageAvailability = value;return value; };
     $p.get_LanguageDefault = function Microformat_get_LanguageDefault() { return this.LanguageDefault; };
     $p.set_LanguageDefault = function Microformat_set_LanguageDefault(value) { this.LanguageDefault = value;return value; };
-    $p.get_Author = function Microformat_get_Author() { return this.Author; };
-    $p.set_Author = function Microformat_set_Author(value) { this.Author = value;return value; };
-    $p.get_AuthorEmailAddress = function Microformat_get_AuthorEmailAddress() { return this.AuthorEmailAddress; };
-    $p.set_AuthorEmailAddress = function Microformat_set_AuthorEmailAddress(value) { this.AuthorEmailAddress = value;return value; };
-    $p.get_AuthorWebAddress = function Microformat_get_AuthorWebAddress() { return this.AuthorWebAddress; };
-    $p.set_AuthorWebAddress = function Microformat_set_AuthorWebAddress(value) { this.AuthorWebAddress = value;return value; };
     $p.get_Derivation = function Microformat_get_Derivation() { return this.Derivation; };
     $p.set_Derivation = function Microformat_set_Derivation(value) { this.Derivation = value;return value; };
     $p.Paperview$Interfaces$IMicroformat$get_Id = $p.get_Id;
@@ -152,15 +173,11 @@ $d.define(Paperview.Common.Microformat, null, function($t, $p) {
     $p.Paperview$Interfaces$IMicroformat$set_LanguageAvailability = $p.set_LanguageAvailability;
     $p.Paperview$Interfaces$IMicroformat$get_LanguageDefault = $p.get_LanguageDefault;
     $p.Paperview$Interfaces$IMicroformat$set_LanguageDefault = $p.set_LanguageDefault;
-    $p.Paperview$Interfaces$IMicroformat$get_Author = $p.get_Author;
-    $p.Paperview$Interfaces$IMicroformat$set_Author = $p.set_Author;
-    $p.Paperview$Interfaces$IMicroformat$get_AuthorEmailAddress = $p.get_AuthorEmailAddress;
-    $p.Paperview$Interfaces$IMicroformat$set_AuthorEmailAddress = $p.set_AuthorEmailAddress;
     $p.Paperview$Interfaces$IMicroformat$get_Derivation = $p.get_Derivation;
     $p.Paperview$Interfaces$IMicroformat$set_Derivation = $p.set_Derivation;
 });
 $d.define(Paperview.Common.Publisher, null, function($t, $p) {
-    $t.$intfs = [Paperview.Interfaces.IPublisher];
+    $t.$intfs = [Paperview.Interfaces.IPublisher, Paperview.Interfaces.IContact];
     $t.$ator = function() {
         this.Id = null;
         this.Name = null;
@@ -179,14 +196,14 @@ $d.define(Paperview.Common.Publisher, null, function($t, $p) {
     $p.set_Email = function Publisher_set_Email(value) { this.Email = value;return value; };
     $p.get_Url = function Publisher_get_Url() { return this.Url; };
     $p.set_Url = function Publisher_set_Url(value) { this.Url = value;return value; };
-    $p.Paperview$Interfaces$IPublisher$get_Id = $p.get_Id;
-    $p.Paperview$Interfaces$IPublisher$set_Id = $p.set_Id;
-    $p.Paperview$Interfaces$IPublisher$get_Name = $p.get_Name;
-    $p.Paperview$Interfaces$IPublisher$set_Name = $p.set_Name;
-    $p.Paperview$Interfaces$IPublisher$get_Email = $p.get_Email;
-    $p.Paperview$Interfaces$IPublisher$set_Email = $p.set_Email;
-    $p.Paperview$Interfaces$IPublisher$get_Url = $p.get_Url;
-    $p.Paperview$Interfaces$IPublisher$set_Url = $p.set_Url;
+    $p.Paperview$Interfaces$IContact$get_Id = $p.get_Id;
+    $p.Paperview$Interfaces$IContact$set_Id = $p.set_Id;
+    $p.Paperview$Interfaces$IContact$get_Name = $p.get_Name;
+    $p.Paperview$Interfaces$IContact$set_Name = $p.set_Name;
+    $p.Paperview$Interfaces$IContact$get_Email = $p.get_Email;
+    $p.Paperview$Interfaces$IContact$set_Email = $p.set_Email;
+    $p.Paperview$Interfaces$IContact$get_Url = $p.get_Url;
+    $p.Paperview$Interfaces$IContact$set_Url = $p.set_Url;
 });
 return $asm;
 })();

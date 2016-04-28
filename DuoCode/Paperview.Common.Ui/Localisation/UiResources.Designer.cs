@@ -61,6 +61,24 @@ namespace Paperview.Common.Ui.Localisation {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Author.
+        /// </summary>
+        public static string AuthorLabelText {
+            get {
+                return ResourceManager.GetString("AuthorLabelText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Please Select.
+        /// </summary>
+        public static string AuthorPleaseSelectText {
+            get {
+                return ResourceManager.GetString("AuthorPleaseSelectText", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Description.
         /// </summary>
         public static string DocumentTypeDescriptionLabel {

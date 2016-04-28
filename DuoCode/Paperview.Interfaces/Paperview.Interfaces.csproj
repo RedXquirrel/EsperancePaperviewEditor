@@ -32,6 +32,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="IAuthor.cs" />
+    <Compile Include="IContact.cs" />
     <Compile Include="Idiom.cs" />
     <Compile Include="IDocument.cs" />
     <Compile Include="ILegal.cs" />

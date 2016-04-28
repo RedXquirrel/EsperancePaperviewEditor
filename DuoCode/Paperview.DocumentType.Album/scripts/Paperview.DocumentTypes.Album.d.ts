@@ -16,6 +16,7 @@ declare module Paperview {
             // Paperview.DocumentTypes.Album.AlbumApplication
             export interface AlbumApplication extends System.Object {
                 _publishers: System.Collections.Generic.List$1<Common.Publisher>;
+                _authors: System.Collections.Generic.List$1<Common.Author>;
             }
             export interface AlbumApplicationTypeFunc extends TypeFunction {
                 (): AlbumApplicationTypeFunc;

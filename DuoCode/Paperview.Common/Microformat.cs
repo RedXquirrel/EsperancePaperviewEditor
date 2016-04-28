@@ -21,12 +21,6 @@ namespace Paperview.Common
 
         public string LanguageDefault { get; set; }
 
-        public string Author { get; set; }
-
-        public string AuthorEmailAddress { get; set; }
-
-        public string AuthorWebAddress { get; set; }
-
         public string Derivation { get; set; }
     }
 }

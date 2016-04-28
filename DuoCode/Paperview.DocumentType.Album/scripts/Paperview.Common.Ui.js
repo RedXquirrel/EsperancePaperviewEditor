@@ -11,6 +11,8 @@ var $asm = {
     types: [],
     $getAttrs: function() { return [new System.Reflection.AssemblyTitleAttribute.ctor("Paperview.Common.Ui"), new System.Reflection.AssemblyDescriptionAttribute.ctor(""), new System.Reflection.AssemblyConfigurationAttribute.ctor(""), new System.Reflection.AssemblyCompanyAttribute.ctor(""), new System.Reflection.AssemblyProductAttribute.ctor("Paperview.Common.Ui"), new System.Reflection.AssemblyCopyrightAttribute.ctor("Copyright \xA9  2016"), new System.Reflection.AssemblyTrademarkAttribute.ctor(""), new System.Reflection.AssemblyCultureAttribute.ctor(""), new System.Reflection.AssemblyVersionAttribute.ctor("1.0.0.0"), new System.Reflection.AssemblyFileVersionAttribute.ctor("1.0.0.0"), new DuoCode.Runtime.CompilerAttribute.ctor("2.0.1542.0")]; },
     resources: {
+        "Paperview.Common.Ui.Localisation.UiResources$AuthorLabelText": "Author",
+        "Paperview.Common.Ui.Localisation.UiResources$AuthorPleaseSelectText": "Please Select",
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeDescriptionLabel": "Description",
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeIdLabel": "Id",
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeNameLabel": "Name",
@@ -32,6 +34,8 @@ Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 Paperview.Common.Ui.Models = Paperview.Common.Ui.Models || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
+Paperview.Common.Ui.DropDownAuthorsListPane = $d.declare("Paperview.Common.Ui.DropDownAuthorsListPane", 
+    0, $asm);
 Paperview.Common.Ui.DropDownPublishersListPane = $d.declare("Paperview.Common.Ui.DropDownPublishersListPane", 
     0, $asm);
 Paperview.Common.Ui.Helpers.Hx = $d.declare("Paperview.Common.Ui.Helpers.Hx", 0, $asm);
@@ -44,6 +48,98 @@ Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentT
 Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
 Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
+$d.define(Paperview.Common.Ui.DropDownAuthorsListPane, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.$ator = function() {
+        this._authors = null;
+        this._selectedAuthorIndex = 0;
+        this._idiom = 0 /* Idiom */;
+        this._selectedAuthorAction = null;
+        this._parent = null;
+        this._container = null;
+        this._select = null;
+    };
+    $p.get_Container = function DropDownAuthorsListPane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function DropDownAuthorsListPane(authors, selectedAction, idiom) {
+        $t.$baseType.ctor.call(this);
+        this.Initialise(authors, selectedAction, idiom);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function DropDownAuthorsListPane(parent, authors, selectedAction, idiom) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this.Initialise(authors, selectedAction, idiom);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function DropDownAuthorsListPane_Initialise(authors, selectedAction, idiom) {
+        // store data
+        this._authors = authors;
+        this._idiom = idiom;
+        // store action
+        this._selectedAuthorAction = selectedAction;
+        // create container
+        this._container = Paperview.Common.Ui.Helpers.Hx.CreateContainerControl();
+
+        // switch on idiom
+        switch (idiom) {
+            case 0 /* Idiom.Phone */:
+                this.CreateSelect(idiom);
+                break;
+            case 1 /* Idiom.Tablet */:
+                this.CreateSelect(idiom);
+                break;
+            case 2 /* Idiom.Desktop */:
+                this.CreateSelect(idiom);
+                break;
+            case 3 /* Idiom.Unsupported */:
+                this.CreateSelect(idiom);
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
+                    idiom), null);
+        }
+    };
+    $p.CreateSelect = function DropDownAuthorsListPane_CreateSelect(idiom) {
+        this._select = $d.cast(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateSelectElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardSelectClassKey, 
+                idiom)), HTMLSelectElement);
+
+        this._select.onchange = $d.delegate(function(onchangeevent) {
+            System.Console.WriteLine$10(String.Format("Selected Index: {0}", [this._select.selectedIndex]));
+
+            this._selectedAuthorIndex = this._select.selectedIndex - 1;
+
+            if (this._selectedAuthorIndex >= 0) {
+                System.Console.WriteLine$10(String.Format("Selected Author: {0}", [this._authors.get_Item(this._selectedAuthorIndex).get_Name()]));
+            }
+
+            this._selectedAuthorAction(this._select.selectedIndex - 1);
+
+            return 0;
+        }, this);
+
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ValueAttKey, "-1"), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardOptionClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_AuthorPleaseSelectText()));
+        var $iter = this._authors;
+        var $enumerator = $iter.System$Collections$IEnumerable$GetEnumerator();
+        while ($enumerator.System$Collections$IEnumerator$MoveNext()) {
+            var author = $enumerator.System$Collections$IEnumerator$get_Current();
+            Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ValueAttKey, author.get_Id()), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
+                Paperview.Common.Ui.Helpers.Hx.AppendIdiomString(Paperview.Common.Helpers.AppStyles().StandardOptionClassKey, 
+                    idiom)), author.get_Name()));
+        }
+
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, this._select);
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
 $d.define(Paperview.Common.Ui.DropDownPublishersListPane, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
     $t.$ator = function() {
@@ -814,6 +910,12 @@ $d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
     $t.set_Culture = function UiResources_set_Culture(value) {
         $t().resourceCulture = value;
         return value;
+    };
+    $t.get_AuthorLabelText = function UiResources_get_AuthorLabelText() {
+        return $t().get_ResourceManager().GetString("AuthorLabelText", $t().resourceCulture);
+    };
+    $t.get_AuthorPleaseSelectText = function UiResources_get_AuthorPleaseSelectText() {
+        return $t().get_ResourceManager().GetString("AuthorPleaseSelectText", $t().resourceCulture);
     };
     $t.get_DocumentTypeDescriptionLabel = function UiResources_get_DocumentTypeDescriptionLabel() {
         return $t().get_ResourceManager().GetString("DocumentTypeDescriptionLabel", $t().resourceCulture);

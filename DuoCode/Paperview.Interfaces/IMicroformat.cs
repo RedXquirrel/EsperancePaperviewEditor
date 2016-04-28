@@ -9,8 +9,6 @@ namespace Paperview.Interfaces
         Dictionary<string, string> Description { get; set; }
         List<string> LanguageAvailability { get; set; }
         string LanguageDefault { get; set; }
-        string Author { get; set; }
-        string AuthorEmailAddress { get; set; }
         string Derivation { get; set; }
     }
 }
