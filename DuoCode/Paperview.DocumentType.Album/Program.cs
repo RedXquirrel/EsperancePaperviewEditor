@@ -17,6 +17,9 @@ namespace Paperview.DocumentTypes.Album
     {
         private Idiom _idiom;
 
+        private string _initialisationJson;
+
+        // The Microformat that is the basis of this Document Type
         private AlbumMicroformat _albumMicroformat;
 
         // Publisher Data
@@ -41,12 +44,14 @@ namespace Paperview.DocumentTypes.Album
         private LabelPane _authorLabel;
         private DropDownAuthorsListPane _dropDownAuthorsList;
 
-        public AlbumApplication(HTMLElement rootElement)
+        public AlbumApplication(HTMLElement rootElement, string initialisationJson)
         {
             _idiom = Idiom.Phone;
 
             _rootElement = rootElement;
+            _initialisationJson = initialisationJson;
 
+            // Define the action that will occur when a user selects a publisher
             _selectPublisherAction = index =>
             {
                 _selectedPublisherIndex = (int) index;
@@ -56,6 +61,7 @@ namespace Paperview.DocumentTypes.Album
                 _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_albumMicroformat.Publisher.Name})" : UiResources.PublisherLabelText;
             };
 
+            // Define an action that will occur when a user selects an author
             _selectAuthorsAction = index =>
             {
                 _selectedauthorIndex = (int)index;
@@ -100,6 +106,7 @@ namespace Paperview.DocumentTypes.Album
 
             _publishers = new List<Publisher>();
 
+            // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
             _publishers.Add(new Publisher()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -126,6 +133,7 @@ namespace Paperview.DocumentTypes.Album
 
             _authors = new List<Author>();
 
+            // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
             _authors.Add(new Author()
             {
                 Id = Guid.NewGuid().ToString(),
@@ -172,6 +180,8 @@ namespace Paperview.DocumentTypes.Album
 
         private void DeclareUi()
         {
+            var myobj = Global.JSON.parse(_initialisationJson);
+            System.Console.WriteLine((string)myobj.DocumentId);
             _publisherLabel = new LabelPane(UiResources.PublisherLabelText, _idiom) {TextCase = TextCase.Upper};
             _publisherPane = new PublisherPane(_idiom);
             _dropDownPublishersList = new DropDownPublishersListPane(_publishers, _selectPublisherAction, _idiom);
@@ -230,13 +240,13 @@ namespace Paperview.DocumentTypes.Album
 
     static class Program
     {
-        static void Run() // HTML body.onload event entry point, see index.html
+        static void Run(string documentTypeDescriptionJson)
         {
-            System.Console.WriteLine("Hello DuoCode");
+            System.Console.WriteLine(documentTypeDescriptionJson);
 
-            var el = Global.document.getElementById("content");
-            el.innerHTML = string.Empty;
-            var albumApplication = new AlbumApplication(el);
+            var visualroot = Global.document.getElementById("content");
+            visualroot.innerHTML = string.Empty;
+            var albumApplication = new AlbumApplication(visualroot, documentTypeDescriptionJson);
         }
     }
 }

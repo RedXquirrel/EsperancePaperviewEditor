@@ -88,7 +88,7 @@ namespace Paperview.Common.Ui.Localisation {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Idx.
+        ///   Looks up a localized string similar to Id.
         /// </summary>
         public static string DocumentTypeIdLabel {
             get {

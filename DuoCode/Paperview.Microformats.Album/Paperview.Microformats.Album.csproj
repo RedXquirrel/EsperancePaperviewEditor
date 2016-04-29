@@ -32,11 +32,21 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="AlbumMicroformat.cs" />
-    <Compile Include="Artefacts.cs" />
-    <Compile Include="Image.cs" />
-    <Compile Include="Interfaces\IArtefacts.cs" />
-    <Compile Include="Interfaces\IImage.cs" />
+    <Compile Include="..\Paperview.Microformats.Album.Shared\AlbumMicroformat.cs">
+      <Link>AlbumMicroformat.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Microformats.Album.Shared\Artefacts.cs">
+      <Link>Artefacts.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Microformats.Album.Shared\Image.cs">
+      <Link>Image.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Microformats.Album.Shared\Interfaces\IArtefacts.cs">
+      <Link>Interfaces\IArtefacts.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Microformats.Album.Shared\Interfaces\IImage.cs">
+      <Link>Interfaces\IImage.cs</Link>
+    </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

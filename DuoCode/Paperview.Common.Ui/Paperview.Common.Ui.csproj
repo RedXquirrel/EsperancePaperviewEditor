@@ -32,21 +32,41 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="DropDownAuthorsListPane.cs" />
-    <Compile Include="DropDownPublishersListPane.cs" />
-    <Compile Include="Helpers\Hx.cs" />
-    <Compile Include="Helpers\UiExtensions.cs" />
-    <Compile Include="Interfaces\IHTMLElement.cs" />
-    <Compile Include="LabelPane.cs" />
+    <Compile Include="..\Paperview.Common.Ui.Shared\DocumentTypePane.cs">
+      <Link>DocumentTypePane.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\DropDownAuthorsListPane.cs">
+      <Link>DropDownAuthorsListPane.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\DropDownPublishersListPane.cs">
+      <Link>DropDownPublishersListPane.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\Helpers\Hx.cs">
+      <Link>Helpers\Hx.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\Helpers\UiExtensions.cs">
+      <Link>Helpers\UiExtensions.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\Interfaces\IHTMLElement.cs">
+      <Link>Interfaces\IHTMLElement.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\LabelPane.cs">
+      <Link>LabelPane.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\Models\TextCase.cs">
+      <Link>Models\TextCase.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\Panel.cs">
+      <Link>Panel.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Ui.Shared\PublisherPane.cs">
+      <Link>PublisherPane.cs</Link>
+    </Compile>
     <Compile Include="Localisation\UiResources.Designer.cs">
+      <DependentUpon>UiResources.resx</DependentUpon>
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>UiResources.resx</DependentUpon>
     </Compile>
-    <Compile Include="DocumentTypePane.cs" />
-    <Compile Include="Models\TextCase.cs" />
-    <Compile Include="Panel.cs" />
-    <Compile Include="PublisherPane.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

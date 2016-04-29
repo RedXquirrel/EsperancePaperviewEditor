@@ -21,7 +21,7 @@ declare module Paperview {
             export interface AlbumApplicationTypeFunc extends TypeFunction {
                 (): AlbumApplicationTypeFunc;
                 prototype: AlbumApplication;
-                ctor: { new (rootElement: HTMLElement): AlbumApplication; };
+                ctor: { new (rootElement: HTMLElement, initialisationJson: string): AlbumApplication; };
             }
             const AlbumApplication: AlbumApplicationTypeFunc;
         }

@@ -23,6 +23,7 @@ Paperview.DocumentTypes.Album.Program = $d.declare("Paperview.DocumentTypes.Albu
 $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p) {
     $t.$ator = function() {
         this._idiom = 0 /* Idiom */;
+        this._initialisationJson = null;
         this._albumMicroformat = null;
         this._publishers = null;
         this._selectedPublisherIndex = 0;
@@ -37,12 +38,14 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         this._authorLabel = null;
         this._dropDownAuthorsList = null;
     };
-    $t.ctor = function AlbumApplication(rootElement) {
+    $t.ctor = function AlbumApplication(rootElement, initialisationJson) {
         $t.$baseType.ctor.call(this);
         this._idiom = 0 /* Idiom.Phone */;
 
         this._rootElement = rootElement;
+        this._initialisationJson = initialisationJson;
 
+        // Define the action that will occur when a user selects a publisher
         this._selectPublisherAction = $d.delegate(function(index) {
             this._selectedPublisherIndex = index;
             this._albumMicroformat.set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
@@ -52,6 +55,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
                 this._albumMicroformat.get_Publisher().get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
         }, this);
 
+        // Define an action that will occur when a user selects an author
         this._selectAuthorsAction = $d.delegate(function(index) {
             this._selectedauthorIndex = index;
             this._albumMicroformat.set_Author(index >= 0 ? this._authors.get_Item(this._selectedauthorIndex) : null);
@@ -98,6 +102,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         this._publishers = new (System.Collections.Generic.List$1(Paperview.Common.Publisher, 15629).ctor)();
 
+        // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
         this._publishers.Add((function() {
             var $obj = new Paperview.Common.Publisher.ctor();
             $obj.set_Id(System.Guid.NewGuid().toString());
@@ -127,6 +132,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         this._authors = new (System.Collections.Generic.List$1(Paperview.Common.Author, 17736).ctor)();
 
+        // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
         this._authors.Add((function() {
             var $obj = new Paperview.Common.Author.ctor();
             $obj.set_Id(System.Guid.NewGuid().toString());
@@ -175,6 +181,8 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
     };
     $t.ctor.prototype = $p;
     $p.DeclareUi = function AlbumApplication_DeclareUi() {
+        var myobj = JSON.parse(this._initialisationJson);
+        System.Console.WriteLine$10(myobj.DocumentId);
         this._publisherLabel = (function() {
             var $obj = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
                 this._idiom);
@@ -234,12 +242,12 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
     };
 });
 $d.define(Paperview.DocumentTypes.Album.Program, null, function($t, $p) {
-    $t.Run = function Program_Run() { // HTML body.onload event entry point, see index.html
-        System.Console.WriteLine$10("Hello DuoCode");
+    $t.Run = function Program_Run(documentTypeDescriptionJson) {
+        System.Console.WriteLine$10(documentTypeDescriptionJson);
 
-        var el = document.getElementById("content");
-        el.innerHTML = String.Empty;
-        var albumApplication = new Paperview.DocumentTypes.Album.AlbumApplication.ctor(el);
+        var visualroot = document.getElementById("content");
+        visualroot.innerHTML = String.Empty;
+        var albumApplication = new Paperview.DocumentTypes.Album.AlbumApplication.ctor(visualroot, documentTypeDescriptionJson);
     };
 });
 return $asm;

@@ -14,7 +14,7 @@ var $asm = {
         "Paperview.Common.Ui.Localisation.UiResources$AuthorLabelText": "Author",
         "Paperview.Common.Ui.Localisation.UiResources$AuthorPleaseSelectText": "Please Select",
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeDescriptionLabel": "Description",
-        "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeIdLabel": "Id",
+        "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeIdLabel": "Idx",
         "Paperview.Common.Ui.Localisation.UiResources$DocumentTypeNameLabel": "Name",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherEmailAddressLabel": "Email Address",
         "Paperview.Common.Ui.Localisation.UiResources$PublisherIdLabel": "Id",
@@ -30,10 +30,11 @@ Paperview.Common = Paperview.Common || {};
 Paperview.Common.Ui = Paperview.Common.Ui || {};
 Paperview.Common.Ui.Helpers = Paperview.Common.Ui.Helpers || {};
 Paperview.Common.Ui.Interfaces = Paperview.Common.Ui.Interfaces || {};
-Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 Paperview.Common.Ui.Models = Paperview.Common.Ui.Models || {};
+Paperview.Common.Ui.Localisation = Paperview.Common.Ui.Localisation || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common.Ui"] = $asm;
+Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
 Paperview.Common.Ui.DropDownAuthorsListPane = $d.declare("Paperview.Common.Ui.DropDownAuthorsListPane", 
     0, $asm);
 Paperview.Common.Ui.DropDownPublishersListPane = $d.declare("Paperview.Common.Ui.DropDownPublishersListPane", 
@@ -42,12 +43,107 @@ Paperview.Common.Ui.Helpers.Hx = $d.declare("Paperview.Common.Ui.Helpers.Hx", 0,
 Paperview.Common.Ui.Helpers.UiExtensions = $d.declare("Paperview.Common.Ui.Helpers.UiExtensions", 0, 
     $asm);
 Paperview.Common.Ui.LabelPane = $d.declare("Paperview.Common.Ui.LabelPane", 0, $asm);
-Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.Localisation.UiResources", 
-    0, $asm);
-Paperview.Common.Ui.DocumentTypePane = $d.declare("Paperview.Common.Ui.DocumentTypePane", 0, $asm);
 Paperview.Common.Ui.Panel = $d.declare("Paperview.Common.Ui.Panel", 0, $asm);
 Paperview.Common.Ui.PublisherPane = $d.declare("Paperview.Common.Ui.PublisherPane", 0, $asm);
+Paperview.Common.Ui.Localisation.UiResources = $d.declare("Paperview.Common.Ui.Localisation.UiResources", 
+    0, $asm);
 Paperview.Common.Ui.Interfaces.IHtmlElement = $d.type("Paperview.Common.Ui.Interfaces.IHtmlElement", 66, $asm, function($t, $p) {});
+$d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
+    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
+    $t.cctor = function() {
+        $t.TableClassKey = "standardNameValuePairTable";
+        $t.NameCellClassKey = "standardNamePairCell";
+        $t.ValueCellClassKey = "standardValuePairCell";
+    };
+    $t.$ator = function() {
+        this._document = null;
+        this._locale = null;
+        this._parent = null;
+        this._container = null;
+    };
+    $p.get_Container = function DocumentTypePane_get_Container() {
+        return this._parent == null ? this._container : null;
+    };
+    $t.ctor = function DocumentTypePane(document, idiom, locale) {
+        $t.$baseType.ctor.call(this);
+        this.Initialise(document, idiom, locale);
+    };
+    $t.ctor.prototype = $p;
+    $t.ctor$1 = function DocumentTypePane(parent, document, idiom, locale) {
+        $t.$baseType.ctor.call(this);
+        this._parent = parent;
+        this.Initialise(document, idiom, locale);
+    };
+    $t.ctor$1.prototype = $p;
+    $p.Initialise = function DocumentTypePane_Initialise(mfDocument, idiom, locale) {
+        this._document = mfDocument;
+        this._locale = locale;
+        this._container = document.createElement(Paperview.Common.Ui.Helpers.Hx().DivTagKey);
+
+        switch (idiom) {
+            case 0 /* Idiom.Phone */:
+                this.CreateStack(idiom);
+                break;
+            case 1 /* Idiom.Tablet */:
+                this.CreateTable(idiom);
+                break;
+            case 2 /* Idiom.Desktop */:
+                this.CreateTable(idiom);
+                break;
+            case 3 /* Idiom.Unsupported */:
+                this.CreateTable(idiom);
+                break;
+            default:
+                throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
+                    idiom), null);
+        }
+    };
+    $p.CreateStack = function DocumentTypePane_CreateStack(idiom) {
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), this._document.get_MicroformatId())), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
+                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
+            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
+                this._locale, this._document.get_LanguageDefault())));
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.CreateTable = function DocumentTypePane_CreateTable(idiom) {
+        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateTableElement(), 
+            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
+                idiom)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            this._document.get_MicroformatId(), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
+                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
+            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
+            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
+                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+                idiom))));
+
+        this._parent != null ? this._parent.appendChild(this._container) : null;
+    };
+    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
 $d.define(Paperview.Common.Ui.DropDownAuthorsListPane, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
     $t.$ator = function() {
@@ -887,160 +983,6 @@ $d.define(Paperview.Common.Ui.LabelPane, null, function($t, $p) {
     };
     $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
 });
-$d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
-    $t.cctor = function() {
-        $t.resourceMan = null;
-        $t.resourceCulture = null;
-    };
-    $t.ctor = function UiResources() {
-        $t.$baseType.ctor.call(this);
-    };
-    $t.ctor.prototype = $p;
-    $t.get_ResourceManager = function UiResources_get_ResourceManager() {
-        if ($t().resourceMan === null) {
-            var temp = new System.Resources.ResourceManager.ctor("Paperview.Common.Ui.Localisation.UiResources", 
-                $d.typeOf(Paperview.Common.Ui.Localisation.UiResources).get_Assembly());
-            $t().resourceMan = temp;
-        }
-        return $t().resourceMan;
-    };
-    $t.get_Culture = function UiResources_get_Culture() {
-        return $t().resourceCulture;
-    };
-    $t.set_Culture = function UiResources_set_Culture(value) {
-        $t().resourceCulture = value;
-        return value;
-    };
-    $t.get_AuthorLabelText = function UiResources_get_AuthorLabelText() {
-        return $t().get_ResourceManager().GetString("AuthorLabelText", $t().resourceCulture);
-    };
-    $t.get_AuthorPleaseSelectText = function UiResources_get_AuthorPleaseSelectText() {
-        return $t().get_ResourceManager().GetString("AuthorPleaseSelectText", $t().resourceCulture);
-    };
-    $t.get_DocumentTypeDescriptionLabel = function UiResources_get_DocumentTypeDescriptionLabel() {
-        return $t().get_ResourceManager().GetString("DocumentTypeDescriptionLabel", $t().resourceCulture);
-    };
-    $t.get_DocumentTypeIdLabel = function UiResources_get_DocumentTypeIdLabel() {
-        return $t().get_ResourceManager().GetString("DocumentTypeIdLabel", $t().resourceCulture);
-    };
-    $t.get_DocumentTypeNameLabel = function UiResources_get_DocumentTypeNameLabel() {
-        return $t().get_ResourceManager().GetString("DocumentTypeNameLabel", $t().resourceCulture);
-    };
-    $t.get_PublisherEmailAddressLabel = function UiResources_get_PublisherEmailAddressLabel() {
-        return $t().get_ResourceManager().GetString("PublisherEmailAddressLabel", $t().resourceCulture);
-    };
-    $t.get_PublisherIdLabel = function UiResources_get_PublisherIdLabel() {
-        return $t().get_ResourceManager().GetString("PublisherIdLabel", $t().resourceCulture);
-    };
-    $t.get_PublisherLabelText = function UiResources_get_PublisherLabelText() {
-        return $t().get_ResourceManager().GetString("PublisherLabelText", $t().resourceCulture);
-    };
-    $t.get_PublisherNameLabel = function UiResources_get_PublisherNameLabel() {
-        return $t().get_ResourceManager().GetString("PublisherNameLabel", $t().resourceCulture);
-    };
-    $t.get_PublisherPleaseSelectText = function UiResources_get_PublisherPleaseSelectText() {
-        return $t().get_ResourceManager().GetString("PublisherPleaseSelectText", $t().resourceCulture);
-    };
-    $t.get_PublisherWebAddressLabel = function UiResources_get_PublisherWebAddressLabel() {
-        return $t().get_ResourceManager().GetString("PublisherWebAddressLabel", $t().resourceCulture);
-    };
-});
-$d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
-    $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
-    $t.cctor = function() {
-        $t.TableClassKey = "standardNameValuePairTable";
-        $t.NameCellClassKey = "standardNamePairCell";
-        $t.ValueCellClassKey = "standardValuePairCell";
-    };
-    $t.$ator = function() {
-        this._document = null;
-        this._locale = null;
-        this._parent = null;
-        this._container = null;
-    };
-    $p.get_Container = function DocumentTypePane_get_Container() {
-        return this._parent == null ? this._container : null;
-    };
-    $t.ctor = function DocumentTypePane(document, idiom, locale) {
-        $t.$baseType.ctor.call(this);
-        this.Initialise(document, idiom, locale);
-    };
-    $t.ctor.prototype = $p;
-    $t.ctor$1 = function DocumentTypePane(parent, document, idiom, locale) {
-        $t.$baseType.ctor.call(this);
-        this._parent = parent;
-        this.Initialise(document, idiom, locale);
-    };
-    $t.ctor$1.prototype = $p;
-    $p.Initialise = function DocumentTypePane_Initialise(mfDocument, idiom, locale) {
-        this._document = mfDocument;
-        this._locale = locale;
-        this._container = document.createElement(Paperview.Common.Ui.Helpers.Hx().DivTagKey);
-
-        switch (idiom) {
-            case 0 /* Idiom.Phone */:
-                this.CreateStack(idiom);
-                break;
-            case 1 /* Idiom.Tablet */:
-                this.CreateTable(idiom);
-                break;
-            case 2 /* Idiom.Desktop */:
-                this.CreateTable(idiom);
-                break;
-            case 3 /* Idiom.Unsupported */:
-                this.CreateTable(idiom);
-                break;
-            default:
-                throw new System.ArgumentOutOfRangeException.ctor$4("idiom", $d.boxEnum(Paperview.Interfaces.Idiom, 
-                    idiom), null);
-        }
-    };
-    $p.CreateStack = function DocumentTypePane_CreateStack(idiom) {
-        Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, 
-            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-                    idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
-            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), this._document.get_MicroformatId())), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
-            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
-                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
-                idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
-            Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
-                Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
-                this._locale, this._document.get_LanguageDefault())));
-
-        this._parent != null ? this._parent.appendChild(this._container) : null;
-    };
-    $p.CreateTable = function DocumentTypePane_CreateTable(idiom) {
-        Paperview.Common.Ui.Helpers.Hx.AppendChild(this._container, Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.AppendChild(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateTableElement(), 
-            Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.TableClassKey, 
-                idiom)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
-            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            this._document.get_MicroformatId(), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
-            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
-                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
-            Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
-            Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
-                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                idiom))));
-
-        this._parent != null ? this._parent.appendChild(this._container) : null;
-    };
-    $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
-});
 Paperview.Common.Ui.Models.TextCase = $d.typeEnum("Paperview.Common.Ui.Models.TextCase", 45, $asm, 257, ["Normal", "Upper", "Lower"], [0, 1, 2]);
 $d.define(Paperview.Common.Ui.Panel, null, function($t, $p) {
     $t.$intfs = [Paperview.Common.Ui.Interfaces.IHtmlElement];
@@ -1232,6 +1174,64 @@ $d.define(Paperview.Common.Ui.PublisherPane, null, function($t, $p) {
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
     $p.Paperview$Common$Ui$Interfaces$IHtmlElement$get_Container = $p.get_Container;
+});
+$d.define(Paperview.Common.Ui.Localisation.UiResources, null, function($t, $p) {
+    $t.cctor = function() {
+        $t.resourceMan = null;
+        $t.resourceCulture = null;
+    };
+    $t.ctor = function UiResources() {
+        $t.$baseType.ctor.call(this);
+    };
+    $t.ctor.prototype = $p;
+    $t.get_ResourceManager = function UiResources_get_ResourceManager() {
+        if ($t().resourceMan === null) {
+            var temp = new System.Resources.ResourceManager.ctor("Paperview.Common.Ui.Localisation.UiResources", 
+                $d.typeOf(Paperview.Common.Ui.Localisation.UiResources).get_Assembly());
+            $t().resourceMan = temp;
+        }
+        return $t().resourceMan;
+    };
+    $t.get_Culture = function UiResources_get_Culture() {
+        return $t().resourceCulture;
+    };
+    $t.set_Culture = function UiResources_set_Culture(value) {
+        $t().resourceCulture = value;
+        return value;
+    };
+    $t.get_AuthorLabelText = function UiResources_get_AuthorLabelText() {
+        return $t().get_ResourceManager().GetString("AuthorLabelText", $t().resourceCulture);
+    };
+    $t.get_AuthorPleaseSelectText = function UiResources_get_AuthorPleaseSelectText() {
+        return $t().get_ResourceManager().GetString("AuthorPleaseSelectText", $t().resourceCulture);
+    };
+    $t.get_DocumentTypeDescriptionLabel = function UiResources_get_DocumentTypeDescriptionLabel() {
+        return $t().get_ResourceManager().GetString("DocumentTypeDescriptionLabel", $t().resourceCulture);
+    };
+    $t.get_DocumentTypeIdLabel = function UiResources_get_DocumentTypeIdLabel() {
+        return $t().get_ResourceManager().GetString("DocumentTypeIdLabel", $t().resourceCulture);
+    };
+    $t.get_DocumentTypeNameLabel = function UiResources_get_DocumentTypeNameLabel() {
+        return $t().get_ResourceManager().GetString("DocumentTypeNameLabel", $t().resourceCulture);
+    };
+    $t.get_PublisherEmailAddressLabel = function UiResources_get_PublisherEmailAddressLabel() {
+        return $t().get_ResourceManager().GetString("PublisherEmailAddressLabel", $t().resourceCulture);
+    };
+    $t.get_PublisherIdLabel = function UiResources_get_PublisherIdLabel() {
+        return $t().get_ResourceManager().GetString("PublisherIdLabel", $t().resourceCulture);
+    };
+    $t.get_PublisherLabelText = function UiResources_get_PublisherLabelText() {
+        return $t().get_ResourceManager().GetString("PublisherLabelText", $t().resourceCulture);
+    };
+    $t.get_PublisherNameLabel = function UiResources_get_PublisherNameLabel() {
+        return $t().get_ResourceManager().GetString("PublisherNameLabel", $t().resourceCulture);
+    };
+    $t.get_PublisherPleaseSelectText = function UiResources_get_PublisherPleaseSelectText() {
+        return $t().get_ResourceManager().GetString("PublisherPleaseSelectText", $t().resourceCulture);
+    };
+    $t.get_PublisherWebAddressLabel = function UiResources_get_PublisherWebAddressLabel() {
+        return $t().get_ResourceManager().GetString("PublisherWebAddressLabel", $t().resourceCulture);
+    };
 });
 return $asm;
 })();

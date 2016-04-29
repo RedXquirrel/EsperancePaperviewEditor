@@ -219,11 +219,6 @@
     </BundleResource>
   </ItemGroup>
   <ItemGroup>
-    <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\index.html">
-      <Link>Resources\index.html</Link>
-    </BundleResource>
-  </ItemGroup>
-  <ItemGroup>
     <BundleResource Include="..\..\DuoCode\Paperview.DocumentType.Album\uicomponents.css">
       <Link>Resources\uicomponents.css</Link>
     </BundleResource>
@@ -275,6 +270,9 @@
   </ItemGroup>
   <ItemGroup>
     <BundleResource Include="Resources\logo-paperview.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\index.html" />
   </ItemGroup>
   <Import Project="..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems" Label="Shared" Condition="Exists('..\..\Chat.Esperance.Paperview.Shared\Chat.Esperance.Paperview.Shared.projitems')" />
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
