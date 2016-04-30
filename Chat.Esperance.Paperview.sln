@@ -27,8 +27,6 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "API", "API", "{9ACC1A61-64A
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Esperance.PaperviewApi", "Chat.Esperance.PaperviewApi\Chat.Esperance.PaperviewApi.csproj", "{BDD854EA-727D-4332-834D-7AC4C004914E}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microformats", "Microformats", "{A5134007-AC62-45E6-BF6E-51585D4E7D0C}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Esperance.Paperview.UWP", "Chat.Esperance.Paperview\Chat.Esperance.Paperview.UWP\Chat.Esperance.Paperview.UWP.csproj", "{92F76D05-5E32-41E5-B90D-8956BF53126D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Chat.Esperance.PaperviewApi.Interfaces", "Chat.Esperance.PaperviewApi.Interfaces\Chat.Esperance.PaperviewApi.Interfaces.csproj", "{BAD8133F-88AB-400F-9F67-12B5C43A04AA}"

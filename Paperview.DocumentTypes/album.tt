@@ -1,4 +1,4 @@
-﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+﻿<#@ template debug="false" hostspecific="true" language="C#" #>
 <#@ assembly name="System.Core" #>
 <#@ assembly name="System.Runtime" #>
 <#@ assembly name="System.Collections" #>
@@ -22,7 +22,37 @@
 <#@ import namespace="Paperview.Interfaces" #>
 <#@ output extension=".html" #>
 <#
-	//var templatePath = Path.GetDirectoryName(Host.TemplateFile);
+	var templatePath = Path.GetDirectoryName(Host.TemplateFile);
+	var scriptDirPath = Path.Combine(templatePath, "..\\DuoCode\\Paperview.DocumentType.Album\\scripts");
+	scriptDirPath = Path.GetFullPath(scriptDirPath);
+	
+	var mscorlibFileName = "mscorlib.js";
+	var mscorlibFilePath = Path.Combine(scriptDirPath, mscorlibFileName);
+	mscorlibFilePath = Path.GetFullPath(mscorlibFilePath);
+	var mscorlibText = System.IO.File.ReadAllText(mscorlibFilePath);
+
+	var paperview_Interfaces_js_FileName = "Paperview.Interfaces.js";
+	var paperview_Interfaces_js_FilePath = Path.Combine(scriptDirPath,paperview_Interfaces_js_FileName);
+	var paperview_Interfaces_js_Text = System.IO.File.ReadAllText(paperview_Interfaces_js_FilePath);
+
+	var paperview_Common_js_FileName = "Paperview.Common.js";
+	var paperview_Common_js_FilePath = Path.Combine(scriptDirPath,paperview_Common_js_FileName);
+	var paperview_Common_js_Text = System.IO.File.ReadAllText(paperview_Common_js_FilePath);
+
+	var paperview_Common_Ui_js_FileName = "Paperview.Common.Ui.js";
+	var paperview_Common_Ui_js_FilePath = Path.Combine(scriptDirPath,paperview_Common_Ui_js_FileName);
+	var paperview_Common_Ui_js_Text = System.IO.File.ReadAllText(paperview_Common_Ui_js_FilePath);
+
+	var paperview_Microformats_Album_js_FileName = "Paperview.Microformats.Album.js";
+	var paperview_Microformats_Album_js_FilePath = Path.Combine(scriptDirPath,paperview_Microformats_Album_js_FileName);
+	var paperview_Microformats_Album_js_Text = System.IO.File.ReadAllText(paperview_Microformats_Album_js_FilePath);
+
+	var paperview_DocumentTypes_Album_js_FileName = "Paperview.DocumentTypes.Album.js";
+	var paperview_DocumentTypes_Album_js_FilePath = Path.Combine(scriptDirPath,paperview_DocumentTypes_Album_js_FileName);
+	var paperview_DocumentTypes_Album_js_Text = System.IO.File.ReadAllText(paperview_DocumentTypes_Album_js_FilePath);
+
+
+
 	//var resxRelativePath = "Strings.resx";
 	//var path = Path.Combine(templatePath, resxRelativePath);
 	//path = Path.GetFullPath(path);
@@ -33,7 +63,7 @@
                 xmicroformatName.Add("de", "tbt");
                 xmicroformatName.Add("es", "tbt");
 
-				var a = JsonConvert.SerializeObject(xmicroformatName);
+				var documentTypeData = JsonConvert.SerializeObject(xmicroformatName);
 
             #region 
             // The following describes this specific DocumentType application.
@@ -61,7 +91,7 @@
             //document.Microformat = microformat;
             #endregion
 
-		    a = JsonConvert.SerializeObject(document);
+		    documentTypeData = JsonConvert.SerializeObject(document);
 
 #><!DOCTYPE html>
 <html>
@@ -70,17 +100,34 @@
     <link href="album.css" rel="stylesheet" type="text/css">
     <link href="uicomponents.css" rel="stylesheet" type="text/css">
 
-	<script id="paperviewMicroformatJson" type="text/javascript">mydata='<#=a#>';</script>
-    <script type="text/javascript" src="Scripts/mscorlib.js"></script>
-    <script type="text/javascript" src="Scripts/Paperview.Interfaces.js"></script>
-    <script type="text/javascript" src="Scripts/Paperview.Common.js"></script>
-    <script type="text/javascript" src="Scripts/Paperview.Common.Ui.js"></script>
-    <script type="text/javascript" src="Scripts/Paperview.Microformats.Album.js"></script>
-    <script type="text/javascript" src="Scripts/Paperview.DocumentTypes.Album.js"></script>
+	<script id="documentTypeData" type="text/javascript">documentTypeData='<#=documentTypeData#>';</script>
+	<script id="mscorlib" type="text/javascript">
+<#=mscorlibText#>	
+	</script>
+
+    <script id="paperview_Interfaces_js" type="text/javascript">
+<#=paperview_Interfaces_js_Text#>
+	</script>
+
+    <script id="paperview_Common_js" type="text/javascript">
+<#=paperview_Common_js_Text#>	
+	</script>
+
+    <script id="paperview_Common_Ui_js" type="text/javascript">
+<#=paperview_Common_Ui_js_Text#>	
+	</script>
+
+    <script id="paperview_Microformats_Album_js" type="text/javascript">
+<#=paperview_Microformats_Album_js_Text#>
+	</script>
+
+    <script id="paperview_DocumentTypes_Album_js" type="text/javascript">
+<#=paperview_DocumentTypes_Album_js_Text#>
+	</script>
 
 	<script type="text/javascript">
 		function init() {
-			Paperview.DocumentTypes.Album.Program.Run(mydata);
+			Paperview.DocumentTypes.Album.Program.Run(documentTypeData);
 		}
 	</script>
 </head>
