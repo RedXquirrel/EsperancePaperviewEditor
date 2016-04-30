@@ -10,7 +10,8 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="$(MSBuildThisFileDirectory)Author.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Document.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DocumentInstanceMetaData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)DocumentTypeMetaData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AppStyles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Microformat.cs" />

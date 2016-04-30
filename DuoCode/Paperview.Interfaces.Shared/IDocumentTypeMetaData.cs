@@ -2,8 +2,14 @@
 
 namespace Paperview.Interfaces
 {
-    public interface IDocument
+    public interface IDocumentTypeMetaData
     {
+        ILegal Legal { get; set; }
+
+        IPublisher Publisher { get; set; }
+
+        IAuthor Author { get; set; }
+
         string DocumentId { get; set; }
         string PresentationId { get; set; }
 

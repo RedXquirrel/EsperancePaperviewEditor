@@ -44,8 +44,11 @@
     <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\Idiom.cs">
       <Link>Idiom.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IDocument.cs">
-      <Link>IDocument.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IDocumentInstanceMetaData.cs">
+      <Link>IDocumentInstanceMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IDocumentTypeMetaData.cs">
+      <Link>IDocumentTypeMetaData.cs</Link>
     </Compile>
     <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\ILegal.cs">
       <Link>ILegal.cs</Link>

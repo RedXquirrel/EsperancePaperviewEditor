@@ -87,7 +87,7 @@
     microformatDescription.Add("de", "tbt");
     microformatDescription.Add("es", "tbt");
 
-    var document = new Document();
+    var document = new DocumentTypeMetaData();
     document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
     document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
     document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
@@ -100,7 +100,7 @@
 
 	var documentTypeData = JsonConvert.SerializeObject(document);
 
-	albumMicroformat.Document = document;
+	albumMicroformat.DocumentTypeMetaData = document;
 
     var albumMicroformatData = JsonConvert.SerializeObject(albumMicroformat);
 

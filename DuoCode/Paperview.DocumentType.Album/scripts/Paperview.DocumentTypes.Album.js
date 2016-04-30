@@ -48,21 +48,22 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         // Define the action that will occur when a user selects a publisher
         this._selectPublisherAction = $d.delegate(function(index) {
             this._selectedPublisherIndex = index;
-            this._albumMicroformat.set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
-            this._publisherPane.set_Publisher(this._albumMicroformat.get_Publisher());
+            this._albumMicroformat.get_DocumentInstanceMetaData().set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
+            this._publisherPane.set_Publisher($d.cast(this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher(), 
+                Paperview.Common.Publisher));
 
             this._publisherLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
-                this._albumMicroformat.get_Publisher().get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
+                this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
         }, this);
 
         // Define an action that will occur when a user selects an author
         this._selectAuthorsAction = $d.delegate(function(index) {
             this._selectedauthorIndex = index;
-            this._albumMicroformat.set_Author(index >= 0 ? this._authors.get_Item(this._selectedauthorIndex) : null);
+            this._albumMicroformat.get_DocumentInstanceMetaData().set_Author(index >= 0 ? this._authors.get_Item(this._selectedauthorIndex) : null);
             //_authorPane.Author = _albumMicroformat.Author;
 
             this._authorLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText(), 
-                this._albumMicroformat.get_Author().get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText());
+                this._albumMicroformat.get_DocumentInstanceMetaData().get_Author().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText());
         }, this);
 
         var microformat = new Paperview.Common.Microformat.ctor();
@@ -82,7 +83,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         microformatDescription.Add$1("de", "tbt");
         microformatDescription.Add$1("es", "tbt");
 
-        var document = new Paperview.Common.Document.ctor();
+        var document = new Paperview.Common.DocumentTypeMetaData.ctor();
         document.set_DocumentId("1878B000-77ED-417E-BE71-69CBFC716B3C");
         document.set_MicroformatId("1878B000-77ED-417E-BE71-69CBFC716B3C");
         document.set_PresentationId("1878B000-77ED-417E-BE71-69CBFC716B3C");
@@ -95,7 +96,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
 
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
-            $obj.set_Document(document);
+            $obj.set_DocumentTypeMetaData(document);
             return $obj;
         }).call(this);
         //#endregion

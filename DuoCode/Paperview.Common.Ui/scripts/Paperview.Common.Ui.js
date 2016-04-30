@@ -56,7 +56,7 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
         $t.ValueCellClassKey = "standardValuePairCell";
     };
     $t.$ator = function() {
-        this._document = null;
+        this._documentTypeMetaData = null;
         this._locale = null;
         this._parent = null;
         this._container = null;
@@ -75,8 +75,8 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
         this.Initialise(document, idiom, locale);
     };
     $t.ctor$1.prototype = $p;
-    $p.Initialise = function DocumentTypePane_Initialise(mfDocument, idiom, locale) {
-        this._document = mfDocument;
+    $p.Initialise = function DocumentTypePane_Initialise(documentTypeMetaData, idiom, locale) {
+        this._documentTypeMetaData = documentTypeMetaData;
         this._locale = locale;
         this._container = document.createElement(Paperview.Common.Ui.Helpers.Hx().DivTagKey);
 
@@ -105,19 +105,19 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
                     idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
                 Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), this._document.get_MicroformatId())), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                    idiom)), this._documentTypeMetaData.get_MicroformatId())), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
             Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
                 idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
                 Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
-                this._locale, this._document.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._documentTypeMetaData.get_MicroformatName(), 
+                this._locale, this._documentTypeMetaData.get_LanguageDefault()))), Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
             Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, 
                 idiom)), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel())), 
             Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateDivElement(), 
                 Paperview.Common.Ui.Helpers.Hx().ClassAttKey, Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
-                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
-                this._locale, this._document.get_LanguageDefault())));
+                    idiom)), Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._documentTypeMetaData.get_MicroformatDescription(), 
+                this._locale, this._documentTypeMetaData.get_LanguageDefault())));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;
     };
@@ -127,17 +127,17 @@ $d.define(Paperview.Common.Ui.DocumentTypePane, null, function($t, $p) {
                 idiom)), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeIdLabel(), 
             Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            this._document.get_MicroformatId(), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            this._documentTypeMetaData.get_MicroformatId(), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
                 idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeNameLabel(), 
             Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatName(), 
-                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._documentTypeMetaData.get_MicroformatName(), 
+                this._locale, this._documentTypeMetaData.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
                 idiom))), Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.AppendChild$1(Paperview.Common.Ui.Helpers.Hx.CreateTrElement(), 
             Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), Paperview.Common.Ui.Localisation.UiResources().get_DocumentTypeDescriptionLabel(), 
             Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.NameCellClassKey, idiom)), Paperview.Common.Ui.Helpers.Hx.CreateTdElement(), 
-            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._document.get_MicroformatDescription(), 
-                this._locale, this._document.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
+            Paperview.Common.Ui.Helpers.UiExtensions.AssertLocale(this._documentTypeMetaData.get_MicroformatDescription(), 
+                this._locale, this._documentTypeMetaData.get_LanguageDefault()), Paperview.Common.Ui.Helpers.Hx.AppendIdiomString($t.ValueCellClassKey, 
                 idiom))));
 
         this._parent != null ? this._parent.appendChild(this._container) : null;

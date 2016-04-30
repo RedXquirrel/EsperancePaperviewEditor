@@ -2,6 +2,6 @@
 "version" : 3,
 "file" : "Paperview.Common.js",
 "sourceRoot" : "../",
-"sources" : ["../Paperview.Common.Shared/Document.cs", "../Paperview.Common.Shared/Helpers/AppStyles.cs", "../Paperview.Common.Shared/Microformat.cs"],
-"mappings" : ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAckB,OAAO,WAAM;;;QACb,cAAS,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKjC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKhC,OAAO,YAAO;;;QACd,eAAU,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;oCCjBE;oCACA;;;;;;;;;;;;;;;;;;;;;;;;;QCApC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;"
+"sources" : ["../Paperview.Common.Shared/DocumentTypeMetaData.cs", "../Paperview.Common.Shared/Helpers/AppStyles.cs", "../Paperview.Common.Shared/Microformat.cs"],
+"mappings" : ";;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;QAoBkB,OAAO,WAAM;;;QACb,cAAS,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKjC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;QAKhC,OAAO,YAAO;;;QACd,eAAU,KAAK,CAAC,WAAgB,CAAC,CAAC;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;oCCvBE;oCACA;;;;;;;;;;;;;;;;;;;;;;;;;QCApC,OAAO,UAAK;;;QACZ,aAAQ,KAAK,CAAC,WAAgB,CAAC,CAAC;"
 }

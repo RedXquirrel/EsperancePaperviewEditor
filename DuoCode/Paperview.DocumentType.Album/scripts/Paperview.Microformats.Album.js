@@ -24,24 +24,18 @@ Paperview.Microformats.Album.Artefacts = $d.declare("Paperview.Microformats.Albu
 Paperview.Microformats.Album.Image = $d.declare("Paperview.Microformats.Album.Image", 0, $asm);
 $d.define(Paperview.Microformats.Album.AlbumMicroformat, null, function($t, $p) {
     $t.$ator = function() {
-        this.Legal = null;
-        this.Publisher = null;
-        this.Author = null;
-        this.Document = null;
+        this.DocumentTypeMetaData = null;
+        this.DocumentInstanceMetaData = null;
         this.Artifacts = null;
     };
     $t.ctor = function AlbumMicroformat() {
         $t.$baseType.ctor.call(this);
     };
     $t.ctor.prototype = $p;
-    $p.get_Legal = function AlbumMicroformat_get_Legal() { return this.Legal; };
-    $p.set_Legal = function AlbumMicroformat_set_Legal(value) { this.Legal = value;return value; };
-    $p.get_Publisher = function AlbumMicroformat_get_Publisher() { return this.Publisher; };
-    $p.set_Publisher = function AlbumMicroformat_set_Publisher(value) { this.Publisher = value;return value; };
-    $p.get_Author = function AlbumMicroformat_get_Author() { return this.Author; };
-    $p.set_Author = function AlbumMicroformat_set_Author(value) { this.Author = value;return value; };
-    $p.get_Document = function AlbumMicroformat_get_Document() { return this.Document; };
-    $p.set_Document = function AlbumMicroformat_set_Document(value) { this.Document = value;return value; };
+    $p.get_DocumentTypeMetaData = function AlbumMicroformat_get_DocumentTypeMetaData() { return this.DocumentTypeMetaData; };
+    $p.set_DocumentTypeMetaData = function AlbumMicroformat_set_DocumentTypeMetaData(value) { this.DocumentTypeMetaData = value;return value; };
+    $p.get_DocumentInstanceMetaData = function AlbumMicroformat_get_DocumentInstanceMetaData() { return this.DocumentInstanceMetaData; };
+    $p.set_DocumentInstanceMetaData = function AlbumMicroformat_set_DocumentInstanceMetaData(value) { this.DocumentInstanceMetaData = value;return value; };
     $p.get_Artifacts = function AlbumMicroformat_get_Artifacts() { return this.Artifacts; };
     $p.set_Artifacts = function AlbumMicroformat_set_Artifacts(value) { this.Artifacts = value;return value; };
 });

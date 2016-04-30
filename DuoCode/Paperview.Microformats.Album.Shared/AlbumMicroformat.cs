@@ -1,17 +1,14 @@
 ﻿using Paperview.Common;
+using Paperview.Common.Shared;
 using Paperview.Interfaces;
 
 namespace Paperview.Microformats.Album
 {
     public class AlbumMicroformat
     {
-        public Legal Legal { get; set; }
+        public DocumentTypeMetaData DocumentTypeMetaData { get; set; }
 
-        public Publisher Publisher { get; set; }
-
-        public Author Author { get; set; }
-
-        public Document Document { get; set; }
+        public DocumentInstanceMetaData DocumentInstanceMetaData { get; set; }
 
         public Artefacts Artifacts { get; set; }
     }

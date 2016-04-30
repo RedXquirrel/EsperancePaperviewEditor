@@ -12,7 +12,8 @@
     <Compile Include="$(MSBuildThisFileDirectory)IAuthor.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IContact.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Idiom.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)IDocument.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDocumentInstanceMetaData.cs" />
+    <Compile Include="$(MSBuildThisFileDirectory)IDocumentTypeMetaData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)ILegal.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IMicroformat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)IPublisher.cs" />

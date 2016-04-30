@@ -4,8 +4,14 @@ using Paperview.Interfaces;
 
 namespace Paperview.Common
 {
-    public class Document : IDocument
+    public class DocumentTypeMetaData : IDocumentTypeMetaData
     {
+        public ILegal Legal { get; set; }
+
+        public IPublisher Publisher { get; set; }
+
+        public IAuthor Author { get; set; }
+
         private string _mfid;
         private string _docId;
         private string _presId;

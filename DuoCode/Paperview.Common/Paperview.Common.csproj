@@ -35,8 +35,11 @@
     <Compile Include="..\Paperview.Common.Shared\Author.cs">
       <Link>Author.cs</Link>
     </Compile>
-    <Compile Include="..\Paperview.Common.Shared\Document.cs">
-      <Link>Document.cs</Link>
+    <Compile Include="..\Paperview.Common.Shared\DocumentInstanceMetaData.cs">
+      <Link>DocumentInstanceMetaData.cs</Link>
+    </Compile>
+    <Compile Include="..\Paperview.Common.Shared\DocumentTypeMetaData.cs">
+      <Link>DocumentTypeMetaData.cs</Link>
     </Compile>
     <Compile Include="..\Paperview.Common.Shared\Helpers\AppStyles.cs">
       <Link>Helpers\AppStyles.cs</Link>

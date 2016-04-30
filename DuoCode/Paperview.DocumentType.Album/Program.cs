@@ -55,20 +55,20 @@ namespace Paperview.DocumentTypes.Album
             _selectPublisherAction = index =>
             {
                 _selectedPublisherIndex = (int) index;
-                _albumMicroformat.Publisher = (int) index >= 0 ? _publishers[_selectedPublisherIndex] : null;
-                _publisherPane.Publisher = _albumMicroformat.Publisher;
+                _albumMicroformat.DocumentInstanceMetaData.Publisher = (int) index >= 0 ? _publishers[_selectedPublisherIndex] : null;
+                _publisherPane.Publisher = (Publisher)_albumMicroformat.DocumentInstanceMetaData.Publisher;
 
-                _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_albumMicroformat.Publisher.Name})" : UiResources.PublisherLabelText;
+                _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_albumMicroformat.DocumentInstanceMetaData.Publisher.Name})" : UiResources.PublisherLabelText;
             };
 
             // Define an action that will occur when a user selects an author
             _selectAuthorsAction = index =>
             {
                 _selectedauthorIndex = (int)index;
-                _albumMicroformat.Author = (int)index >= 0 ? _authors[_selectedauthorIndex] : null;
+                _albumMicroformat.DocumentInstanceMetaData.Author = (int)index >= 0 ? _authors[_selectedauthorIndex] : null;
                 //_authorPane.Author = _albumMicroformat.Author;
 
-                _authorLabel.Text = (int)index >= 0 ? $"{UiResources.AuthorLabelText} ({_albumMicroformat.Author.Name})" : UiResources.AuthorLabelText;
+                _authorLabel.Text = (int)index >= 0 ? $"{UiResources.AuthorLabelText} ({_albumMicroformat.DocumentInstanceMetaData.Author.Name})" : UiResources.AuthorLabelText;
             };
 
             var microformat = new Microformat();
@@ -88,7 +88,7 @@ namespace Paperview.DocumentTypes.Album
             microformatDescription.Add("de", "tbt");
             microformatDescription.Add("es", "tbt");
 
-            var document = new Paperview.Common.Document();
+            var document = new Paperview.Common.DocumentTypeMetaData();
             document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
             document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
             document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
@@ -100,7 +100,7 @@ namespace Paperview.DocumentTypes.Album
 
             _albumMicroformat = new AlbumMicroformat()
             {
-                Document = document,
+                DocumentTypeMetaData = document,
             };
             #endregion
 
