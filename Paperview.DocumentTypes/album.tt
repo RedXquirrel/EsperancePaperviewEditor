@@ -23,6 +23,20 @@
 <#@ output extension=".html" #>
 <#
 	var templatePath = Path.GetDirectoryName(Host.TemplateFile);
+
+	var rootPath = Path.Combine(templatePath, "..\\DuoCode\\Paperview.DocumentType.Album");
+	rootPath = Path.GetFullPath(rootPath);
+
+	// album.css
+	var album_css_FileName = "album.css";
+	var album_css_FilePath = Path.Combine(rootPath,album_css_FileName);
+	var album_css_Text = System.IO.File.ReadAllText(album_css_FilePath);
+
+	// uicomponents.css
+	var uicomponents_css_FileName = "uicomponents.css";
+	var uicomponents_css_FilePath = Path.Combine(rootPath,uicomponents_css_FileName);
+	var uicomponents_css_Text = System.IO.File.ReadAllText(uicomponents_css_FilePath);
+
 	var scriptDirPath = Path.Combine(templatePath, "..\\DuoCode\\Paperview.DocumentType.Album\\scripts");
 	scriptDirPath = Path.GetFullPath(scriptDirPath);
 	
@@ -97,10 +111,19 @@
 <html>
 <head>
   <title>Paperview Album</title>
-    <link href="album.css" rel="stylesheet" type="text/css">
-    <link href="uicomponents.css" rel="stylesheet" type="text/css">
+
+    <!-- album.css -->
+	<style>
+<#=album_css_Text#>
+	</style>
+
+	<!-- uicomponents.css -->
+	<style>
+<#=uicomponents_css_Text#>
+	</style>
 
 	<script id="documentTypeData" type="text/javascript">documentTypeData='<#=documentTypeData#>';</script>
+
 	<script id="mscorlib" type="text/javascript">
 <#=mscorlibText#>	
 	</script>
