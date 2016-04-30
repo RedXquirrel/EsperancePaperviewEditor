@@ -6,7 +6,7 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using Chat.Esperance.PaperviewApi.Interfaces;
-using Paperview.StockDocumentTypes;
+using Paperview.DocumentTypes;
 
 namespace Chat.Esperance.PaperviewApi.Services
 {
@@ -17,7 +17,7 @@ namespace Chat.Esperance.PaperviewApi.Services
             List<string> docs = new List<string>();
 
             var assembly = typeof(StockDocumentTypes).GetTypeInfo().Assembly;
-            Stream stream = assembly.GetManifestResourceStream("Paperview.StockDocumentTypes.index.html");
+            Stream stream = assembly.GetManifestResourceStream("Paperview.DocumentTypes.album.html");
             string text = "";
             using (var reader = new System.IO.StreamReader(stream))
             {

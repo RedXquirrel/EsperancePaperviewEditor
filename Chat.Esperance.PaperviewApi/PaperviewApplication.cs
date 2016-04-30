@@ -1,7 +1,7 @@
 ﻿using System;
 using Chat.Esperance.PaperviewApi.Scaffolding;
 using Chat.Esperance.PaperviewApi.ViewModels;
-using Paperview.StockDocumentTypes;
+using Paperview.DocumentTypes;
 
 namespace Chat.Esperance.PaperviewApi
 {

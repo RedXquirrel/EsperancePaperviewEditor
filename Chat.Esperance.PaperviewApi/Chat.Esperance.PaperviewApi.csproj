@@ -64,13 +64,13 @@
       <Project>{e76f6084-9a87-4cfc-a5b2-45752bdf23b2}</Project>
       <Name>Paperview.Common</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Paperview.DocumentTypes\Paperview.DocumentTypes.csproj">
+      <Project>{b42d0e8b-a314-4e12-b063-c9b9da265cab}</Project>
+      <Name>Paperview.DocumentTypes</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Paperview.Interfaces\Paperview.Interfaces.csproj">
       <Project>{4d1462e2-5698-464c-8f44-a78deb900091}</Project>
       <Name>Paperview.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Paperview.StockDocumentTypes\Paperview.StockDocumentTypes.csproj">
-      <Project>{f6f39656-dbfa-4f1b-8ffd-8a875428e496}</Project>
-      <Name>Paperview.StockDocumentTypes</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

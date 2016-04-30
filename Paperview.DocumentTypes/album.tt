@@ -1,0 +1,92 @@
+﻿<#@ template debug="false" hostspecific="false" language="C#" #>
+<#@ assembly name="System.Core" #>
+<#@ assembly name="System.Runtime" #>
+<#@ assembly name="System.Collections" #>
+<#@ import namespace="System" #>
+<#@ import namespace="System.Runtime" #>
+<#@ import namespace="System.Linq" #>
+<#@ import namespace="System.Text" #>
+<#@ import namespace="System.Collections" #>
+<#@ import namespace="System.Collections.Generic" #>
+<#@ assembly name="System.Xml" #>
+<#@ assembly name="System.Xml.Linq" #>
+<#@ import namespace="System.Xml.XPath" #>
+<#@ import namespace="System.IO" #>
+<#@ import namespace="System.Globalization" #>
+<#@ import namespace="System.Diagnostics" #>
+<#@ assembly name="Newtonsoft.Json.dll" #>
+<#@ import namespace="Newtonsoft.Json" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Paperview.Interfaces.dll" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Paperview.Common.dll" #>
+<#@ import namespace="Paperview.Common" #>
+<#@ import namespace="Paperview.Interfaces" #>
+<#@ output extension=".html" #>
+<#
+	//var templatePath = Path.GetDirectoryName(Host.TemplateFile);
+	//var resxRelativePath = "Strings.resx";
+	//var path = Path.Combine(templatePath, resxRelativePath);
+	//path = Path.GetFullPath(path);
+
+                var xmicroformatName = new Dictionary<string, string>();
+                xmicroformatName.Add("en", "Album");
+                xmicroformatName.Add("fr", "tbt");
+                xmicroformatName.Add("de", "tbt");
+                xmicroformatName.Add("es", "tbt");
+
+				var a = JsonConvert.SerializeObject(xmicroformatName);
+
+            #region 
+            // The following describes this specific DocumentType application.
+            // The Microformat object above describes the user's specific instance of this Document Type.
+            var microformatName = new Dictionary<string,string>();
+            microformatName.Add("en", "Album");
+            microformatName.Add("fr", "tbt");
+            microformatName.Add("de", "tbt");
+            microformatName.Add("es", "tbt");
+
+            var microformatDescription = new Dictionary<string, string>();
+            microformatDescription.Add("en", "An Image Album");
+            microformatDescription.Add("fr", "tbt");
+            microformatDescription.Add("de", "tbt");
+            microformatDescription.Add("es", "tbt");
+
+            var document = new Document();
+            document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+            document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+            document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+            document.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
+            document.LanguageDefault = "en";
+            document.MicroformatName = microformatName;
+            document.MicroformatDescription = microformatDescription;
+            //document.Microformat = microformat;
+            #endregion
+
+		    a = JsonConvert.SerializeObject(document);
+
+#><!DOCTYPE html>
+<html>
+<head>
+  <title>Paperview Album</title>
+    <link href="album.css" rel="stylesheet" type="text/css">
+    <link href="uicomponents.css" rel="stylesheet" type="text/css">
+
+	<script id="paperviewMicroformatJson" type="text/javascript">mydata='<#=a#>';</script>
+    <script type="text/javascript" src="Scripts/mscorlib.js"></script>
+    <script type="text/javascript" src="Scripts/Paperview.Interfaces.js"></script>
+    <script type="text/javascript" src="Scripts/Paperview.Common.js"></script>
+    <script type="text/javascript" src="Scripts/Paperview.Common.Ui.js"></script>
+    <script type="text/javascript" src="Scripts/Paperview.Microformats.Album.js"></script>
+    <script type="text/javascript" src="Scripts/Paperview.DocumentTypes.Album.js"></script>
+
+	<script type="text/javascript">
+		function init() {
+			Paperview.DocumentTypes.Album.Program.Run(mydata);
+		}
+	</script>
+</head>
+<body onload="init()">
+<div id="content"><span>Temp Content</span></div>
+<div id="duocode-console" />
+</body>
+</html>
+

@@ -56,16 +56,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\Paperview.Common.Windows\Paperview.Common.Windows.csproj">
-      <Project>{41e489c8-2fd2-4bb3-bb49-2932ac77e3f7}</Project>
-      <Name>Paperview.Common.Windows</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Paperview.Interfaces.Windows\Paperview.Interfaces.Windows.csproj">
-      <Project>{b26c2e03-55f7-425e-9e33-2a9e0e4f0b54}</Project>
-      <Name>Paperview.Interfaces.Windows</Name>
-    </ProjectReference>
-  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
