@@ -20,6 +20,8 @@
 <#@ assembly name="$(ProjectDir)$(OutDir)Paperview.Common.dll" #>
 <#@ import namespace="Paperview.Common" #>
 <#@ import namespace="Paperview.Interfaces" #>
+<#@ assembly name="$(ProjectDir)$(OutDir)Paperview.Microformats.Album.dll" #>
+<#@ import namespace="Paperview.Microformats.Album" #>
 <#@ output extension=".html" #>
 <#
 	var templatePath = Path.GetDirectoryName(Host.TemplateFile);
@@ -66,46 +68,41 @@
 	var paperview_DocumentTypes_Album_js_Text = System.IO.File.ReadAllText(paperview_DocumentTypes_Album_js_FilePath);
 
 
+	var albumMicroformat = new AlbumMicroformat();
 
-	//var resxRelativePath = "Strings.resx";
-	//var path = Path.Combine(templatePath, resxRelativePath);
-	//path = Path.GetFullPath(path);
 
-                var xmicroformatName = new Dictionary<string, string>();
-                xmicroformatName.Add("en", "Album");
-                xmicroformatName.Add("fr", "tbt");
-                xmicroformatName.Add("de", "tbt");
-                xmicroformatName.Add("es", "tbt");
 
-				var documentTypeData = JsonConvert.SerializeObject(xmicroformatName);
+    #region 
+    // The following describes this specific DocumentType application.
+    // The Microformat object above describes the user's specific instance of this Document Type.
+    var microformatName = new Dictionary<string,string>();
+    microformatName.Add("en", "Album");
+    microformatName.Add("fr", "tbt");
+    microformatName.Add("de", "tbt");
+    microformatName.Add("es", "tbt");
 
-            #region 
-            // The following describes this specific DocumentType application.
-            // The Microformat object above describes the user's specific instance of this Document Type.
-            var microformatName = new Dictionary<string,string>();
-            microformatName.Add("en", "Album");
-            microformatName.Add("fr", "tbt");
-            microformatName.Add("de", "tbt");
-            microformatName.Add("es", "tbt");
+    var microformatDescription = new Dictionary<string, string>();
+    microformatDescription.Add("en", "An Image Album");
+    microformatDescription.Add("fr", "tbt");
+    microformatDescription.Add("de", "tbt");
+    microformatDescription.Add("es", "tbt");
 
-            var microformatDescription = new Dictionary<string, string>();
-            microformatDescription.Add("en", "An Image Album");
-            microformatDescription.Add("fr", "tbt");
-            microformatDescription.Add("de", "tbt");
-            microformatDescription.Add("es", "tbt");
+    var document = new Document();
+    document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    document.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
+    document.LanguageDefault = "en";
+    document.MicroformatName = microformatName;
+    document.MicroformatDescription = microformatDescription;
+    //document.Microformat = microformat;
+    #endregion
 
-            var document = new Document();
-            document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
-            document.LanguageDefault = "en";
-            document.MicroformatName = microformatName;
-            document.MicroformatDescription = microformatDescription;
-            //document.Microformat = microformat;
-            #endregion
+	var documentTypeData = JsonConvert.SerializeObject(document);
 
-		    documentTypeData = JsonConvert.SerializeObject(document);
+	albumMicroformat.Document = document;
+
+    var albumMicroformatData = JsonConvert.SerializeObject(albumMicroformat);
 
 #><!DOCTYPE html>
 <html>
@@ -121,6 +118,8 @@
 	<style>
 <#=uicomponents_css_Text#>
 	</style>
+	
+	<script id="temp" type="text/javascript">myTemp='<#=albumMicroformatData#>';</script>
 
 	<script id="documentTypeData" type="text/javascript">documentTypeData='<#=documentTypeData#>';</script>
 
