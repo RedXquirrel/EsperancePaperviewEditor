@@ -1,6 +1,6 @@
 ﻿using Chat.Esperance.PaperviewApi.Scaffolding;
 using Chat.Esperance.PaperviewApi.Services;
-using Paperview.Microformats.B9889DB4_9D9A_4857_841B_CD5EB8E72FF0;
+using Paperview.Common;
 using Xamarin.Forms;
 
 namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
@@ -20,7 +20,7 @@ namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
             {
                 var publisher = new Publisher
                 {
-                    email = "anthony.harrison@xamtastic.com",
+                    Email = "anthony.harrison@xamtastic.com",
                     Name = "Anthony Harrison",
                     Id = "Paperview/E85D8EFD-D395-41BA-A0A6-5E858A9E9238",
                     Url = "http://www.xamtastic.com"
@@ -30,7 +30,7 @@ namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
 
                 publisher = new Publisher
                 {
-                    email = "captain@captainxamtastic.com",
+                    Email = "captain@captainxamtastic.com",
                     Name = "Captain Xamtastic",
                     Id = "Paperview/2011660F-E563-4793-BFEC-16101ED89D34",
                     Url = "http://www.CaptainXamtastic.com"
@@ -42,7 +42,7 @@ namespace Chat.Esperance.PaperviewApi.ViewModels.Publishers
 
                 publisher = new Publisher
                 {
-                    email = "publisher@captainxamtastic.com",
+                    Email = "publisher@captainxamtastic.com",
                     Name = "YouDoo Limited TA Xamtastic",
                     Id = "Paperview/D60B931C-E0F1-4716-83A3-682077E4AC10",
                     Url = "http://www.Xamtastic.com"

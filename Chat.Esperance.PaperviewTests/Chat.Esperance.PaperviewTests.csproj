@@ -89,14 +89,6 @@
       <Project>{67f9d3a8-f71e-4428-913f-c37ae82cdb24}</Project>
       <Name>Chat.Esperance.Paperview.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Paperview.Interfaces\Paperview.Interfaces.csproj">
-      <Project>{a51bbdd3-05b0-4b7e-bedd-359ccaff968d}</Project>
-      <Name>Paperview.Interfaces</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Paperview.Microformats.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0\Paperview.Microformats.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0.csproj">
-      <Project>{54451a55-31ed-491b-a5cc-bbc6a15d2f7e}</Project>
-      <Name>Paperview.Microformats.B9889DB4-9D9A-4857-841B-CD5EB8E72FF0</Name>
-    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Html5\Templates\3F36D2CA-8A54-4826-8F6A-5D83004C7ED8.html" />

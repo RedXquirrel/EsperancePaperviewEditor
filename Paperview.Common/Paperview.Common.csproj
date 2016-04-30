@@ -5,11 +5,11 @@
     <MinimumVisualStudioVersion>10.0</MinimumVisualStudioVersion>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{4D1462E2-5698-464C-8F44-A78DEB900091}</ProjectGuid>
+    <ProjectGuid>{E76F6084-9A87-4CFC-A5B2-45752BDF23B2}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Paperview.Interfaces</RootNamespace>
-    <AssemblyName>Paperview.Interfaces</AssemblyName>
+    <RootNamespace>Paperview.Common</RootNamespace>
+    <AssemblyName>Paperview.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <TargetFrameworkProfile>Profile78</TargetFrameworkProfile>
     <FileAlignment>512</FileAlignment>
@@ -35,28 +35,31 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IAuthor.cs">
-      <Link>IAuthor.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Author.cs">
+      <Link>Author.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IContact.cs">
-      <Link>IContact.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Document.cs">
+      <Link>Document.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\Idiom.cs">
-      <Link>Idiom.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Helpers\AppStyles.cs">
+      <Link>Helpers\AppStyles.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IDocument.cs">
-      <Link>IDocument.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Legal.cs">
+      <Link>Legal.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\ILegal.cs">
-      <Link>ILegal.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Microformat.cs">
+      <Link>Microformat.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IMicroformat.cs">
-      <Link>IMicroformat.cs</Link>
-    </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IPublisher.cs">
-      <Link>IPublisher.cs</Link>
+    <Compile Include="..\DuoCode\Paperview.Common.Shared\Publisher.cs">
+      <Link>Publisher.cs</Link>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Paperview.Interfaces\Paperview.Interfaces.csproj">
+      <Project>{4d1462e2-5698-464c-8f44-a78deb900091}</Project>
+      <Name>Paperview.Interfaces</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\Portable\$(TargetFrameworkVersion)\Microsoft.Portable.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
