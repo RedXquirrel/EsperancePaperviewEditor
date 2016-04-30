@@ -92,7 +92,7 @@ namespace Chat.Esperance.Paperview.Views
                 name: "ButtonTapAnimation",
                 animation: new Xamarin.Forms.Animation((val) =>
                 {
-                    TextLabel.FontSize = _fontSizeCache + 4;
+                    TextLabel.FontSize = _fontSizeCache - 4;
                 }),
                 easing: Easing.CubicOut,
                 length: 250,
