@@ -68,7 +68,7 @@
 	var paperview_DocumentTypes_Album_js_Text = System.IO.File.ReadAllText(paperview_DocumentTypes_Album_js_FilePath);
 
 
-	var albumMicroformat = new AlbumMicroformat() 
+	var albumMicroformat = new AlbumMicroformat
 	{ 
 		DocumentTypeMetaData = new DocumentTypeMetaData(),
 		DocumentInstanceMetaData = new DocumentInstanceMetaData(),
@@ -93,6 +93,20 @@
     microformatDescription.Add("es", "tbt");
 
     var documentTypeMetaData = new DocumentTypeMetaData();
+	documentTypeMetaData.Publisher = new Publisher
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "YouDoo Limited TA Xamtastic",
+                Email = "publisher@xamtastic.com",
+                Url = "http://www.xamtastic.com"
+            };
+	documentTypeMetaData.Author  = new Author
+            {
+                Id = Guid.NewGuid().ToString(),
+                Name = "Anthony Harrison",
+                Email = "Anthony.Harrison@xamtastic.com",
+                Url = "http://www.xamtastic.com"
+            };
     documentTypeMetaData.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
     documentTypeMetaData.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
     documentTypeMetaData.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
