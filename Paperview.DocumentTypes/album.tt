@@ -107,17 +107,12 @@
                 Email = "Anthony.Harrison@xamtastic.com",
                 Url = "http://www.xamtastic.com"
             };
-    documentTypeMetaData.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-    documentTypeMetaData.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-    documentTypeMetaData.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    documentTypeMetaData.DocumentTypeId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
     documentTypeMetaData.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
     documentTypeMetaData.LanguageDefault = "en";
-    documentTypeMetaData.MicroformatName = microformatName;
-    documentTypeMetaData.MicroformatDescription = microformatDescription;
-    //document.Microformat = microformat;
+    documentTypeMetaData.DocumentTypeName = microformatName;
+    documentTypeMetaData.DocumentTypeDescription = microformatDescription;
     #endregion
-
-	//var documentTypeData = JsonConvert.SerializeObject(document);
 
 	albumMicroformat.DocumentTypeMetaData = documentTypeMetaData;
 

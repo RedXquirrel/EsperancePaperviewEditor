@@ -57,9 +57,18 @@ $d.define(Paperview.Common.Author, null, function($t, $p) {
 $d.define(Paperview.Common.DocumentInstanceMetaData, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.Shared.IDocumentInstanceMetaData];
     $t.$ator = function() {
+        this._originalDocumentInstanceId = null;
+        this._documentInstanceId = null;
         this.Legal = null;
         this.Publisher = null;
         this.Author = null;
+        this.DocumentInstanceIconBase64 = null;
+        this.LanguageAvailability = new (System.Collections.Generic.List$1(String, 40320).ctor)();
+        this.LanguageDefault = null;
+        this.DocumentInstanceName = new (System.Collections.Generic.Dictionary$2(String, String, 27758).ctor)();
+        this.DocumentInstanceDescription = new (System.Collections.Generic.Dictionary$2(String, String, 
+            27758).ctor)();
+        this.TranspositionHistory = new (System.Collections.Generic.List$1(String, 40320).ctor)();
     };
     $t.ctor = function DocumentInstanceMetaData() {
         $t.$baseType.ctor.call(this);
@@ -71,28 +80,67 @@ $d.define(Paperview.Common.DocumentInstanceMetaData, null, function($t, $p) {
     $p.set_Publisher = function DocumentInstanceMetaData_set_Publisher(value) { this.Publisher = value;return value; };
     $p.get_Author = function DocumentInstanceMetaData_get_Author() { return this.Author; };
     $p.set_Author = function DocumentInstanceMetaData_set_Author(value) { this.Author = value;return value; };
+    $p.get_OriginalDocumentInstanceId = function DocumentInstanceMetaData_get_OriginalDocumentInstanceId() {
+        return this._originalDocumentInstanceId;
+    };
+    $p.set_OriginalDocumentInstanceId = function DocumentInstanceMetaData_set_OriginalDocumentInstanceId(value) {
+        this._originalDocumentInstanceId = value.toLowerCase();
+        return value;
+    };
+    $p.get_DocumentInstanceId = function DocumentInstanceMetaData_get_DocumentInstanceId() {
+        return this._documentInstanceId;
+    };
+    $p.set_DocumentInstanceId = function DocumentInstanceMetaData_set_DocumentInstanceId(value) {
+        this._documentInstanceId = value.toLowerCase();
+        return value;
+    };
+    $p.get_DocumentInstanceIconBase64 = function DocumentInstanceMetaData_get_DocumentInstanceIconBase64() { return this.DocumentInstanceIconBase64; };
+    $p.set_DocumentInstanceIconBase64 = function DocumentInstanceMetaData_set_DocumentInstanceIconBase64(value) { this.DocumentInstanceIconBase64 = value;return value; };
+    $p.get_LanguageAvailability = function DocumentInstanceMetaData_get_LanguageAvailability() { return this.LanguageAvailability; };
+    $p.set_LanguageAvailability = function DocumentInstanceMetaData_set_LanguageAvailability(value) { this.LanguageAvailability = value;return value; };
+    $p.get_LanguageDefault = function DocumentInstanceMetaData_get_LanguageDefault() { return this.LanguageDefault; };
+    $p.set_LanguageDefault = function DocumentInstanceMetaData_set_LanguageDefault(value) { this.LanguageDefault = value;return value; };
+    $p.get_DocumentInstanceName = function DocumentInstanceMetaData_get_DocumentInstanceName() { return this.DocumentInstanceName; };
+    $p.set_DocumentInstanceName = function DocumentInstanceMetaData_set_DocumentInstanceName(value) { this.DocumentInstanceName = value;return value; };
+    $p.get_DocumentInstanceDescription = function DocumentInstanceMetaData_get_DocumentInstanceDescription() { return this.DocumentInstanceDescription; };
+    $p.set_DocumentInstanceDescription = function DocumentInstanceMetaData_set_DocumentInstanceDescription(value) { this.DocumentInstanceDescription = value;return value; };
+    $p.get_TranspositionHistory = function DocumentInstanceMetaData_get_TranspositionHistory() { return this.TranspositionHistory; };
+    $p.set_TranspositionHistory = function DocumentInstanceMetaData_set_TranspositionHistory(value) { this.TranspositionHistory = value;return value; };
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_Legal = $p.get_Legal;
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_Legal = $p.set_Legal;
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_Publisher = $p.get_Publisher;
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_Publisher = $p.set_Publisher;
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_Author = $p.get_Author;
     $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_Author = $p.set_Author;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_OriginalDocumentInstanceId = $p.get_OriginalDocumentInstanceId;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_OriginalDocumentInstanceId = $p.set_OriginalDocumentInstanceId;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_DocumentInstanceId = $p.get_DocumentInstanceId;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_DocumentInstanceId = $p.set_DocumentInstanceId;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_DocumentInstanceIconBase64 = $p.get_DocumentInstanceIconBase64;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_DocumentInstanceIconBase64 = $p.set_DocumentInstanceIconBase64;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_LanguageAvailability = $p.get_LanguageAvailability;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_LanguageAvailability = $p.set_LanguageAvailability;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_LanguageDefault = $p.get_LanguageDefault;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_LanguageDefault = $p.set_LanguageDefault;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_DocumentInstanceName = $p.get_DocumentInstanceName;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_DocumentInstanceName = $p.set_DocumentInstanceName;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_DocumentInstanceDescription = $p.get_DocumentInstanceDescription;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_DocumentInstanceDescription = $p.set_DocumentInstanceDescription;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$get_TranspositionHistory = $p.get_TranspositionHistory;
+    $p.Paperview$Interfaces$Shared$IDocumentInstanceMetaData$set_TranspositionHistory = $p.set_TranspositionHistory;
 });
 $d.define(Paperview.Common.DocumentTypeMetaData, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IDocumentTypeMetaData];
     $t.$ator = function() {
-        this._mfid = null;
-        this._docId = null;
-        this._presId = null;
+        this._documentTypeId = null;
         this.Legal = null;
         this.Publisher = null;
         this.Author = null;
-        this.MicroformatIconBase64 = null;
+        this.DocumentTypeIconBase64 = null;
         this.LanguageAvailability = null;
         this.LanguageDefault = null;
-        this.MicroformatName = null;
-        this.MicroformatDescription = null;
-        this.Microformat = null;
+        this.DocumentTypeName = null;
+        this.DocumentTypeDescription = null;
     };
     $t.ctor = function DocumentTypeMetaData() {
         $t.$baseType.ctor.call(this);
@@ -104,61 +152,41 @@ $d.define(Paperview.Common.DocumentTypeMetaData, null, function($t, $p) {
     $p.set_Publisher = function DocumentTypeMetaData_set_Publisher(value) { this.Publisher = value;return value; };
     $p.get_Author = function DocumentTypeMetaData_get_Author() { return this.Author; };
     $p.set_Author = function DocumentTypeMetaData_set_Author(value) { this.Author = value;return value; };
-    $p.get_DocumentId = function DocumentTypeMetaData_get_DocumentId() {
-        return this._docId;
+    $p.get_DocumentTypeId = function DocumentTypeMetaData_get_DocumentTypeId() {
+        return this._documentTypeId;
     };
-    $p.set_DocumentId = function DocumentTypeMetaData_set_DocumentId(value) {
-        this._docId = value.toLowerCase();
+    $p.set_DocumentTypeId = function DocumentTypeMetaData_set_DocumentTypeId(value) {
+        this._documentTypeId = value.toLowerCase();
         return value;
     };
-    $p.get_MicroformatId = function DocumentTypeMetaData_get_MicroformatId() {
-        return this._mfid;
-    };
-    $p.set_MicroformatId = function DocumentTypeMetaData_set_MicroformatId(value) {
-        this._mfid = value.toLowerCase();
-        return value;
-    };
-    $p.get_PresentationId = function DocumentTypeMetaData_get_PresentationId() {
-        return this._presId;
-    };
-    $p.set_PresentationId = function DocumentTypeMetaData_set_PresentationId(value) {
-        this._presId = value.toLowerCase();
-        return value;
-    };
-    $p.get_MicroformatIconBase64 = function DocumentTypeMetaData_get_MicroformatIconBase64() { return this.MicroformatIconBase64; };
-    $p.set_MicroformatIconBase64 = function DocumentTypeMetaData_set_MicroformatIconBase64(value) { this.MicroformatIconBase64 = value;return value; };
+    $p.get_DocumentTypeIconBase64 = function DocumentTypeMetaData_get_DocumentTypeIconBase64() { return this.DocumentTypeIconBase64; };
+    $p.set_DocumentTypeIconBase64 = function DocumentTypeMetaData_set_DocumentTypeIconBase64(value) { this.DocumentTypeIconBase64 = value;return value; };
     $p.get_LanguageAvailability = function DocumentTypeMetaData_get_LanguageAvailability() { return this.LanguageAvailability; };
     $p.set_LanguageAvailability = function DocumentTypeMetaData_set_LanguageAvailability(value) { this.LanguageAvailability = value;return value; };
     $p.get_LanguageDefault = function DocumentTypeMetaData_get_LanguageDefault() { return this.LanguageDefault; };
     $p.set_LanguageDefault = function DocumentTypeMetaData_set_LanguageDefault(value) { this.LanguageDefault = value;return value; };
-    $p.get_MicroformatName = function DocumentTypeMetaData_get_MicroformatName() { return this.MicroformatName; };
-    $p.set_MicroformatName = function DocumentTypeMetaData_set_MicroformatName(value) { this.MicroformatName = value;return value; };
-    $p.get_MicroformatDescription = function DocumentTypeMetaData_get_MicroformatDescription() { return this.MicroformatDescription; };
-    $p.set_MicroformatDescription = function DocumentTypeMetaData_set_MicroformatDescription(value) { this.MicroformatDescription = value;return value; };
-    $p.get_Microformat = function DocumentTypeMetaData_get_Microformat() { return this.Microformat; };
-    $p.set_Microformat = function DocumentTypeMetaData_set_Microformat(value) { this.Microformat = value;return value; };
+    $p.get_DocumentTypeName = function DocumentTypeMetaData_get_DocumentTypeName() { return this.DocumentTypeName; };
+    $p.set_DocumentTypeName = function DocumentTypeMetaData_set_DocumentTypeName(value) { this.DocumentTypeName = value;return value; };
+    $p.get_DocumentTypeDescription = function DocumentTypeMetaData_get_DocumentTypeDescription() { return this.DocumentTypeDescription; };
+    $p.set_DocumentTypeDescription = function DocumentTypeMetaData_set_DocumentTypeDescription(value) { this.DocumentTypeDescription = value;return value; };
     $p.Paperview$Interfaces$IDocumentTypeMetaData$get_Legal = $p.get_Legal;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$set_Legal = $p.set_Legal;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$get_Publisher = $p.get_Publisher;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$set_Publisher = $p.set_Publisher;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$get_Author = $p.get_Author;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$set_Author = $p.set_Author;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_DocumentId = $p.get_DocumentId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_DocumentId = $p.set_DocumentId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_PresentationId = $p.get_PresentationId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_PresentationId = $p.set_PresentationId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_MicroformatId = $p.get_MicroformatId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_MicroformatId = $p.set_MicroformatId;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_MicroformatIconBase64 = $p.get_MicroformatIconBase64;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_MicroformatIconBase64 = $p.set_MicroformatIconBase64;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_DocumentTypeId = $p.get_DocumentTypeId;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_DocumentTypeId = $p.set_DocumentTypeId;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_DocumentTypeIconBase64 = $p.get_DocumentTypeIconBase64;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_DocumentTypeIconBase64 = $p.set_DocumentTypeIconBase64;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$get_LanguageAvailability = $p.get_LanguageAvailability;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$set_LanguageAvailability = $p.set_LanguageAvailability;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$get_LanguageDefault = $p.get_LanguageDefault;
     $p.Paperview$Interfaces$IDocumentTypeMetaData$set_LanguageDefault = $p.set_LanguageDefault;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_MicroformatName = $p.get_MicroformatName;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_MicroformatName = $p.set_MicroformatName;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_MicroformatDescription = $p.get_MicroformatDescription;
-    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_MicroformatDescription = $p.set_MicroformatDescription;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_DocumentTypeName = $p.get_DocumentTypeName;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_DocumentTypeName = $p.set_DocumentTypeName;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$get_DocumentTypeDescription = $p.get_DocumentTypeDescription;
+    $p.Paperview$Interfaces$IDocumentTypeMetaData$set_DocumentTypeDescription = $p.set_DocumentTypeDescription;
 });
 $d.define(Paperview.Common.Helpers.AppStyles, null, function($t, $p) {
     $t.cctor = function() {

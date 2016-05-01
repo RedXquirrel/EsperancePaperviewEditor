@@ -76,19 +76,19 @@ namespace Paperview.Common.Ui
                             .InnerHtml(UiResources.DocumentTypeIdLabel))
             .AppendChild(Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
-                            .InnerHtml(_documentTypeMetaData.MicroformatId))
+                            .InnerHtml(_documentTypeMetaData.DocumentTypeId))
             .AppendChild(Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, NameCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(UiResources.DocumentTypeNameLabel))
             .AppendChild(Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
-                            .InnerHtml(_documentTypeMetaData.MicroformatName.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault)))
+                            .InnerHtml(_documentTypeMetaData.DocumentTypeName.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault)))
             .AppendChild(Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, NameCellClassKey.AppendIdiomString(idiom))
                             .InnerHtml(UiResources.DocumentTypeDescriptionLabel))
             .AppendChild(Hx.CreateDivElement()
                             .SetAttribute(Hx.ClassAttKey, ValueCellClassKey.AppendIdiomString(idiom))
-                            .InnerHtml(_documentTypeMetaData.MicroformatDescription.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault)));
+                            .InnerHtml(_documentTypeMetaData.DocumentTypeDescription.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault)));
 
             _parent?.appendChild(_container);
         }
@@ -99,13 +99,13 @@ namespace Paperview.Common.Ui
                                         .SetAttribute(Hx.ClassAttKey, TableClassKey.AppendIdiomString(idiom))
                                         .AppendChild(Hx.CreateTrElement()
                                                         .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeIdLabel, NameCellClassKey.AppendIdiomString(idiom))
-                                                        .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.MicroformatId, ValueCellClassKey.AppendIdiomString(idiom)))
+                                                        .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.DocumentTypeId, ValueCellClassKey.AppendIdiomString(idiom)))
                                         .AppendChild(Hx.CreateTrElement()
                                                         .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeNameLabel, NameCellClassKey.AppendIdiomString(idiom))
-                                                        .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.MicroformatName.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
+                                                        .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.DocumentTypeName.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
                                         .AppendChild(Hx.CreateTrElement()
                                                 .AppendChild(Hx.CreateTdElement(), UiResources.DocumentTypeDescriptionLabel, NameCellClassKey.AppendIdiomString(idiom))
-                                                .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.MicroformatDescription.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
+                                                .AppendChild(Hx.CreateTdElement(), _documentTypeMetaData.DocumentTypeDescription.AssertLocale(_locale, _documentTypeMetaData.LanguageDefault), ValueCellClassKey.AppendIdiomString(idiom)))
             );
             
             _parent?.appendChild(_container);

@@ -10,14 +10,12 @@ namespace Paperview.Interfaces
 
         IAuthor Author { get; set; }
 
-        string DocumentId { get; set; }
-        string PresentationId { get; set; }
-
-        string MicroformatId { get; set; }
-        string MicroformatIconBase64 { get; set; }
+        string DocumentTypeId { get; set; }
+        string DocumentTypeIconBase64 { get; set; }
         List<string> LanguageAvailability { get; set; }
         string LanguageDefault { get; set; }
-        Dictionary<string, string> MicroformatName { get; set; }
-        Dictionary<string, string> MicroformatDescription { get; set; }
+
+        Dictionary<string, string> DocumentTypeName { get; set; }
+        Dictionary<string, string> DocumentTypeDescription { get; set; }
     }
 }

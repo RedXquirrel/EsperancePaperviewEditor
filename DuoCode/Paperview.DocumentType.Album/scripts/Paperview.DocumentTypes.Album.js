@@ -83,15 +83,12 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         microformatDescription.Add$1("es", "tbt");
 
         var document = new Paperview.Common.DocumentTypeMetaData.ctor();
-        document.set_DocumentId("1878B000-77ED-417E-BE71-69CBFC716B3C");
-        document.set_MicroformatId("1878B000-77ED-417E-BE71-69CBFC716B3C");
-        document.set_PresentationId("1878B000-77ED-417E-BE71-69CBFC716B3C");
+        document.set_DocumentTypeId("1878B000-77ED-417E-BE71-69CBFC716B3C");
         document.set_LanguageAvailability(new (System.Collections.Generic.List$1(String, 40320).ctor$1)($d.array(String, 
             ["en", "fr", "de", "es"])));
         document.set_LanguageDefault("en");
-        document.set_MicroformatName(microformatName);
-        document.set_MicroformatDescription(microformatDescription);
-        document.set_Microformat(microformat);
+        document.set_DocumentTypeName(microformatName);
+        document.set_DocumentTypeDescription(microformatDescription);
 
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();

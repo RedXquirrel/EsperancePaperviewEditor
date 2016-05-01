@@ -70,40 +70,37 @@ namespace Paperview.DocumentTypes.Album
                 _authorLabel.Text = (int)index >= 0 ? $"{UiResources.AuthorLabelText} ({_albumMicroformat.DocumentInstanceMetaData.Author.Name})" : UiResources.AuthorLabelText;
             };
 
-            var microformat = new Microformat();
-
             #region 
-            // The following describes this specific DocumentType application.
-            // The Microformat object above describes the user's specific instance of this Document Type.
-            var microformatName = new Dictionary<string,string>();
-            microformatName.Add("en", "Album");
-            microformatName.Add("fr", "tbt");
-            microformatName.Add("de", "tbt");
-            microformatName.Add("es", "tbt");
+            // The following (with the exception of 'new DocumentInstanceMetaData()')
+            // describes this specific DocumentType application. The 'new DocumentInstanceMetaData()' 
+            // object will describe the user's specific instance of this Document Type.
+            var documentTypeNameLocalisation = new Dictionary<string,string>();
+            documentTypeNameLocalisation.Add("en", "Album");
+            documentTypeNameLocalisation.Add("fr", "tbt");
+            documentTypeNameLocalisation.Add("de", "tbt");
+            documentTypeNameLocalisation.Add("es", "tbt");
 
-            var microformatDescription = new Dictionary<string, string>();
-            microformatDescription.Add("en", "An Image Album");
-            microformatDescription.Add("fr", "tbt");
-            microformatDescription.Add("de", "tbt");
-            microformatDescription.Add("es", "tbt");
+            var documentTypeDescriptionLocalisation = new Dictionary<string, string>();
+            documentTypeDescriptionLocalisation.Add("en", "An Image Album");
+            documentTypeDescriptionLocalisation.Add("fr", "tbt");
+            documentTypeDescriptionLocalisation.Add("de", "tbt");
+            documentTypeDescriptionLocalisation.Add("es", "tbt");
 
-            var document = new Paperview.Common.DocumentTypeMetaData();
-            document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-            document.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
-            document.LanguageDefault = "en";
-            document.MicroformatName = microformatName;
-            document.MicroformatDescription = microformatDescription;
-            document.Microformat = microformat;
+            var documentTypeMetaData = new Paperview.Common.DocumentTypeMetaData();
+            documentTypeMetaData.DocumentTypeId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+            documentTypeMetaData.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
+            documentTypeMetaData.LanguageDefault = "en";
+            documentTypeMetaData.DocumentTypeName = documentTypeNameLocalisation;
+            documentTypeMetaData.DocumentTypeDescription = documentTypeDescriptionLocalisation;
 
             _albumMicroformat = new AlbumMicroformat()
             {
-                DocumentTypeMetaData = document,
+                DocumentTypeMetaData = documentTypeMetaData,
                 DocumentInstanceMetaData = new DocumentInstanceMetaData()
             };
             #endregion
 
+            #region Temporay Publisher and Author lists until they are passed in across the HTML Bridge.
             _publishers = new List<Publisher>();
 
             // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
@@ -157,8 +154,7 @@ namespace Paperview.DocumentTypes.Album
                 Email = "thecaptain@captainxamtastic.com",
                 Url = "http://www.captainxamtastic.com"
             });
-
-
+            #endregion
 
 
 
