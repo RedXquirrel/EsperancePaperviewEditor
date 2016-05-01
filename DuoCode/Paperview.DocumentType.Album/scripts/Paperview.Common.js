@@ -14,13 +14,12 @@ var $asm = {
 var $g = (typeof(global) !== "undefined" ? global : (typeof(window) !== "undefined" ? window : self));
 var Paperview = $g.Paperview = $g.Paperview || {};
 Paperview.Common = Paperview.Common || {};
-Paperview.Common.Shared = Paperview.Common.Shared || {};
 Paperview.Common.Helpers = Paperview.Common.Helpers || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common"] = $asm;
 Paperview.Common.Author = $d.declare("Paperview.Common.Author", 0, $asm);
-Paperview.Common.Shared.DocumentInstanceMetaData = $d.declare("Paperview.Common.Shared.DocumentInstanceMetaData", 
-    0, $asm);
+Paperview.Common.DocumentInstanceMetaData = $d.declare("Paperview.Common.DocumentInstanceMetaData", 0, 
+    $asm);
 Paperview.Common.DocumentTypeMetaData = $d.declare("Paperview.Common.DocumentTypeMetaData", 0, $asm);
 Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
@@ -55,7 +54,7 @@ $d.define(Paperview.Common.Author, null, function($t, $p) {
     $p.Paperview$Interfaces$IContact$get_Url = $p.get_Url;
     $p.Paperview$Interfaces$IContact$set_Url = $p.set_Url;
 });
-$d.define(Paperview.Common.Shared.DocumentInstanceMetaData, null, function($t, $p) {
+$d.define(Paperview.Common.DocumentInstanceMetaData, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.Shared.IDocumentInstanceMetaData];
     $t.$ator = function() {
         this.Legal = null;

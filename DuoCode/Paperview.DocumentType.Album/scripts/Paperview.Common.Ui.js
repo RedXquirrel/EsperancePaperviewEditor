@@ -303,10 +303,13 @@ $d.define(Paperview.Common.Ui.DropDownPublishersListPane, null, function($t, $p)
                 System.Console.WriteLine$10(String.Format("Selected Publisher: {0}", [this._publishers.get_Item(this._selectedPublisherIndex).get_Name()]));
             }
 
+            System.Console.WriteLine$10(String.Format("Selected Publisher Index: {0}", [this._select.selectedIndex - 1]));
+
             this._selectedPublisherAction(this._select.selectedIndex - 1);
 
             return 0;
         }, this);
+
 
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
             Paperview.Common.Ui.Helpers.Hx().ValueAttKey, "-1"), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 

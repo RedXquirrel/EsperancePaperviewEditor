@@ -1,5 +1,4 @@
 ﻿using Paperview.Common;
-using Paperview.Common.Shared;
 using Paperview.Interfaces;
 
 namespace Paperview.Microformats.Album

@@ -57,7 +57,6 @@ namespace Paperview.DocumentTypes.Album
                 _selectedPublisherIndex = (int) index;
                 _albumMicroformat.DocumentInstanceMetaData.Publisher = (int) index >= 0 ? _publishers[_selectedPublisherIndex] : null;
                 _publisherPane.Publisher = (Publisher)_albumMicroformat.DocumentInstanceMetaData.Publisher;
-
                 _publisherLabel.Text = (int)index >= 0 ? $"{UiResources.PublisherLabelText} ({_albumMicroformat.DocumentInstanceMetaData.Publisher.Name})" : UiResources.PublisherLabelText;
             };
 
@@ -101,6 +100,7 @@ namespace Paperview.DocumentTypes.Album
             _albumMicroformat = new AlbumMicroformat()
             {
                 DocumentTypeMetaData = document,
+                DocumentInstanceMetaData = new DocumentInstanceMetaData()
             };
             #endregion
 
@@ -181,7 +181,7 @@ namespace Paperview.DocumentTypes.Album
         private void DeclareUi()
         {
             var myobj = Global.JSON.parse(_initialisationJson);
-            System.Console.WriteLine((string)myobj.DocumentId);
+            System.Console.WriteLine((string)myobj.DocumentTypeMetaData.DocumentId);
             _publisherLabel = new LabelPane(UiResources.PublisherLabelText, _idiom) {TextCase = TextCase.Upper};
             _publisherPane = new PublisherPane(_idiom);
             _dropDownPublishersList = new DropDownPublishersListPane(_publishers, _selectPublisherAction, _idiom);

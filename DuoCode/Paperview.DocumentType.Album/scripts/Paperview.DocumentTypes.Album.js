@@ -51,7 +51,6 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             this._albumMicroformat.get_DocumentInstanceMetaData().set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
             this._publisherPane.set_Publisher($d.cast(this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher(), 
                 Paperview.Common.Publisher));
-
             this._publisherLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
                 this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
         }, this);
@@ -97,6 +96,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
             $obj.set_DocumentTypeMetaData(document);
+            $obj.set_DocumentInstanceMetaData(new Paperview.Common.DocumentInstanceMetaData.ctor());
             return $obj;
         }).call(this);
         //#endregion
@@ -183,7 +183,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
     $t.ctor.prototype = $p;
     $p.DeclareUi = function AlbumApplication_DeclareUi() {
         var myobj = JSON.parse(this._initialisationJson);
-        System.Console.WriteLine$10(myobj.DocumentId);
+        System.Console.WriteLine$10(myobj.DocumentTypeMetaData.DocumentId);
         this._publisherLabel = (function() {
             var $obj = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
                 this._idiom);

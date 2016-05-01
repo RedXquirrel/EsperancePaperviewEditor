@@ -90,11 +90,14 @@ namespace Paperview.Common.Ui
                     System.Console.WriteLine($"Selected Publisher: {_publishers[_selectedPublisherIndex].Name}");
                 }
 
+                System.Console.WriteLine($"Selected Publisher Index: {_select.selectedIndex - 1}");
+
                 _selectedPublisherAction.invoke(_select.selectedIndex-1);
 
                 return 0;
             };
-            
+
+
             _select.AppendChild(Hx.CreateOptionElement().SetAttribute(Hx.ValueAttKey, "-1").SetAttribute(Hx.ClassAttKey, AppStyles.StandardOptionClassKey.AppendIdiomString(idiom)).InnerHtml(UiResources.PublisherPleaseSelectText));
 
             foreach (var publisher in _publishers)

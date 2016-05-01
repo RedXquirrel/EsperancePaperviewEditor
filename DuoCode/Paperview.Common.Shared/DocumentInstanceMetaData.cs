@@ -4,7 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Text;
 
-namespace Paperview.Common.Shared
+namespace Paperview.Common
 {
     public class DocumentInstanceMetaData : IDocumentInstanceMetaData
     {

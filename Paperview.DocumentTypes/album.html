@@ -258,9 +258,7 @@ body {
 
 	</style>
 	
-	<script id="temp" type="text/javascript">myTemp='{"DocumentTypeMetaData":{"Legal":null,"Publisher":null,"Author":null,"DocumentId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatId":"1878b000-77ed-417e-be71-69cbfc716b3c","PresentationId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatIconBase64":null,"LanguageAvailability":["en","fr","de","es"],"LanguageDefault":"en","MicroformatName":{"en":"Album","fr":"tbt","de":"tbt","es":"tbt"},"MicroformatDescription":{"en":"An Image Album","fr":"tbt","de":"tbt","es":"tbt"},"Microformat":null},"DocumentInstanceMetaData":null,"Artifacts":null}';</script>
-
-	<script id="documentTypeData" type="text/javascript">documentTypeData='{"Legal":null,"Publisher":null,"Author":null,"DocumentId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatId":"1878b000-77ed-417e-be71-69cbfc716b3c","PresentationId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatIconBase64":null,"LanguageAvailability":["en","fr","de","es"],"LanguageDefault":"en","MicroformatName":{"en":"Album","fr":"tbt","de":"tbt","es":"tbt"},"MicroformatDescription":{"en":"An Image Album","fr":"tbt","de":"tbt","es":"tbt"},"Microformat":null}';</script>
+	<script id="documentTypeData" type="text/javascript">documentTypeData='{"DocumentTypeMetaData":{"Legal":null,"Publisher":null,"Author":null,"DocumentId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatId":"1878b000-77ed-417e-be71-69cbfc716b3c","PresentationId":"1878b000-77ed-417e-be71-69cbfc716b3c","MicroformatIconBase64":null,"LanguageAvailability":["en","fr","de","es"],"LanguageDefault":"en","MicroformatName":{"en":"Album","fr":"tbt","de":"tbt","es":"tbt"},"MicroformatDescription":{"en":"An Image Album","fr":"tbt","de":"tbt","es":"tbt"},"Microformat":null},"DocumentInstanceMetaData":{"Legal":null,"Publisher":null,"Author":null},"Artifacts":{"Title":null,"Description":null,"Images":null}}';</script>
 
 	<script id="mscorlib" type="text/javascript">
 /*!
@@ -17305,13 +17303,12 @@ var $asm = {
 var $g = (typeof(global) !== "undefined" ? global : (typeof(window) !== "undefined" ? window : self));
 var Paperview = $g.Paperview = $g.Paperview || {};
 Paperview.Common = Paperview.Common || {};
-Paperview.Common.Shared = Paperview.Common.Shared || {};
 Paperview.Common.Helpers = Paperview.Common.Helpers || {};
 var $d = DuoCode.Runtime;
 $d.$assemblies["Paperview.Common"] = $asm;
 Paperview.Common.Author = $d.declare("Paperview.Common.Author", 0, $asm);
-Paperview.Common.Shared.DocumentInstanceMetaData = $d.declare("Paperview.Common.Shared.DocumentInstanceMetaData", 
-    0, $asm);
+Paperview.Common.DocumentInstanceMetaData = $d.declare("Paperview.Common.DocumentInstanceMetaData", 0, 
+    $asm);
 Paperview.Common.DocumentTypeMetaData = $d.declare("Paperview.Common.DocumentTypeMetaData", 0, $asm);
 Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
@@ -17346,7 +17343,7 @@ $d.define(Paperview.Common.Author, null, function($t, $p) {
     $p.Paperview$Interfaces$IContact$get_Url = $p.get_Url;
     $p.Paperview$Interfaces$IContact$set_Url = $p.set_Url;
 });
-$d.define(Paperview.Common.Shared.DocumentInstanceMetaData, null, function($t, $p) {
+$d.define(Paperview.Common.DocumentInstanceMetaData, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.Shared.IDocumentInstanceMetaData];
     $t.$ator = function() {
         this.Legal = null;
@@ -17850,10 +17847,13 @@ $d.define(Paperview.Common.Ui.DropDownPublishersListPane, null, function($t, $p)
                 System.Console.WriteLine$10(String.Format("Selected Publisher: {0}", [this._publishers.get_Item(this._selectedPublisherIndex).get_Name()]));
             }
 
+            System.Console.WriteLine$10(String.Format("Selected Publisher Index: {0}", [this._select.selectedIndex - 1]));
+
             this._selectedPublisherAction(this._select.selectedIndex - 1);
 
             return 0;
         }, this);
+
 
         Paperview.Common.Ui.Helpers.Hx.AppendChild(this._select, Paperview.Common.Ui.Helpers.Hx.InnerHtml(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.SetAttribute(Paperview.Common.Ui.Helpers.Hx.CreateOptionElement(), 
             Paperview.Common.Ui.Helpers.Hx().ValueAttKey, "-1"), Paperview.Common.Ui.Helpers.Hx().ClassAttKey, 
@@ -18938,7 +18938,6 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             this._albumMicroformat.get_DocumentInstanceMetaData().set_Publisher(index >= 0 ? this._publishers.get_Item(this._selectedPublisherIndex) : null);
             this._publisherPane.set_Publisher($d.cast(this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher(), 
                 Paperview.Common.Publisher));
-
             this._publisherLabel.set_Text(index >= 0 ? String.Format("{0} ({1})", [Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
                 this._albumMicroformat.get_DocumentInstanceMetaData().get_Publisher().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText());
         }, this);
@@ -18984,6 +18983,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
             $obj.set_DocumentTypeMetaData(document);
+            $obj.set_DocumentInstanceMetaData(new Paperview.Common.DocumentInstanceMetaData.ctor());
             return $obj;
         }).call(this);
         //#endregion
@@ -19070,7 +19070,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
     $t.ctor.prototype = $p;
     $p.DeclareUi = function AlbumApplication_DeclareUi() {
         var myobj = JSON.parse(this._initialisationJson);
-        System.Console.WriteLine$10(myobj.DocumentId);
+        System.Console.WriteLine$10(myobj.DocumentTypeMetaData.DocumentId);
         this._publisherLabel = (function() {
             var $obj = new Paperview.Common.Ui.LabelPane.ctor$2(Paperview.Common.Ui.Localisation.UiResources().get_PublisherLabelText(), 
                 this._idiom);

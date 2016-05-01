@@ -68,7 +68,12 @@
 	var paperview_DocumentTypes_Album_js_Text = System.IO.File.ReadAllText(paperview_DocumentTypes_Album_js_FilePath);
 
 
-	var albumMicroformat = new AlbumMicroformat();
+	var albumMicroformat = new AlbumMicroformat() 
+	{ 
+		DocumentTypeMetaData = new DocumentTypeMetaData(),
+		DocumentInstanceMetaData = new DocumentInstanceMetaData(),
+		Artifacts = new Artefacts()
+	};
 
 
 
@@ -87,20 +92,20 @@
     microformatDescription.Add("de", "tbt");
     microformatDescription.Add("es", "tbt");
 
-    var document = new DocumentTypeMetaData();
-    document.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-    document.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-    document.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
-    document.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
-    document.LanguageDefault = "en";
-    document.MicroformatName = microformatName;
-    document.MicroformatDescription = microformatDescription;
+    var documentTypeMetaData = new DocumentTypeMetaData();
+    documentTypeMetaData.DocumentId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    documentTypeMetaData.MicroformatId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    documentTypeMetaData.PresentationId = "1878B000-77ED-417E-BE71-69CBFC716B3C";
+    documentTypeMetaData.LanguageAvailability = new List<string>(new [] { "en", "fr", "de", "es" });
+    documentTypeMetaData.LanguageDefault = "en";
+    documentTypeMetaData.MicroformatName = microformatName;
+    documentTypeMetaData.MicroformatDescription = microformatDescription;
     //document.Microformat = microformat;
     #endregion
 
-	var documentTypeData = JsonConvert.SerializeObject(document);
+	//var documentTypeData = JsonConvert.SerializeObject(document);
 
-	albumMicroformat.DocumentTypeMetaData = document;
+	albumMicroformat.DocumentTypeMetaData = documentTypeMetaData;
 
     var albumMicroformatData = JsonConvert.SerializeObject(albumMicroformat);
 
@@ -119,9 +124,7 @@
 <#=uicomponents_css_Text#>
 	</style>
 	
-	<script id="temp" type="text/javascript">myTemp='<#=albumMicroformatData#>';</script>
-
-	<script id="documentTypeData" type="text/javascript">documentTypeData='<#=documentTypeData#>';</script>
+	<script id="documentTypeData" type="text/javascript">documentTypeData='<#=albumMicroformatData#>';</script>
 
 	<script id="mscorlib" type="text/javascript">
 <#=mscorlibText#>	
