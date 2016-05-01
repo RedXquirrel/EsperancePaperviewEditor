@@ -65,39 +65,41 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
                 this._albumMicroformat.get_DocumentInstanceMetaData().get_Author().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText());
         }, this);
 
-        var microformat = new Paperview.Common.Microformat.ctor();
-
         //#region 
-        // The following describes this specific DocumentType application.
-        // The Microformat object above describes the user's specific instance of this Document Type.
-        var microformatName = new (System.Collections.Generic.Dictionary$2(String, String, 27758).ctor)();
-        microformatName.Add$1("en", "Album");
-        microformatName.Add$1("fr", "tbt");
-        microformatName.Add$1("de", "tbt");
-        microformatName.Add$1("es", "tbt");
+        // The following (with the exception of 'new DocumentInstanceMetaData()')
+        // describes this specific DocumentType application. The 'new DocumentInstanceMetaData()' 
+        // object will describe the user's specific instance of this Document Type.
+        var documentTypeNameLocalisation = new (System.Collections.Generic.Dictionary$2(String, String, 
+            27758).ctor)();
+        documentTypeNameLocalisation.Add$1("en", "Album");
+        documentTypeNameLocalisation.Add$1("fr", "tbt");
+        documentTypeNameLocalisation.Add$1("de", "tbt");
+        documentTypeNameLocalisation.Add$1("es", "tbt");
 
-        var microformatDescription = new (System.Collections.Generic.Dictionary$2(String, String, 27758).ctor)();
-        microformatDescription.Add$1("en", "An Image Album");
-        microformatDescription.Add$1("fr", "tbt");
-        microformatDescription.Add$1("de", "tbt");
-        microformatDescription.Add$1("es", "tbt");
+        var documentTypeDescriptionLocalisation = new (System.Collections.Generic.Dictionary$2(String, 
+            String, 27758).ctor)();
+        documentTypeDescriptionLocalisation.Add$1("en", "An Image Album");
+        documentTypeDescriptionLocalisation.Add$1("fr", "tbt");
+        documentTypeDescriptionLocalisation.Add$1("de", "tbt");
+        documentTypeDescriptionLocalisation.Add$1("es", "tbt");
 
-        var document = new Paperview.Common.DocumentTypeMetaData.ctor();
-        document.set_DocumentTypeId("1878B000-77ED-417E-BE71-69CBFC716B3C");
-        document.set_LanguageAvailability(new (System.Collections.Generic.List$1(String, 40320).ctor$1)($d.array(String, 
-            ["en", "fr", "de", "es"])));
-        document.set_LanguageDefault("en");
-        document.set_DocumentTypeName(microformatName);
-        document.set_DocumentTypeDescription(microformatDescription);
+        var documentTypeMetaData = new Paperview.Common.DocumentTypeMetaData.ctor();
+        documentTypeMetaData.set_DocumentTypeId("1878B000-77ED-417E-BE71-69CBFC716B3C");
+        documentTypeMetaData.set_LanguageAvailability(new (System.Collections.Generic.List$1(String, 
+            40320).ctor$1)($d.array(String, ["en", "fr", "de", "es"])));
+        documentTypeMetaData.set_LanguageDefault("en");
+        documentTypeMetaData.set_DocumentTypeName(documentTypeNameLocalisation);
+        documentTypeMetaData.set_DocumentTypeDescription(documentTypeDescriptionLocalisation);
 
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
-            $obj.set_DocumentTypeMetaData(document);
+            $obj.set_DocumentTypeMetaData(documentTypeMetaData);
             $obj.set_DocumentInstanceMetaData(new Paperview.Common.DocumentInstanceMetaData.ctor());
             return $obj;
         }).call(this);
         //#endregion
 
+        //#region Temporay Publisher and Author lists until they are passed in across the HTML Bridge.
         this._publishers = new (System.Collections.Generic.List$1(Paperview.Common.Publisher, 15629).ctor)();
 
         // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
@@ -157,8 +159,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             $obj.set_Url("http://www.captainxamtastic.com");
             return $obj;
         }).call(this));
-
-
+        //#endregion
 
 
 

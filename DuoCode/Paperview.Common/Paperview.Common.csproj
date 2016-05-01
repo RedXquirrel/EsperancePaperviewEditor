@@ -47,9 +47,6 @@
     <Compile Include="..\Paperview.Common.Shared\Legal.cs">
       <Link>Legal.cs</Link>
     </Compile>
-    <Compile Include="..\Paperview.Common.Shared\Microformat.cs">
-      <Link>Microformat.cs</Link>
-    </Compile>
     <Compile Include="..\Paperview.Common.Shared\Publisher.cs">
       <Link>Publisher.cs</Link>
     </Compile>

@@ -36,8 +36,6 @@ body {
   -moz-box-shadow: inset 0px 4px 6px -2px rgba(0,0,0,0.2);
   -webkit-box-shadow: inset 0px 4px 6px -2px rgba(0,0,0,0.2);
 }
-
-
 	</style>
 
 	<!-- uicomponents.css -->
@@ -246,19 +244,9 @@ body {
       border:2px solid white;
       border-radius: 5px;
   }
-
-
-
-
-
-
-
-
-
-
 	</style>
 	
-	<script id="documentTypeData" type="text/javascript">documentTypeData='{"DocumentTypeMetaData":{"Legal":null,"Publisher":{"Id":"d055aa6b-4efd-42ee-b928-59b1e7a11195","Name":"YouDoo Limited TA Xamtastic","Email":"publisher@xamtastic.com","Url":"http://www.xamtastic.com"},"Author":{"Id":"e0d3d477-7462-4e09-aaa1-91cf4e25ce84","Name":"Anthony Harrison","Email":"Anthony.Harrison@xamtastic.com","Url":"http://www.xamtastic.com"},"DocumentTypeId":"1878b000-77ed-417e-be71-69cbfc716b3c","DocumentTypeIconBase64":null,"LanguageAvailability":["en","fr","de","es"],"LanguageDefault":"en","DocumentTypeName":{"en":"Album","fr":"tbt","de":"tbt","es":"tbt"},"DocumentTypeDescription":{"en":"An Image Album","fr":"tbt","de":"tbt","es":"tbt"}},"DocumentInstanceMetaData":{"Legal":null,"Publisher":null,"Author":null,"OriginalDocumentInstanceId":null,"DocumentInstanceId":null,"DocumentInstanceIconBase64":null,"LanguageAvailability":[],"LanguageDefault":null,"DocumentInstanceName":{},"DocumentInstanceDescription":{},"TranspositionHistory":[]},"Artifacts":{"Title":null,"Description":null,"Images":null}}';</script>
+	<script id="documentTypeData" type="text/javascript">documentTypeData='{"DocumentTypeMetaData":{"Legal":null,"Publisher":{"Id":"c7bcd513-1bde-4972-80c3-526b608f9423","Name":"YouDoo Limited TA Xamtastic","Email":"publisher@xamtastic.com","Url":"http://www.xamtastic.com"},"Author":{"Id":"bd5af35b-d8b9-4245-8ad2-a9265856cf15","Name":"Anthony Harrison","Email":"Anthony.Harrison@xamtastic.com","Url":"http://www.xamtastic.com"},"DocumentTypeId":"1878b000-77ed-417e-be71-69cbfc716b3c","DocumentTypeIconBase64":null,"LanguageAvailability":["en","fr","de","es"],"LanguageDefault":"en","DocumentTypeName":{"en":"Album","fr":"tbt","de":"tbt","es":"tbt"},"DocumentTypeDescription":{"en":"An Image Album","fr":"tbt","de":"tbt","es":"tbt"}},"DocumentInstanceMetaData":{"Legal":null,"Publisher":null,"Author":null,"OriginalDocumentInstanceId":null,"DocumentInstanceId":null,"DocumentInstanceIconBase64":null,"LanguageAvailability":[],"LanguageDefault":null,"DocumentInstanceName":{},"DocumentInstanceDescription":{},"TranspositionHistory":[]},"Artifacts":{"Title":null,"Description":null,"Images":null}}';</script>
 
 	<script id="mscorlib" type="text/javascript">
 /*!
@@ -17276,7 +17264,6 @@ Paperview.Interfaces.Idiom = $d.typeEnum("Paperview.Interfaces.Idiom", 45, $asm,
 Paperview.Interfaces.Shared.IDocumentInstanceMetaData = $d.type("Paperview.Interfaces.Shared.IDocumentInstanceMetaData", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.IDocumentTypeMetaData = $d.type("Paperview.Interfaces.IDocumentTypeMetaData", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.ILegal = $d.type("Paperview.Interfaces.ILegal", 66, $asm, function($t, $p) {});
-Paperview.Interfaces.IMicroformat = $d.type("Paperview.Interfaces.IMicroformat", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.IPublisher = $d.type("Paperview.Interfaces.IPublisher", 66, $asm, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IContact];
 });
@@ -17312,7 +17299,6 @@ Paperview.Common.DocumentInstanceMetaData = $d.declare("Paperview.Common.Documen
 Paperview.Common.DocumentTypeMetaData = $d.declare("Paperview.Common.DocumentTypeMetaData", 0, $asm);
 Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
-Paperview.Common.Microformat = $d.declare("Paperview.Common.Microformat", 0, $asm);
 Paperview.Common.Publisher = $d.declare("Paperview.Common.Publisher", 0, $asm);
 $d.define(Paperview.Common.Author, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IAuthor, Paperview.Interfaces.IContact];
@@ -17489,50 +17475,6 @@ $d.define(Paperview.Common.Legal, null, function($t, $p) {
         $t.$baseType.ctor.call(this);
     };
     $t.ctor.prototype = $p;
-});
-$d.define(Paperview.Common.Microformat, null, function($t, $p) {
-    $t.$intfs = [Paperview.Interfaces.IMicroformat];
-    $t.$ator = function() {
-        this._mfid = null;
-        this.Name = null;
-        this.Description = null;
-        this.LanguageAvailability = null;
-        this.LanguageDefault = null;
-        this.Derivation = null;
-    };
-    $t.ctor = function Microformat() {
-        $t.$baseType.ctor.call(this);
-    };
-    $t.ctor.prototype = $p;
-    $p.get_Id = function Microformat_get_Id() {
-        return this._mfid;
-    };
-    $p.set_Id = function Microformat_set_Id(value) {
-        this._mfid = value.toLowerCase();
-        return value;
-    };
-    $p.get_Name = function Microformat_get_Name() { return this.Name; };
-    $p.set_Name = function Microformat_set_Name(value) { this.Name = value;return value; };
-    $p.get_Description = function Microformat_get_Description() { return this.Description; };
-    $p.set_Description = function Microformat_set_Description(value) { this.Description = value;return value; };
-    $p.get_LanguageAvailability = function Microformat_get_LanguageAvailability() { return this.LanguageAvailability; };
-    $p.set_LanguageAvailability = function Microformat_set_LanguageAvailability(value) { this.LanguageAvailability = value;return value; };
-    $p.get_LanguageDefault = function Microformat_get_LanguageDefault() { return this.LanguageDefault; };
-    $p.set_LanguageDefault = function Microformat_set_LanguageDefault(value) { this.LanguageDefault = value;return value; };
-    $p.get_Derivation = function Microformat_get_Derivation() { return this.Derivation; };
-    $p.set_Derivation = function Microformat_set_Derivation(value) { this.Derivation = value;return value; };
-    $p.Paperview$Interfaces$IMicroformat$get_Id = $p.get_Id;
-    $p.Paperview$Interfaces$IMicroformat$set_Id = $p.set_Id;
-    $p.Paperview$Interfaces$IMicroformat$get_Name = $p.get_Name;
-    $p.Paperview$Interfaces$IMicroformat$set_Name = $p.set_Name;
-    $p.Paperview$Interfaces$IMicroformat$get_Description = $p.get_Description;
-    $p.Paperview$Interfaces$IMicroformat$set_Description = $p.set_Description;
-    $p.Paperview$Interfaces$IMicroformat$get_LanguageAvailability = $p.get_LanguageAvailability;
-    $p.Paperview$Interfaces$IMicroformat$set_LanguageAvailability = $p.set_LanguageAvailability;
-    $p.Paperview$Interfaces$IMicroformat$get_LanguageDefault = $p.get_LanguageDefault;
-    $p.Paperview$Interfaces$IMicroformat$set_LanguageDefault = $p.set_LanguageDefault;
-    $p.Paperview$Interfaces$IMicroformat$get_Derivation = $p.get_Derivation;
-    $p.Paperview$Interfaces$IMicroformat$set_Derivation = $p.set_Derivation;
 });
 $d.define(Paperview.Common.Publisher, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IPublisher, Paperview.Interfaces.IContact];
@@ -18980,39 +18922,41 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
                 this._albumMicroformat.get_DocumentInstanceMetaData().get_Author().Paperview$Interfaces$IContact$get_Name()]) : Paperview.Common.Ui.Localisation.UiResources().get_AuthorLabelText());
         }, this);
 
-        var microformat = new Paperview.Common.Microformat.ctor();
-
         //#region 
-        // The following describes this specific DocumentType application.
-        // The Microformat object above describes the user's specific instance of this Document Type.
-        var microformatName = new (System.Collections.Generic.Dictionary$2(String, String, 27758).ctor)();
-        microformatName.Add$1("en", "Album");
-        microformatName.Add$1("fr", "tbt");
-        microformatName.Add$1("de", "tbt");
-        microformatName.Add$1("es", "tbt");
+        // The following (with the exception of 'new DocumentInstanceMetaData()')
+        // describes this specific DocumentType application. The 'new DocumentInstanceMetaData()' 
+        // object will describe the user's specific instance of this Document Type.
+        var documentTypeNameLocalisation = new (System.Collections.Generic.Dictionary$2(String, String, 
+            27758).ctor)();
+        documentTypeNameLocalisation.Add$1("en", "Album");
+        documentTypeNameLocalisation.Add$1("fr", "tbt");
+        documentTypeNameLocalisation.Add$1("de", "tbt");
+        documentTypeNameLocalisation.Add$1("es", "tbt");
 
-        var microformatDescription = new (System.Collections.Generic.Dictionary$2(String, String, 27758).ctor)();
-        microformatDescription.Add$1("en", "An Image Album");
-        microformatDescription.Add$1("fr", "tbt");
-        microformatDescription.Add$1("de", "tbt");
-        microformatDescription.Add$1("es", "tbt");
+        var documentTypeDescriptionLocalisation = new (System.Collections.Generic.Dictionary$2(String, 
+            String, 27758).ctor)();
+        documentTypeDescriptionLocalisation.Add$1("en", "An Image Album");
+        documentTypeDescriptionLocalisation.Add$1("fr", "tbt");
+        documentTypeDescriptionLocalisation.Add$1("de", "tbt");
+        documentTypeDescriptionLocalisation.Add$1("es", "tbt");
 
-        var document = new Paperview.Common.DocumentTypeMetaData.ctor();
-        document.set_DocumentTypeId("1878B000-77ED-417E-BE71-69CBFC716B3C");
-        document.set_LanguageAvailability(new (System.Collections.Generic.List$1(String, 40320).ctor$1)($d.array(String, 
-            ["en", "fr", "de", "es"])));
-        document.set_LanguageDefault("en");
-        document.set_DocumentTypeName(microformatName);
-        document.set_DocumentTypeDescription(microformatDescription);
+        var documentTypeMetaData = new Paperview.Common.DocumentTypeMetaData.ctor();
+        documentTypeMetaData.set_DocumentTypeId("1878B000-77ED-417E-BE71-69CBFC716B3C");
+        documentTypeMetaData.set_LanguageAvailability(new (System.Collections.Generic.List$1(String, 
+            40320).ctor$1)($d.array(String, ["en", "fr", "de", "es"])));
+        documentTypeMetaData.set_LanguageDefault("en");
+        documentTypeMetaData.set_DocumentTypeName(documentTypeNameLocalisation);
+        documentTypeMetaData.set_DocumentTypeDescription(documentTypeDescriptionLocalisation);
 
         this._albumMicroformat = (function() {
             var $obj = new Paperview.Microformats.Album.AlbumMicroformat.ctor();
-            $obj.set_DocumentTypeMetaData(document);
+            $obj.set_DocumentTypeMetaData(documentTypeMetaData);
             $obj.set_DocumentInstanceMetaData(new Paperview.Common.DocumentInstanceMetaData.ctor());
             return $obj;
         }).call(this);
         //#endregion
 
+        //#region Temporay Publisher and Author lists until they are passed in across the HTML Bridge.
         this._publishers = new (System.Collections.Generic.List$1(Paperview.Common.Publisher, 15629).ctor)();
 
         // ToDo: this is dummy data, waiting for it to be passed across a yet to be create HTML Bridge.
@@ -19072,8 +19016,7 @@ $d.define(Paperview.DocumentTypes.Album.AlbumApplication, null, function($t, $p)
             $obj.set_Url("http://www.captainxamtastic.com");
             return $obj;
         }).call(this));
-
-
+        //#endregion
 
 
 

@@ -50,9 +50,6 @@
     <Compile Include="..\DuoCode\Paperview.Common.Shared\Legal.cs">
       <Link>Legal.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Common.Shared\Microformat.cs">
-      <Link>Microformat.cs</Link>
-    </Compile>
     <Compile Include="..\DuoCode\Paperview.Common.Shared\Publisher.cs">
       <Link>Publisher.cs</Link>
     </Compile>

@@ -23,7 +23,6 @@ Paperview.Common.DocumentInstanceMetaData = $d.declare("Paperview.Common.Documen
 Paperview.Common.DocumentTypeMetaData = $d.declare("Paperview.Common.DocumentTypeMetaData", 0, $asm);
 Paperview.Common.Helpers.AppStyles = $d.declare("Paperview.Common.Helpers.AppStyles", 0, $asm);
 Paperview.Common.Legal = $d.declare("Paperview.Common.Legal", 0, $asm);
-Paperview.Common.Microformat = $d.declare("Paperview.Common.Microformat", 0, $asm);
 Paperview.Common.Publisher = $d.declare("Paperview.Common.Publisher", 0, $asm);
 $d.define(Paperview.Common.Author, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IAuthor, Paperview.Interfaces.IContact];
@@ -200,50 +199,6 @@ $d.define(Paperview.Common.Legal, null, function($t, $p) {
         $t.$baseType.ctor.call(this);
     };
     $t.ctor.prototype = $p;
-});
-$d.define(Paperview.Common.Microformat, null, function($t, $p) {
-    $t.$intfs = [Paperview.Interfaces.IMicroformat];
-    $t.$ator = function() {
-        this._mfid = null;
-        this.Name = null;
-        this.Description = null;
-        this.LanguageAvailability = null;
-        this.LanguageDefault = null;
-        this.Derivation = null;
-    };
-    $t.ctor = function Microformat() {
-        $t.$baseType.ctor.call(this);
-    };
-    $t.ctor.prototype = $p;
-    $p.get_Id = function Microformat_get_Id() {
-        return this._mfid;
-    };
-    $p.set_Id = function Microformat_set_Id(value) {
-        this._mfid = value.toLowerCase();
-        return value;
-    };
-    $p.get_Name = function Microformat_get_Name() { return this.Name; };
-    $p.set_Name = function Microformat_set_Name(value) { this.Name = value;return value; };
-    $p.get_Description = function Microformat_get_Description() { return this.Description; };
-    $p.set_Description = function Microformat_set_Description(value) { this.Description = value;return value; };
-    $p.get_LanguageAvailability = function Microformat_get_LanguageAvailability() { return this.LanguageAvailability; };
-    $p.set_LanguageAvailability = function Microformat_set_LanguageAvailability(value) { this.LanguageAvailability = value;return value; };
-    $p.get_LanguageDefault = function Microformat_get_LanguageDefault() { return this.LanguageDefault; };
-    $p.set_LanguageDefault = function Microformat_set_LanguageDefault(value) { this.LanguageDefault = value;return value; };
-    $p.get_Derivation = function Microformat_get_Derivation() { return this.Derivation; };
-    $p.set_Derivation = function Microformat_set_Derivation(value) { this.Derivation = value;return value; };
-    $p.Paperview$Interfaces$IMicroformat$get_Id = $p.get_Id;
-    $p.Paperview$Interfaces$IMicroformat$set_Id = $p.set_Id;
-    $p.Paperview$Interfaces$IMicroformat$get_Name = $p.get_Name;
-    $p.Paperview$Interfaces$IMicroformat$set_Name = $p.set_Name;
-    $p.Paperview$Interfaces$IMicroformat$get_Description = $p.get_Description;
-    $p.Paperview$Interfaces$IMicroformat$set_Description = $p.set_Description;
-    $p.Paperview$Interfaces$IMicroformat$get_LanguageAvailability = $p.get_LanguageAvailability;
-    $p.Paperview$Interfaces$IMicroformat$set_LanguageAvailability = $p.set_LanguageAvailability;
-    $p.Paperview$Interfaces$IMicroformat$get_LanguageDefault = $p.get_LanguageDefault;
-    $p.Paperview$Interfaces$IMicroformat$set_LanguageDefault = $p.set_LanguageDefault;
-    $p.Paperview$Interfaces$IMicroformat$get_Derivation = $p.get_Derivation;
-    $p.Paperview$Interfaces$IMicroformat$set_Derivation = $p.set_Derivation;
 });
 $d.define(Paperview.Common.Publisher, null, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IPublisher, Paperview.Interfaces.IContact];

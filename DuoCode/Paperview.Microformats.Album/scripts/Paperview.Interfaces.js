@@ -25,7 +25,6 @@ Paperview.Interfaces.Idiom = $d.typeEnum("Paperview.Interfaces.Idiom", 45, $asm,
 Paperview.Interfaces.Shared.IDocumentInstanceMetaData = $d.type("Paperview.Interfaces.Shared.IDocumentInstanceMetaData", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.IDocumentTypeMetaData = $d.type("Paperview.Interfaces.IDocumentTypeMetaData", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.ILegal = $d.type("Paperview.Interfaces.ILegal", 66, $asm, function($t, $p) {});
-Paperview.Interfaces.IMicroformat = $d.type("Paperview.Interfaces.IMicroformat", 66, $asm, function($t, $p) {});
 Paperview.Interfaces.IPublisher = $d.type("Paperview.Interfaces.IPublisher", 66, $asm, function($t, $p) {
     $t.$intfs = [Paperview.Interfaces.IContact];
 });

@@ -53,9 +53,6 @@
     <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\ILegal.cs">
       <Link>ILegal.cs</Link>
     </Compile>
-    <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IMicroformat.cs">
-      <Link>IMicroformat.cs</Link>
-    </Compile>
     <Compile Include="..\DuoCode\Paperview.Interfaces.Shared\IPublisher.cs">
       <Link>IPublisher.cs</Link>
     </Compile>

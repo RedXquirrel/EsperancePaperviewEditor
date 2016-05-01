@@ -14,7 +14,6 @@
     <Compile Include="$(MSBuildThisFileDirectory)DocumentTypeMetaData.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Helpers\AppStyles.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Legal.cs" />
-    <Compile Include="$(MSBuildThisFileDirectory)Microformat.cs" />
     <Compile Include="$(MSBuildThisFileDirectory)Publisher.cs" />
   </ItemGroup>
 </Project>
